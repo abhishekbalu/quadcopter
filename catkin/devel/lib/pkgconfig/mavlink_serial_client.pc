@@ -1,0 +1,8 @@
+prefix=/home/pedro/catkin/devel
+
+Name: mavlink_serial_client
+Description: Description of mavlink_serial_client
+Version: 0.1.0
+Cflags: -I/home/pedro/catkin/src/px-ros-pkg/drivers/mavlink_serial_client/include
+Libs: -L/home/pedro/catkin/devel/lib 
+Requires: roscpp std_msgs sensor_msgs image_transport px_comm

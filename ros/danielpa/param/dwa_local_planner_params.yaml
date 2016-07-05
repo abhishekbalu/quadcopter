@@ -1,0 +1,46 @@
+DWAPlannerROS:
+#
+# Robot Configuration Parameters
+#
+  acc_lim_x: 2.5
+  acc_lim_y: 2.5
+  acc_lim_th: 2.5
+  max_trans_vel: 3.0
+  min_trans_vel: 0.1#0.1
+  max_vel_x: 1.5
+  min_vel_x: -1.5#0.2
+  max_vel_y: 1.5
+  min_vel_y: -1.5
+  max_rot_vel: 15.0
+  min_rot_vel: 0.1#0.4
+
+  trans_stopped_vel: 3.0
+  rot_stopped_vel: 1.0
+#  
+# Goal Tolerance Parameters
+#
+  yaw_goal_tolerance: 0.3
+  xy_goal_tolerance: 0.1
+  latch_xy_goal_tolerance: true
+# 
+# Forward Simulation Parameters
+#
+  sim_time: 2.0
+  sim_granularity: 0.05
+  vx_samples: 10
+  vy_samples: 10
+  vtheta_samples: 20
+  #controller_frequency: ??.?
+  penalize_negative_x: false
+#
+# Trajectory Scoring Parameters
+#
+  path_distance_bias: 32.0
+  occdist_scale: 0.01
+#
+# random params?
+#
+  publish_traj_pc : true
+  publish_cost_grid_pc: true
+  global_frame_id: odom
+  holonomic_robot: true

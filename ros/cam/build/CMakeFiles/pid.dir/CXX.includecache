@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/cam/blob.h
+
+/home/pedro/ros/cam/src/blob.cpp
+cam/blob.h
+/home/pedro/ros/cam/src/cam/blob.h
+

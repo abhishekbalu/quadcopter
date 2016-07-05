@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pedro/catkin/src/height/include/height/Kalman_2D.h
+eigen3/Eigen/Dense
+-
+eigen3/Eigen/Eigen
+-
+eigen3/Eigen/LU
+-
+eigen3/Eigen/Core
+-
+math.h
+-
+
+/home/pedro/catkin/src/height/src/Kalman_2D.cpp
+height/Kalman_2D.h
+-
+

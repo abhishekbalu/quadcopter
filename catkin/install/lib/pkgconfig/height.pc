@@ -1,0 +1,8 @@
+prefix=/home/pedro/catkin/install
+
+Name: height
+Description: Description of height
+Version: 0.0.0
+Cflags: -I/home/pedro/catkin/install/include
+Libs: -L/home/pedro/catkin/install/lib -lheight
+Requires: geometry_msgs mavros_msgs roscpp rospy sensor_msgs std_msgs px_comm nav_msgs message_runtime

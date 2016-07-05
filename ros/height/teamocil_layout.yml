@@ -1,0 +1,11 @@
+windows:
+  - name: height
+    root: ~/ros/height/bin
+    layout: tiled
+    panes:
+      - launch
+      - ./launch_sensors.sh
+      - ./controller
+      - commands:
+        - cd ..
+        - rosmake

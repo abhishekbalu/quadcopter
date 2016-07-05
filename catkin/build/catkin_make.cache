@@ -1,0 +1,2 @@
+height:px-ros-pkg/drivers/mavlink_serial_client:px-ros-pkg/drivers/px4flow:px-ros-pkg/px_comm
+-DCATKIN_DEVEL_PREFIX=/home/pedro/catkin/devel -DCMAKE_INSTALL_PREFIX=/home/pedro/catkin/install -G Unix Makefiles

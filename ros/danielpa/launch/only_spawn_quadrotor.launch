@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="name" default="quadrotor"/>
+  <arg name="model" default="$(find danielpa)/urdf/only_quadrotor.gazebo.xacro"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="use_rviz" default="true"/>
+
+  <!-- send the robot XML to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'"/>
+  <param name="tf_prefix" type="string" value="$(arg tf_prefix)"/>
+
+  <!-- start robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="50.0"/>
+  </node>
+
+  <!-- start rviz -->
+  <group if="$(arg use_rviz)">
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find danielpa)/rviz_cfg/slam.rviz"/>
+  </group>
+
+</launch>

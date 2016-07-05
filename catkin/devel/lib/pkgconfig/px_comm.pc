@@ -1,0 +1,8 @@
+prefix=/home/pedro/catkin/devel
+
+Name: px_comm
+Description: Description of px_comm
+Version: 0.1.0
+Cflags: -I/home/pedro/catkin/devel/include -I/home/pedro/catkin/src/px-ros-pkg/px_comm/include
+Libs: -L/home/pedro/catkin/devel/lib 
+Requires: message_runtime
