@@ -9,8 +9,8 @@
 > or the Hokuyo Laser is the best for quadcopter pose-estimation.
 
 This project has two folders, ros and catkin. ros is the rosbuild workspace and catkin is the catkin workspace
-  - ros (height, height-quad, cam, px-ros-pkg-rosbuild, yaml-cpp packages, simulation -- this package is for simulator)
-  - catkin (height, height-quad, cam, px-ros-pkg, yaml-cpp packages)
+  - **ros** (height, height-quad, cam, px-ros-pkg-rosbuild, yaml-cpp packages, simulation -- this package is for simulator)
+  - **catkin** (height, height-quad, cam, px-ros-pkg, yaml-cpp packages)
 
 ## Set up
 
