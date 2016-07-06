@@ -1,6 +1,4 @@
 # quadcopter
-
-# quadcopter
 ## Structure
 
 > This project consists of the ROS files for computer-vision, simulation,
