@@ -147,3 +147,6 @@ sudo apt-get install nvidia-bumblebee bumblebee
 
 ## 8 - Theory
 The folder called theory has some svg files and images that explain most of the modules (even some with UML) used in this project in a clear manner.
+
+## 9 - P3P Library
+All rights to the p3p library included belong to Laurent Kneip, ETH Zurich.
