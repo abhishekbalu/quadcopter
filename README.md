@@ -1,3 +1,4 @@
+![](http://i.imgur.com/5hADUgR.gif)
 # quadcopter
 ## Structure
 
