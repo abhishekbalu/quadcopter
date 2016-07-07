@@ -1,4 +1,4 @@
-![](http://i.imgur.com/OouIExg.png)
+![](http://i.imgur.com/SgiJzWe.png)
 
 # quadcopter
 ## Structure
@@ -105,7 +105,7 @@ $ rm -rf models.gazebosim.org
 ```
 
 ## 5 - .bashrc
-Your .bashrc should have the following aspect at the end (add the aliases):
+Your .bashrc should have the following aspect at the end (add the aliases). In these aliases we use rqt_image_view to quickly see an image. However you should have rqt running from the beggining and you can use the gui to display images side-by-side (like shown at the beggining of this document: <http://wiki.ros.org/rqt_image_view>. Rqt_image_view does not need OpenCV support.
 ```sh
 source /opt/ros/indigo/setup.bash
 export ROS_PACKAGE_PATH=~/ros:$ROS_PACKAGE_PATH
