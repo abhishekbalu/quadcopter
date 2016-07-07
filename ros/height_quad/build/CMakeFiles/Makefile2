@@ -343,8 +343,8 @@ clean: CMakeFiles/clean_test_results.dir/clean
 # Target rules for target CMakeFiles/controller_quad.dir
 
 # All Build rule for target.
-CMakeFiles/controller_quad.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 CMakeFiles/controller_quad.dir/all: CMakeFiles/pid.dir/all
+CMakeFiles/controller_quad.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/controller_quad.dir/build.make CMakeFiles/controller_quad.dir/depend
 	$(MAKE) -f CMakeFiles/controller_quad.dir/build.make CMakeFiles/controller_quad.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles  13
@@ -577,8 +577,8 @@ clean: CMakeFiles/rosbuild_clean-test-results.dir/clean
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.
-CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/depend
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles 
@@ -739,8 +739,8 @@ clean: CMakeFiles/rospack_genmsg_libexe.dir/clean
 # Target rules for target CMakeFiles/rospack_gensrv.dir
 
 # All Build rule for target.
-CMakeFiles/rospack_gensrv.dir/all: CMakeFiles/ROSBUILD_gensrv_lisp.dir/all
 CMakeFiles/rospack_gensrv.dir/all: CMakeFiles/ROSBUILD_gensrv_cpp.dir/all
+CMakeFiles/rospack_gensrv.dir/all: CMakeFiles/ROSBUILD_gensrv_lisp.dir/all
 	$(MAKE) -f CMakeFiles/rospack_gensrv.dir/build.make CMakeFiles/rospack_gensrv.dir/depend
 	$(MAKE) -f CMakeFiles/rospack_gensrv.dir/build.make CMakeFiles/rospack_gensrv.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles 
@@ -990,6 +990,42 @@ clean: CMakeFiles/xy_pose.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/xy_pose_no_mavros.dir
+
+# All Build rule for target.
+CMakeFiles/xy_pose_no_mavros.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+CMakeFiles/xy_pose_no_mavros.dir/all: CMakeFiles/Kalman_2D.dir/all
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/depend
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles  20
+	@echo "Built target xy_pose_no_mavros"
+.PHONY : CMakeFiles/xy_pose_no_mavros.dir/all
+
+# Include target in all.
+all: CMakeFiles/xy_pose_no_mavros.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/xy_pose_no_mavros.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/height_quad/build/CMakeFiles 12
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/xy_pose_no_mavros.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/height_quad/build/CMakeFiles 0
+.PHONY : CMakeFiles/xy_pose_no_mavros.dir/rule
+
+# Convenience name for target.
+xy_pose_no_mavros: CMakeFiles/xy_pose_no_mavros.dir/rule
+.PHONY : xy_pose_no_mavros
+
+# clean rule for target.
+CMakeFiles/xy_pose_no_mavros.dir/clean:
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/clean
+.PHONY : CMakeFiles/xy_pose_no_mavros.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/xy_pose_no_mavros.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/z_pose.dir
 
 # All Build rule for target.
@@ -997,7 +1033,7 @@ CMakeFiles/z_pose.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 CMakeFiles/z_pose.dir/all: CMakeFiles/Kalman_1D.dir/all
 	$(MAKE) -f CMakeFiles/z_pose.dir/build.make CMakeFiles/z_pose.dir/depend
 	$(MAKE) -f CMakeFiles/z_pose.dir/build.make CMakeFiles/z_pose.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles  20
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles  21
 	@echo "Built target z_pose"
 .PHONY : CMakeFiles/z_pose.dir/all
 

@@ -8,6 +8,5 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/pedro/ros/cam/build/devel:$CMAKE_PREFIX_PATH"
-export PATH="/opt/ros/indigo/bin:/home/pedro/.rbenv/plugins/ruby-build/bin:/home/pedro/.rbenv/shims:/home/pedro/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/pedro/ros/cam/build/devel/share/common-lisp"
 export ROS_PACKAGE_PATH="/home/pedro/ros/cam:/opt/ros/indigo/share:/opt/ros/indigo/stacks"

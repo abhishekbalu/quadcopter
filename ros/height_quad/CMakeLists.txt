@@ -8,7 +8,7 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 #  RelWithDebInfo : w/ debug symbols, w/ optimization
 #  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
 #set(ROS_BUILD_TYPE RelWithDebInfo)
-
+SET(CMAKE_CXX_FLAGS "-std=c++11")
 rosbuild_init()
 
 #set the default path for built executables to the "bin" directory
@@ -36,10 +36,12 @@ rosbuild_add_library(Kalman_2D src/Kalman_2D.cpp)
 #rosbuild_add_executable(height_filter src/height_filter.cpp)
 
 rosbuild_add_executable(xy_pose src/xy_pose.cpp)
+rosbuild_add_executable(xy_pose_no_mavros src/xy_pose_no_mavros.cpp)
 rosbuild_add_executable(z_pose src/z_pose.cpp)
 rosbuild_add_executable(odometry src/xy_odometry.cpp)
 rosbuild_add_executable(controller_quad src/controller_quad.cpp)
 rosbuild_add_executable(repeater src/repeater_node.cpp)
+target_link_libraries(xy_pose_no_mavros Kalman_2D)
 target_link_libraries(xy_pose Kalman_2D)
 target_link_libraries(z_pose Kalman_1D)
 target_link_libraries(controller_quad pid)

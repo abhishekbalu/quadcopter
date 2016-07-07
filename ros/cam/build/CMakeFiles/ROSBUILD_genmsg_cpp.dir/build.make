@@ -45,46 +45,9 @@ CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_cpp.dir/progress.make
 
-CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/detections.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/detections.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
-
-../msg_gen/cpp/include/cam/detections.h: ../msg/detections.msg
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/lib/roslib/gendeps
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
-../msg_gen/cpp/include/cam/detections.h: ../manifest.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/cpp_common/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/catkin/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/genmsg/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/gencpp/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/genlisp/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/genpy/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/message_generation/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rostime/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp_traits/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/message_runtime/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rosbuild/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rosconsole/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/std_msgs/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/message_filters/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/class_loader/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rospack/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roslib/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/pluginlib/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/geometry_msgs/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/sensor_msgs/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/image_transport/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
-../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/self_test/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/detections.h"
-	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/detections.msg
 
 ../msg_gen/cpp/include/cam/QuadPoseList.h: ../msg/QuadPoseList.msg
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -122,9 +85,46 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/self_test/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPoseList.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/QuadPoseList.msg
+
+../msg_gen/cpp/include/cam/detections.h: ../msg/detections.msg
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/lib/roslib/gendeps
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/detections.h: ../manifest.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/self_test/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/detections.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/detections.msg
 
 ../msg_gen/cpp/include/cam/QuadPose.h: ../msg/QuadPose.msg
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -165,8 +165,8 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/QuadPose.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
-ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/detections.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/detections.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make
 .PHONY : ROSBUILD_genmsg_cpp

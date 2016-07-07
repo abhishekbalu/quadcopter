@@ -19,7 +19,7 @@
 #define RATE 10
 Kalman_1D kalman(0.2, 32, 1, 0.14); //Q, R, P, z initial sensor position(height of the sensor)
 
-px_comm::OpticalFlow *config=NULL;
+sensor_msgs::Range *config=NULL;
 sensor_msgs::Range *msg;
 
 struct State{ 
@@ -61,13 +61,11 @@ void filterSonar(ros::Publisher pub){
 	config->header.seq += 1;
 	msg = new sensor_msgs::Range;
 	msg->header = config->header;
-	//These next ones are parameters that can be tested and applied, meanwhile they are commented
-	/*
 	msg->radiation_type = config->radiation_type;
 	msg->field_of_view = config->field_of_view;
 	msg->min_range = config->min_range;
 	msg->max_range = config->max_range;
-	*/
+	
 
 	msg->header.stamp=ros::Time::now();
 	msg->range = state.valid_z;
@@ -78,26 +76,25 @@ void filterSonar(ros::Publisher pub){
 	pub.publish(*msg);
 }
 
-void getSonar(const px_comm::OpticalFlow::ConstPtr& data){
+void getSonar(const sensor_msgs::Range::ConstPtr& data){
 	ROS_INFO("Received Seq [%d]", data->header.seq);
-	ROS_INFO("Received Range [%f]", data->ground_distance);
+	ROS_INFO("Received Range [%f]", data->range);
 	//Do a deep copy
 	//For more about deepcopies https://www.cs.utexas.edu/~scottm/cs307/handouts/deepCopying.htm
 	if (config == NULL){
-		config = new px_comm::OpticalFlow;
+		config = new sensor_msgs::Range;
 		//Deepcopy of config
 		config->header = data->header;
-		config->ground_distance = data->ground_distance;
-		config->flow_x = data->flow_x;
-		config->flow_y = data->flow_y;
-		config->velocity_x = data->velocity_x;
-		config->velocity_y = data->velocity_y;
-		config->quality = data->quality;
+		config->radiation_type = data->radiation_type;
+		config->field_of_view = data->field_of_view;
+		config->min_range = data->min_range;
+		config->max_range = data->max_range;
+		config->range = data->range;
 		config->header.seq = 0;
 
 	}
 	//Use the ground_distance parameter
-	float aux = kalman.KalmanFilter(data->ground_distance + CENTER_OF_MASS_FILTER_OFFSET);
+	float aux = kalman.KalmanFilter(data->range + CENTER_OF_MASS_FILTER_OFFSET);
 	state.reads.push_back(aux);
 	if(state.reads.size() > 4){
 		if(state.reads.size() == 6){
@@ -111,7 +108,7 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "z_pose");
 	ros::NodeHandle n;
 
-	ros::Subscriber sonar = n.subscribe("/px4flow/opt_flow", 10, getSonar); //May use the simulation sonar here
+	ros::Subscriber sonar = n.subscribe("mavros/px4flow/ground_distance", 10, getSonar); //May use the simulation sonar here
 	ros::Publisher pub = n.advertise<sensor_msgs::Range>("/z_pose",10);
 	ros::Rate loop_rate(RATE);
 

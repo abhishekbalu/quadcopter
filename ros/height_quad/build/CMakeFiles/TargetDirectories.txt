@@ -18,6 +18,7 @@
 /home/pedro/ros/height_quad/build/CMakeFiles/tests.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/test-future.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/doxygen.dir
+/home/pedro/ros/height_quad/build/CMakeFiles/xy_pose_no_mavros.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/pid.dir

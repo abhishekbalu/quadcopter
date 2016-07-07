@@ -520,6 +520,19 @@ xy_pose/fast:
 .PHONY : xy_pose/fast
 
 #=============================================================================
+# Target rules for targets named xy_pose_no_mavros
+
+# Build rule for target.
+xy_pose_no_mavros: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xy_pose_no_mavros
+.PHONY : xy_pose_no_mavros
+
+# fast build rule for target.
+xy_pose_no_mavros/fast:
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/build
+.PHONY : xy_pose_no_mavros/fast
+
+#=============================================================================
 # Target rules for targets named z_pose
 
 # Build rule for target.
@@ -726,6 +739,30 @@ src/xy_pose.cpp.s:
 	$(MAKE) -f CMakeFiles/xy_pose.dir/build.make CMakeFiles/xy_pose.dir/src/xy_pose.cpp.s
 .PHONY : src/xy_pose.cpp.s
 
+src/xy_pose_no_mavros.o: src/xy_pose_no_mavros.cpp.o
+.PHONY : src/xy_pose_no_mavros.o
+
+# target to build an object file
+src/xy_pose_no_mavros.cpp.o:
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o
+.PHONY : src/xy_pose_no_mavros.cpp.o
+
+src/xy_pose_no_mavros.i: src/xy_pose_no_mavros.cpp.i
+.PHONY : src/xy_pose_no_mavros.i
+
+# target to preprocess a source file
+src/xy_pose_no_mavros.cpp.i:
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.i
+.PHONY : src/xy_pose_no_mavros.cpp.i
+
+src/xy_pose_no_mavros.s: src/xy_pose_no_mavros.cpp.s
+.PHONY : src/xy_pose_no_mavros.s
+
+# target to generate assembly for a file
+src/xy_pose_no_mavros.cpp.s:
+	$(MAKE) -f CMakeFiles/xy_pose_no_mavros.dir/build.make CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.s
+.PHONY : src/xy_pose_no_mavros.cpp.s
+
 src/z_pose.o: src/z_pose.cpp.o
 .PHONY : src/z_pose.o
 
@@ -780,6 +817,7 @@ help:
 	@echo "... tests"
 	@echo "... test-future"
 	@echo "... doxygen"
+	@echo "... xy_pose_no_mavros"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... pid"
@@ -815,6 +853,9 @@ help:
 	@echo "... src/xy_pose.o"
 	@echo "... src/xy_pose.i"
 	@echo "... src/xy_pose.s"
+	@echo "... src/xy_pose_no_mavros.o"
+	@echo "... src/xy_pose_no_mavros.i"
+	@echo "... src/xy_pose_no_mavros.s"
 	@echo "... src/z_pose.o"
 	@echo "... src/z_pose.i"
 	@echo "... src/z_pose.s"

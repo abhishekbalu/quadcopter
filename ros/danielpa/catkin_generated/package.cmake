@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "danielpa")
-set(danielpa_MAINTAINER "Daniel Afonso <daniel.afonso@tecnico.ulisboa.pt>")
-set(danielpa_DEPRECATED "")
-set(danielpa_VERSION "0.0.0")
-set(danielpa_BUILD_DEPENDS "geometry_msgs" "tf2_msgs" "nav_msgs" "roscpp" "rospy" "std_msgs" "sensor_msgs" "mavros_msgs")
-set(danielpa_RUN_DEPENDS "geometry_msgs" "tf2_msgs" "nav_msgs" "roscpp" "rospy" "std_msgs" "sensor_msgs" "mavros_msgs")
-set(danielpa_BUILDTOOL_DEPENDS "catkin")

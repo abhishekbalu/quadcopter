@@ -343,6 +343,8 @@ list
 -
 boost/shared_ptr.hpp
 -
+boost/make_shared.hpp
+-
 boost/weak_ptr.hpp
 -
 boost/function.hpp

@@ -22,6 +22,8 @@
 #define NUM_OFFSET_VALUES 5 //These first values from the sonar are averaged to extract their mean which is used as an offset
 #define RATE 10
 #define SETUP_TIME 1.5 //seconds
+#define LENS 16
+
 
 int num = 0;
 int count = 0;
@@ -81,16 +83,89 @@ void getOptFlow(const height::state::ConstPtr& data){
 	pose.vy = data->vy;
 	pose.attitude = data->attitude;
 }
+
+int checkVelocity(float vx, float vy){
+	//https://pixhawk.org/modules/px4flow
+	int rv = 0;
+	if(LENS == 16){
+		if(z <= 1){
+			if(vx > 2.4 || vy > 2.4)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 7.2 || vy > 2.4)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 24 || vy > 24)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 24 || vy > 24)
+				rv = -1;
+		}
+	}else if(LENS == 8){
+		if(z <= 1){
+			if(vx > 4.8 || vy > 4.8)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 14.4 || vy > 14.4)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 48 || vy > 48)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 48 || vy > 48)
+				rv = -1;
+		}
+	}else if(LENS == 6){
+		if(z <= 1){
+			if(vx > 6.4 || vy > 6.4)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 19.2 || vy > 19.2)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 64 || vy > 64)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 64 || vy > 64)
+				rv = -1;
+		}
+	}else if(LENS == 4){
+		if(z <= 1){
+			if(vx > 9.6 || vy > 9.6)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 28.8 || vy > 28.8)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 96 || vy > 96)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 96 || vy > 96)
+				rv = -1;
+		}
+	}
+	return rv;
+}
+
 void getVelocity(const geometry_msgs::Twist::ConstPtr& data){
+
+	int check_vel = checkVelocity(data->linear.x, data->linear.y);
+	if(check_vel == -1){
+		#ifdef VERBOSE
+			ROS_INFO("WARNING: OPTICALFLOW OVER THE MAX VELOCITY");
+		#endif
+	}
 	//Copy the data to a local variable
 	msg.linear = data->linear;
 	msg.angular = data->angular;
+	/*
 	if(x_value < xsetPoint+0.1 && x_value >xsetPoint-0.1){
 		msg.linear.x = 0.0;
 	}
 	if(y_value < ysetPoint+0.1 && y_value >ysetPoint-0.1){
 		msg.linear.y = 0.0;
 	}
+	*/
 }
 
 void getCommand(const std_msgs::String::ConstPtr& data){
@@ -121,15 +196,12 @@ int main(int argc, char **argv){
 		ysetPoint = atof(argv[3]);
 	}
 
-
 	ROS_INFO("Started controller...\n");
 	ros::init(argc, argv, "controller");
 	ros::NodeHandle n;
 
-
 	sleep(SETUP_TIME); //wait for the quad to start
 	
-
 	ros::Subscriber sonar = n.subscribe("/z_pose", 10, getHeight); //May use the simulation sonar here
 	ros::Subscriber optFlow = n.subscribe("xy_pose", 10, getOptFlow);
 	ros::Subscriber velocity = n.subscribe("/cmd_vel", 10, getVelocity);
@@ -146,7 +218,7 @@ int main(int argc, char **argv){
 				z_value = zpid.update(z);
 				x_value = xpid.update(x);
 				y_value = ypid.update(y);
-				if(z_value <= tolerance){
+				if(z_value <= tolerance && y_value <= tolerance && x_value <= tolerance){
 					count++;
 					z_value = 0.0;
 					x_value = 0.0;

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="use_test" default="true"/>
+  <arg name="use_laser" default="false"/>
+  <arg name="use_mapping" default="false"/>
+  <arg name="use_navigation" default="false"/>
+
+  <!-- Include pixhawk.launch -->
+  <include file="$(find simulation)/launch/pixhawk.launch"/>
+
+  <!-- Launch sonar filtering -->
+  <node pkg="simulation" type="filter-sonar.py" name="sonar_filter"/>
+
+  <!-- Launch hover takeoff -->
+  <node pkg="simulation" type="hover-quad.py" name="hover" output="screen"/>
+
+  <!-- Launch robot publisher -->
+  <node pkg="simulation" type="pos_brod.py" name="robot_publisher" output="screen"/>
+
+  <!-- Launch velocity command repeater -->
+  <node pkg="simulation" name="cmd_repeater" type="vel_repeater.py"/>
+
+  <!-- Launch Hokuyo Laser -->
+  <group if="$(arg use_laser)">
+    <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_scans">
+      <param name="hokuyo_node/calibrate_time" value="false"/>
+      <param name="port" value="/dev/ttyHokuyo"/>
+      <param name="frame_id" value="laser_link"/>
+<!--	  <param name="min_ang" value="-2.2689"/>
+      <param name="max_ang" value="2.2689"/>-->
+    </node>
+  </group>
+
+  <!-- Launch Hector mapping -->
+  <group if="$(arg use_mapping)">
+    <include file="$(find simulation)/launch/mapping.launch"/>
+  </group>
+
+  <!--static tf to eliminate warning of disconneted tf 
+  <node pkg="tf" type="static_transform_publisher" name="std_brod" args="0 0 0 0 0 0 map local_origin 20"/> -->
+
+  <!-- Launch Navigation stack -->
+  <group if="$(arg use_navigation)">
+    <include file="$(find simulation)/include/move_base.launch.xml"/>
+  </group>
+
+  <!-- Test Launch File -->
+    <group if="$(arg use_test)">
+      <include file="$(find simulation)/launch/test.launch"/>
+    </group>
+
+</launch>

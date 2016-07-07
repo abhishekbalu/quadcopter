@@ -1,10 +1,10 @@
 (cl:defpackage cam-msg
   (:use )
   (:export
-   "<DETECTIONS>"
-   "DETECTIONS"
    "<QUADPOSELIST>"
    "QUADPOSELIST"
+   "<DETECTIONS>"
+   "DETECTIONS"
    "<QUADPOSE>"
    "QUADPOSE"
   ))

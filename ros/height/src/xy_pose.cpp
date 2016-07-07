@@ -1,6 +1,8 @@
 //C++ Libraries
 #include <math.h>
 #include <iostream>
+#include <iterator>
+#include <random>
 //ROS Libraries
 #include "tf/transform_datatypes.h"
 #include <px_comm/OpticalFlow.h>
@@ -9,6 +11,7 @@
 #include <eigen3/Eigen/Dense>
 #include <eigen3/Eigen/Eigen>
 #include <eigen3/Eigen/LU>
+
 //User Libraries
 #include "height/state.h"
 #include "height/Kalman_2D.h"
@@ -51,6 +54,7 @@ typedef struct{
 optical_flow* oF = NULL;
 
 //Kalman Filter
+//0.01, 0.1, 1, 0, 0, 1
 Kalman_2D kalman(0.01, 0.1, 1, 0, 0, 1);
 
 MatrixXd Rroll(3,3);
@@ -62,6 +66,14 @@ VectorXd VecG(3);
 VectorXd VecDir(3);
 VectorXd VecAz(3);
 
+double white_noise(){
+  // construct a trivial random generator engine from a time-based seed:
+  const double mean = 0.0;
+  const double stddev = 0.001;
+  std::default_random_engine generator;
+  std::normal_distribution<double> dist(mean, stddev);//About 99.7% of a population is within +/- 3 standard deviations
+  return dist(generator);
+}
 
 void updateRotMatrixes(){
 	Rroll << 1, 0,          0,
@@ -85,6 +97,7 @@ double computeFOV(){
     #endif
     return aux;
 }
+
 void updateState(){
 	double a = pow(aZ->t,2)/2;
 	double b = aZ->t;
@@ -142,12 +155,14 @@ void getImu(const sensor_msgs::Imu::ConstPtr& data){ //gets quaternion of orient
 }
 
 void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
+	double velocity_x = data->velocity_x + white_noise();
+	double velocity_y = data->velocity_y + white_noise();
 	//Simple Low pass digital with an RC constant of alpha filter
 	if(oF == NULL){
         //initialize OF
         oF = new optical_flow;
-        oF->last_OF(0) = data->velocity_x;
-        oF->last_OF(1) = data->velocity_y;
+        oF->last_OF(0) = velocity_x;
+        oF->last_OF(1) = velocity_y;
         oF->current_OF(0) = oF->last_OF(0);
         oF->current_OF(1) = oF->last_OF(1);
     }else{
@@ -155,18 +170,14 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
     	oF->last_OF(0) = oF->current_OF(0);
     	oF->last_OF(1) = oF->current_OF(1);
 
-    	oF->current_OF(0) = oF->last_OF(0) + ALPHA * (data->velocity_x - oF->last_OF(0));
-    	oF->current_OF(1) = oF->last_OF(1) + ALPHA * (data->velocity_y - oF->last_OF(1));
-
+    	oF->current_OF(0) = oF->last_OF(0) + ALPHA * (velocity_x - oF->last_OF(0));
+    	oF->current_OF(1) = oF->last_OF(1) + ALPHA * (velocity_y - oF->last_OF(1));
    		OF(0) = oF->current_OF(0);
    		OF(1) = oF->current_OF(1);
    		oF->quality = data->quality;
    		theta = GAIN * OF(0);
    		phi = GAIN * OF(1);
-
-        double fov = computeFOV(); //do what you want
-		
-        
+        double fov = computeFOV(); //do what you want with this
         ////Kalman Update with new values
 		kalman.KalmanUpdate(OF);
 		//Output state
@@ -177,10 +188,10 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 		state.y = kalman.Xhat(1,0);
 		state.vx = kalman.Xhat(2,0);
 		state.vy = kalman.Xhat(3,0);
-		float deltax = abs(data->velocity_x - state.vx);
-		float deltay = abs(data->velocity_y - state.vy);
+		float deltax = abs(velocity_x - state.vx);
+		float deltay = abs(velocity_y - state.vy);
 		#ifdef VERBOSE
-			ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", phi, theta, yaw);
+			ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", phi, theta, yaw); //Not sure this is accurate
 			ROS_INFO("Filter_dif_x [%f], Filter_dif_y [%f]", deltax, deltay);
 			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy, oF->quality);
     	#endif

@@ -12,28 +12,24 @@
 #include <ros/ros.h>
 //User Libraries
 #include "cam/blob_detection.h"
-#include "cam/debug.h" //Comment or uncomment this for verbose
+//#include "cam/debug.h" //Comment or uncomment this for verbose
 
 #define PI 3.1415926535897
 #define MAX_FEATURES 500
-#define PIXEL_TH 4
+#define PIXEL_TH 10
 #define BLOB_CONSTANT 2.25
 #define NOISE_ACTIVE 0
 
 int no=1;  //Blob number - assume there's an initial blob to start
 int skip = 0;
 int nvalid = 0;
-
+int rnd;
 unsigned char col[3]; //Array to hold RGB data 
 unsigned char* p; 
 int m,M,delta; //m is minimum RGB value, M is maximum RGB value, 
 int hue,sat,val; //HSV computed values
-
 unsigned char* simage; //binary image
 int nx,ny; //image width and image height
-
-
-
 unsigned char state; //Variable to check if a blob is a new blob or is connected
 //Arrays for interation
 int objnumb[MAX_FEATURES];
@@ -44,15 +40,14 @@ int objmark[MAX_FEATURES];
 blob blobs[MAX_FEATURES];
 
 /*------------------Auxiliary Functions-----------------*/
-void RGB_HSV(int l, int k, int round){
+void RGB_HSV(int l, int k){
     #ifdef VERBOSE
-        printf("Processing RGB to HSV... Hue overbound: %d\n",round);
+        printf("Processing RGB to HSV... Hue overbound: %i\n",rnd);
     #endif
     skip=0;
     *(col)=*(p+0);
     m=0;
     M=0;
-
     *(col+1)=*(p+1); 
     if((*(col+1)>*(col+M)))
         M=1;
@@ -81,10 +76,10 @@ void RGB_HSV(int l, int k, int round){
         printf("Hue: %d, Sat: %d, Val: %d\n", hue, sat, val);
     #endif
 }
-int threshold(int round, int vl, int vh, int hl, int hh,
+int threshold(int vl, int vh, int hl, int hh,
     int sl, int sh){
     int is_blob;
-    if(round)
+    if(rnd)
         is_blob=((hue>hl)||(hue<hh))&&(sat>sl)&&(sat<sh)&&(val>vl)&&(val<vh);
     else
         is_blob=(hue>hl)&&(hue<hh)&&(sat>sl)&&(sat<sh)&&(val>vl)&&(val<vh);
@@ -93,7 +88,6 @@ int threshold(int round, int vl, int vh, int hl, int hh,
     #endif
     return is_blob;
 }
-
 void computeState(int l, int k){
     state=0;
     if((l>0)&&(k>0))
@@ -142,15 +136,10 @@ void processState(int l, int k){
     }
 }
 
-/*-------------------------------Main code---------------------*/
-int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
-	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height){
-	//Set nx and ny
-	nx = width;
-	ny = height;
-	//Set round to be 0 by default, assuming hh < 360
-	int round=0;
-	int is_blob=0;
+int init(int width, int height){
+    nx = width; //Set nx and ny
+    ny = height;
+    rnd = 0; //Set rnd to be 0 by default, assuming hh < 360
     no=1; //this will define the number of the object c++ vec start at 0
     memset(objx,0,MAX_FEATURES*sizeof(int));
     memset(objy,0,MAX_FEATURES*sizeof(int));
@@ -159,20 +148,28 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
     memset(objmark,0,MAX_FEATURES*sizeof(int));
     memset(blobs,0,MAX_FEATURES*sizeof(blob));
     memset(simage,0,width*height*sizeof(unsigned char));
-    if(hh > 360){ //Verify if hue is over 360, since hue goes from 0 to 360, use round parameter
-        round=1;
+    return 0;
+}
+/*-------------------------------Main code---------------------*/
+int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
+	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height){
+
+	int is_blob = init(width, height);
+
+    if(hh > 360){ //Verify if hue is over 360, since hue goes from 0 to 360, use rnd parameter
+        rnd=1;
         hh=hh-360;
     }else
-        round=0;
+        rnd=0;
     //Extract blobs
     p=buf+(xi*step)+(yi*nx*step);
     for(int l=yi;l<yf;l++,p+=(nx-(xf-xi))*step){
         for(int k=xi;k<xf;k++,p+=step){
-            RGB_HSV(l, k, round);//rgb->hsv
+            RGB_HSV(l, k);//rgb->hsv
             if(skip)
                 continue;
 
-            is_blob = threshold(round, vl, vh, hl, hh, sl, sh); //check color (need to check the threshold)
+            is_blob = threshold(vl, vh, hl, hh, sl, sh); //check color (need to check the threshold)
             if(is_blob){ 
                 #ifdef VERBOSE
             	   printf("This pixel belongs to a blob\n");
@@ -197,7 +194,6 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             blobs[no].size+=objnumb[k];
             blobs[no].x+=objx[k];
             blobs[no].y+=objy[k];
-
             //possible connections that this object contains
             int l=objlink[k];
             while(l!=0){
@@ -239,13 +235,9 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         	blobs[l].valid=0;
             }
           }  
-    
 
-    
     for(int k=0;k<no;k++){ //threshold on the blob sizes
-
 		blobs[k].valid=(blobs[k].size<PIXEL_TH?0:blobs[k].valid);
-
 		if((blobs[k].valid)&&(NOISE_ACTIVE)){
 			blobs[k].x+=(-12+rand()%25)/100.0;
 			blobs[k].y+=(-12+rand()%25)/100.0;
@@ -253,12 +245,13 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
     }
     nvalid = 0;
     for(int k = 0; k<no; k++){
-	if(blobs[k].valid)
-	    nvalid++;
+    	if(blobs[k].valid)
+    	    nvalid++;
     }
     #ifdef VERBOSE
         printf("Number of valid blobs: %d\n", nvalid);
     #endif
+        printf("Number of valid blobs: %d\n", nvalid);
     return no;
 }
 

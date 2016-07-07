@@ -17,9 +17,14 @@
 #include "height_quad/Kalman_2D.h"
 #include "height_quad/debug.h" //Comment or uncomment this for verbose
 
-
 using namespace Eigen;
-double K;
+
+#define GAIN 0.16
+#define FOCAL_LENGTH 12.0
+#define GRAVITY 9.81
+#define ALPHA 0.05 //double Ts = 0.01; double tau = 0.2; double alpha = Ts/tau;
+#define RATE 10
+
 height_quad::Attitude attitude;
 //Custom message
 height_quad::state state;  
@@ -47,11 +52,7 @@ typedef struct{
 }optical_flow;
 
 optical_flow* oF = NULL;
-//OF Constants
-double Ts = 0.01;
-double tau = 0.2;
-double alpha = Ts/tau;
-double focal_length;
+
 double fov;
 
 //Kalman Filter
@@ -82,7 +83,7 @@ void updateRotMatrixes(){
 
 double computeFOV(){
     double d = 30*60*pow(10,-6);
-    double aux = 2*atan2(d, 2*focal_length*pow(10,-3));
+    double aux = 2*atan2(d, 2*FOCAL_LENGTH*pow(10,-3));
     float field_of_view = aux * 1000;
     #ifdef VERBOSE
     	ROS_INFO("Field of View: [%f]", field_of_view);
@@ -158,18 +159,17 @@ void getOptFlow(const geometry_msgs::TwistWithCovarianceStamped::ConstPtr& data)
     	oF->last_OF(0) = oF->current_OF(0);
     	oF->last_OF(1) = oF->current_OF(1);
 
-    	oF->current_OF(0) = oF->last_OF(0) + alpha * ((data->twist).twist.linear.x - oF->last_OF(0));
-    	oF->current_OF(1) = oF->last_OF(1) + alpha * ((data->twist).twist.linear.y - oF->last_OF(1));
+    	oF->current_OF(0) = oF->last_OF(0) + ALPHA * ((data->twist).twist.linear.x - oF->last_OF(0));
+    	oF->current_OF(1) = oF->last_OF(1) + ALPHA * ((data->twist).twist.linear.y - oF->last_OF(1));
 
    		OF(0) = oF->current_OF(0);
    		OF(1) = oF->current_OF(1);
 
-   		theta = K * OF(0);
-   		phi = K * OF(1);
+   		theta = GAIN * OF(0);
+   		phi = GAIN * OF(1);
 
         fov = computeFOV();
 		
-        
         ////Kalman Update with new values
 		kalman.KalmanUpdate(OF);
 		//Output state
@@ -194,22 +194,19 @@ int main(int argc, char** argv){
 	ros::init(argc, argv, "xy_pose");
     ros::NodeHandle n, nh("~");
 
-    VecG << 0,0,9.81;
+    VecG << 0,0,GRAVITY;
 	VecDir << 0,0,1;
 	VecAz << 0,0,0;
 
     Xhat << 0, 0, 0, 0, 0, 0; //initial position
     kalman.Xhat = Xhat;
 
-    //Read Parameters
-    nh.param("P_gain", K, 0.16);
-    nh.param("Focal_length", focal_length, 12.0); //in mm
     //Subscribers
     ros::Subscriber opt = n.subscribe("/velocity_xy", 1, getOptFlow);
-	ros::Subscriber imu = n.subscribe("/imu/data_raw", 10, getImu);
+	ros::Subscriber imu = n.subscribe("/mavros/imu/data", 10, getImu);
 	ros::Publisher pub = n.advertise<height_quad::state>("/xy_pose", 10);
 
-	ros::Rate loop_rate(10);
+	ros::Rate loop_rate(RATE);
 
 	while(ros::ok()){
 		pub.publish(state);

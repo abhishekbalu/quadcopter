@@ -165,6 +165,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/tests.dir/DependInfo.cmake"
   "CMakeFiles/test-future.dir/DependInfo.cmake"
   "CMakeFiles/doxygen.dir/DependInfo.cmake"
+  "CMakeFiles/xy_pose_no_mavros.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake"
   "CMakeFiles/rosbuild_premsgsrvgen.dir/DependInfo.cmake"
   "CMakeFiles/pid.dir/DependInfo.cmake"

@@ -47,49 +47,12 @@ include CMakeFiles/ROSBUILD_genmsg_py.dir/progress.make
 
 CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 
-../src/cam/msg/__init__.py: ../src/cam/msg/_detections.py
 ../src/cam/msg/__init__.py: ../src/cam/msg/_QuadPoseList.py
+../src/cam/msg/__init__.py: ../src/cam/msg/_detections.py
 ../src/cam/msg/__init__.py: ../src/cam/msg/_QuadPose.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/__init__.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/ros/cam/msg/detections.msg /home/pedro/ros/cam/msg/QuadPoseList.msg /home/pedro/ros/cam/msg/QuadPose.msg
-
-../src/cam/msg/_detections.py: ../msg/detections.msg
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/cam/msg/_detections.py: /opt/ros/indigo/lib/roslib/gendeps
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/std_msgs/msg/Header.msg
-../src/cam/msg/_detections.py: ../manifest.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/cpp_common/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/catkin/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/genmsg/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/gencpp/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/genlisp/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/genpy/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/message_generation/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/rostime/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/roscpp_traits/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/message_runtime/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/rosbuild/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/rosconsole/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/std_msgs/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/roscpp/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/message_filters/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/class_loader/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/rospack/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/roslib/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/pluginlib/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/geometry_msgs/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/sensor_msgs/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/image_transport/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/diagnostic_msgs/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/diagnostic_updater/package.xml
-../src/cam/msg/_detections.py: /opt/ros/indigo/share/self_test/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/_detections.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/cam/msg/detections.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/ros/cam/msg/QuadPoseList.msg /home/pedro/ros/cam/msg/detections.msg /home/pedro/ros/cam/msg/QuadPose.msg
 
 ../src/cam/msg/_QuadPoseList.py: ../msg/QuadPoseList.msg
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -127,9 +90,46 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/self_test/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/_QuadPoseList.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/cam/msg/QuadPoseList.msg
+
+../src/cam/msg/_detections.py: ../msg/detections.msg
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/cam/msg/_detections.py: /opt/ros/indigo/lib/roslib/gendeps
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../src/cam/msg/_detections.py: ../manifest.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/cpp_common/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/catkin/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/genmsg/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/gencpp/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/genlisp/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/genpy/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/message_generation/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/rostime/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/roscpp_traits/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/message_runtime/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/rosbuild/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/rosconsole/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/std_msgs/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/roscpp/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/message_filters/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/class_loader/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/rospack/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/roslib/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/pluginlib/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/geometry_msgs/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/sensor_msgs/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/image_transport/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../src/cam/msg/_detections.py: /opt/ros/indigo/share/self_test/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/_detections.py"
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/cam/msg/detections.msg
 
 ../src/cam/msg/_QuadPose.py: ../msg/QuadPose.msg
 ../src/cam/msg/_QuadPose.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -171,8 +171,8 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
-ROSBUILD_genmsg_py: ../src/cam/msg/_detections.py
 ROSBUILD_genmsg_py: ../src/cam/msg/_QuadPoseList.py
+ROSBUILD_genmsg_py: ../src/cam/msg/_detections.py
 ROSBUILD_genmsg_py: ../src/cam/msg/_QuadPose.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py

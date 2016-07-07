@@ -4,8 +4,8 @@ file(REMOVE_RECURSE
   "../src/cam/msg"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/cam/msg/__init__.py"
-  "../src/cam/msg/_detections.py"
   "../src/cam/msg/_QuadPoseList.py"
+  "../src/cam/msg/_detections.py"
   "../src/cam/msg/_QuadPose.py"
 )
 

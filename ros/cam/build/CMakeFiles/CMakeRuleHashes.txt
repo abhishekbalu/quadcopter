@@ -7,7 +7,7 @@ be2df838531b868223b242283c43a145 ../msg_gen/lisp/QuadPoseList.lisp
 d69df0f9f308ecac99a72e5185a2ee8b ../msg_gen/lisp/detections.lisp
 a61922c7a56a2dccb42b38fc840240a1 ../src/cam/msg/_QuadPose.py
 c4ca4e9d026d840cf5b71e91d776f203 ../src/cam/msg/_QuadPoseList.py
-f04882879df3ef16497c098c2342d770 ../src/cam/msg/__init__.py
+057d20ac8f1f32fa81c7882354b4bac9 ../src/cam/msg/__init__.py
 0397583efdede54251a47a8900d7aaa5 ../src/cam/msg/_detections.py
 45ceeceac2f61243d672f641aa087986 CMakeFiles/ROSBUILD_genmsg_cpp
 45ceeceac2f61243d672f641aa087986 CMakeFiles/ROSBUILD_genmsg_lisp

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- static tf from map to base_footprint -->
+  <node pkg="tf" type="static_transform_publisher" name="std_brod34" args="0 0 0 0 0 0 map base_footprint 20"/>
+  <!--<node pkg="tf" type="static_transform_publisher" name="stbrod" args="0 0 0 0 0 0 map odom 20"/> -->
+
+  <!--<node pkg="simulation" type="mavros-test.py" name="test" output="screen"/>-->
+  <node pkg="simulation" type="optflow-odom.py" name="test" output="screen"/>
+
+  <!-- Launch robot localization estimation 
+  <include file="$(find simulation)/launch/ekf_template.launch"/> -->
+</launch>

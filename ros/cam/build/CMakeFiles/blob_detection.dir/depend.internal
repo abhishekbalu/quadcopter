@@ -3,7 +3,6 @@
 
 CMakeFiles/blob_detection.dir/src/blob_detection.cpp.o
  ../include/cam/blob_detection.h
- ../include/cam/debug.h
  /home/pedro/ros/cam/src/blob_detection.cpp
  /opt/ros/indigo/include/XmlRpcDecl.h
  /opt/ros/indigo/include/XmlRpcValue.h

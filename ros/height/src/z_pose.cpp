@@ -8,10 +8,12 @@
 #include <ros/serialization.h>
 #include <sstream>
 #include <typeinfo>
+#include <iterator>
+#include <random>
 
 #include "height/debug.h" //Comment or uncomment this for verbose
 #include <height/Kalman_1D.h>
-
+using namespace std;
 //This offset is due to the sensor not being on the exact center of mass of quad
 #define CENTER_OF_MASS_FILTER_OFFSET 0
 
@@ -23,6 +25,15 @@ float value;
 int created=0;
 Kalman_1D kalman(0.2, 32, 1, 0.14); //Q, R, P, z initial sensor position(height of the sensor)
 
+double white_noise(){
+  // construct a trivial random generator engine from a time-based seed:
+  const double mean = 0.0;
+  const double stddev = 0.001;
+  std::default_random_engine generator;
+  std::normal_distribution<double> dist(mean, stddev);//About 99.7% of a population is within +/- 3 standard deviations
+  return dist(generator);
+}
+
 void readings(ros::Publisher pub){
 	if (reads.size() != 0){
 		float sum = 0;
@@ -31,8 +42,6 @@ void readings(ros::Publisher pub){
 			sum = sum + *it;
 		}
 		value=sum/reads.size();
-
-	
 	}else{
 		value=0;
 	}
@@ -59,9 +68,10 @@ void readings(ros::Publisher pub){
 }
 
 void getSonar(const sensor_msgs::Range::ConstPtr& data){
+	double range = data->range + white_noise();
 	#ifdef VERBOSE
 		ROS_INFO("Received Seq [%d]", data->header.seq);
-		ROS_INFO("Received Range [%f]", data->range);
+		ROS_INFO("Received Range [%f]", range);
 	#endif
 	//Do a deep copy
 	if (config == NULL){
@@ -71,11 +81,10 @@ void getSonar(const sensor_msgs::Range::ConstPtr& data){
 		config->field_of_view = data->field_of_view;
 		config->min_range = data->min_range;
 		config->max_range = data->max_range;
-		config->range = data->range;
+		config->range = range;
 	}
 	//Append to the list
-	//float aux = data->range + CENTER_OF_MASS_FILTER_OFFSET;
-	float aux = kalman.KalmanFilter(data->range + CENTER_OF_MASS_FILTER_OFFSET);
+	float aux = kalman.KalmanFilter(range +  CENTER_OF_MASS_FILTER_OFFSET);
 	reads.push_back(aux);
 	if(reads.size()>5){
 		reads.pop_front();

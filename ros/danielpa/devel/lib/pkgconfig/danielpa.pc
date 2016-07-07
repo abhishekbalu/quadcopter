@@ -1,8 +1,0 @@
-prefix=/home/pedro/ros/danielpa/devel
-
-Name: danielpa
-Description: Description of danielpa
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/pedro/ros/danielpa/devel/lib 
-Requires: 

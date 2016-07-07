@@ -21,6 +21,7 @@
 
 #define RATE 20
 #define SETUP_TIME 8 //Seconds
+#define LENS 16
 
 int toggle = -1;
 std::list<float> sonar_readings;
@@ -77,8 +78,77 @@ void getOptFlow(const height_quad::state::ConstPtr& data){
 	x=data->x;
 	y=data->y;
 }
-
+int checkVelocity(float vx, float vy){
+	//https://pixhawk.org/modules/px4flow
+	int rv = 0;
+	if(LENS == 16){
+		if(z <= 1){
+			if(vx > 2.4 || vy > 2.4)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 7.2 || vy > 2.4)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 24 || vy > 24)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 24 || vy > 24)
+				rv = -1;
+		}
+	}else if(LENS == 8){
+		if(z <= 1){
+			if(vx > 4.8 || vy > 4.8)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 14.4 || vy > 14.4)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 48 || vy > 48)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 48 || vy > 48)
+				rv = -1;
+		}
+	}else if(LENS == 6){
+		if(z <= 1){
+			if(vx > 6.4 || vy > 6.4)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 19.2 || vy > 19.2)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 64 || vy > 64)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 64 || vy > 64)
+				rv = -1;
+		}
+	}else if(LENS == 4){
+		if(z <= 1){
+			if(vx > 9.6 || vy > 9.6)
+				rv = -1;
+		}else if(z>1 && z<=3){
+			if(vx > 28.8 || vy > 28.8)
+				rv = -1;
+		}else if(z>3 && z<=10){
+			if(vx > 96 || vy > 96)
+				rv = -1;
+		}else if(z>10){
+			if(vx > 96 || vy > 96)
+				rv = -1;
+		}
+	}
+	return rv;
+}
 void getVelocity(const geometry_msgs::Twist::ConstPtr& data){
+
+	int check_vel = checkVelocity(data->linear.x, data->linear.y);
+	if(check_vel == -1){
+		#ifdef VERBOSE
+			ROS_INFO("WARNING: OPTICALFLOW OVER THE MAX VELOCITY");
+		#endif
+	}
+
 	msg.linear = data->linear;
 	msg.angular = data->angular;
 	if(x_value < xsetPoint+0.1 && x_value >xsetPoint-0.1){
@@ -97,14 +167,14 @@ int main(int argc, char **argv){
 
 	sleep(SETUP_TIME); //wait a bit for the quad to start
 	ros::Subscriber velocity = n.subscribe("/cmd_vel", 10, getVelocity);
-	ros::Subscriber sonar = n.subscribe("/sonar_filtered", 10, getHeight); //May use the simulation sonar here
+	ros::Subscriber sonar = n.subscribe("/z_pose", 10, getHeight); //May use the simulation sonar here
 	ros::Subscriber optFlow = n.subscribe("/xy_pose", 10, getOptFlow);
 	ros::Subscriber syscommand = n.subscribe("/syscommand", 10, getCommand);
 	ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
 
 	ros::Rate loop_rate(RATE);
 
-	//Wait for the FCU connection
+	//Wait for the FCU - Flight Controller Unit connection
 	while(ros::ok() && current_state.connected){
 		ros::spinOnce();
 		loop_rate.sleep();

@@ -286,6 +286,32 @@ doxygen/fast:
 .PHONY : doxygen/fast
 
 #=============================================================================
+# Target rules for targets named marker_debug
+
+# Build rule for target.
+marker_debug: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 marker_debug
+.PHONY : marker_debug
+
+# fast build rule for target.
+marker_debug/fast:
+	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/build
+.PHONY : marker_debug/fast
+
+#=============================================================================
+# Target rules for targets named marker_detection
+
+# Build rule for target.
+marker_detection: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 marker_detection
+.PHONY : marker_detection
+
+# fast build rule for target.
+marker_detection/fast:
+	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/build
+.PHONY : marker_detection/fast
+
+#=============================================================================
 # Target rules for targets named p3p
 
 # Build rule for target.
@@ -554,6 +580,54 @@ src/blob_detection_debug.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.s
 .PHONY : src/blob_detection_debug.cpp.s
 
+src/marker_detection.o: src/marker_detection.cpp.o
+.PHONY : src/marker_detection.o
+
+# target to build an object file
+src/marker_detection.cpp.o:
+	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/src/marker_detection.cpp.o
+.PHONY : src/marker_detection.cpp.o
+
+src/marker_detection.i: src/marker_detection.cpp.i
+.PHONY : src/marker_detection.i
+
+# target to preprocess a source file
+src/marker_detection.cpp.i:
+	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/src/marker_detection.cpp.i
+.PHONY : src/marker_detection.cpp.i
+
+src/marker_detection.s: src/marker_detection.cpp.s
+.PHONY : src/marker_detection.s
+
+# target to generate assembly for a file
+src/marker_detection.cpp.s:
+	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/src/marker_detection.cpp.s
+.PHONY : src/marker_detection.cpp.s
+
+src/marker_detection_debug.o: src/marker_detection_debug.cpp.o
+.PHONY : src/marker_detection_debug.o
+
+# target to build an object file
+src/marker_detection_debug.cpp.o:
+	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/src/marker_detection_debug.cpp.o
+.PHONY : src/marker_detection_debug.cpp.o
+
+src/marker_detection_debug.i: src/marker_detection_debug.cpp.i
+.PHONY : src/marker_detection_debug.i
+
+# target to preprocess a source file
+src/marker_detection_debug.cpp.i:
+	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/src/marker_detection_debug.cpp.i
+.PHONY : src/marker_detection_debug.cpp.i
+
+src/marker_detection_debug.s: src/marker_detection_debug.cpp.s
+.PHONY : src/marker_detection_debug.s
+
+# target to generate assembly for a file
+src/marker_detection_debug.cpp.s:
+	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/src/marker_detection_debug.cpp.s
+.PHONY : src/marker_detection_debug.cpp.s
+
 src/p3p.o: src/p3p.cpp.o
 .PHONY : src/p3p.o
 
@@ -611,6 +685,7 @@ help:
 	@echo "... ROSBUILD_genmsg_py"
 	@echo "... rospack_genmsg_all"
 	@echo "... install/strip"
+	@echo "... marker_detection"
 	@echo "... download_extra_data"
 	@echo "... rospack_gensrv"
 	@echo "... edit_cache"
@@ -620,6 +695,7 @@ help:
 	@echo "... rospack_genmsg"
 	@echo "... test-results-run"
 	@echo "... ROSBUILD_gensrv_lisp"
+	@echo "... marker_debug"
 	@echo "... p3p"
 	@echo "... rosbuild_clean-test-results"
 	@echo "... rosbuild_precompile"
@@ -648,6 +724,12 @@ help:
 	@echo "... src/blob_detection_debug.o"
 	@echo "... src/blob_detection_debug.i"
 	@echo "... src/blob_detection_debug.s"
+	@echo "... src/marker_detection.o"
+	@echo "... src/marker_detection.i"
+	@echo "... src/marker_detection.s"
+	@echo "... src/marker_detection_debug.o"
+	@echo "... src/marker_detection_debug.i"
+	@echo "... src/marker_detection_debug.s"
 	@echo "... src/p3p.o"
 	@echo "... src/p3p.i"
 	@echo "... src/p3p.s"
