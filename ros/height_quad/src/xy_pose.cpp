@@ -12,22 +12,27 @@
 #include <eigen3/Eigen/Dense>
 #include <eigen3/Eigen/Eigen>
 #include <eigen3/Eigen/LU>
+
 //User Libraries
-#include "height_quad/state.h"
+//#include "height_quad/state.h"
+
 #include "height_quad/Kalman_2D.h"
-#include "height_quad/debug.h" //Comment or uncomment this for verbose
+
+
+//#include "height_quad/debug.h" //Comment or uncomment this for verbose
 
 using namespace Eigen;
 
 #define GAIN 0.16
 #define FOCAL_LENGTH 12.0
 #define GRAVITY 9.81
-#define ALPHA 0.05 //double Ts = 0.01; double tau = 0.2; double alpha = Ts/tau;
+#define ALPHA 0.125 //double Ts = 0.01; double tau = 0.2; double alpha = Ts/tau;
 #define RATE 10
 
-height_quad::Attitude attitude;
+//height_quad::Attitude attitude;
 //Custom message
-height_quad::state state;  
+//height_quad::state state;  
+geometry_msgs::Twist msg;
 tfScalar yaw, pitch, roll;
 
 double theta; //Pitch
@@ -131,9 +136,10 @@ void getImu(const sensor_msgs::Imu::ConstPtr& data){ //gets quaternion of orient
 	tf::quaternionMsgToTF(data->orientation, orientation); //static void tf::quaternionMsgToTF(const geometry_msgs::Quaternion &msg, Quaternion &bt)	
 	tf::Matrix3x3(orientation).getEulerYPR(yaw, pitch, roll);
 	//Get Roll, Pitch and Yaw
-	attitude.pitch = theta;
-    attitude.roll = phi;
-    attitude.yaw = yaw;
+	
+	/*attitude.pitch = theta;
+    	attitude.roll = phi;
+    	attitude.yaw = yaw;*/
 	//getzAccel
 	aZ->last_t = aZ->current_t;
 	aZ->last = aZ->current;
@@ -162,29 +168,38 @@ void getOptFlow(const geometry_msgs::TwistWithCovarianceStamped::ConstPtr& data)
     	oF->current_OF(0) = oF->last_OF(0) + ALPHA * ((data->twist).twist.linear.x - oF->last_OF(0));
     	oF->current_OF(1) = oF->last_OF(1) + ALPHA * ((data->twist).twist.linear.y - oF->last_OF(1));
 
-   		OF(0) = oF->current_OF(0);
-   		OF(1) = oF->current_OF(1);
+	OF(0) = oF->current_OF(0);
+	OF(1) = oF->current_OF(1);
 
-   		theta = GAIN * OF(0);
-   		phi = GAIN * OF(1);
+	theta = GAIN * OF(0);
+	phi = GAIN * OF(1);
 
         fov = computeFOV();
 		
         ////Kalman Update with new values
 		kalman.KalmanUpdate(OF);
+		msg.linear.x = kalman.Xhat(2,0);
+		msg.linear.y = kalman.Xhat(3,0);
 		//Output state
-		state.header.stamp = ros::Time::now();
+		/*
+		array.data.clear();
+		array.data.push_back(kalman.Xhat(0,0)); //x
+		array.data.push_back(kalman.Xhat(1,0)); //y
+		array.data.push_back(kalman.Xhat(2,0)); //vx
+		array.data.push_back(kalman.Xhat(3,0)); //vy
+		*/
+		/*state.header.stamp = ros::Time::now();
 		state.attitude = attitude;
 		state.x = kalman.Xhat(0,0);
 		state.y = kalman.Xhat(1,0);
 		state.vx = kalman.Xhat(2,0);
-		state.vy = kalman.Xhat(3,0);
-		float deltax = abs((data->twist).twist.linear.x - state.vx);
-		float deltay = abs((data->twist).twist.linear.y - state.vy);
+		state.vy = kalman.Xhat(3,0);*/
+		//float deltax = abs((data->twist).twist.linear.x - state.vx);
+		//float deltay = abs((data->twist).twist.linear.y - state.vy);
 		#ifdef VERBOSE
 			ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", phi, theta, yaw);
-			ROS_INFO("Filter_dif_x [%f], Filter_dif_y [%f]", deltax, deltay);
-			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy);
+			//ROS_INFO("Filter_dif_x [%f], Filter_dif_y [%f]", deltax, deltay);
+			//ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy);
     	#endif
     }
 
@@ -202,14 +217,14 @@ int main(int argc, char** argv){
     kalman.Xhat = Xhat;
 
     //Subscribers
-    ros::Subscriber opt = n.subscribe("/velocity_xy", 1, getOptFlow);
+    ros::Subscriber opt = n.subscribe("/visual_odom", 1, getOptFlow);
 	ros::Subscriber imu = n.subscribe("/mavros/imu/data", 10, getImu);
-	ros::Publisher pub = n.advertise<height_quad::state>("/xy_pose", 10);
+	ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/xy_pose", 10);
 
 	ros::Rate loop_rate(RATE);
 
 	while(ros::ok()){
-		pub.publish(state);
+		pub.publish(msg);
 		loop_rate.sleep();
 		ros::spinOnce();
 	}

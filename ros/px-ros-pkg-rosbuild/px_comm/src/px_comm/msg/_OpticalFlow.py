@@ -37,6 +37,7 @@ time stamp
 # 0: no frame
 # 1: global frame
 string frame_id
+
 """
   __slots__ = ['header','ground_distance','flow_x','flow_y','velocity_x','velocity_y','quality']
   _slot_types = ['std_msgs/Header','float32','int16','int16','float32','float32','uint8']
@@ -106,8 +107,8 @@ string frame_id
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_struct_f2h2fB.pack(_x.ground_distance, _x.flow_x, _x.flow_y, _x.velocity_x, _x.velocity_y, _x.quality))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize(self, str):
     """
@@ -160,8 +161,8 @@ string frame_id
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_struct_f2h2fB.pack(_x.ground_distance, _x.flow_x, _x.flow_y, _x.velocity_x, _x.velocity_y, _x.quality))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize_numpy(self, str, numpy):
     """

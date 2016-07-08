@@ -7,7 +7,11 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/build/devel:$CMAKE_PREFIX_PATH"
-export PATH="/opt/ros/indigo/bin:/home/pedro/gcc-arm-none-eabi-4_8-2014q3/bin:/home/pedro/gcc-arm-none-eabi-4_8-2014q3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/build/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/pedro/ros/px-ros-pkg-rosbuild/px_comm:/opt/ros/indigo/share:/opt/ros/indigo/stacks"
+export CMAKE_PREFIX_PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel:$CMAKE_PREFIX_PATH"
+export CPATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/include:$CPATH"
+export LD_LIBRARY_PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib:/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/arm-linux-gnueabihf:$LD_LIBRARY_PATH"
+export PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/bin:$PATH"
+export PKG_CONFIG_PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/pkgconfig:/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/arm-linux-gnueabihf/pkgconfig:$PKG_CONFIG_PATH"
+export PYTHONPATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/pedro/ros/px-ros-pkg-rosbuild/px_comm:/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm:/home/ubuntu/catkin_ws/src:/opt/ros/indigo/share:/opt/ros/indigo/stacks"

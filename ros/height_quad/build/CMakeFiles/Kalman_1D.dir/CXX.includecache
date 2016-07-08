@@ -18,7 +18,7 @@ eigen3/Eigen/Core
 math.h
 -
 
-/home/pedro/ros/height_quad/src/Kalman_1D.cpp
+/home/ubuntu/quadcopter/ros/height_quad/src/Kalman_1D.cpp
 height_quad/Kalman_1D.h
 -
 

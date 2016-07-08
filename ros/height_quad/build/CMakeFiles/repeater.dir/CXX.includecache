@@ -8,7 +8,7 @@
 
 ../include/height_quad/pid.h
 
-/home/pedro/ros/height_quad/src/repeater_node.cpp
+/home/ubuntu/quadcopter/ros/height_quad/src/repeater_node.cpp
 sstream
 -
 typeinfo
@@ -24,7 +24,7 @@ list
 math.h
 -
 ros/ros.h
-/home/pedro/ros/height_quad/src/ros/ros.h
+/home/ubuntu/quadcopter/ros/height_quad/src/ros/ros.h
 ros/serialization.h
 -
 geometry_msgs/Twist.h
@@ -36,7 +36,7 @@ sensor_msgs/Range.h
 std_msgs/String.h
 -
 height_quad/pid.h
-/home/pedro/ros/height_quad/src/height_quad/pid.h
+/home/ubuntu/quadcopter/ros/height_quad/src/height_quad/pid.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -236,8 +236,6 @@ set
 list
 -
 boost/shared_ptr.hpp
--
-boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

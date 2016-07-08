@@ -12,6 +12,7 @@
 //User Libraries
 #include "height_quad/debug.h"
 
+#define QUALITY_THRESHOLD 5
 /*	From: http://docs.ros.org/api/mavros_msgs/html/msg/OpticalFlowRad.html
 OPTICAL_FLOW_RAD message data
 
@@ -50,11 +51,16 @@ geometry_msgs::TwistWithCovarianceStamped msg;
 
 void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 
-		if(data->quality==0){
+		if(data->quality<=QUALITY_THRESHOLD){
 			ROS_INFO("Quad is standing still...");
+			msg.twist.twist.linear.x = 0;
+			msg.twist.twist.linear.y = 0;
 			return;
 		}
-
+		if(data->integration_time_us==0)
+			return;
+		if(data->distance==0.0)
+			return;
 	ROS_INFO("READING @ Temperature: [%d]", data->temperature); //Log temperature
 
 	//Changes in variable assignment and sign to acomodate referencial changes in angular velocity
@@ -87,10 +93,9 @@ void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 			msg.twist.covariance[i] = 0;	
 		}
 	}
+
 	ROS_INFO("Linear Velocity(x): [%f] Linear Velocity(y): [%f]", msg.twist.twist.linear.x, msg.twist.twist.linear.y);
 	ROS_INFO("Angular Velocity(x): [%f] Angular Velocity(y): [%f] Angular Velocity(z): [%f]", msg.twist.twist.angular.x, msg.twist.twist.angular.y, msg.twist.twist.angular.z);
-	//NOT SURE ABOUT THIS ONE -- MIGHT HAVE TO CHANGE
-	ROS_INFO("Phi(Roll): [%f] Theta(Pitch): [%f] Psi(Yaw): [%f]", (data->integrated_ygyro*180)/M_PI, (data->integrated_xgyro*180)/M_PI, (data->integrated_zgyro*180)/M_PI);
 	return;
 }
 
