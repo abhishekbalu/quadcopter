@@ -14,4 +14,4 @@ export PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel
 export PKG_CONFIG_PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/pkgconfig:/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/arm-linux-gnueabihf/pkgconfig:$PKG_CONFIG_PATH"
 export PYTHONPATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm/build/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/pedro/ros/px-ros-pkg-rosbuild/px_comm:/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm:/home/ubuntu/catkin_ws/src:/opt/ros/indigo/share:/opt/ros/indigo/stacks"
+export ROS_PACKAGE_PATH="/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_comm:/home/ubuntu/catkin_ws/src:/opt/ros/indigo/share:/opt/ros/indigo/stacks"

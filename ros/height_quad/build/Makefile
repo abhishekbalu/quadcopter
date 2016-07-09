@@ -283,6 +283,19 @@ controller_quad/fast:
 .PHONY : controller_quad/fast
 
 #=============================================================================
+# Target rules for targets named controller_quad_z
+
+# Build rule for target.
+controller_quad_z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 controller_quad_z
+.PHONY : controller_quad_z
+
+# fast build rule for target.
+controller_quad_z/fast:
+	$(MAKE) -f CMakeFiles/controller_quad_z.dir/build.make CMakeFiles/controller_quad_z.dir/build
+.PHONY : controller_quad_z/fast
+
+#=============================================================================
 # Target rules for targets named download_extra_data
 
 # Build rule for target.
@@ -653,6 +666,30 @@ src/controller_quad.cpp.s:
 	$(MAKE) -f CMakeFiles/controller_quad.dir/build.make CMakeFiles/controller_quad.dir/src/controller_quad.cpp.s
 .PHONY : src/controller_quad.cpp.s
 
+src/controller_quad_z.o: src/controller_quad_z.cpp.o
+.PHONY : src/controller_quad_z.o
+
+# target to build an object file
+src/controller_quad_z.cpp.o:
+	$(MAKE) -f CMakeFiles/controller_quad_z.dir/build.make CMakeFiles/controller_quad_z.dir/src/controller_quad_z.cpp.o
+.PHONY : src/controller_quad_z.cpp.o
+
+src/controller_quad_z.i: src/controller_quad_z.cpp.i
+.PHONY : src/controller_quad_z.i
+
+# target to preprocess a source file
+src/controller_quad_z.cpp.i:
+	$(MAKE) -f CMakeFiles/controller_quad_z.dir/build.make CMakeFiles/controller_quad_z.dir/src/controller_quad_z.cpp.i
+.PHONY : src/controller_quad_z.cpp.i
+
+src/controller_quad_z.s: src/controller_quad_z.cpp.s
+.PHONY : src/controller_quad_z.s
+
+# target to generate assembly for a file
+src/controller_quad_z.cpp.s:
+	$(MAKE) -f CMakeFiles/controller_quad_z.dir/build.make CMakeFiles/controller_quad_z.dir/src/controller_quad_z.cpp.s
+.PHONY : src/controller_quad_z.cpp.s
+
 src/pid.o: src/pid.cpp.o
 .PHONY : src/pid.o
 
@@ -814,6 +851,7 @@ help:
 	@echo "... clean_test_results"
 	@echo "... clean_test_results_height_quad"
 	@echo "... controller_quad"
+	@echo "... controller_quad_z"
 	@echo "... download_extra_data"
 	@echo "... doxygen"
 	@echo "... edit_cache"
@@ -852,6 +890,9 @@ help:
 	@echo "... src/controller_quad.o"
 	@echo "... src/controller_quad.i"
 	@echo "... src/controller_quad.s"
+	@echo "... src/controller_quad_z.o"
+	@echo "... src/controller_quad_z.i"
+	@echo "... src/controller_quad_z.s"
 	@echo "... src/pid.o"
 	@echo "... src/pid.i"
 	@echo "... src/pid.s"

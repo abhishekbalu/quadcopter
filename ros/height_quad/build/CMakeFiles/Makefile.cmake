@@ -153,6 +153,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/clean_test_results.dir/DependInfo.cmake"
   "CMakeFiles/clean_test_results_height_quad.dir/DependInfo.cmake"
   "CMakeFiles/controller_quad.dir/DependInfo.cmake"
+  "CMakeFiles/controller_quad_z.dir/DependInfo.cmake"
   "CMakeFiles/download_extra_data.dir/DependInfo.cmake"
   "CMakeFiles/doxygen.dir/DependInfo.cmake"
   "CMakeFiles/odometry.dir/DependInfo.cmake"

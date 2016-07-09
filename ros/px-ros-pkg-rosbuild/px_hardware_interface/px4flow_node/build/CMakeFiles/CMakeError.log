@@ -1,25 +1,26 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1887242838/fast"
-make[1]: Entering directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1887242838.dir/build.make CMakeFiles/cmTryCompileExec1887242838.dir/build
-make[2]: Entering directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1887242838.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1887242838.dir/CheckSymbolExists.c.o   -c /home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTryCompileExec1887242838
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1887242838.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec1887242838.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1887242838 -rdynamic 
-CMakeFiles/cmTryCompileExec1887242838.dir/CheckSymbolExists.c.o: In function `main':
-CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+Run Build Command:/usr/bin/make "cmTryCompileExec1424128663/fast"
+make[1]: Entering directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1424128663.dir/build.make CMakeFiles/cmTryCompileExec1424128663.dir/build
+make[2]: Entering directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1424128663.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1424128663.dir/CheckSymbolExists.c.o   -c /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec1424128663
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1424128663.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1424128663.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1424128663 -rdynamic 
+CMakeFiles/cmTryCompileExec1424128663.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0xe): undefined reference to `pthread_create'
+CheckSymbolExists.c:(.text+0x12): undefined reference to `pthread_create'
+make[2]: Leaving directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
 collect2: error: ld returned 1 exit status
-make[2]: Leaving directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-make[2]: *** [cmTryCompileExec1887242838] Error 1
-make[1]: *** [cmTryCompileExec1887242838/fast] Error 2
+make[2]: *** [cmTryCompileExec1424128663] Error 1
+make[1]: *** [cmTryCompileExec1424128663/fast] Error 2
 
-File /home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -35,23 +36,23 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1650011548/fast"
-make[1]: Entering directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1650011548.dir/build.make CMakeFiles/cmTryCompileExec1650011548.dir/build
-make[2]: Entering directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1650011548.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1650011548.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec1650011548
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1650011548.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec1650011548.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1650011548 -rdynamic -lpthreads 
+Run Build Command:/usr/bin/make "cmTryCompileExec1873058792/fast"
+make[1]: Entering directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1873058792.dir/build.make CMakeFiles/cmTryCompileExec1873058792.dir/build
+make[2]: Entering directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1873058792.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1873058792.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-2.8/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1873058792
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1873058792.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec1873058792.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1873058792 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
+make[2]: Leaving directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
 collect2: error: ld returned 1 exit status
-make[2]: Leaving directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/CMakeFiles/CMakeTmp'
-make[2]: *** [cmTryCompileExec1650011548] Error 1
-make[1]: *** [cmTryCompileExec1650011548/fast] Error 2
+make[2]: *** [cmTryCompileExec1873058792] Error 1
+make[1]: *** [cmTryCompileExec1873058792/fast] Error 2
 
 

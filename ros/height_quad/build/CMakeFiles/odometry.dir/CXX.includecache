@@ -27,20 +27,10 @@ std_msgs/Header.h
 -
 
 /home/ubuntu/quadcopter/ros/height_quad/src/xy_odometry.cpp
-list
--
 math.h
--
-sstream
--
-typeinfo
 -
 ros/ros.h
 /home/ubuntu/quadcopter/ros/height_quad/src/ros/ros.h
-std_msgs/String.h
--
-ros/serialization.h
--
 mavros_msgs/OpticalFlowRad.h
 -
 geometry_msgs/TwistWithCovarianceStamped.h
@@ -765,22 +755,6 @@ ros/forwards.h
 /opt/ros/indigo/include/rosconsole/macros_generated.h
 
 /opt/ros/indigo/include/std_msgs/Header.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/opt/ros/indigo/include/std_msgs/String.h
 string
 -
 vector

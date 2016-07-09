@@ -65,5 +65,4 @@ CMakeFiles/odometry.dir/src/xy_odometry.cpp.o: /opt/ros/indigo/include/ros/wall_
 CMakeFiles/odometry.dir/src/xy_odometry.cpp.o: /opt/ros/indigo/include/ros/wall_timer_options.h
 CMakeFiles/odometry.dir/src/xy_odometry.cpp.o: /opt/ros/indigo/include/rosconsole/macros_generated.h
 CMakeFiles/odometry.dir/src/xy_odometry.cpp.o: /opt/ros/indigo/include/std_msgs/Header.h
-CMakeFiles/odometry.dir/src/xy_odometry.cpp.o: /opt/ros/indigo/include/std_msgs/String.h
 

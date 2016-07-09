@@ -1,18 +1,13 @@
 //C++ Libraries
-#include <list>
 #include <math.h>
-#include <sstream>
-#include <typeinfo>
 //ROS Libraries
 #include "ros/ros.h"
-#include <std_msgs/String.h>
-#include <ros/serialization.h>
 #include <mavros_msgs/OpticalFlowRad.h>
 #include <geometry_msgs/TwistWithCovarianceStamped.h>
 //User Libraries
 #include "height_quad/debug.h"
 
-#define QUALITY_THRESHOLD 5
+#define QUALITY_THRESHOLD 7
 /*	From: http://docs.ros.org/api/mavros_msgs/html/msg/OpticalFlowRad.html
 OPTICAL_FLOW_RAD message data
 
@@ -52,7 +47,9 @@ geometry_msgs::TwistWithCovarianceStamped msg;
 void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 
 		if(data->quality<=QUALITY_THRESHOLD){
-			ROS_INFO("Quad is standing still...");
+			#ifdef VERBOSE
+				ROS_INFO("Quad is standing still...");
+			#endif
 			msg.twist.twist.linear.x = 0;
 			msg.twist.twist.linear.y = 0;
 			return;
@@ -61,14 +58,15 @@ void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 			return;
 		if(data->distance==0.0)
 			return;
-	ROS_INFO("READING @ Temperature: [%d]", data->temperature); //Log temperature
-
+	#ifdef VERBOSE
+		ROS_INFO("READING @ Temperature: [%d]", data->temperature); //Log temperature
+	#endif
 	//Changes in variable assignment and sign to acomodate referencial changes in angular velocity
 
 	//Velocity is position over time (keep in mind, integraded x is adimensional)
-	msg.twist.twist.linear.y = pow(10, 6) * (data->integrated_y * data->distance) / data->integration_time_us;
-	msg.twist.twist.linear.x = - pow(10, 6) * (data->integrated_x * data->distance) / data->integration_time_us;
-	msg.twist.twist.linear.z = 0; //Optical flow only knows of the linear x and y (sonar handles the zx 
+	msg.twist.twist.linear.y = - pow(10, 6) * ((data->integrated_y / data->integration_time_us) / data->distance);
+	msg.twist.twist.linear.x = pow(10, 6) * ((data->integrated_x / data->integration_time_us) / data->distance);
+	msg.twist.twist.linear.z = 0.0; //Optical flow only knows of the linear x and y (sonar handles the zx 
 
 	msg.twist.twist.angular.y = pow(10, 6) * (data->integrated_ygyro) / data->integration_time_us;
 	msg.twist.twist.angular.x = pow(10, 6) * (data->integrated_xgyro) / data->integration_time_us;
@@ -77,7 +75,7 @@ void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 
 	//Maybe we should filter this data?
 
-	float quantization_uncertainty = pow(10, -((float)data->quality / ((255.0)/(6.0)) )); //Uncertainty because the quality is an 8 bit value
+	float quantization_uncertainty = pow(10, -1.0*((float)data->quality / (255.0/6.0) )); //Uncertainty because the quality is an 8 bit value
 	/*Covariance Matrix (Notice that only x and y for linear velocity)
 	[0, 0, 0, X, 0, 0,
 	 0, 0, 0, 0, X, 0,
@@ -93,14 +91,14 @@ void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 			msg.twist.covariance[i] = 0;	
 		}
 	}
-
-	ROS_INFO("Linear Velocity(x): [%f] Linear Velocity(y): [%f]", msg.twist.twist.linear.x, msg.twist.twist.linear.y);
-	ROS_INFO("Angular Velocity(x): [%f] Angular Velocity(y): [%f] Angular Velocity(z): [%f]", msg.twist.twist.angular.x, msg.twist.twist.angular.y, msg.twist.twist.angular.z);
+	#ifdef VERBOSE
+		ROS_INFO("Linear Velocity(x): [%f] Linear Velocity(y): [%f]", msg.twist.twist.linear.x, msg.twist.twist.linear.y);
+		ROS_INFO("Angular Velocity(x): [%f] Angular Velocity(y): [%f] Angular Velocity(z): [%f]", msg.twist.twist.angular.x, msg.twist.twist.angular.y, msg.twist.twist.angular.z);
+	#endif	
 	return;
 }
 
 int main(int argc, char** argv){
-
 	ROS_INFO("Started odometry node...\n");
 	ros::init(argc, argv, "velocity_xy");
 	ros::NodeHandle n;

@@ -9,6 +9,7 @@
 /home/ubuntu/quadcopter/ros/height_quad/build/CMakeFiles/clean_test_results.dir
 /home/ubuntu/quadcopter/ros/height_quad/build/CMakeFiles/clean_test_results_height_quad.dir
 /home/ubuntu/quadcopter/ros/height_quad/build/CMakeFiles/controller_quad.dir
+/home/ubuntu/quadcopter/ros/height_quad/build/CMakeFiles/controller_quad_z.dir
 /home/ubuntu/quadcopter/ros/height_quad/build/CMakeFiles/download_extra_data.dir
 /home/ubuntu/quadcopter/ros/height_quad/build/CMakeFiles/doxygen.dir
 /home/ubuntu/quadcopter/ros/height_quad/build/gtest/CMakeFiles/gtest.dir
