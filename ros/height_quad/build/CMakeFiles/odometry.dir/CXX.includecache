@@ -8,35 +8,17 @@
 
 ../include/height_quad/debug.h
 
-/home/ubuntu/catkin_ws/devel/include/mavros_msgs/OpticalFlowRad.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-
-/home/ubuntu/quadcopter/ros/height_quad/src/xy_odometry.cpp
+/home/pedro/ros/height_quad/src/xy_odometry.cpp
 math.h
 -
 ros/ros.h
-/home/ubuntu/quadcopter/ros/height_quad/src/ros/ros.h
+/home/pedro/ros/height_quad/src/ros/ros.h
 mavros_msgs/OpticalFlowRad.h
 -
-geometry_msgs/TwistWithCovarianceStamped.h
+geometry_msgs/TwistStamped.h
 -
 height_quad/debug.h
-/home/ubuntu/quadcopter/ros/height_quad/src/height_quad/debug.h
+/home/pedro/ros/height_quad/src/height_quad/debug.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -74,25 +56,7 @@ geometry_msgs/Vector3.h
 geometry_msgs/Vector3.h
 -
 
-/opt/ros/indigo/include/geometry_msgs/TwistWithCovariance.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-geometry_msgs/Twist.h
--
-
-/opt/ros/indigo/include/geometry_msgs/TwistWithCovarianceStamped.h
+/opt/ros/indigo/include/geometry_msgs/TwistStamped.h
 string
 -
 vector
@@ -109,7 +73,7 @@ ros/message_operations.h
 -
 std_msgs/Header.h
 -
-geometry_msgs/TwistWithCovariance.h
+geometry_msgs/Twist.h
 -
 
 /opt/ros/indigo/include/geometry_msgs/Vector3.h
@@ -126,6 +90,24 @@ ros/serialization.h
 ros/builtin_message_traits.h
 -
 ros/message_operations.h
+-
+
+/opt/ros/indigo/include/mavros_msgs/OpticalFlowRad.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
 -
 
 /opt/ros/indigo/include/ros/advertise_options.h
@@ -254,6 +236,8 @@ set
 list
 -
 boost/shared_ptr.hpp
+-
+boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

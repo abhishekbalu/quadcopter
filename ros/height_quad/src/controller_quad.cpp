@@ -1,7 +1,4 @@
 //C++ Libraries
-#include <sstream>
-#include <typeinfo>
-#include <unistd.h>
 #include <string>
 #include <list>
 #include <math.h>
@@ -11,9 +8,6 @@
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/Range.h>
 #include <std_msgs/String.h>
-#include <mavros_msgs/CommandBool.h>
-#include <mavros_msgs/SetMode.h>
-#include <mavros_msgs/State.h>
 #include <sensor_msgs/Imu.h>
 //User Libraries
 #include <height_quad/pid.h>

@@ -16,7 +16,6 @@ float64 yaw
 float64 pitch
 # Roll  [-pi/4 .. pi/4] (0 = neutral)
 float64 roll
-
 """
   __slots__ = ['yaw','pitch','roll']
   _slot_types = ['float64','float64','float64']
@@ -63,8 +62,8 @@ float64 roll
     try:
       _x = self
       buff.write(_struct_3d.pack(_x.yaw, _x.pitch, _x.roll))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
   def deserialize(self, str):
     """
@@ -91,8 +90,8 @@ float64 roll
     try:
       _x = self
       buff.write(_struct_3d.pack(_x.yaw, _x.pitch, _x.roll))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
   def deserialize_numpy(self, str, numpy):
     """

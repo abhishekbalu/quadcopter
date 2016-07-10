@@ -1,20 +1,8 @@
 //C++ Libraries
-#include <sstream>
-#include <typeinfo>
-#include <unistd.h>
-#include <string>
-#include <string.h>
-#include <list>
-#include <math.h>
 //ROS LIbraries
 #include "ros/ros.h"
-#include <ros/serialization.h>
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/TwistStamped.h>
-#include <sensor_msgs/Range.h>
-#include <std_msgs/String.h>
-//User Libraries
-#include "height_quad/pid.h"
 
 #define RATE 20
 
