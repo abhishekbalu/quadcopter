@@ -32,11 +32,8 @@ geometry_msgs::Twist msg;
 float z = 0.0;
 
 PID zpid(5.0, 0.0, 0.1, 0.0, 0.0, 200.0, -200.0); //0.25, 0.0, 4.0 works
-
 float zsetPoint = 0.4;
-
 float z_value = 0.0;
-
 float tolerance = 0.01;
 
 float zoutput = 0.0;
@@ -89,7 +86,7 @@ int main(int argc, char **argv){
 	ros::Subscriber sonar = n.subscribe("/z_pose", 10, getHeight); //May use the simulation sonar here
 	ros::Subscriber syscommand = n.subscribe("/syscommand", 10, getCommand);
 	ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
-/*
+	/*
 	ros::Subscriber state_sub = n.subscribe<mavros_msgs::State>
             ("mavros/state", 10, state_cb);
     	ros::Publisher local_pos_pub = n.advertise<geometry_msgs::PoseStamped>
@@ -111,7 +108,7 @@ int main(int argc, char **argv){
 	//http://dev.px4.io/ros-mavros-offboard.html
 
 	//For software switching to OFFBOARD and to software arm the quadcopter
-/*
+	/*
     geometry_msgs::PoseStamped pose;
     pose.pose.position.x = 0;
     pose.pose.position.y = 0;
@@ -123,32 +120,30 @@ int main(int argc, char **argv){
         ros::spinOnce();
         rate.sleep();
     }
-
 	mavros_msgs::SetMode offb_set_mode;
 	offb_set_mode.request.custom_mode = "OFFBOARD";
 	mavros_msgs::CommandBool arm_cmd;
 	arm_cmd.request.value = true;
-
 	ros::Time last_request = ros::Time::now();
 	*/
 	
 
 	
 	while(ros::ok()){
-/*
-	if( current_state.mode != "OFFBOARD" &&(ros::Time::now() - last_request > ros::Duration(5.0))){
-        if( set_mode_client.call(offb_set_mode) && offb_set_mode.response.success){
-            ROS_INFO("Offboard enabled");
-        }
-        last_request = ros::Time::now();
-    } else {
-        if( !current_state.armed && (ros::Time::now() - last_request > ros::Duration(5.0))){
-            if( arming_client.call(arm_cmd) && arm_cmd.response.success){
-                ROS_INFO("Vehicle armed");
-            }
-            last_request = ros::Time::now();
-        }
-    }*/
+		/* Enable offboard
+		if( current_state.mode != "OFFBOARD" &&(ros::Time::now() - last_request > ros::Duration(5.0))){
+	        if( set_mode_client.call(offb_set_mode) && offb_set_mode.response.success){
+	            ROS_INFO("Offboard enabled");
+	        }
+	        last_request = ros::Time::now();
+	    } else {
+	        if( !current_state.armed && (ros::Time::now() - last_request > ros::Duration(5.0))){
+	            if( arming_client.call(arm_cmd) && arm_cmd.response.success){
+	                ROS_INFO("Vehicle armed");
+	            }
+	            last_request = ros::Time::now();
+	        }
+	    }*/
 		if(toggle == 1){ //taking off
 
 			z_value = zpid.update(z);

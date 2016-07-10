@@ -1,15 +1,9 @@
 //C++ Libraries
 #include <list>
 #include <math.h>
-#include <sstream>
-#include <typeinfo>
 //ROS Libraries
 #include "ros/ros.h"
 #include <sensor_msgs/Range.h>
-#include <geometry_msgs/Twist.h>
-#include <std_msgs/String.h>
-#include <ros/serialization.h>
-#include "px_comm/OpticalFlow.h"
 //User Libraries
 #include "height_quad/Kalman_1D.h"
 #include "height_quad/debug.h"
@@ -77,8 +71,10 @@ void filterSonar(ros::Publisher pub){
 }
 
 void getSonar(const sensor_msgs::Range::ConstPtr& data){
-	ROS_INFO("Received Seq [%d]", data->header.seq);
-	ROS_INFO("Received Range [%f]", data->range);
+	#ifdef VERBOSE
+		ROS_INFO("Received Seq [%d]", data->header.seq);
+		ROS_INFO("Received Range [%f]", data->range);
+	#endif 
 	//Do a deep copy
 	//For more about deepcopies https://www.cs.utexas.edu/~scottm/cs307/handouts/deepCopying.htm
 	if (config == NULL){

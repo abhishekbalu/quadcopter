@@ -1,5 +1,7 @@
 ![](http://i.imgur.com/SgiJzWe.png)
-
+Blob detection test
+![](http://www.ultraimg.com/images/2016/07/10/xy_filter_results_2.png)
+OpticalFlow filter test
 # quadcopter
 ## Structure
 
@@ -60,7 +62,7 @@ $ git clone https://github.com/PX4/Firmware.git
 $ cd Firmware
 $ git submodule update --init --recursive
 $ make px4fmu-v2_default
-## 4 - Gazeebo and Hactor
+## 4 - Gazeebo and Hector
 ```sh
 $ sudo apt-get install ros-indigo-mavros
 $ sudo apt-get install ros-indigo-hector-quadrotor
@@ -105,7 +107,7 @@ $ rm -rf models.gazebosim.org
 ```
 
 ## 5 - .bashrc
-Your .bashrc should have the following aspect at the end (add the aliases). In these aliases we use rqt_image_view to quickly see an image. However you should have rqt running from the beggining and you can use the gui to display images side-by-side (like shown at the beggining of this document: <http://wiki.ros.org/rqt_image_view>. Rqt_image_view does not need OpenCV support.
+Your .bashrc may have the following aspect at the end (add the aliases). In these aliases we use rqt_image_view to quickly see an image. However you should have rqt running from the beggining and you can use the gui to display images side-by-side (like shown at the beggining of this document: <http://wiki.ros.org/rqt_image_view>. Rqt_image_view does not need OpenCV support. This bashrc is mainly local to your machine for testing purposes.
 ```sh
 source /opt/ros/indigo/setup.bash
 export ROS_PACKAGE_PATH=~/ros:$ROS_PACKAGE_PATH
@@ -120,7 +122,16 @@ alias view_images='rosrun rqt_image_view rqt_image_view'
 alias view_detections='rostopic echo cam/detections'
 alias calibrate='rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image_raw camera:=/usb_cam'
 ```
+The bashrc file on the quad is a different as it has suitable alias for flying not for the simulation or testing:
+```sh
+source /opt/ros/indigo/setup.bash
+export ROS_PACKAGE_PATH=~/quadcopter:$ROS_PACKAGE_PATH
 
+alias mavros_launch='roslaunch mavros px4.launch'
+alias takeoff='rostopic pub /syscommand std_msgs/String "takeoff"'
+alias land='rostopic pub /syscommand std_msgs/String "land"'
+alias publish_setpoints='rostopic pub /mavros/setpoint_position/local -r 10 geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x:0.0, y: 0.0, z:0.0}, orientation: {w: 1.0}}}''
+```
 
 ## 6 - yaml.cpp 
 ```sh
@@ -149,4 +160,32 @@ sudo apt-get install nvidia-bumblebee bumblebee
 The folder called theory has some svg files and images that explain most of the modules (even some with UML) used in this project in a clear manner.
 
 ## 9 - P3P Library
-All rights to the p3p library included belong to Laurent Kneip, ETH Zurich.
+All rights to the p3p library included belong to Laurent Kneip, ETH Zurich and the logic behind the algorithm can be read at: <http://publications.asl.ethz.ch/files/kneip11novel.pdf>
+## 10 - How to arm the quad and fly manual (RC1)
+   - Turn the Nvidia on and connect the PX4. Log in via ssh. 
+  - Turn the battery on and make sure the motor checkup happens (two small beeps and the rotors turn). The PX4 light should be fading in and out and blue
+  - Launch mavros. 
+  - Turn the RC transmitter (Spektrum) on. Make sure you can see the connection on the mavros. You'll probably see something like MANUAL CONTROL MODE. The PX4 light should flash green when you do this.
+  - Arm the quad by pushing the blinking red LED button for 2 seconds, make sure the left and right levers are in the down center position. The PX4 light should flash white when you do this.
+  - To begin flying move the left lever to the down right position. After arming the RC controller the motors should start on iddle.
+![](http://www.ultraimg.com/images/2016/07/10/spektrumleverpositions.png)
+Disarming:
+   - Move the RC Transmitter left lever to the down-left position
+  - Disconnect the battery. The PX4 light should be fading in and out and blue
+  - Turn off the RC Transmitter.
+
+## 11 - How to go into OFFBOARD mode
+After you've done the first 5 steps in the previous section, on the command line you'll need to publish some setpoints before going into OFFBOARD mode. If you don't do this you might get OFFBOARD MODE REJECTED errors by the FCU.
+```
+rostopic pub /mavros/setpoint_position/local -r 10 geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x:0.0, y: 0.0, z:0.0}, orientation: {w: 1.0}}}' 
+```
+After this, you'll need to cheange the rightmost switch on the top of the Spektrum from 0 (HOLD) to 1 to change the RC Channel and signal the PX4 you want to go into OFFBOARD mode. You may see an error from the FCU in your mavros launch window about failsafe mode being on or off.
+
+To check if you were succesful:
+```
+rostopic echo /mavros/state 
+```
+And see if the armed parameter is True (should be if you pressed the red LED button for 2s) and if the mode is OFFBOARD.
+## 12 - Advice
+1 - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
+2 - Be careful with the referentials don't get confused. Optical Flow baseline is the height of the quad, 30 cm.
