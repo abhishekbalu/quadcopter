@@ -23,7 +23,7 @@ geometry_msgs::Twist msg;
 
 float z = 0.0;
 
-PID zpid(5.0, 0.0, 0.1, 0.0, 0.0, 200.0, -200.0); //0.25, 0.0, 4.0 works
+PID zpid(5.0, 0.0, 0.1, 0.0, 0.0, 200.0, -200.0); 
 float zsetPoint = 0.4;
 float z_value = 0.0;
 float tolerance = 0.01;
