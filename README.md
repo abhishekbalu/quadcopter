@@ -58,14 +58,16 @@ $ sudo apt-get install python-serial openocd \
     libftdi-dev libtool zlib1g-dev \
     python-empy gcc-arm-none-eabi -y
 ```
-If the resulting gcc-arm-none-eabi version produces build errors for PX4/Firmware master, please use <http://dev.px4.io/starting-installing-linux-boutique.html>
+If the resulting gcc-arm-none-eabi version produces build errors for PX4/Firmware master, please use <http://dev.px4.io/starting-installing-linux-boutique.html> in the Toolchain installation part.
 Now you'll need to build the code (also install git, sudo apt-get install git):
+```sh
 $ mkdir -p ~/src
 $ cd ~/src
 $ git clone https://github.com/PX4/Firmware.git
 $ cd Firmware
 $ git submodule update --init --recursive
 $ make px4fmu-v2_default
+```
 ## 4 - Gazeebo and Hector
 ```sh
 $ sudo apt-get install ros-indigo-mavros
