@@ -36,7 +36,8 @@ After this is done, add source /opt/ros/indigo/setup.bash AND export ROS_PACKAGE
 # 2 - OpenCV
 You'll also need OpenCV which is a library for image processing (<http://opencv.org>)
 Simply follow the instructions on the following site:
-https://help.ubuntu.com/community/OpenCV
+http://milq.github.io/install-opencv-ubuntu-debian/
+(All rights of this script belong to Manuel Ignacio López Quintero and has been tested for Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and Debian 8.0 "Jessie", with OpenCV 3.0.0 and OpenCV 3.1.0)
 
 # 3 - PX4 Toolchain
 You'll need to also install the PX4 Toolchain to use some of the packages. Make sure you are in the home directory:
@@ -46,6 +47,8 @@ $ sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 $ sudo apt-get update
 $ sudo apt-get install python-argparse git-core wget zip \
     python-empy qtcreator cmake build-essential genromfs -y
+$ sudo add-apt-repository ppa:openjdk-r/ppa
+$ sudo apt-get update
 $ sudo apt-get install ant protobuf-compiler libeigen3-dev libopencv-dev openjdk-8-jdk openjdk-8-jre clang-3.5 lldb-3.5 -y
 $ sudo apt-get remove modemmanager
 $ sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded -y
