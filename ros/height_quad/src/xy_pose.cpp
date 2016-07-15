@@ -16,6 +16,7 @@
 
 using namespace Eigen;
 
+#define GAIN 0.16
 #define FOCAL_LENGTH 12.0
 #define GRAVITY 9.81
 #define ALPHA 0.125 //double Ts = 0.01; double tau = 0.08; double alpha = Ts/tau;
@@ -156,6 +157,9 @@ void getOptFlow(const geometry_msgs::TwistStamped::ConstPtr& data){
     	LPF->current_value(1) = LPF->last_value(1) + ALPHA * ((data->twist).linear.y - LPF->last_value(1));
 
     	OF = LPF->current_value;
+
+		theta = GAIN * OF(0);
+		phi = GAIN * OF(1);
 		
         //Kalman Update with new values
 		kalman.KalmanUpdate(OF);
@@ -169,7 +173,7 @@ void getOptFlow(const geometry_msgs::TwistStamped::ConstPtr& data){
 		#ifdef VERBOSE
 			ROS_INFO("Gravity value: [%f]", VecG(2));
 			ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", phi, theta, yaw);
-			ROS_INFO("X(NORTH): [%f] Y(EAST): [%f] vX(NORTH): [%f] vY(EAST): [%f], quality: [%d]", state.x, state.y, state.vx, state.vy);
+			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy);
     	#endif
     }
 

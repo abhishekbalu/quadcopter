@@ -60,6 +60,7 @@ double objQuad[]={0.24,0.0,0.0,
 				  -0.0141,-0.007,0.22,
 				  0.08,0.08,0.0};
 int nmarkers=0;
+double dt_min = 0.1;
 
 double avg;
 double radius,dx1,dx2,dx3,dx4,dy1,dy2,dy3,dy4;
@@ -97,7 +98,7 @@ int imx0_LED[MAX_MARKERS],imy0_LED[MAX_MARKERS],imxf_LED[MAX_MARKERS],imyf_LED[M
 //debug 
 double aux1,aux2,aux3,aux4,aux1y,aux2y,aux3y,aux4y;
 int iter_count=0;
-double dt_min;
+
 
 std::vector<marker>* get_markers(){
     return &marker_list;

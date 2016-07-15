@@ -1,0 +1,4 @@
+rosbuild_add_executable(usb_cam_node usb_cam_node.cpp)
+target_link_libraries(usb_cam_node usb_cam avcodec swscale)
+rosbuild_add_executable(usb_cam_with_blob usb_cam_node_with_blob_detection.cpp blob_detection.cpp blob.cpp)
+target_link_libraries(usb_cam_with_blob usb_cam avcodec swscale blob_detection)

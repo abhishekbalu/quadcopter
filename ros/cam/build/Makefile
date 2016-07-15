@@ -286,6 +286,19 @@ doxygen/fast:
 .PHONY : doxygen/fast
 
 #=============================================================================
+# Target rules for targets named main_node
+
+# Build rule for target.
+main_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main_node
+.PHONY : main_node
+
+# fast build rule for target.
+main_node/fast:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/build
+.PHONY : main_node/fast
+
+#=============================================================================
 # Target rules for targets named marker_debug
 
 # Build rule for target.
@@ -580,6 +593,30 @@ src/blob_detection_debug.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.s
 .PHONY : src/blob_detection_debug.cpp.s
 
+src/main_node.o: src/main_node.cpp.o
+.PHONY : src/main_node.o
+
+# target to build an object file
+src/main_node.cpp.o:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/main_node.cpp.o
+.PHONY : src/main_node.cpp.o
+
+src/main_node.i: src/main_node.cpp.i
+.PHONY : src/main_node.i
+
+# target to preprocess a source file
+src/main_node.cpp.i:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/main_node.cpp.i
+.PHONY : src/main_node.cpp.i
+
+src/main_node.s: src/main_node.cpp.s
+.PHONY : src/main_node.s
+
+# target to generate assembly for a file
+src/main_node.cpp.s:
+	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/main_node.cpp.s
+.PHONY : src/main_node.cpp.s
+
 src/marker_detection.o: src/marker_detection.cpp.o
 .PHONY : src/marker_detection.o
 
@@ -686,6 +723,7 @@ help:
 	@echo "... rospack_genmsg_all"
 	@echo "... install/strip"
 	@echo "... marker_detection"
+	@echo "... main_node"
 	@echo "... download_extra_data"
 	@echo "... rospack_gensrv"
 	@echo "... edit_cache"
@@ -724,6 +762,9 @@ help:
 	@echo "... src/blob_detection_debug.o"
 	@echo "... src/blob_detection_debug.i"
 	@echo "... src/blob_detection_debug.s"
+	@echo "... src/main_node.o"
+	@echo "... src/main_node.i"
+	@echo "... src/main_node.s"
 	@echo "... src/marker_detection.o"
 	@echo "... src/marker_detection.i"
 	@echo "... src/marker_detection.s"

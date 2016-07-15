@@ -41,7 +41,7 @@ void getOdom(const mavros_msgs::OpticalFlowRad::ConstPtr& data){
 	msg.twist.angular.z = pow(10, 6) * (data->integrated_zgyro) / data->integration_time_us;
 
 	#ifdef VERBOSE
-		ROS_INFO("Linear Velocity(x - NORTH): [%f] Linear Velocity(y - EAST): [%f]", msg.twist.linear.x, msg.twist.linear.y);
+		ROS_INFO("Linear Velocity(x): [%f] Linear Velocity(y): [%f]", msg.twist.linear.x, msg.twist.linear.y);
 		ROS_INFO("Angular Velocity(x): [%f] Angular Velocity(y): [%f] Angular Velocity(z): [%f]", msg.twist.angular.x, msg.twist.angular.y, msg.twist.angular.z);
 	#endif	
 	return;

@@ -10,8 +10,6 @@
 
 #define CENTER_OF_MASS_FILTER_OFFSET 0
 #define NUMB_VALUES_TO_DISCARD 4
-#define MAX_SAMPLES 6
-#define MIN_SAMPLES 4
 #define RATE 10
 Kalman_1D kalman(0.2, 32, 1, 0.14); //Q, R, P, z initial sensor position(height of the sensor)
 
@@ -54,25 +52,28 @@ void filterSonar(ros::Publisher pub){
 		state.valid_z = z;
 	}
 	//Copy everything
-	config->header.seq++;
+	config->header.seq += 1;
 	msg = new sensor_msgs::Range;
 	msg->header = config->header;
 	msg->radiation_type = config->radiation_type;
 	msg->field_of_view = config->field_of_view;
 	msg->min_range = config->min_range;
 	msg->max_range = config->max_range;
+	
+
 	msg->header.stamp=ros::Time::now();
 	msg->range = state.valid_z;
 
-	#ifdef VERBOSE
-		ROS_INFO("Z(DOWN): [%f]", msg->range);
-	#endif
+	//std::cout << typeid(*msg).name() << '\n';
+	ROS_INFO("Filtered Seq: [%d]", msg->header.seq);
+	ROS_INFO("Filtered Range: [%f]", msg->range);
 	pub.publish(*msg);
 }
 
 void getSonar(const sensor_msgs::Range::ConstPtr& data){
 	#ifdef VERBOSE
-		//ROS_INFO("Received Range: [%f]", data->range); //for debug
+		ROS_INFO("Received Seq [%d]", data->header.seq);
+		ROS_INFO("Received Range [%f]", data->range);
 	#endif 
 	//Do a deep copy
 	//For more about deepcopies https://www.cs.utexas.edu/~scottm/cs307/handouts/deepCopying.htm
@@ -91,8 +92,8 @@ void getSonar(const sensor_msgs::Range::ConstPtr& data){
 	//Use the ground_distance parameter
 	float aux = kalman.KalmanFilter(data->range + CENTER_OF_MASS_FILTER_OFFSET);
 	state.reads.push_back(aux);
-	if(state.reads.size() > MIN_SAMPLES){
-		if(state.reads.size() == MAX_SAMPLES){
+	if(state.reads.size() > 4){
+		if(state.reads.size() == 6){
 			state.reads.pop_front();
 		}
 	}

@@ -1,0 +1,7 @@
+<launch>
+
+   <node name="sensor" pkg="cam" type="main_node" output="screen" >
+                <rosparam command="load" file="$(find cam)/params/sensor_params.yaml" />
+   </node>
+
+</launch>

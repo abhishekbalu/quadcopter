@@ -26,6 +26,7 @@ rosbuild_add_library(p3p src/p3p.cpp)
 rosbuild_add_library(usb_cam src/usb_cam.cpp)
 rosbuild_add_library(blob_detection src/blob_detection.cpp)
 rosbuild_add_library(marker_detection src/marker_detection.cpp)
+
 target_link_libraries(marker_detection p3p)
 target_link_libraries(usb_cam avcodec swscale)
 
@@ -33,6 +34,8 @@ target_link_libraries(usb_cam avcodec swscale)
 #target_link_libraries(${PROJECT_NAME} another_library)
 #rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
+rosbuild_add_executable(main_node src/main_node.cpp)
+target_link_libraries(main_node usb_cam marker_detection blob_detection yaml-cpp)
 rosbuild_add_executable(marker_debug src/marker_detection_debug.cpp)
 target_link_libraries(marker_debug marker_detection blob_detection yaml-cpp)
 
