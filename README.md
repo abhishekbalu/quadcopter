@@ -83,7 +83,10 @@ $ sudo apt-get install ros-indigo-message-to-tf
 $ sudo apt-get install ros-indigo-gazebo-ros-pkgs
 $ sudo apt-get install ros-indigo-gazebo-ros-control
 ```
-
+Also do this one:
+```sh
+$ sudo apt-get install ros-indigo-hector-slam
+```
 For the usbcam and an aditional teleop python package:
 ```sh
 $ sudo apt-get install ros-indigo-usb-cam
@@ -101,7 +104,12 @@ Add the following lines to your bashrc:
 
 source /usr/share/gazebo/setup.sh
 
-export GAZEBO_MODEL_PATH="/home/quadbase/ros/quads/quad_common/quad_urdf/models" 
+export GAZEBO_MODEL_PATH="~/quad_urdf/models" 
+
+After that copy the quad_urdf folder in this git repository to your home folder and source your bashrc:
+
+source .bashrc
+
 
 After that you'll need to:
 ```sh
@@ -141,10 +149,9 @@ alias publish_setpoints='rostopic pub /mavros/setpoint_position/local -r 10 geom
 
 ## 6 - yaml.cpp 
 ```sh
-$ git https://github.com/jbeder/yaml-cpp
+$ git clone https://github.com/jbeder/yaml-cpp
 $ cd yaml-cpp/src
 $ mkdir build
-$ cd ..
 $ cd ..
 $ cmake -G "Unix Makefiles"
 $ make
