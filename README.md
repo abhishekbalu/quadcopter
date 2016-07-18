@@ -25,8 +25,7 @@ You will need to install ROS Indigo (latest stable version as of 06/07/2016) <ht
 $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 $ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net --recv-key 0xB01FA116
 $ sudo apt-get update
-$ sudo apt-get install ros-indigo-desktop-full
-$ sudo rosdep update
+$ rosdep update
 $ sudo rosdep init
 $ echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 $ source /opt/ros/indigo/setup.bash
@@ -36,8 +35,7 @@ After this is done, add source /opt/ros/indigo/setup.bash AND export ROS_PACKAGE
 # 2 - OpenCV
 You'll also need OpenCV which is a library for image processing (<http://opencv.org>)
 Simply follow the instructions on the following site:
-http://milq.github.io/install-opencv-ubuntu-debian/
-(All rights of this script belong to Manuel Ignacio López Quintero and has been tested for Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and Debian 8.0 "Jessie", with OpenCV 3.0.0 and OpenCV 3.1.0)
+https://help.ubuntu.com/community/OpenCV
 
 # 3 - PX4 Toolchain
 You'll need to also install the PX4 Toolchain to use some of the packages. Make sure you are in the home directory:
@@ -47,8 +45,6 @@ $ sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 $ sudo apt-get update
 $ sudo apt-get install python-argparse git-core wget zip \
     python-empy qtcreator cmake build-essential genromfs -y
-$ sudo add-apt-repository ppa:openjdk-r/ppa
-$ sudo apt-get update
 $ sudo apt-get install ant protobuf-compiler libeigen3-dev libopencv-dev openjdk-8-jdk openjdk-8-jre clang-3.5 lldb-3.5 -y
 $ sudo apt-get remove modemmanager
 $ sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded -y
@@ -58,8 +54,8 @@ $ sudo apt-get install python-serial openocd \
     libftdi-dev libtool zlib1g-dev \
     python-empy gcc-arm-none-eabi -y
 ```
-If the resulting gcc-arm-none-eabi version produces build errors for PX4/Firmware master, please use <http://dev.px4.io/starting-installing-linux-boutique.html> in the Toolchain installation part.
-Now you'll need to build the code (also install git, sudo apt-get install git):
+If the resulting gcc-arm-none-eabi version produces build errors for PX4/Firmware master, please use <http://dev.px4.io/starting-installing-linux-boutique.html> (refer to the TOOLCHAIN section to install gcc-arm-none-eabi).
+Now you'll need to build the code:
 ```sh
 $ mkdir -p ~/src
 $ cd ~/src
@@ -83,10 +79,7 @@ $ sudo apt-get install ros-indigo-message-to-tf
 $ sudo apt-get install ros-indigo-gazebo-ros-pkgs
 $ sudo apt-get install ros-indigo-gazebo-ros-control
 ```
-Also do this one:
-```sh
-$ sudo apt-get install ros-indigo-hector-slam
-```
+
 For the usbcam and an aditional teleop python package:
 ```sh
 $ sudo apt-get install ros-indigo-usb-cam
@@ -104,12 +97,7 @@ Add the following lines to your bashrc:
 
 source /usr/share/gazebo/setup.sh
 
-export GAZEBO_MODEL_PATH="~/quad_urdf/models" 
-
-After that copy the quad_urdf folder in this git repository to your home folder and source your bashrc:
-
-source .bashrc
-
+export GAZEBO_MODEL_PATH="/home/quadbase/ros/quads/quad_common/quad_urdf/models" 
 
 After that you'll need to:
 ```sh
@@ -149,9 +137,10 @@ alias publish_setpoints='rostopic pub /mavros/setpoint_position/local -r 10 geom
 
 ## 6 - yaml.cpp 
 ```sh
-$ git clone https://github.com/jbeder/yaml-cpp
+$ git https://github.com/jbeder/yaml-cpp
 $ cd yaml-cpp/src
 $ mkdir build
+$ cd ..
 $ cd ..
 $ cmake -G "Unix Makefiles"
 $ make
@@ -198,7 +187,13 @@ To check if you were succesful:
 ```
 rostopic echo /mavros/state 
 ```
-And see if the armed parameter is True (should be if you pressed the red LED button for 2s) and if the mode is OFFBOARD.
+And see if the armed parameter is True (should be if you pressed the red LED button for 2s) and if the mode is OFFBOARD. If you don't want to use the RC Transmitter you may also force the change:
+```
+mavsys mode -c OFFBOARD
+```
 ## 12 - Advice
 1 - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
+
 2 - Be careful with the referentials don't get confused. Optical Flow baseline is the height of the quad, 30 cm.
+
+3 - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty).
