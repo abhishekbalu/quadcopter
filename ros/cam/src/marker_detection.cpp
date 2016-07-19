@@ -54,9 +54,6 @@ int red_blob_hh = 390;
 int red_blob_vl = 50;
 int red_blob_vh = 101;
 
-
-
-
 int objcnt=0;
 double fx=470,fy=490; //focal distance guess?
 double cx=320,cy=240; //center x, center y should be 320 and 240

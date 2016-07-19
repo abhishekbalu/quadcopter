@@ -93,11 +93,11 @@ $ wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
 $ sudo apt-get update
 $ sudo apt-get upgrade
 ```
-Add the following lines to your bashrc:
+Add the following lines to your bashrc and place the quad_urf models in your home directory:
 
 source /usr/share/gazebo/setup.sh
 
-export GAZEBO_MODEL_PATH="/home/quadbase/ros/quads/quad_common/quad_urdf/models" 
+export GAZEBO_MODEL_PATH="~/quad_urdf/models" 
 
 After that you'll need to:
 ```sh
