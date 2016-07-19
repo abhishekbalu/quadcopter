@@ -10,6 +10,7 @@
 #include <std_msgs/String.h>
 #include <sensor_msgs/Image.h>
 #include <sensor_msgs/fill_image.h>
+#include <std_msgs/Int8.h>
 //user libraries
 #include "cam/detections.h"
 #include "cam/blob_detection.h"
@@ -34,31 +35,51 @@ int height;
 static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
+static ros::Publisher valid_blobs_pub;
 std::string blob_settings = "blue_blob_settings.yaml";
 std::string image_settings = "image_settings.yaml";
+std_msgs::Int8 valid_msg;
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
 	//get image
 	const sensor_msgs::Image img = *msg;
 
-	//Copy image to the buffer
+	//Copy image to the buffer and convert
 	unsigned long int cnt=0;
     for(unsigned int l=0;l<img.height;l++){
         for(unsigned int k=0;k<img.width;k++){
-            buf[cnt]=img.data[cnt];
-            buf[cnt+1]=img.data[cnt+1];
-            buf[cnt+2]=img.data[cnt+2];
+        	//CONVERT RGB TO YUYV -- https://en.wikipedia.org/wiki/YUV
+        	int red = img.data[cnt];
+        	int green = img.data[cnt +1];
+        	int blue = img.data[cnt + 2];
+        	//printf("RED: %d, GREEN: %d, BLUE: %d\n", red, green, blue);
+        	/*
+        	int y = (0.299 * red) + (0.587 * green) + (0.114 * blue);
+    		int u = (0.436 * blue) - (0.147 * red) - (0.289 * green);
+    		int v = (0.615 * red) - (0.515 * green)  - (0.100 * blue);*/
+    		/*
+    		int y = (0.257 * red) + (0.504 * green) + (0.098 * blue);
+    		int u = (0.439 * blue) - (0.148 * red) - (0.291 * green);
+    		int v = (0.439 * red) - (0.368 * green)  - (0.071 * blue);
+    		printf("Y: %d, U: %d, V: %d\n", y, u, v);*/
+            buf[cnt] = red;
+            buf[cnt+1] = green;
+            buf[cnt+2] = blue;
             cnt+=3;
         }
     }
+    //The entire image has been converted to yuv
     int xi = 0;
     int xf = img.width;
     int yi = 0;
     int yf = img.height;
 
 	//blob detection and publish binary image
-    nblobs=detect_blobs(buf,3, vl, vh, hl, hh, sl, sh, 
-    	xi, xf, yi, yf, img.width, img.height);
+    nblobs = detect_blobs(buf,3, vl, vh, hl, hh, sl, sh, xi, xf, yi, yf, img.width, img.height);
+    #ifdef VERBOSE
+        printf("Number of valid blobs: %d\n", get_valid());
+        valid_msg.data = get_valid();
+    #endif
 
     for(unsigned int l=0;l<img.height;l++)
         for(unsigned int k=0;k<img.width;k++)
@@ -150,12 +171,14 @@ int main(int argc, char** argv){
     rgb_image_pub=nh.advertise<sensor_msgs::Image>("cam/rgb_image",1);
     bin_image_pub=nh.advertise<sensor_msgs::Image>("cam/binary_image",1);
     detections_pub=nh.advertise<cam::detections>("cam/detections",1);
+    valid_blobs_pub=nh.advertise<std_msgs::Int8>("/valid_blobs", 1);
 
     ros::Rate loop_rate(1);
    
 
     //main loop
     while(ros::ok()){
+    	valid_blobs_pub.publish(valid_msg);
         loop_rate.sleep();
 		ros::spinOnce();
     }

@@ -32,8 +32,8 @@ tfScalar yaw, pitch, roll;
 
 //IMU
 typedef struct{
-	ros::Time last_t;
-	ros::Time current_t;
+	ros::Time last_time;
+	ros::Time current_time;
 	double last;
 	double current;
 	double t;
@@ -44,14 +44,14 @@ double theta; //Pitch
 double phi;//Roll
 //OpticalFlow
 typedef struct{
-	ros::Time last_t;
-	ros::Time current_t;
+	ros::Time last_time;
+	ros::Time current_time;
 	int quality;
-	Vector2d current_OF; 
-	Vector2d last_OF;
-}optical_flow;
+	Vector2d current_value; 
+	Vector2d last_value;
+}low_pass_filter;
 
-optical_flow* oF = NULL;
+low_pass_filter* LPF = NULL;
 
 //Kalman Filter
 //0.01, 0.1, 1, 0, 0, 1
@@ -64,7 +64,7 @@ MatrixXd RotMat(3,3);
 VectorXd OF(2);
 VectorXd VecG(3);
 VectorXd VecDir(3);
-VectorXd VecAz(3);
+VectorXd VecAcc(3);
 
 double white_noise(){
   // construct a trivial random generator engine from a time-based seed:
@@ -120,17 +120,17 @@ void updateState(){
     kalman.W(3,1)=b;
     
     updateRotMatrixes();
-    VecAz = aZ->current * RotMat * VecDir - VecG;
-	kalman.U(0)=VecAz(0);
-	kalman.U(1)=VecAz(1);
+    VecAcc = aZ->current * RotMat * VecDir - VecG;
+	kalman.U(0)=VecAcc(0);
+	kalman.U(1)=VecAcc(1);
 }
 
 void getImu(const sensor_msgs::Imu::ConstPtr& data){ //gets quaternion of orientation and z acceleration
 	if(aZ == NULL){
 		aZ = new imu_z_accel;
-		aZ->last_t = ros::Time::now();
+		aZ->last_time = ros::Time::now();
 		aZ->last = data->linear_acceleration.z;
-		aZ->current_t = aZ->last_t;
+		aZ->current_time = aZ->last_time;
 		aZ->current = aZ->last;
 		VecG(2) = data->linear_acceleration.z;
 	}
@@ -143,12 +143,12 @@ void getImu(const sensor_msgs::Imu::ConstPtr& data){ //gets quaternion of orient
     attitude.roll = phi;
     attitude.yaw = yaw;
 	//getzAccel
-	aZ->last_t = aZ->current_t;
+	aZ->last_time = aZ->current_time;
 	aZ->last = aZ->current;
-	aZ->current_t = ros::Time::now();
+	aZ->current_time = ros::Time::now();
 	aZ->current = data->linear_acceleration.z;
-	//ros::Duration = aZ->current_t - aZ->last_t;
-	ros::Duration time = (aZ->current_t - aZ->last_t);
+	//ros::Duration = aZ->current_time - aZ->last_time;
+	ros::Duration time = (aZ->current_time - aZ->last_time);
 	aZ->t = time.toSec();
 	updateState();
 	kalman.KalmanPredict();
@@ -158,23 +158,23 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 	double velocity_x = data->velocity_x + white_noise();
 	double velocity_y = data->velocity_y + white_noise();
 	//Simple Low pass digital with an RC constant of alpha filter
-	if(oF == NULL){
+	if(LPF == NULL){
         //initialize OF
-        oF = new optical_flow;
-        oF->last_OF(0) = velocity_x;
-        oF->last_OF(1) = velocity_y;
-        oF->current_OF(0) = oF->last_OF(0);
-        oF->current_OF(1) = oF->last_OF(1);
+        LPF = new low_pass_filter;
+        LPF->last_value(0) = velocity_x;
+        LPF->last_value(1) = velocity_y;
+        LPF->current_value = LPF->last_value;
+       
     }else{
 
-    	oF->last_OF(0) = oF->current_OF(0);
-    	oF->last_OF(1) = oF->current_OF(1);
+    	LPF->last_value = LPF->current_value;
 
-    	oF->current_OF(0) = oF->last_OF(0) + ALPHA * (velocity_x - oF->last_OF(0));
-    	oF->current_OF(1) = oF->last_OF(1) + ALPHA * (velocity_y - oF->last_OF(1));
-   		OF(0) = oF->current_OF(0);
-   		OF(1) = oF->current_OF(1);
-   		oF->quality = data->quality;
+    	LPF->current_value(0) = LPF->last_value(0) + ALPHA * (velocity_x - LPF->last_value(0));
+    	LPF->current_value(1) = LPF->last_value(1) + ALPHA * (velocity_y - LPF->last_value(1));
+   		
+   		OF = LPF->current_value;
+
+   		LPF->quality = data->quality;
    		theta = GAIN * OF(0);
    		phi = GAIN * OF(1);
         double fov = computeFOV(); //do what you want with this
@@ -182,7 +182,7 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 		kalman.KalmanUpdate(OF);
 		//Output state
 		state.header.stamp = ros::Time::now();
-		state.quality = oF->quality;
+		state.quality = LPF->quality;
 		state.attitude = attitude;
 		state.x = kalman.Xhat(0,0);
 		state.y = kalman.Xhat(1,0);
@@ -193,7 +193,7 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 		#ifdef VERBOSE
 			ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", phi, theta, yaw); //Not sure this is accurate
 			ROS_INFO("Filter_dif_x [%f], Filter_dif_y [%f]", deltax, deltay);
-			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy, oF->quality);
+			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy, LPF->quality);
     	#endif
     }
 
@@ -206,7 +206,7 @@ int main(int argc, char** argv){
 
     VecG << 0,0,GRAVITY;
 	VecDir << 0,0,1;
-	VecAz << 0,0,0;
+	VecAcc << 0,0,0;
 
  
     kalman.Xhat << 0, 0, 0, 0, 0, 0; //initial pose

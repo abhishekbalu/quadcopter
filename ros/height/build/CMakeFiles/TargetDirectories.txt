@@ -1,5 +1,6 @@
 /home/pedro/ros/height/build/CMakeFiles/ROSBUILD_genmsg_py.dir
 /home/pedro/ros/height/build/CMakeFiles/rospack_genmsg_all.dir
+/home/pedro/ros/height/build/CMakeFiles/hector_analysis.dir
 /home/pedro/ros/height/build/CMakeFiles/download_extra_data.dir
 /home/pedro/ros/height/build/CMakeFiles/rospack_gensrv.dir
 /home/pedro/ros/height/build/CMakeFiles/rospack_genmsg_libexe.dir
@@ -16,10 +17,12 @@
 /home/pedro/ros/height/build/CMakeFiles/tests.dir
 /home/pedro/ros/height/build/CMakeFiles/test-future.dir
 /home/pedro/ros/height/build/CMakeFiles/doxygen.dir
+/home/pedro/ros/height/build/CMakeFiles/laser.dir
 /home/pedro/ros/height/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir
 /home/pedro/ros/height/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/pedro/ros/height/build/CMakeFiles/pid.dir
 /home/pedro/ros/height/build/gtest/CMakeFiles/gtest_main.dir
+/home/pedro/ros/height/build/CMakeFiles/filter.dir
 /home/pedro/ros/height/build/CMakeFiles/test.dir
 /home/pedro/ros/height/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/pedro/ros/height/build/CMakeFiles/clean_test_results.dir

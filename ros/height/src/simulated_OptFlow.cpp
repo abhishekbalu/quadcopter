@@ -38,7 +38,7 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	
 
-	ros::Subscriber sonar = n.subscribe("/ground_truth/state", 10, getGndTruth); 
+	ros::Subscriber gnd = n.subscribe("/ground_truth/state", 10, getGndTruth); 
 	ros::Publisher pub = n.advertise<px_comm::OpticalFlow>("/simOptFlow",10);
 	ros::Rate loop_rate(RATE);
 

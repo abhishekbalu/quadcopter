@@ -8,8 +8,6 @@
 
 ../include/cam/blob_detection.h
 
-../include/cam/debug.h
-
 ../include/cam/marker_detection.h
 eigen3/Eigen/Dense
 -
@@ -61,8 +59,6 @@ cam/blob_detection.h
 /home/pedro/ros/cam/src/cam/blob_detection.h
 cam/marker_detection.h
 /home/pedro/ros/cam/src/cam/marker_detection.h
-cam/debug.h
-/home/pedro/ros/cam/src/cam/debug.h
 cam/p3p.hpp
 /home/pedro/ros/cam/src/cam/p3p.hpp
 

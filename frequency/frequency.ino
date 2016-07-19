@@ -1,6 +1,6 @@
 // the setup function runs once when you press reset or power the board
 #define LED 2
-int frequency = 1; //in Hz
+int frequency = 10; //in Hz
 void setup() {
   pinMode(LED, OUTPUT);
 }

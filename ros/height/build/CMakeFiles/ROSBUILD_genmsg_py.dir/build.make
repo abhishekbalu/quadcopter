@@ -47,47 +47,72 @@ include CMakeFiles/ROSBUILD_genmsg_py.dir/progress.make
 
 CMakeFiles/ROSBUILD_genmsg_py: ../src/height/msg/__init__.py
 
-../src/height/msg/__init__.py: ../src/height/msg/_Attitude.py
-../src/height/msg/__init__.py: ../src/height/msg/_full_pose.py
 ../src/height/msg/__init__.py: ../src/height/msg/_state.py
+../src/height/msg/__init__.py: ../src/height/msg/_full_pose.py
+../src/height/msg/__init__.py: ../src/height/msg/_Attitude.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height/msg/__init__.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/ros/height/msg/Attitude.msg /home/pedro/ros/height/msg/full_pose.msg /home/pedro/ros/height/msg/state.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/ros/height/msg/state.msg /home/pedro/ros/height/msg/full_pose.msg /home/pedro/ros/height/msg/Attitude.msg
 
-../src/height/msg/_Attitude.py: ../msg/Attitude.msg
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/height/msg/_Attitude.py: /opt/ros/indigo/lib/roslib/gendeps
-../src/height/msg/_Attitude.py: ../manifest.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/cpp_common/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rostime/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roscpp_traits/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/catkin/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/genmsg/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/genpy/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/message_runtime/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/std_msgs/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/geometry_msgs/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/sensor_msgs/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/gencpp/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/genlisp/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/message_generation/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosbuild/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosconsole/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roscpp/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosgraph/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rospack/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roslib/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rospy/package.xml
-../src/height/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
-../src/height/msg/_Attitude.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height/msg/_state.py: ../msg/state.msg
+../src/height/msg/_state.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/height/msg/_state.py: /opt/ros/indigo/lib/roslib/gendeps
+../src/height/msg/_state.py: ../msg/Attitude.msg
+../src/height/msg/_state.py: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../src/height/msg/_state.py: ../manifest.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/cpp_common/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rostime/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roscpp_traits/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/catkin/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/genmsg/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/genpy/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/message_runtime/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/std_msgs/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/geometry_msgs/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/sensor_msgs/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/gencpp/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/genlisp/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/message_generation/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosbuild/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosconsole/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roscpp/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/message_filters/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosgraph/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosclean/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rospack/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roslib/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosmaster/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosout/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosparam/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosunit/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roslaunch/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roslz4/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosbag_storage/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rospy/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/topic_tools/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosbag/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rostopic/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosnode/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosmsg/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rosservice/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/roswtf/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/tf2_msgs/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/tf2/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/rostest/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/actionlib/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/tf2_py/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/tf2_ros/package.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/tf/package.xml
+../src/height/msg/_state.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height/msg/_state.py: /opt/ros/indigo/share/nav_msgs/package.xml
+../src/height/msg/_state.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height/msg/_Attitude.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height/msg/Attitude.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height/msg/_state.py"
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height/msg/state.msg
 
 ../src/height/msg/_full_pose.py: ../msg/full_pose.msg
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -115,60 +140,104 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height/msg/__init__.py
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/roscpp/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/message_filters/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosgraph/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosclean/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rospack/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/roslib/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosmaster/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosout/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosparam/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosunit/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/roslaunch/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/roslz4/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosbag_storage/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rospy/package.xml
-../src/height/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/topic_tools/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosbag/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rostopic/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosnode/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosmsg/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rosservice/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/roswtf/package.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/tf2_msgs/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/tf2/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/rostest/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/actionlib/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/tf2_py/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/tf2_ros/package.xml
+../src/height/msg/_full_pose.py: /opt/ros/indigo/share/tf/package.xml
+../src/height/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
 ../src/height/msg/_full_pose.py: /opt/ros/indigo/share/nav_msgs/package.xml
 ../src/height/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height/msg/_full_pose.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height/msg/full_pose.msg
 
-../src/height/msg/_state.py: ../msg/state.msg
-../src/height/msg/_state.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/height/msg/_state.py: /opt/ros/indigo/lib/roslib/gendeps
-../src/height/msg/_state.py: ../msg/Attitude.msg
-../src/height/msg/_state.py: /opt/ros/indigo/share/std_msgs/msg/Header.msg
-../src/height/msg/_state.py: ../manifest.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/cpp_common/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rostime/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/roscpp_traits/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/catkin/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/genmsg/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/genpy/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/message_runtime/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/std_msgs/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/geometry_msgs/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/sensor_msgs/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/gencpp/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/genlisp/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/message_generation/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rosbuild/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rosconsole/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/roscpp/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rosgraph/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rospack/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/roslib/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/rospy/package.xml
-../src/height/msg/_state.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
-../src/height/msg/_state.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height/msg/_state.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height/msg/_Attitude.py: ../msg/Attitude.msg
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/height/msg/_Attitude.py: /opt/ros/indigo/lib/roslib/gendeps
+../src/height/msg/_Attitude.py: ../manifest.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/cpp_common/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rostime/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roscpp_traits/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/catkin/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/genmsg/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/genpy/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/message_runtime/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/std_msgs/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/geometry_msgs/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/sensor_msgs/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/gencpp/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/genlisp/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/message_generation/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosbuild/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosconsole/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roscpp/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/message_filters/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosgraph/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosclean/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rospack/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roslib/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosmaster/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosout/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosparam/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosunit/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roslaunch/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roslz4/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosbag_storage/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rospy/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/topic_tools/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosbag/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rostopic/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosnode/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosmsg/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rosservice/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/roswtf/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/tf2_msgs/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/tf2/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/rostest/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/actionlib/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/tf2_py/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/tf2_ros/package.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/tf/package.xml
+../src/height/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height/msg/_Attitude.py: /opt/ros/indigo/share/nav_msgs/package.xml
+../src/height/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height/build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height/msg/_state.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height/msg/state.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height/msg/_Attitude.py"
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height/msg/Attitude.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/height/msg/__init__.py
-ROSBUILD_genmsg_py: ../src/height/msg/_Attitude.py
-ROSBUILD_genmsg_py: ../src/height/msg/_full_pose.py
 ROSBUILD_genmsg_py: ../src/height/msg/_state.py
+ROSBUILD_genmsg_py: ../src/height/msg/_full_pose.py
+ROSBUILD_genmsg_py: ../src/height/msg/_Attitude.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py
 

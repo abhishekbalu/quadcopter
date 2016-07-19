@@ -17,8 +17,10 @@
 //User Libraries
 #include "cam/blob_detection.h"
 #include "cam/marker_detection.h"
-#include "cam/debug.h" //Comment or uncomment this for verbose
 #include "cam/p3p.hpp"
+//Verbose
+//#include "cam/debug.h" //Comment or uncomment this for verbose
+#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 
 using namespace Eigen;
 using namespace std;
@@ -43,6 +45,18 @@ const char* unknown = "unknown";
 
 //................................DETECT MARKER VARIABLES.......................
 //Really should read this crap from a file
+
+//40,101,350,390,40,101
+int red_blob_sl = 60;
+int red_blob_sh = 110;
+int red_blob_hl = 350;
+int red_blob_hh = 390;
+int red_blob_vl = 50;
+int red_blob_vh = 101;
+
+
+
+
 int objcnt=0;
 double fx=470,fy=490; //focal distance guess?
 double cx=320,cy=240; //center x, center y should be 320 and 240
@@ -57,6 +71,7 @@ int ny = 320;
 double objQuad[]={0.24,0.0,0.0,
 				  0.0,0.24,0.0,
 				  0.04,0.055,0.07,
+
 				  -0.0141,-0.007,0.22,
 				  0.08,0.08,0.0};
 int nmarkers=0;
@@ -117,15 +132,13 @@ void initialize_markers(){
     Tsols=new Eigen::MatrixXd[MAX_MARKERS];
 }
 
-
-
 int detect_markers(int no){ //This function extracts markers from blobs
 	//GET THE BLOBS
 	//blobs = get_blobs(); //from blob_detection
     std::copy(get_blobs(), get_blobs() + no, std::begin(blobs));
-
-    printf("Total number of blobs - valid or invalid %i\n", no);
-
+    #ifdef VERBOSE
+        printf("Total number of blobs - valid or invalid %i\n", no);
+    #endif
 	objcnt=0;
     int cnting=0;
 	Matrix<Matrix<double, 3, 4>, 4, 1> solutions;
@@ -133,7 +146,9 @@ int detect_markers(int no){ //This function extracts markers from blobs
 	//undistort blobs
     for(int k=0;k<no;k++){
         if(blobs[k].valid == 2){
-            printf("A valid blob!\n");
+            #ifdef VERBOSE
+                printf("A valid blob!\n");
+            #endif
             dx1=(blobs[k].x-cx);
             dy1=(blobs[k].y-cy); 
             radius=dx1*dx1+dy1*dy1;
@@ -154,28 +169,36 @@ int detect_markers(int no){ //This function extracts markers from blobs
     for(int i1=0;i1<no;i1++){
         if(blobs[i1].valid!=2) //Get first blob
         	continue; //skip i1
-        printf("Passed first blob!\n");
+        /*#ifdef VERBOSE
+            printf("Passed first blob!\n");
+        #endif*/
         x1=blobs[i1].x;
         _y1=blobs[i1].y;
         sz1=blobs[i1].size;
         for(int i2=i1+1;i2<no;i2++){
             if(blobs[i2].valid!=2) //Get second blob
             	continue; //skip i2
-            printf("Passed second blob!\n");
+            /*#ifdef VERBOSE
+                printf("Passed second blob!\n");
+            #endif*/
             x2=blobs[i2].x;
             y2=blobs[i2].y;
             sz2=blobs[i2].size;
             for(int i3=i2+1;i3<no;i3++){
                 if(blobs[i3].valid!=2) //Get third blob
                 	continue; //skip i3
-                printf("Passed third blob!\n");
+                /*#ifdef VERBOSE
+                    printf("Passed third blob!\n");
+                #endif*/
                 x3=blobs[i3].x;
                 y3=blobs[i3].y;
                 sz3=blobs[i3].size;
                 for(int i4=i3+1;i4<no;i4++){
                     if(blobs[i4].valid!=2) //Get forth blob
                     	continue; //skip i4
-                    printf("Passed fourth blob!\n");
+                    /*#ifdef VERBOSE
+                        printf("Passed fourth blob!\n");
+                    #endif*/
                     x4=blobs[i4].x;
                     y4=blobs[i4].y;
                     sz4=blobs[i4].size;
@@ -224,18 +247,43 @@ int detect_markers(int no){ //This function extracts markers from blobs
 											feature_vectors.col(0) = feature_vectors.col(0)/feature_vectors.col(0).norm();
 											feature_vectors.col(1) = feature_vectors.col(1)/feature_vectors.col(1).norm();
 											feature_vectors.col(2) = feature_vectors.col(2)/feature_vectors.col(2).norm();
+
 											//perform algorithm
-											status = P3P::computePoses(feature_vectors,world_points,solutions);
+											status = P3P::computePoses(feature_vectors, world_points, solutions);
+                                            #ifdef SHOW_MATRICES
+                                                printf("---------------FEATURE VECTORS-------------------\n");
+                                                cout << feature_vectors << endl;
+                                                printf("---------------WORLD POINTS----------------------\n");
+                                                cout << world_points << endl;
+                                                printf("---------------SOLUTIONS FROM P3P-------------------------\n");
+                                                printf("----\n");
+                                                cout << solutions(0) << endl;
+                                                printf("----\n");
+                                                cout << solutions(1) << endl;
+                                                printf("----\n");
+                                                cout << solutions(2) << endl;
+                                                printf("----\n");
+                                                cout << solutions(3) << endl;
+                                                printf("----\n");
+                                            #endif 
 											//compute cost
 											markerh3D << objQuad[9], objQuad[10], objQuad[11], 1;
 											markerh2D << dx4, dy4, 1;
-                                            printf("STARTED COST EVALUATION!\n");
+                                            #ifdef VERBOSE
+                                                printf("STARTED COST EVALUATION!\n");
+                                            #endif
 											for(unsigned int l=0;l<4;l++){
 												Rl = solutions(l).inverse();
 												//trans=-Rl*solutions(l).col(3);
 												Tl.col(0)=Rl.col(0); Tl.col(1)=Rl.col(1); Tl.col(2)=Rl.col(2); Tl.col(3)=-Rl * solutions(l).col(3);;
 												markerh3DProjected = Tl * markerh3D;
                                               	markerh2DPredicted<<fx*(markerh3DProjected(0)/markerh3DProjected(2))+cx,fy*(markerh3DProjected(1)/markerh3DProjected(2))+cy,1;
+                                                #ifdef SHOW_MATRICES
+                                                    printf("MARKERS 2D ORIGINAL AND PREDICTED\n");
+                                                    cout << markerh2D << endl;
+                                                    cout << markerh2DPredicted << endl;
+                                                    printf("-------------");
+                                                #endif
                                                 lcost=(markerh2DPredicted-markerh2D).norm();
                                                 if(lcost < cost){ //is this the smallest cost so far?
                                                 	 //if it is, does it satisfy the conditions of a quadrotor flying? (looking at us, and not turned upside down)
@@ -254,7 +302,9 @@ int detect_markers(int no){ //This function extracts markers from blobs
                     			}
                     		}
                     		if((cost <= (0.5*(fx+fy)/Tsol(2,3))*0.10) && (objcnt<MAX_MARKERS)){ //validating cost (the error is a function of (f/<distance to object>) ) check if we have already too many markers, discard this marker
-                                printf("The cost is lower than required\n");
+                                #ifdef VERBOSE
+                                    printf("The cost is lower than required\n");
+                                #endif
                                 double px,py,r,prx,pry;
      	               			//Get the solution
      	               			//Update the object count that will be on the list
@@ -273,8 +323,10 @@ int detect_markers(int no){ //This function extracts markers from blobs
 			    				    py=(pry-cy)/(1+r*ky1+r*r*ky2);
 			    				}
 			    				int i = objcnt-1; //aux variable
-			    				//create the square around the detected object, with a size scaled by (f/<distance to object>) and centered on the detected object center
-								printf("Flag 1\n");
+			    				//create the square around the detected object, with a size scaled by (f/<distance to object>) and centered on the detected object center	
+                                #ifdef VERBOSE
+                                    printf("Flag 1\n");
+                                #endif
                                 imx0[i] = cx+px-szx*(fx/trans1(2));
 								imxf[i] = cx+px+szx*(fx/trans1(2));
 								imy0[i] = cy+py-szy*(fy/trans1(2));
@@ -288,8 +340,10 @@ int detect_markers(int no){ //This function extracts markers from blobs
 								trans1=Tsol.col(0)*objQuad[12]+Tsol.col(1)*objQuad[13]+Tsol.col(2)*objQuad[14]+Tsol.col(3);
 								prx=trans1(0)*(fx/trans1(2));
 								pry=trans1(1)*(fy/trans1(2));
-                                printf("Flag 2\n");
-								//inclination of the camera plane
+                                #ifdef VERBOSE
+                                    printf("Computing the inclination of the camera plane (theta_calib)...\n");
+								#endif
+                                //inclination of the camera plane
 								prx=prx/(cos(theta_calib)+1*sin(theta_calib)*prx/fx);
 								prx=cx+prx; px=prx-cx;
 								pry=cy+pry; py=pry-cy;
@@ -298,8 +352,10 @@ int detect_markers(int no){ //This function extracts markers from blobs
 								    px=(prx-cx)/(1+r*kx1+r*r*kx2);
 								    py=(pry-cy)/(1+r*ky1+r*r*ky2);
 								}
-                                printf("Flag 3\n");
-								//create the square around the ID LED, with a size scaled by (f/<distance to object>) and centered on the ID LED center
+                                #ifdef VERBOSE
+                                    printf("Creating a square around the ID LED...\n");
+								#endif
+                                //create the square around the ID LED, with a size scaled by (f/<distance to object>) and centered on the ID LED center
 								imx0_LED[i]=cx+px-szLED*(fx/trans1(2));
 								imxf_LED[i]=cx+px+szLED*(fx/trans1(2));
 								imy0_LED[i]=cy+py-szLED*(fy/trans1(2));
@@ -308,14 +364,18 @@ int detect_markers(int no){ //This function extracts markers from blobs
 								imxf_LED[i]=std::min(imxf_LED[i],nx);
 								imy0_LED[i]=std::max(imy0_LED[i],0);
 								imyf_LED[i]=std::min(imyf_LED[i],ny);
-                                printf("Flag 4\n");
-
+                                #ifdef VERBOSE
+                                    printf("Convert from the camera frame to the used camera frame...\n");
+                                #endif
 								//convert from the standard camera frame (x - right, y - down, z - front) to the used camera frame (x - front, y - left, z - front)
 								Tsol = camR * Tsol;
 								Tsol.col(3) = Tsol.col(3) + camt;
                                 printf("%i\n", objcnt-1);
 								Tsols[objcnt-1] = Tsol;
-                                printf("Flag 5\n");
+                                
+                                #ifdef VERBOSE
+                                    printf("DEBUGGING\n");
+                                #endif
 								//debug
 								if(objcnt<=51){
 								    for(int k=0;k<no;k++)
@@ -345,6 +405,7 @@ int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, 
 	int erase[MAX_MARKERS];
 	//int lochm=170,lochM=230,locsm=40,locsM=101,locvm=40,locvM=101;
 	int no = detect_blobs(buf,step, vl,vh, hl,hh, sl,sh, 0,nx,0,ny, width, height);
+    printf("Ran detec_blobs inside track_markers: %d\n", no);
 	for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
 		
 		int max_sz = 0, max_ind = -1;//activate the blobs seen in its proximity
@@ -430,7 +491,7 @@ int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, 
     //Search for red blobs
     for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
         localization=0;
-        detect_blobs(buf,step,40,101,350,390,40,101,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height);
+        detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height);
         int old_state=it->state;
         it->state=0;
         for(int l=0;l<no;l++)

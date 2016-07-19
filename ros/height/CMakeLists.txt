@@ -32,11 +32,17 @@ rosbuild_add_library(Kalman_2D src/Kalman_2D.cpp)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
+rosbuild_add_executable(laser src/laser.cpp)
+rosbuild_add_executable(hector_analysis src/hector_mapping_analysis.cpp)
+
+
 rosbuild_add_executable(z_pose src/z_pose.cpp)
 rosbuild_add_executable(xy_pose src/xy_pose.cpp)
 rosbuild_add_executable(simOF src/simulated_OptFlow.cpp)
 rosbuild_add_executable(controller src/controller.cpp)
+rosbuild_add_executable(filter src/filter.cpp)
 
+target_link_libraries(filter Kalman_1D Kalman_2D)
 target_link_libraries(controller pid)
 target_link_libraries(z_pose Kalman_1D)
 target_link_libraries(xy_pose Kalman_2D)

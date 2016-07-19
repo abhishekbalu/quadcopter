@@ -1,16 +1,18 @@
-//Averaging Filter
+
+//Z_Pose
+//C++ Libraries
 #include <list>
-#include "ros/ros.h"
 #include <math.h>
+#include <sstream>
+#include <iterator>
+#include <random>
+//ROS Libraries
+#include "ros/ros.h"
 #include <sensor_msgs/Range.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/String.h>
 #include <ros/serialization.h>
-#include <sstream>
-#include <typeinfo>
-#include <iterator>
-#include <random>
-
+//User Libraries
 #include "height/debug.h" //Comment or uncomment this for verbose
 #include <height/Kalman_1D.h>
 using namespace std;
@@ -63,7 +65,6 @@ void readings(ros::Publisher pub){
 			ROS_INFO("Filtered Range: [%f]", msg->range);
 		#endif
 		pub.publish(*msg);
-
 	}
 }
 

@@ -16,7 +16,7 @@
 
 #define PI 3.1415926535897
 #define MAX_FEATURES 500
-#define PIXEL_TH 10
+#define SIZE_THRESHOLD 10
 #define BLOB_CONSTANT 2.25
 #define NOISE_ACTIVE 0
 
@@ -40,6 +40,18 @@ int objmark[MAX_FEATURES];
 blob blobs[MAX_FEATURES];
 
 /*------------------Auxiliary Functions-----------------*/
+unsigned char* get_binary_image(){
+    return simage;
+}
+blob* get_blobs(){
+    return blobs;
+}
+void init_binary_img(int width, int height){
+    simage=(unsigned char*)malloc(3*width*height*sizeof(unsigned char));
+}
+int get_valid(){
+    return nvalid;
+}
 void RGB_HSV(int l, int k){
     #ifdef VERBOSE
         printf("Processing RGB to HSV... Hue overbound: %i\n",rnd);
@@ -76,8 +88,7 @@ void RGB_HSV(int l, int k){
         printf("Hue: %d, Sat: %d, Val: %d\n", hue, sat, val);
     #endif
 }
-int threshold(int vl, int vh, int hl, int hh,
-    int sl, int sh){
+int threshold(int vl, int vh, int hl, int hh, int sl, int sh){
     int is_blob;
     if(rnd)
         is_blob=((hue>hl)||(hue<hh))&&(sat>sl)&&(sat<sh)&&(val>vl)&&(val<vh);
@@ -135,7 +146,6 @@ void processState(int l, int k){
             simage[l*nx+k]=0;
     }
 }
-
 int init(int width, int height){
     nx = width; //Set nx and ny
     ny = height;
@@ -150,10 +160,76 @@ int init(int width, int height){
     memset(simage,0,width*height*sizeof(unsigned char));
     return 0;
 }
-/*-------------------------------Main code---------------------*/
+void solve_links(){
+    no=0; 
+    for(int k=MAX_FEATURES-1;k>0;k--){
+        //if there is an object and it was not treated yet
+        if((objnumb[k]!=0) && (objmark[k]==0)){
+            blobs[no].size+=objnumb[k];
+            blobs[no].x+=objx[k];
+            blobs[no].y+=objy[k];
+            int link = objlink[k]; //possible connections that this object contains
+            while(link!=0){
+                blobs[no].size+=objnumb[link];
+                blobs[no].x+=objx[link];
+                blobs[no].y+=objy[link];
+                objmark[link]=1; //exhaust it after extracting information
+                link = objlink[link];
+                if(objmark[link]==1)
+                    break;
+            }
+            blobs[no].x/=blobs[no].size;  //Average, count blob
+            blobs[no].y/=blobs[no].size; 
+            objmark[k]=1; //exhaust it after extracting information
+            no++;
+        }
+    }
+}
+
+void apply_noise(int k){
+    if((blobs[k].valid)&&(NOISE_ACTIVE)){
+        blobs[k].x+=(-12+rand()%25)/100.0;
+        blobs[k].y+=(-12+rand()%25)/100.0;
+    }
+}
+
+void aggregate_blobs(){
+    for(int k=0;k<no;k++)
+      blobs[k].valid=1;
+    for(int k=0;k<no;k++)
+        if(blobs[k].valid)
+            for(int l=k+1;l<no;l++)
+                if(blobs[l].valid){
+                    double rl=sqrt(std::max(blobs[k].size,blobs[l].size)/PI); //Compute blob radius
+                    //Compute pixels to check if they are to be aggregated
+                    double a1=blobs[k].x;
+                    double a2=blobs[k].y;
+                    double b1=blobs[l].x;
+                    double b2=blobs[l].y;
+                    if((a1-b1)*(a1-b1)+(a2-b2)*(a2-b2)<(BLOB_CONSTANT*rl*rl)){
+                        double n=blobs[k].size+blobs[l].size; 
+                        double n1=blobs[k].size/n; 
+                        double n2=blobs[l].size/n;
+                        blobs[k].x=blobs[k].x*n1+blobs[l].x*n2;
+                        blobs[k].y=blobs[k].y*n1+blobs[l].y*n2;
+                        blobs[k].size=n;
+                        blobs[l].valid=0;
+                    }
+                }     
+}
+void blob_threshold(){
+    for(int k=0;k<no;k++){ //threshold on the blob sizes
+        //blobs[k].valid=(blobs[k].size<SIZE_THRESHOLD?0:blobs[k].valid);
+        if(blobs[k].size < SIZE_THRESHOLD)
+            blobs[k].valid = 0;
+        else
+            blobs[k].valid = 1;
+        apply_noise(k);
+    }
+}
+/*-------------------------------Detect Blobs Function--------------------------------------------*/
 int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
 	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height){
-
 	int is_blob = init(width, height);
 
     if(hh > 360){ //Verify if hue is over 360, since hue goes from 0 to 360, use rnd parameter
@@ -161,7 +237,7 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         hh=hh-360;
     }else
         rnd=0;
-    //Extract blobs
+
     p=buf+(xi*step)+(yi*nx*step);
     for(int l=yi;l<yf;l++,p+=(nx-(xf-xi))*step){
         for(int k=xi;k<xf;k++,p+=step){
@@ -186,82 +262,14 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             }
         }
     }
-    //deliver blobs and solve links
-    no=0; 
-    for(int k=MAX_FEATURES-1;k>0;k--){
-        //if there is an object and it was not treated yet
-        if((objnumb[k]!=0)&&(objmark[k]==0)){
-            blobs[no].size+=objnumb[k];
-            blobs[no].x+=objx[k];
-            blobs[no].y+=objy[k];
-            //possible connections that this object contains
-            int l=objlink[k];
-            while(l!=0){
-                blobs[no].size+=objnumb[l];
-                blobs[no].x+=objx[l];
-                blobs[no].y+=objy[l];
-                objmark[l]=1; //exhaust it after extracting information
-                l=objlink[l];
-                if(objmark[l]==1)
-                    break;
-            }
-            //Average, count blob
-            blobs[no].x/=blobs[no].size; 
-            blobs[no].y/=blobs[no].size; 
-            objmark[k]=1; //exhaust it after extracting information
-            no++;
-        }
-    }
-    //aggregate blobs - (TODO use concept of covariance for thdp)
-    for(int k=0;k<no;k++)
-      blobs[k].valid=1;
-    for(int k=0;k<no;k++)
-      if(blobs[k].valid)
-        for(int l=k+1;l<no;l++)
-	  if(blobs[l].valid){
-	    double rl=sqrt(std::max(blobs[k].size,blobs[l].size)/PI); //Compute blob radius
-	    //Compute pixels to check if they are to be aggregated
-	    double a1=blobs[k].x;
-        double a2=blobs[k].y;
-	    double b1=blobs[l].x;
-        double b2=blobs[l].y;
-	    if((a1-b1)*(a1-b1)+(a2-b2)*(a2-b2)<(BLOB_CONSTANT*rl*rl)){
-	    	double n=blobs[k].size+blobs[l].size; 
-            double n1=blobs[k].size/n; 
-            double n2=blobs[l].size/n;
-        	blobs[k].x=blobs[k].x*n1+blobs[l].x*n2;
-        	blobs[k].y=blobs[k].y*n1+blobs[l].y*n2;
-        	blobs[k].size=n;
-        	blobs[l].valid=0;
-            }
-          }  
-
-    for(int k=0;k<no;k++){ //threshold on the blob sizes
-		blobs[k].valid=(blobs[k].size<PIXEL_TH?0:blobs[k].valid);
-		if((blobs[k].valid)&&(NOISE_ACTIVE)){
-			blobs[k].x+=(-12+rand()%25)/100.0;
-			blobs[k].y+=(-12+rand()%25)/100.0;
-		}
-    }
-    nvalid = 0;
-    for(int k = 0; k<no; k++){
+    solve_links(); //deliver blobs and solve links -- after this variable no is the total number of blobs
+    aggregate_blobs(); //aggregate blobs - (TODO use concept of covariance for thdp) 
+    blob_threshold(); //Blob size threshold
+    
+    for(int k = 0, nvalid = 0; k<no; k++){
     	if(blobs[k].valid)
     	    nvalid++;
     }
-    #ifdef VERBOSE
-        printf("Number of valid blobs: %d\n", nvalid);
-    #endif
-        printf("Number of valid blobs: %d\n", nvalid);
+    
     return no;
-}
-
-unsigned char* get_binary_image(){
-    return simage;
-}
-
-blob* get_blobs(){
-    return blobs;
-}
-void init_binary_img(int width, int height){
-	simage=(unsigned char*)malloc(3*width*height*sizeof(unsigned char));
 }

@@ -65,5 +65,6 @@ CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/includ
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/include/sensor_msgs/fill_image.h
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/include/sensor_msgs/image_encodings.h
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/include/std_msgs/Header.h
+CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/include/std_msgs/Int8.h
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/include/std_msgs/String.h
 

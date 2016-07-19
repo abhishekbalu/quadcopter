@@ -286,32 +286,6 @@ doxygen/fast:
 .PHONY : doxygen/fast
 
 #=============================================================================
-# Target rules for targets named main_node
-
-# Build rule for target.
-main_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main_node
-.PHONY : main_node
-
-# fast build rule for target.
-main_node/fast:
-	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/build
-.PHONY : main_node/fast
-
-#=============================================================================
-# Target rules for targets named marker_debug
-
-# Build rule for target.
-marker_debug: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 marker_debug
-.PHONY : marker_debug
-
-# fast build rule for target.
-marker_debug/fast:
-	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/build
-.PHONY : marker_debug/fast
-
-#=============================================================================
 # Target rules for targets named marker_detection
 
 # Build rule for target.
@@ -323,6 +297,19 @@ marker_detection: cmake_check_build_system
 marker_detection/fast:
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/build
 .PHONY : marker_detection/fast
+
+#=============================================================================
+# Target rules for targets named node
+
+# Build rule for target.
+node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 node
+.PHONY : node
+
+# fast build rule for target.
+node/fast:
+	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/build
+.PHONY : node/fast
 
 #=============================================================================
 # Target rules for targets named p3p
@@ -593,30 +580,6 @@ src/blob_detection_debug.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.s
 .PHONY : src/blob_detection_debug.cpp.s
 
-src/main_node.o: src/main_node.cpp.o
-.PHONY : src/main_node.o
-
-# target to build an object file
-src/main_node.cpp.o:
-	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/main_node.cpp.o
-.PHONY : src/main_node.cpp.o
-
-src/main_node.i: src/main_node.cpp.i
-.PHONY : src/main_node.i
-
-# target to preprocess a source file
-src/main_node.cpp.i:
-	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/main_node.cpp.i
-.PHONY : src/main_node.cpp.i
-
-src/main_node.s: src/main_node.cpp.s
-.PHONY : src/main_node.s
-
-# target to generate assembly for a file
-src/main_node.cpp.s:
-	$(MAKE) -f CMakeFiles/main_node.dir/build.make CMakeFiles/main_node.dir/src/main_node.cpp.s
-.PHONY : src/main_node.cpp.s
-
 src/marker_detection.o: src/marker_detection.cpp.o
 .PHONY : src/marker_detection.o
 
@@ -641,29 +604,29 @@ src/marker_detection.cpp.s:
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/src/marker_detection.cpp.s
 .PHONY : src/marker_detection.cpp.s
 
-src/marker_detection_debug.o: src/marker_detection_debug.cpp.o
-.PHONY : src/marker_detection_debug.o
+src/node.o: src/node.cpp.o
+.PHONY : src/node.o
 
 # target to build an object file
-src/marker_detection_debug.cpp.o:
-	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/src/marker_detection_debug.cpp.o
-.PHONY : src/marker_detection_debug.cpp.o
+src/node.cpp.o:
+	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/src/node.cpp.o
+.PHONY : src/node.cpp.o
 
-src/marker_detection_debug.i: src/marker_detection_debug.cpp.i
-.PHONY : src/marker_detection_debug.i
+src/node.i: src/node.cpp.i
+.PHONY : src/node.i
 
 # target to preprocess a source file
-src/marker_detection_debug.cpp.i:
-	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/src/marker_detection_debug.cpp.i
-.PHONY : src/marker_detection_debug.cpp.i
+src/node.cpp.i:
+	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/src/node.cpp.i
+.PHONY : src/node.cpp.i
 
-src/marker_detection_debug.s: src/marker_detection_debug.cpp.s
-.PHONY : src/marker_detection_debug.s
+src/node.s: src/node.cpp.s
+.PHONY : src/node.s
 
 # target to generate assembly for a file
-src/marker_detection_debug.cpp.s:
-	$(MAKE) -f CMakeFiles/marker_debug.dir/build.make CMakeFiles/marker_debug.dir/src/marker_detection_debug.cpp.s
-.PHONY : src/marker_detection_debug.cpp.s
+src/node.cpp.s:
+	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/src/node.cpp.s
+.PHONY : src/node.cpp.s
 
 src/p3p.o: src/p3p.cpp.o
 .PHONY : src/p3p.o
@@ -723,7 +686,6 @@ help:
 	@echo "... rospack_genmsg_all"
 	@echo "... install/strip"
 	@echo "... marker_detection"
-	@echo "... main_node"
 	@echo "... download_extra_data"
 	@echo "... rospack_gensrv"
 	@echo "... edit_cache"
@@ -733,7 +695,6 @@ help:
 	@echo "... rospack_genmsg"
 	@echo "... test-results-run"
 	@echo "... ROSBUILD_gensrv_lisp"
-	@echo "... marker_debug"
 	@echo "... p3p"
 	@echo "... rosbuild_clean-test-results"
 	@echo "... rosbuild_precompile"
@@ -745,6 +706,7 @@ help:
 	@echo "... doxygen"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... rosbuild_premsgsrvgen"
+	@echo "... node"
 	@echo "... blob_detection"
 	@echo "... test"
 	@echo "... ROSBUILD_genmsg_cpp"
@@ -762,15 +724,12 @@ help:
 	@echo "... src/blob_detection_debug.o"
 	@echo "... src/blob_detection_debug.i"
 	@echo "... src/blob_detection_debug.s"
-	@echo "... src/main_node.o"
-	@echo "... src/main_node.i"
-	@echo "... src/main_node.s"
 	@echo "... src/marker_detection.o"
 	@echo "... src/marker_detection.i"
 	@echo "... src/marker_detection.s"
-	@echo "... src/marker_detection_debug.o"
-	@echo "... src/marker_detection_debug.i"
-	@echo "... src/marker_detection_debug.s"
+	@echo "... src/node.o"
+	@echo "... src/node.i"
+	@echo "... src/node.s"
 	@echo "... src/p3p.o"
 	@echo "... src/p3p.i"
 	@echo "... src/p3p.s"

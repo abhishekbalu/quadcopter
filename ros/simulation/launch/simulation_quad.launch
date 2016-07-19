@@ -2,8 +2,8 @@
 
 <launch>
   <!-- Choose gazebo's world | WARNING: only one of these args can be set to true -->
-  <arg name="use_empty_world" default="true"/>
-  <arg name="use_small_indoor_scenario" default="false"/>
+  <arg name="use_empty_world" default="false"/>
+  <arg name="use_small_indoor_scenario" default="true"/>
   <arg name="use_rolling_landscape" default="false"/>
   <arg name="use_sick_day_2012" default="false"/>
   <arg name="use_sick_day_2014" default="false"/>
@@ -11,7 +11,7 @@
   <arg name="use_lab6_12" default="false"/>
 
   <!-- Choose whether to use RViz -->
-  <arg name="use_rviz" default="false"/>
+  <arg name="use_rviz" default="true"/>
 
   <!-- Rviz -->
   <group if="$(arg use_rviz)">
@@ -60,29 +60,10 @@
 	<arg name="y" value="0.0"/>
 	<arg name="z" value="0.3"/>
   </include>
-
-  <!-- Spawn Keyboard Teleop -->
-  <arg name="teleop" default="false"/>
-  <group if="$(arg teleop)">
-    <include file="$(find simulation)/launch/keyboard_teleop.launch"/>
-  </group>
-
+  
   <!--Launch TF and Hector mapping-->
   <node pkg="tf" type="static_transform_publisher" name="map_broadcaster" args="0 0 0 0 0 0 map world 25"/>
+  <include file="$(find simulation)/launch/mapping_sim.launch"/> 
 
-  <include file="$(find simulation)/launch/mapping_sim.launch"/>
- 
-   <!--Sonar filtering for the takeoff PID-->
-  <!--<node pkg="simulation" type="med_sonar.py" name="filter_sonar"/>-->
-
-
-  <!--PID for takeoff -->
-  <!-- <node pkg="simulation" type="hover.py" name="hoverNode"/> -->
-
-  <!--Spawn Navigation -->
-  <!--<include file="$(find simulation)/include/move_base.launch.xml"/>-->
-
-  <!--Test Launch File -->
-  <!--<include file="$(find simulation)/launch/test.launch"/>-->
   
 </launch>

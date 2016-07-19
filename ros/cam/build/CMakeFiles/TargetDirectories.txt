@@ -1,7 +1,6 @@
 /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_py.dir
 /home/pedro/ros/cam/build/CMakeFiles/rospack_genmsg_all.dir
 /home/pedro/ros/cam/build/CMakeFiles/marker_detection.dir
-/home/pedro/ros/cam/build/CMakeFiles/main_node.dir
 /home/pedro/ros/cam/build/CMakeFiles/download_extra_data.dir
 /home/pedro/ros/cam/build/CMakeFiles/rospack_gensrv.dir
 /home/pedro/ros/cam/build/CMakeFiles/rospack_genmsg_libexe.dir
@@ -9,7 +8,6 @@
 /home/pedro/ros/cam/build/CMakeFiles/test-results-run.dir
 /home/pedro/ros/cam/build/gtest/CMakeFiles/gtest.dir
 /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir
-/home/pedro/ros/cam/build/CMakeFiles/marker_debug.dir
 /home/pedro/ros/cam/build/CMakeFiles/p3p.dir
 /home/pedro/ros/cam/build/CMakeFiles/rosbuild_clean-test-results.dir
 /home/pedro/ros/cam/build/CMakeFiles/rosbuild_precompile.dir
@@ -20,6 +18,7 @@
 /home/pedro/ros/cam/build/CMakeFiles/doxygen.dir
 /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir
 /home/pedro/ros/cam/build/CMakeFiles/rosbuild_premsgsrvgen.dir
+/home/pedro/ros/cam/build/CMakeFiles/node.dir
 /home/pedro/ros/cam/build/CMakeFiles/blob_detection.dir
 /home/pedro/ros/cam/build/gtest/CMakeFiles/gtest_main.dir
 /home/pedro/ros/cam/build/CMakeFiles/test.dir
