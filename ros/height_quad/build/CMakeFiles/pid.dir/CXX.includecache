@@ -8,7 +8,7 @@
 
 ../include/height_quad/pid.h
 
-/home/pedro/ros/height_quad/src/pid.cpp
+/home/ubuntu/quadcopter/ros/height_quad/src/pid.cpp
 height_quad/pid.h
 -
 

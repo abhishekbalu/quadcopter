@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/pedro/ros/height_quad/src/repeater_node.cpp
+/home/ubuntu/quadcopter/ros/height_quad/src/repeater_node.cpp
 ros/ros.h
-/home/pedro/ros/height_quad/src/ros/ros.h
+/home/ubuntu/quadcopter/ros/height_quad/src/ros/ros.h
 geometry_msgs/Twist.h
 -
 geometry_msgs/TwistStamped.h
@@ -212,8 +212,6 @@ set
 list
 -
 boost/shared_ptr.hpp
--
-boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -
