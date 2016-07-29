@@ -221,7 +221,7 @@ Bellow is the connector pinout and a picture of the Pixhawk connected via Serial
 You may want to use an FTDI Cable for this purpose or use a protoboard with an FTDI Chip and some headers like so:
 ![](http://i.imgur.com/gpMCH4E.jpg)
 6 - If the NVidia and PX4 are both connected via battery follow the steps:
-  - Find the ip of the quad **sudo arp-scan --interface=wlan0 --localnet** (on our local network QuadBase5 the ip is normally 11.0.3.1 or 11.0.1.5)
+  - Find the ip of the quad **sudo arp-scan --interface=wlan0 --localnet** (on our local network QuadBase5 the ip is normally 11.0.3.1 or 11.0.1.5. If you are on windows, ping these two, and you'll probably find it)
   - Connect the battery
   - Turn off USB connections
   - Turn on USB connections
@@ -229,3 +229,5 @@ You may want to use an FTDI Cable for this purpose or use a protoboard with an F
   - Turn the RC on
   - Arm the quad (press the LED)
   - Run your launches
+7 - How to fix a broken propeller
+8 - How to charge the batteries
