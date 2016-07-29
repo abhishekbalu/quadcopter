@@ -228,9 +228,28 @@ You may want to use an FTDI Cable for this purpose or use a protoboard with an F
   - Connect the battery
   - Turn off USB connections
   - Turn on USB connections
-  - To fly, reboot the PX4 by pressing the small button on the side with a pencil
+  - To fly, reboot the PX4 by pressing the small button on the side with a pencil or with the toothpick that is under one of the ESCs
   - Turn the RC on
   - Arm the quad (press the LED)
   - Run your launches
 7 - How to fix a broken propeller
 8 - How to charge the batteries
+# Steps for charging batteries in a safe manor
+Connections:
+ - Turn on the Charging station by flipping the switch on the power supply
+ - Connect the red T plug to the charging station
+ - Connect the white voltage balancer to the charging station
+
+Settings:
+ - Select the type of battery, change type with the Batt. Type button and confirm with Enter
+ - Confirm the Charging Station is on Charge mode, by using Dec and Inc buttons to select it
+ - Press Enter to select the charging amperage and Enter again to confirm
+ - Select the end voltage and confirm it with Enter
+
+Charging:
+ - Press and Hold the Enter Button
+ - Check if the selected number of battery’s cell is equal to the number of cell read by the station
+ - Press Enter to start the charging process
+ - Each press of the Dec. button cycles the status of the charging screen
+ - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
+
