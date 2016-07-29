@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall -O2 -g    CMakeFiles/clienttest.dir/clienttest.cpp.o  -o clienttest -rdynamic libcortex_sdk.a -lpthread -lm 

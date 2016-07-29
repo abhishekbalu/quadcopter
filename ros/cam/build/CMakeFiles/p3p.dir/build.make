@@ -80,6 +80,8 @@ CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/image_transport/package.
 CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/diagnostic_updater/package.xml
 CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/self_test/package.xml
+CMakeFiles/p3p.dir/src/p3p.cpp.o: /home/pedro/ros/quad_msgs/manifest.xml
+CMakeFiles/p3p.dir/src/p3p.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/p3p.dir/src/p3p.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/p3p.dir/src/p3p.cpp.o -c /home/pedro/ros/cam/src/p3p.cpp

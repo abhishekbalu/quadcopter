@@ -234,6 +234,19 @@ blob_debug/fast:
 .PHONY : blob_debug/fast
 
 #=============================================================================
+# Target rules for targets named blob_debug_qt
+
+# Build rule for target.
+blob_debug_qt: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blob_debug_qt
+.PHONY : blob_debug_qt
+
+# fast build rule for target.
+blob_debug_qt/fast:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/build
+.PHONY : blob_debug_qt/fast
+
+#=============================================================================
 # Target rules for targets named blob_detection
 
 # Build rule for target.
@@ -580,6 +593,30 @@ src/blob_detection_debug.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.s
 .PHONY : src/blob_detection_debug.cpp.s
 
+src/blob_detection_debug_qt.o: src/blob_detection_debug_qt.cpp.o
+.PHONY : src/blob_detection_debug_qt.o
+
+# target to build an object file
+src/blob_detection_debug_qt.cpp.o:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o
+.PHONY : src/blob_detection_debug_qt.cpp.o
+
+src/blob_detection_debug_qt.i: src/blob_detection_debug_qt.cpp.i
+.PHONY : src/blob_detection_debug_qt.i
+
+# target to preprocess a source file
+src/blob_detection_debug_qt.cpp.i:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.i
+.PHONY : src/blob_detection_debug_qt.cpp.i
+
+src/blob_detection_debug_qt.s: src/blob_detection_debug_qt.cpp.s
+.PHONY : src/blob_detection_debug_qt.s
+
+# target to generate assembly for a file
+src/blob_detection_debug_qt.cpp.s:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.s
+.PHONY : src/blob_detection_debug_qt.cpp.s
+
 src/marker_detection.o: src/marker_detection.cpp.o
 .PHONY : src/marker_detection.o
 
@@ -603,6 +640,30 @@ src/marker_detection.s: src/marker_detection.cpp.s
 src/marker_detection.cpp.s:
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/src/marker_detection.cpp.s
 .PHONY : src/marker_detection.cpp.s
+
+src/moc_qtfile.o: src/moc_qtfile.cxx.o
+.PHONY : src/moc_qtfile.o
+
+# target to build an object file
+src/moc_qtfile.cxx.o:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o
+.PHONY : src/moc_qtfile.cxx.o
+
+src/moc_qtfile.i: src/moc_qtfile.cxx.i
+.PHONY : src/moc_qtfile.i
+
+# target to preprocess a source file
+src/moc_qtfile.cxx.i:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.i
+.PHONY : src/moc_qtfile.cxx.i
+
+src/moc_qtfile.s: src/moc_qtfile.cxx.s
+.PHONY : src/moc_qtfile.s
+
+# target to generate assembly for a file
+src/moc_qtfile.cxx.s:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.s
+.PHONY : src/moc_qtfile.cxx.s
 
 src/node.o: src/node.cpp.o
 .PHONY : src/node.o
@@ -652,6 +713,30 @@ src/p3p.cpp.s:
 	$(MAKE) -f CMakeFiles/p3p.dir/build.make CMakeFiles/p3p.dir/src/p3p.cpp.s
 .PHONY : src/p3p.cpp.s
 
+src/qtfile.o: src/qtfile.cpp.o
+.PHONY : src/qtfile.o
+
+# target to build an object file
+src/qtfile.cpp.o:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o
+.PHONY : src/qtfile.cpp.o
+
+src/qtfile.i: src/qtfile.cpp.i
+.PHONY : src/qtfile.i
+
+# target to preprocess a source file
+src/qtfile.cpp.i:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.i
+.PHONY : src/qtfile.cpp.i
+
+src/qtfile.s: src/qtfile.cpp.s
+.PHONY : src/qtfile.s
+
+# target to generate assembly for a file
+src/qtfile.cpp.s:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.s
+.PHONY : src/qtfile.cpp.s
+
 src/usb_cam.o: src/usb_cam.cpp.o
 .PHONY : src/usb_cam.o
 
@@ -693,6 +778,7 @@ help:
 	@echo "... rospack_genmsg_libexe"
 	@echo "... install"
 	@echo "... rospack_genmsg"
+	@echo "... blob_debug_qt"
 	@echo "... test-results-run"
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... p3p"
@@ -724,15 +810,24 @@ help:
 	@echo "... src/blob_detection_debug.o"
 	@echo "... src/blob_detection_debug.i"
 	@echo "... src/blob_detection_debug.s"
+	@echo "... src/blob_detection_debug_qt.o"
+	@echo "... src/blob_detection_debug_qt.i"
+	@echo "... src/blob_detection_debug_qt.s"
 	@echo "... src/marker_detection.o"
 	@echo "... src/marker_detection.i"
 	@echo "... src/marker_detection.s"
+	@echo "... src/moc_qtfile.o"
+	@echo "... src/moc_qtfile.i"
+	@echo "... src/moc_qtfile.s"
 	@echo "... src/node.o"
 	@echo "... src/node.i"
 	@echo "... src/node.s"
 	@echo "... src/p3p.o"
 	@echo "... src/p3p.i"
 	@echo "... src/p3p.s"
+	@echo "... src/qtfile.o"
+	@echo "... src/qtfile.i"
+	@echo "... src/qtfile.s"
 	@echo "... src/usb_cam.o"
 	@echo "... src/usb_cam.i"
 	@echo "... src/usb_cam.s"

@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -O2 -g -DNDEBUG  -shared -Wl,-soname,libgtest_main.so -o /home/pedro/ros/rab3D/lib/libgtest_main.so CMakeFiles/gtest_main.dir/src/gtest_main.cc.o  -L/home/pedro/ros/rab3D/build/gtest/src -lpthread /home/pedro/ros/rab3D/lib/libgtest.so -lpthread -Wl,-rpath,/home/pedro/ros/rab3D/build/gtest/src:/home/pedro/ros/rab3D/lib 

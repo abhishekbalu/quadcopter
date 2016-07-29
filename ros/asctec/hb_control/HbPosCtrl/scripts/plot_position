@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo " ### plotting reference trajectory ###"
+rxplot $1/ctrl/debug/epos/x:y:z -b 10

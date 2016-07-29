@@ -1,0 +1,15 @@
+\subsubsection usage Usage
+\verbatim
+<node name="hb_control" pkg="hb_control" type="hb_control">
+  <param name="px" type="double" value="8.2" />
+  <param name="py" type="double" value="8.2" />
+  <param name="pz" type="double" value="7.0" />
+  <param name="vx" type="double" value="6.4" />
+  <param name="vy" type="double" value="6.4" />
+  <param name="vz" type="double" value="5.0" />
+  <param name="ix" type="double" value="75.0" />
+  <param name="iy" type="double" value="75.0" />
+  <param name="iz" type="double" value="50.0" />
+</node>
+\endverbatim
+

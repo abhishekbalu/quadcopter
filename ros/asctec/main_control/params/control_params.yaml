@@ -1,0 +1,31 @@
+Kp: 1.5
+Kv: 4.0 #2.0
+Ka: 1.0
+Kyaw: 0.5
+KIz: 0.35
+KIv: 2 #0.2
+Lph: 3
+Lpv: 1.0
+Lv: 1.0
+La: 4.1
+Lyaw: 3.0
+LIz: 12.0
+emax: 0.15
+OFFz: 1.0
+SAFEd: 0.5
+LANDz: 0.1
+LANDv: 0.3
+TurnOffv: 2.5
+envx: 0.0
+envy: 0.0
+envz: 1.0
+boundx: 1000
+boundy: 1000
+boundz: 1000
+cortex_rate: 100
+alpha: 0.2
+verbose: false
+homex: 0.0
+homey: 0.0
+homez: 1.0
+OFFSETyaw: 0.0

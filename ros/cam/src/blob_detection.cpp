@@ -14,11 +14,14 @@
 #include "cam/blob_detection.h"
 //#include "cam/debug.h" //Comment or uncomment this for verbose
 
-#define PI 3.1415926535897
 #define MAX_FEATURES 500
-#define SIZE_THRESHOLD 10
+#define SIZE_THRESHOLD 250
 #define BLOB_CONSTANT 2.25
 #define NOISE_ACTIVE 0
+//#define EXPECTED_BLOB_NUMBER 4
+#define MIN_NUMBER_BLOBS 4
+#define BLOB_INFO 1
+#define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
 
 int no=1;  //Blob number - assume there's an initial blob to start
 int skip = 0;
@@ -28,6 +31,26 @@ unsigned char col[3]; //Array to hold RGB data
 unsigned char* p; 
 int m,M,delta; //m is minimum RGB value, M is maximum RGB value, 
 int hue,sat,val; //HSV computed values
+
+int sat_sum = 0;
+int val_sum = 0;
+int sat_sum_window = 0;
+int val_sum_window = 0;
+
+
+
+
+int last_sat_window_avg = 0;
+int last_val_window_avg = 0;
+
+int window_pixel_number = 0;
+int pixel_number = 0;
+int max_hue = 0;
+int min_hue = 1000;
+int center_pixel_max_hue = 0;
+int center_pixel_min_hue = 1000;
+
+
 unsigned char* simage; //binary image
 int nx,ny; //image width and image height
 unsigned char state; //Variable to check if a blob is a new blob or is connected
@@ -37,8 +60,29 @@ int objlink[MAX_FEATURES];
 unsigned long objx[MAX_FEATURES];
 unsigned long objy[MAX_FEATURES];
 int objmark[MAX_FEATURES];
-blob blobs[MAX_FEATURES];
 
+blob blobs[MAX_FEATURES];
+blob last_valid_blobs[MAX_FEATURES];
+
+float size_sum = 0;
+float size_avg;
+float prev_size_avg;
+int first_time = 0;
+
+
+int sl_adjust = 0;
+int sh_adjust = 0;
+int hl_adjust = 0;
+int hh_adjust = 0;
+int vl_adjust = 0;
+int vh_adjust = 0;
+int _sl = 0;
+int _sh = 0;
+int _hl = 0;
+int _hh = 0;
+int _vl = 0;
+int _vh = 0;
+bool initialization = true;
 /*------------------Auxiliary Functions-----------------*/
 unsigned char* get_binary_image(){
     return simage;
@@ -158,6 +202,8 @@ int init(int width, int height){
     memset(objmark,0,MAX_FEATURES*sizeof(int));
     memset(blobs,0,MAX_FEATURES*sizeof(blob));
     memset(simage,0,width*height*sizeof(unsigned char));
+
+    //memset(last_valid_blobs, 0, MAX_FEATURES*sizeof(blob));
     return 0;
 }
 void solve_links(){
@@ -200,7 +246,7 @@ void aggregate_blobs(){
         if(blobs[k].valid)
             for(int l=k+1;l<no;l++)
                 if(blobs[l].valid){
-                    double rl=sqrt(std::max(blobs[k].size,blobs[l].size)/PI); //Compute blob radius
+                    double rl=sqrt(std::max(blobs[k].size,blobs[l].size)/M_PI); //Compute blob radius
                     //Compute pixels to check if they are to be aggregated
                     double a1=blobs[k].x;
                     double a2=blobs[k].y;
@@ -219,18 +265,31 @@ void aggregate_blobs(){
 }
 void blob_threshold(){
     for(int k=0;k<no;k++){ //threshold on the blob sizes
-        //blobs[k].valid=(blobs[k].size<SIZE_THRESHOLD?0:blobs[k].valid);
-        if(blobs[k].size < SIZE_THRESHOLD)
-            blobs[k].valid = 0;
-        else
-            blobs[k].valid = 1;
+        blobs[k].valid=(blobs[k].size<SIZE_THRESHOLD?0:blobs[k].valid);
         apply_noise(k);
     }
 }
 /*-------------------------------Detect Blobs Function--------------------------------------------*/
 int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
 	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height){
+
 	int is_blob = init(width, height);
+    if(initialization){
+        _sl = sl;
+        _sh = sh;
+        _hl = hl;
+        _hh = hh;
+        _vl = vl;
+        _vh = vh;
+        
+    }else{
+        _sl=sl_adjust + _sl;
+        _sh=sh_adjust + _sh;
+        _hl=hl_adjust + _hl;
+        _hh=hh_adjust + _hh;
+        _vl=vl_adjust + _vl;
+        _vh=vh_adjust + _vh;
+    }
 
     if(hh > 360){ //Verify if hue is over 360, since hue goes from 0 to 360, use rnd parameter
         rnd=1;
@@ -239,13 +298,43 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         rnd=0;
 
     p=buf+(xi*step)+(yi*nx*step);
+    sat_sum = 0; val_sum=0; pixel_number = 0; sat_sum_window=0; val_sum_window=0; window_pixel_number = 0;
+    max_hue = 0; min_hue = 1000;
+    
     for(int l=yi;l<yf;l++,p+=(nx-(xf-xi))*step){
         for(int k=xi;k<xf;k++,p+=step){
             RGB_HSV(l, k);//rgb->hsv
+            sat_sum+=sat;
+            val_sum+=val;
+            pixel_number++;
+            if(initialization == false){
+                for(int j=0; j<nvalid; j++){
+                    if((k > last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size) && k < last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size)) 
+                        && (l > last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size) && l < last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size))){
+                        //This pixel is inside one of the windows
+                        sat_sum_window+=sat;
+                        val_sum_window+=val;
+                        window_pixel_number++;
+                        if(k == (int)last_valid_blobs[j].x && l == (int)last_valid_blobs[j].y){
+                            if(hue > center_pixel_max_hue)
+                                center_pixel_max_hue = hue;
+                            if(hue < center_pixel_min_hue)
+                                center_pixel_min_hue = hue;
+                        }
+                        if(hue > max_hue){
+                            max_hue = hue;
+                        }
+                        if(hue < min_hue){
+                            min_hue = hue;
+                        }
+
+                    }
+                }
+            }
+
             if(skip)
                 continue;
-
-            is_blob = threshold(vl, vh, hl, hh, sl, sh); //check color (need to check the threshold)
+            is_blob = threshold(_vl, _vh, _hl, _hh, _sl, _sh); //check color (need to check the threshold)
             if(is_blob){ 
                 #ifdef VERBOSE
             	   printf("This pixel belongs to a blob\n");
@@ -262,14 +351,101 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             }
         }
     }
+    printf("Total image Average sat: %d, Total image Average val: %d\n", sat_sum/pixel_number, val_sum/pixel_number);
+    if(initialization == false && window_pixel_number != 0){
+        printf("Windows Average sat: %d, Windows Average val: %d, Pixel number in windows: %d\n Max_hue: %d, Min_hue: %d Center_Max_hue: %d, Center_Min_hue:%d \n", sat_sum_window/window_pixel_number, val_sum_window/window_pixel_number, window_pixel_number, max_hue, min_hue, center_pixel_max_hue, center_pixel_min_hue);
+        if(last_val_window_avg!=0 && abs(last_val_window_avg-val_sum_window/window_pixel_number)>12){
+            printf("LIGHTS CHANGED!!! Correcting value...!\n");
+            _vl = val_sum_window/window_pixel_number;
+        }
+        last_val_window_avg = val_sum_window/window_pixel_number;
+        last_sat_window_avg = sat_sum_window/window_pixel_number;
+    }
     solve_links(); //deliver blobs and solve links -- after this variable no is the total number of blobs
     aggregate_blobs(); //aggregate blobs - (TODO use concept of covariance for thdp) 
     blob_threshold(); //Blob size threshold
+    nvalid = 0;
+    #ifdef BLOB_INFO
+        printf("----------------------------------------------\n");
+    #endif
     
-    for(int k = 0, nvalid = 0; k<no; k++){
-    	if(blobs[k].valid)
-    	    nvalid++;
+    if(initialization == false){
+        for(int j=0; j<nvalid; j++){
+           printf("Window %d Vertex 1: (%f, %f), Vertex 2: (%f, %f), Vertex 3: (%f, %f), Vertex 4: (%f, %f)\n", j, 
+                      last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size),
+                      last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size),
+                      last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size),
+                      last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size)
+                      ); 
+        }
     }
+    size_avg = 0;
     
+    for(int k = 0; k<no; k++){ //Get the new blobs
+        if(blobs[k].valid){
+            #ifdef BLOB_INFO //This was used for testing only
+                printf("\t BLOB number: %d\n", k);
+                printf("\t \t X: %f\n", blobs[k].x);
+                printf("\t \t Y: %f\n", blobs[k].y);
+                printf("\t \t Size: %f\n", blobs[k].size);
+                printf("\t   Average size: %f\n", size_avg);
+            #endif
+            nvalid++;
+            
+        }
+    }
+    nvalid = 0;
+    for(int k = 0; k<no; k++){
+    	if(blobs[k].valid){
+            size_sum+=blobs[k].size;
+            last_valid_blobs[nvalid] = blobs[k];
+            nvalid++;
+            
+        }
+    }
+    size_avg = size_sum/nvalid;
+    /*
+    //RUDE BRUTE FORCE ATTEMPT
+    if(nvalid == EXPECTED_BLOB_NUMBER || nvalid == EXPECTED_BLOB_NUMBER + 1){
+        printf("Just right!\n");
+        sl_adjust = 0;
+        if(size_avg > prev_size_avg){
+            prev_size_avg = size_avg;
+        }
+        
+
+    }else if(nvalid < EXPECTED_BLOB_NUMBER-1){
+        printf("Too Bright? %d !!!\n", _sl);
+        sl_adjust = -2;
+        hl_adjust = -1;
+        hh_adjust = -1;
+    }else if(nvalid > EXPECTED_BLOB_NUMBER+1){
+        printf("Too dark?!!\n");
+        sl_adjust =+ 2;
+    }*/
+    if(nvalid >= MIN_NUMBER_BLOBS){
+        printf("More than 4 blobs detected!\n");
+        if(nvalid%4 == 0){
+            printf("Right number of blobs \n");
+            sl_adjust = 0;
+            vl_adjust = 0;
+        }
+
+        sl_adjust = 0;
+    }else{ //normally its even nvalid = 0
+        printf("Less than 4 blobs detected!\n");
+        printf("Too Bright? %d !!!\n", _sl);
+        sl_adjust = -2;
+        hl_adjust = -1;
+        hh_adjust = -1;
+        vl_adjust = +2;
+    }
+
+    #ifdef BLOB_INFO
+        printf("----------------------------------------------\n");
+    #endif
+    #ifdef LIGHT_CALIBRATION 
+        initialization = false;
+    #endif
     return no;
 }

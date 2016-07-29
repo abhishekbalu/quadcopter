@@ -275,13 +275,49 @@ clean: CMakeFiles/blob_debug.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/blob_debug_qt.dir
+
+# All Build rule for target.
+CMakeFiles/blob_debug_qt.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+CMakeFiles/blob_debug_qt.dir/all: CMakeFiles/blob_detection.dir/all
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/depend
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  12 13 14 15
+	@echo "Built target blob_debug_qt"
+.PHONY : CMakeFiles/blob_debug_qt.dir/all
+
+# Include target in all.
+all: CMakeFiles/blob_debug_qt.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/blob_debug_qt.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/cam/build/CMakeFiles 15
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/blob_debug_qt.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/cam/build/CMakeFiles 0
+.PHONY : CMakeFiles/blob_debug_qt.dir/rule
+
+# Convenience name for target.
+blob_debug_qt: CMakeFiles/blob_debug_qt.dir/rule
+.PHONY : blob_debug_qt
+
+# clean rule for target.
+CMakeFiles/blob_debug_qt.dir/clean:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/clean
+.PHONY : CMakeFiles/blob_debug_qt.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/blob_debug_qt.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/blob_detection.dir
 
 # All Build rule for target.
 CMakeFiles/blob_detection.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/blob_detection.dir/build.make CMakeFiles/blob_detection.dir/depend
 	$(MAKE) -f CMakeFiles/blob_detection.dir/build.make CMakeFiles/blob_detection.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  16
 	@echo "Built target blob_detection"
 .PHONY : CMakeFiles/blob_detection.dir/all
 
@@ -410,7 +446,7 @@ CMakeFiles/marker_detection.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 CMakeFiles/marker_detection.dir/all: CMakeFiles/p3p.dir/all
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/depend
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  15
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  19
 	@echo "Built target marker_detection"
 .PHONY : CMakeFiles/marker_detection.dir/all
 
@@ -444,11 +480,11 @@ clean: CMakeFiles/marker_detection.dir/clean
 # All Build rule for target.
 CMakeFiles/node.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 CMakeFiles/node.dir/all: CMakeFiles/p3p.dir/all
-CMakeFiles/node.dir/all: CMakeFiles/blob_detection.dir/all
 CMakeFiles/node.dir/all: CMakeFiles/marker_detection.dir/all
+CMakeFiles/node.dir/all: CMakeFiles/blob_detection.dir/all
 	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/depend
 	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  16
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  20
 	@echo "Built target node"
 .PHONY : CMakeFiles/node.dir/all
 
@@ -483,7 +519,7 @@ clean: CMakeFiles/node.dir/clean
 CMakeFiles/p3p.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/p3p.dir/build.make CMakeFiles/p3p.dir/depend
 	$(MAKE) -f CMakeFiles/p3p.dir/build.make CMakeFiles/p3p.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  21
 	@echo "Built target p3p"
 .PHONY : CMakeFiles/p3p.dir/all
 
@@ -609,8 +645,8 @@ clean: CMakeFiles/rosbuild_premsgsrvgen.dir/clean
 # Target rules for target CMakeFiles/rospack_genmsg.dir
 
 # All Build rule for target.
-CMakeFiles/rospack_genmsg.dir/all: CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 CMakeFiles/rospack_genmsg.dir/all: CMakeFiles/ROSBUILD_genmsg_lisp.dir/all
+CMakeFiles/rospack_genmsg.dir/all: CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 CMakeFiles/rospack_genmsg.dir/all: CMakeFiles/ROSBUILD_genmsg_py.dir/all
 	$(MAKE) -f CMakeFiles/rospack_genmsg.dir/build.make CMakeFiles/rospack_genmsg.dir/depend
 	$(MAKE) -f CMakeFiles/rospack_genmsg.dir/build.make CMakeFiles/rospack_genmsg.dir/build
@@ -929,7 +965,7 @@ clean: CMakeFiles/tests.dir/clean
 CMakeFiles/usb_cam.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/usb_cam.dir/build.make CMakeFiles/usb_cam.dir/depend
 	$(MAKE) -f CMakeFiles/usb_cam.dir/build.make CMakeFiles/usb_cam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  18
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  22
 	@echo "Built target usb_cam"
 .PHONY : CMakeFiles/usb_cam.dir/all
 
@@ -980,7 +1016,7 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  13
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  17
 	@echo "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
@@ -1011,7 +1047,7 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  14
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles  18
 	@echo "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 

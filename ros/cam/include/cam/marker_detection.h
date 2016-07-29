@@ -2,7 +2,6 @@
 #define _COMMON_MARKER_DETECTION_
 
 //C++ Libraries
-
 #include <eigen3/Eigen/Dense>
 #include <eigen3/Eigen/Eigen>
 #include <eigen3/Eigen/LU>
@@ -26,8 +25,6 @@ typedef struct t_marker{ //tracked marker structure
 std::vector<marker>* get_markers();
 void initialize_markers();
 int detect_markers(int no);
-int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, int hh,
-	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height);
-
+int track_markers(unsigned char* buf,unsigned int step, int width, int height);
 
 #endif

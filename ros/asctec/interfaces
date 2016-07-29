@@ -1,0 +1,56 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+allow-hotplug wlan2
+auto wlan2
+iface wlan2 inet static
+address 11.1.1.99
+netmask 255.255.255.0
+gateway 11.1.1.199
+wireless_mode managed
+wireless_essid Flying_Arena
+wireless_key off
+post-up ping 11.1.1.199
+
+#allow-hotplug wlan2
+#auto wlan2
+#iface wlan2 inet dhcp
+#pre-up date -s "15 MAR 2014 19:24:00"
+#pre-up wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlan2
+#not important
+#post-up dhclient
+#wpa-conf /etc/wpa_supplicant.conf
+
+
+
+#allow-hotplug wlan2
+#auto wlan2
+#iface wlan2 inet static
+#address 10.1.1.100
+#netmask 255.255.255.0
+#gateway 10.1.1.199
+#wireless_mode managed
+#wireless_essid OveroAccess
+#wireless_key off
+#hwaddress ether 00:19:88:44:70:b6
+
+#auto eth0
+#iface eth0 inet static
+#address 10.1.1.100
+#netmask 255.255.255.0
+#gateway 10.1.1.199
+
+auto eth0
+iface eth0 inet static
+address 128.178.90.211
+netmask 255.255.255.0
+gateway 128.178.90.1
+dns-nameservers 128.178.15.7
+dns-search epfl.ch
+
+#iface wlan0 inet dhcp
+#pre-up /sbin/iwconfig wlan0 essid "OveroAccess"
+#wireless_mode managed
+#auto wlan0
+
+#      pre-up wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf -B
+#      down killall wpa_supplicant

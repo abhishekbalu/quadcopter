@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/duartecdias/ros/quad_control/macortex_bridge/lib/src/clienttest.cpp
+string.h
+-
+stdio.h
+-
+iostream
+-
+unistd.h
+-
+cortex.h
+/home/duartecdias/ros/quad_control/macortex_bridge/lib/src/cortex.h
+
+/home/duartecdias/ros/quad_control/macortex_bridge/lib/src/cortex.h
+

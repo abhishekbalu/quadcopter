@@ -1,0 +1,19 @@
+<launch>
+
+    <node name="macortex_bridge" pkg="macortex_bridge" type="macortex_bridge" output="screen" >
+		<rosparam command="load" file="/home/linaro/rosws/sandbox/common_params.yaml" />    
+    </node>
+
+    <node name="user_control" pkg="user_control" type="user_control"  output="screen" args = "8000" >
+    </node>
+
+    <node name="main_control" pkg="main_control" type="main_control" output="screen" >
+		<rosparam command="load" file="$(find main_control)/params/control_params.yaml" />	
+    </node>
+
+    <node name="fcu" pkg="asctec_hl_interface" type="hl_node" output="screen" clear_params="true">
+		<rosparam file="$(find asctec_hl_interface)/launch/fcu_parameters.yaml" />
+		<rosparam file="$(find asctec_hl_interface)/launch/ssdk_parameters.yaml" />        
+    </node>
+
+</launch>

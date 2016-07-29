@@ -85,6 +85,8 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/QuadPoseList.h: /home/pedro/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/QuadPoseList.h: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPoseList.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/QuadPoseList.msg
@@ -122,6 +124,8 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/detections.h: /home/pedro/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/detections.h: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/detections.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/detections.msg
@@ -160,6 +164,8 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/QuadPose.h: /home/pedro/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/QuadPose.h: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPose.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/QuadPose.msg

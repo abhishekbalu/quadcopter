@@ -36,8 +36,8 @@ static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher valid_blobs_pub;
-std::string blob_settings = "blue_blob_settings.yaml";
-std::string image_settings = "image_settings.yaml";
+std::string blob_settings = "yamls/blue_blob_settings.yaml";
+std::string image_settings = "yamls/image_settings.yaml";
 std_msgs::Int8 valid_msg;
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
@@ -141,6 +141,7 @@ void readImageParams(std::string file){
 	 	#endif
 	}catch(const BadConversion& e){}
 }
+
 
 int main(int argc, char** argv){
 	if(argc==6){

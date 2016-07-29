@@ -1,0 +1,15 @@
+<launch>
+
+	<group ns="quad99">
+
+		<param name="/use_sim_time" value="true" />
+
+		<node name="rab3D" pkg="rab3D" type="rab3D_emit" output="screen" >
+			<rosparam command="load" file="$(find rab3D)/params/rab3D_params.yaml" />
+		</node>
+
+	</group>
+
+</launch>
+
+

@@ -312,30 +312,17 @@ filter/fast:
 .PHONY : filter/fast
 
 #=============================================================================
-# Target rules for targets named hector_analysis
+# Target rules for targets named laser_filter
 
 # Build rule for target.
-hector_analysis: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hector_analysis
-.PHONY : hector_analysis
+laser_filter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 laser_filter
+.PHONY : laser_filter
 
 # fast build rule for target.
-hector_analysis/fast:
-	$(MAKE) -f CMakeFiles/hector_analysis.dir/build.make CMakeFiles/hector_analysis.dir/build
-.PHONY : hector_analysis/fast
-
-#=============================================================================
-# Target rules for targets named laser
-
-# Build rule for target.
-laser: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 laser
-.PHONY : laser
-
-# fast build rule for target.
-laser/fast:
-	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/build
-.PHONY : laser/fast
+laser_filter/fast:
+	$(MAKE) -f CMakeFiles/laser_filter.dir/build.make CMakeFiles/laser_filter.dir/build
+.PHONY : laser_filter/fast
 
 #=============================================================================
 # Target rules for targets named pid
@@ -680,53 +667,29 @@ src/filter.cpp.s:
 	$(MAKE) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/src/filter.cpp.s
 .PHONY : src/filter.cpp.s
 
-src/hector_mapping_analysis.o: src/hector_mapping_analysis.cpp.o
-.PHONY : src/hector_mapping_analysis.o
+src/laser_filter.o: src/laser_filter.cpp.o
+.PHONY : src/laser_filter.o
 
 # target to build an object file
-src/hector_mapping_analysis.cpp.o:
-	$(MAKE) -f CMakeFiles/hector_analysis.dir/build.make CMakeFiles/hector_analysis.dir/src/hector_mapping_analysis.cpp.o
-.PHONY : src/hector_mapping_analysis.cpp.o
+src/laser_filter.cpp.o:
+	$(MAKE) -f CMakeFiles/laser_filter.dir/build.make CMakeFiles/laser_filter.dir/src/laser_filter.cpp.o
+.PHONY : src/laser_filter.cpp.o
 
-src/hector_mapping_analysis.i: src/hector_mapping_analysis.cpp.i
-.PHONY : src/hector_mapping_analysis.i
-
-# target to preprocess a source file
-src/hector_mapping_analysis.cpp.i:
-	$(MAKE) -f CMakeFiles/hector_analysis.dir/build.make CMakeFiles/hector_analysis.dir/src/hector_mapping_analysis.cpp.i
-.PHONY : src/hector_mapping_analysis.cpp.i
-
-src/hector_mapping_analysis.s: src/hector_mapping_analysis.cpp.s
-.PHONY : src/hector_mapping_analysis.s
-
-# target to generate assembly for a file
-src/hector_mapping_analysis.cpp.s:
-	$(MAKE) -f CMakeFiles/hector_analysis.dir/build.make CMakeFiles/hector_analysis.dir/src/hector_mapping_analysis.cpp.s
-.PHONY : src/hector_mapping_analysis.cpp.s
-
-src/laser.o: src/laser.cpp.o
-.PHONY : src/laser.o
-
-# target to build an object file
-src/laser.cpp.o:
-	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.cpp.o
-.PHONY : src/laser.cpp.o
-
-src/laser.i: src/laser.cpp.i
-.PHONY : src/laser.i
+src/laser_filter.i: src/laser_filter.cpp.i
+.PHONY : src/laser_filter.i
 
 # target to preprocess a source file
-src/laser.cpp.i:
-	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.cpp.i
-.PHONY : src/laser.cpp.i
+src/laser_filter.cpp.i:
+	$(MAKE) -f CMakeFiles/laser_filter.dir/build.make CMakeFiles/laser_filter.dir/src/laser_filter.cpp.i
+.PHONY : src/laser_filter.cpp.i
 
-src/laser.s: src/laser.cpp.s
-.PHONY : src/laser.s
+src/laser_filter.s: src/laser_filter.cpp.s
+.PHONY : src/laser_filter.s
 
 # target to generate assembly for a file
-src/laser.cpp.s:
-	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.cpp.s
-.PHONY : src/laser.cpp.s
+src/laser_filter.cpp.s:
+	$(MAKE) -f CMakeFiles/laser_filter.dir/build.make CMakeFiles/laser_filter.dir/src/laser_filter.cpp.s
+.PHONY : src/laser_filter.cpp.s
 
 src/pid.o: src/pid.cpp.o
 .PHONY : src/pid.o
@@ -833,7 +796,7 @@ help:
 	@echo "... ROSBUILD_genmsg_py"
 	@echo "... rospack_genmsg_all"
 	@echo "... install/strip"
-	@echo "... hector_analysis"
+	@echo "... laser_filter"
 	@echo "... download_extra_data"
 	@echo "... rospack_gensrv"
 	@echo "... edit_cache"
@@ -853,7 +816,6 @@ help:
 	@echo "... tests"
 	@echo "... test-future"
 	@echo "... doxygen"
-	@echo "... laser"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... pid"
@@ -882,12 +844,9 @@ help:
 	@echo "... src/filter.o"
 	@echo "... src/filter.i"
 	@echo "... src/filter.s"
-	@echo "... src/hector_mapping_analysis.o"
-	@echo "... src/hector_mapping_analysis.i"
-	@echo "... src/hector_mapping_analysis.s"
-	@echo "... src/laser.o"
-	@echo "... src/laser.i"
-	@echo "... src/laser.s"
+	@echo "... src/laser_filter.o"
+	@echo "... src/laser_filter.i"
+	@echo "... src/laser_filter.s"
 	@echo "... src/pid.o"
 	@echo "... src/pid.i"
 	@echo "... src/pid.s"

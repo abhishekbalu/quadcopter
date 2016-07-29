@@ -1,0 +1,2 @@
+/home/duartecdias/ros/quad_control/macortex_bridge/lib/src/CMakeFiles/clienttest.dir
+/home/duartecdias/ros/quad_control/macortex_bridge/lib/src/CMakeFiles/cortex_sdk.dir

@@ -14,6 +14,7 @@
   <depend package="sensor_msgs"/>
   <depend package="geometry_msgs"/>
   <depend package="self_test"/>
+  <depend package="quad_msgs"/>
   <build_depend>libswscale-dev</build_depend>
   <run_depend>libswscale-dev</run_depend>
   

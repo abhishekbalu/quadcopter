@@ -1,0 +1,22 @@
+<package>
+  <description brief="HbPosCtrl">
+
+     HbPosCtrl
+
+  </description>
+  <author>Michael Minnig GR A2 445</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/HbPosCtrl</url>
+  <depend package="roscpp"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="tf" />
+  <depend package="dynamic_reconfigure"/>
+  <depend package="actionlib" />
+  <depend package="diagnostic_updater" />
+  <depend package="asctec_hl_comm"/>
+
+</package>
+
+

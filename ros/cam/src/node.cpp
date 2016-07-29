@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <eigen3/Eigen/Dense>
 //ROS libraries
 #include <ros/ros.h>
@@ -27,28 +28,29 @@ using namespace std;
 using namespace YAML;
 using namespace Eigen;
 
+#define MAX_DEVIATION 0.2
+
 vector<marker>* detected_quads; //Remember, marker struct = one quad
 MatrixXd* objects;
 unsigned char* bufb,* buf;
 blob* blp;
 int nblobs,nobjects;
 
-int vl; //min val 
-int vh; //max val 
+int datapoints = 0;
+ofstream outputfile;
 
-int hl; //min hue 
-int hh; //max hue 
 
-int sl; //min sat 
-int sh; //max sat 
+double value = 0.0;
+double last_value = 0.0;
+
+
 int width;
 int height;
 static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher markers_pub;
-std::string blob_settings = "blue_blob_settings.yaml";
-std::string image_settings = "image_settings.yaml";
+std::string image_settings = "yamls/image_settings.yaml";
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
 	//get image
@@ -65,10 +67,6 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
             
         }
     }
-    int xi = 0;
-    int xf = img.width;
-    int yi = 0;
-    int yf = img.height;
 
     //publishing usefull information
     sensor_msgs::Image rgb_img = *msg;
@@ -86,7 +84,7 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
     bin_image_pub.publish(bin_img);
 
 	//blob detection and publish binary image
-    track_markers(buf,3, vl, vh, hl, hh, sl, sh, xi, xf, yi, yf, img.width, img.height);
+    track_markers(buf, 3, img.width, img.height);
 	
 	detected_quads = get_markers();
 	cam::QuadPoseList quad_poses_msg;
@@ -110,6 +108,21 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		    quad_pose.pose_updated = 1;
 		else
 		    quad_pose.pose_updated = 0;
+		
+		if(quad_pose.name == "frame0"){
+			//Reject outliers and when the frame is lost
+			value = quad_pose.position.x;
+			if((std::abs(last_value-value) < MAX_DEVIATION || last_value == 0) && quad_pose.position.x !=NULL){
+				std::stringstream ss;
+				ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << quad_pose.orientation.x << "," << quad_pose.orientation.y << "," << quad_pose.orientation.z << "," << quad_pose.orientation.w << "," << datapoints;
+				std::string s = ss.str();
+				outputfile << s << endl;
+				cout << s << endl;
+				datapoints++;
+				last_value = value;
+			}
+			
+		}
 		quad_poses_msg.poses.push_back(quad_pose);
 	}
 	markers_pub.publish(quad_poses_msg);
@@ -117,25 +130,6 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
     return;
 }
 
-void readBlobParams(std::string file){
-	YAML::Node root = YAML::LoadFile(file);
-	try{
-		vl = root["vl"].as<int>();
-		vh = root["vh"].as<int>();
-		hl = root["hl"].as<int>();
-		hh = root["hh"].as<int>();
-		sl = root["sl"].as<int>();
-		sh = root["sh"].as<int>();
-		#ifdef VERBOSE
-		 	std::cout << root["vl"].as<int>() << "\n";
-		 	std::cout << root["vh"].as<int>() << "\n";
-		 	std::cout << root["hl"].as<int>() << "\n";
-		 	std::cout << root["hh"].as<int>() << "\n";
-		 	std::cout << root["sl"].as<int>() << "\n";
-		 	std::cout << root["sh"].as<int>() << "\n";
-	 	#endif
-	}catch(const BadConversion& e){}
-}
 
 void readImageParams(std::string file){
 	YAML::Node root = YAML::LoadFile(file);
@@ -150,16 +144,7 @@ void readImageParams(std::string file){
 }
 
 int main(int argc, char** argv){
-	if(argc==6){
-		vl = atoi(argv[1]);
-		vh = atoi(argv[2]);
-		hl = atoi(argv[3]);
-		hh = atoi(argv[3]);
-		sl = atoi(argv[4]);
-		sh = atoi(argv[5]);
-	}
 	readImageParams(image_settings);
-	readBlobParams(blob_settings);
 
 	//Initialize the sensor
 	init_binary_img(width, height);
@@ -167,7 +152,7 @@ int main(int argc, char** argv){
     bufb = get_binary_image();
     blp = get_blobs();
     initialize_markers();
-
+    outputfile.open("frame_data.csv");
     //intialize ROS
     ros::init(argc, argv,"node");
     ros::NodeHandle nh;
@@ -180,10 +165,6 @@ int main(int argc, char** argv){
     bin_image_pub=nh.advertise<sensor_msgs::Image>("node/binary_image",1);
     detections_pub=nh.advertise<cam::detections>("node/detections",1);
     markers_pub = nh.advertise<cam::QuadPoseList>("node/markers",1);
-
-
-
-
 
     ros::Rate loop_rate(30);
    

@@ -1,0 +1,13 @@
+<launch>
+    <node name="fix_interaction" pkg="HB_Link" type="fix_interaction" output="screen" args="localhost 6666 6667">
+    </node>
+    <node name="fix_receiver" pkg="HB_Link" type="fix_receiver" output="screen" args="6668">
+    </node>
+    <node name="mobile_interaction" pkg="HB_Link" type="mobile_interaction" output="screen" args="localhost 6667 6666">
+    </node>
+    <node name="mobile_stream" pkg="HB_Link" type="mobile_stream" args="localhost 6668">
+    </node>
+    <node name="waypoint_server" pkg="asctec_hl_interface" type="waypoint_server">
+    </node>
+</launch>
+

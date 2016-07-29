@@ -109,6 +109,8 @@ iostream
 -
 fstream
 -
+sstream
+-
 eigen3/Eigen/Dense
 -
 ros/ros.h

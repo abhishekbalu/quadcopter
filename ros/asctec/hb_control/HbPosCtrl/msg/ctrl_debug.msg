@@ -1,0 +1,11 @@
+Header header
+geometry_msgs/Point epos
+geometry_msgs/Point evel
+geometry_msgs/Point fdes
+geometry_msgs/Point acc
+geometry_msgs/Point accb
+geometry_msgs/Point accref
+geometry_msgs/Point velref
+geometry_msgs/Point posref
+geometry_msgs/Point angles
+geometry_msgs/Point integrator

@@ -16,6 +16,7 @@ unsigned char* get_binary_image();
 blob* get_blobs();
 //Alloc memory for the binary image array, the rest is allocated at debug time
 void init_binary_img(int width, int height);
+//Get the number of valid blobs
 int get_valid();
 
 #endif

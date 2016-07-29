@@ -8,7 +8,7 @@
 #include "height_quad/Kalman_1D.h"
 #include "height_quad/debug.h"
 
-#define CENTER_OF_MASS_FILTER_OFFSET 0
+#define CENTER_OF_MASS_FILTER_OFFSET 0.06
 #define NUMB_VALUES_TO_DISCARD 4
 #define RATE 10
 Kalman_1D kalman(0.2, 32, 1, 0.14); //Q, R, P, z initial sensor position(height of the sensor)

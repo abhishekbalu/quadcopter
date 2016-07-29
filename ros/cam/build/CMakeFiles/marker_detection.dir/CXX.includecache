@@ -53,6 +53,8 @@ eigen3/Eigen/LU
 -
 eigen3/Eigen/Core
 -
+yaml-cpp/yaml.h
+/home/pedro/ros/cam/src/yaml-cpp/yaml.h
 ros/ros.h
 -
 cam/blob_detection.h

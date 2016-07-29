@@ -12,6 +12,8 @@
 #include <eigen3/Eigen/Eigen>
 #include <eigen3/Eigen/LU>
 #include <eigen3/Eigen/Core>
+#include "yaml-cpp/yaml.h"
+
 //ROS Libraries
 #include <ros/ros.h>
 //User Libraries
@@ -20,19 +22,20 @@
 #include "cam/p3p.hpp"
 //Verbose
 //#include "cam/debug.h" //Comment or uncomment this for verbose
-#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
+//#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 
 using namespace Eigen;
 using namespace std;
 using namespace P3P_test;
+using namespace YAML;
 
-#define ROUND(x) ((((x)-(int)(x))>0.5)?(int)(x)+1:(int)(x))
-#define PI 3.1415926535897
 #define MAX_FEATURES 500
 #define MAX_MARKERS 50
-#define MIN_NUM_FAILURES 5 //minimal number of failures allowed for a tracked frame
-#define RED_BLOB_THRESHOLD_SCALE_FACTOR 0.4
-#define MARKER_THRESHOLD 4
+
+
+int MIN_NUM_FAILURES = 5; //minimal number of failures allowed for a tracked frame
+double RED_BLOB_THRESHOLD_SCALE_FACTOR = 0.4;
+int MARKER_THRESHOLD = 4;
 
 
 //................................TRACK MARKER VARIABLES.......................
@@ -40,13 +43,12 @@ int localization;
 
 int nquad_freq=4;
 double quad_freq[]={0,1,2,3};
-string quad_freq_name[]={"quad99","quad98","quad97","quad96"};
+string quad_freq_name[]={"frame0","frame1","frame2","frame3"};
 const char* unknown = "unknown";
 
 //................................DETECT MARKER VARIABLES.......................
 //Really should read this crap from a file
 
-//40,101,350,390,40,101
 int red_blob_sl = 60;
 int red_blob_sh = 110;
 int red_blob_hl = 350;
@@ -54,24 +56,30 @@ int red_blob_hh = 390;
 int red_blob_vl = 50;
 int red_blob_vh = 101;
 
+int blue_blob_sl = 50;
+int blue_blob_sh = 110;
+int blue_blob_hl = 180;
+int blue_blob_hh = 250;
+int blue_blob_vl = 80;
+int blue_blob_vh = 110;
+
+std::string blue_blob_settings = "yamls/blue_blob_settings.yaml";
+std::string red_blob_settings = "yamls/red_blob_settings.yaml";
+std::string tracking_params = "yamls/tracking_params.yaml";
+
 int objcnt=0;
+int nmarkers=0;
+
 double fx=470,fy=490; //focal distance guess?
 double cx=320,cy=240; //center x, center y should be 320 and 240
 double kx1=0.0000055,kx2=2e-10,ky1=0.0000020,ky2=0.0;
 double theta_calib = 0.00;
 double szx=0.4,szy=0.4, szLED=0.08;
 double thsz=1;
-double thd=20*20;
+double thd=400; //20*20
 int nx = 640;
-int ny = 320;
-
-double objQuad[]={0.24,0.0,0.0,
-				  0.0,0.24,0.0,
-				  0.04,0.055,0.07,
-
-				  -0.0141,-0.007,0.22,
-				  0.08,0.08,0.0};
-int nmarkers=0;
+int ny = 480;
+double objQuad[]={0.22,0.0,0.0, 0.0,0.22,0.0, 0.04,0.08,0.08, -0.0141,-0.007,0.25, 0.08,0.08,0.0};
 double dt_min = 0.1;
 
 double avg;
@@ -110,14 +118,58 @@ int imx0_LED[MAX_MARKERS],imy0_LED[MAX_MARKERS],imxf_LED[MAX_MARKERS],imyf_LED[M
 //debug 
 double aux1,aux2,aux3,aux4,aux1y,aux2y,aux3y,aux4y;
 int iter_count=0;
-
-
-std::vector<marker>* get_markers(){
-    return &marker_list;
+void readTrackingParams(std::string file){
+    YAML::Node root = YAML::LoadFile(file);
+    try{
+        fx = root["fx"].as<int>();
+        fy = root["fy"].as<int>();
+        cx = root["hl"].as<int>();
+        cy = root["hh"].as<int>();
+        kx1 = root["kx1"].as<double>();
+        kx2 = root["kx2"].as<double>();
+        ky1 = root["ky1"].as<double>();
+        ky2 = root["ky2"].as<double>();
+        theta_calib = root["theta_calib"].as<double>();
+        szx = root["szx"].as<double>();
+        szy = root["szy"].as<double>();
+        szLED = root["szLED"].as<double>();
+        thsz = root["thsz"].as<double>();
+        thd = root["thd"].as<double>();
+        nx = root["nx"].as<int>();
+        ny = root["ny"].as<int>();
+        dt_min = root["dt_min"].as<double>();
+        for(unsigned short i=0; i<15; ++i){
+            objQuad[i] = root["objQuad"][i].as<double>();
+        }
+    }catch(const BadConversion& e){}
 }
-
+void readBlueBlobParams(std::string file){
+    YAML::Node root = YAML::LoadFile(file);
+    try{
+        blue_blob_vl = root["vl"].as<int>();
+        blue_blob_vh = root["vh"].as<int>();
+        blue_blob_hl = root["hl"].as<int>();
+        blue_blob_hh = root["hh"].as<int>();
+        blue_blob_sl = root["sl"].as<int>();
+        blue_blob_sh = root["sh"].as<int>();
+    }catch(const BadConversion& e){}
+}
+void readRedBlobParams(std::string file){
+    YAML::Node root = YAML::LoadFile(file);
+    try{
+        red_blob_vl = root["vl"].as<int>();
+        red_blob_vh = root["vh"].as<int>();
+        red_blob_hl = root["hl"].as<int>();
+        red_blob_hh = root["hh"].as<int>();
+        red_blob_sl = root["sl"].as<int>();
+        red_blob_sh = root["sh"].as<int>();
+    }catch(const BadConversion& e){}
+}
 void initialize_markers(){
     //read this crap from a yaml file
+    readBlueBlobParams(blue_blob_settings);
+    readRedBlobParams(red_blob_settings);
+    readTrackingParams(tracking_params);
     world_points.col(0)<<objQuad[0],objQuad[1],objQuad[2],
     world_points.col(1)<<objQuad[3],objQuad[4],objQuad[5],
     world_points.col(2)<<objQuad[6],objQuad[7],objQuad[8];
@@ -127,6 +179,10 @@ void initialize_markers(){
     camR=new_frame*camR;
     camt<<0,0,0;
     Tsols=new Eigen::MatrixXd[MAX_MARKERS];
+}
+
+std::vector<marker>* get_markers(){
+    return &marker_list;
 }
 
 int detect_markers(int no){ //This function extracts markers from blobs
@@ -210,7 +266,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
                     d1=a1*a1+b1*b1;
                     d2=a2*a2+b2*b2;
                     d3=a3*a3+b3*b3;
-                    avg=(2*2)*avg/(PI*PI);
+                    avg=(2*2)*avg/(M_PI*M_PI);
                     if((d1<avg*thd) &&(d2<avg*thd) &&(d3<avg*thd)){
                     	//evaluate hypothesis
                             cost=100000;
@@ -322,7 +378,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
 			    				int i = objcnt-1; //aux variable
 			    				//create the square around the detected object, with a size scaled by (f/<distance to object>) and centered on the detected object center	
                                 #ifdef VERBOSE
-                                    printf("Flag 1\n");
+                                    printf("Creating a square around the object...\n");
                                 #endif
                                 imx0[i] = cx+px-szx*(fx/trans1(2));
 								imxf[i] = cx+px+szx*(fx/trans1(2));
@@ -377,8 +433,10 @@ int detect_markers(int no){ //This function extracts markers from blobs
 								if(objcnt<=51){
 								    for(int k=0;k<no;k++)
 								    if(blobs[k].valid==2){
-								    	printf("Blob, X: %f Y: %f Size: %f", blobs[k].x, blobs[k].y, blobs[k].size);
-								    }
+								    	#ifdef VERBOSE
+                                            printf("Blob, X: %f Y: %f Size: %f", blobs[k].x, blobs[k].y, blobs[k].size);
+								        #endif
+                                    }
 								}
                     		}
                     	}
@@ -390,8 +448,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
     return objcnt;
 }
 
-int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, int hh,
-	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height){
+int track_markers(unsigned char* buf,unsigned int step, int width, int height){
 
 	nx = width;
 	ny = height;
@@ -401,9 +458,11 @@ int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, 
 
 	int erase[MAX_MARKERS];
 	//int lochm=170,lochM=230,locsm=40,locsM=101,locvm=40,locvM=101;
-	int no = detect_blobs(buf,step, vl,vh, hl,hh, sl,sh, 0,nx,0,ny, width, height);
-    printf("Ran detec_blobs inside track_markers: %d\n", no);
-	for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
+	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height);
+    #ifdef VERBOSE
+        printf("Ran detec_blobs inside track_markers: %d\n", no);
+	#endif
+    for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
 		
 		int max_sz = 0, max_ind = -1;//activate the blobs seen in its proximity
 		for(int i = 0; i < 4; i++){ // looking for the size of the fourth smallest blob
@@ -494,8 +553,8 @@ int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, 
         for(int l=0;l<no;l++)
             if(blobs[l].valid==1){
                 //expected radius of observed red marker
-                double pmin=((0.5*(fx+fy)/it->T(0,3))*0.02) * ((0.5*(fx+fy)/it->T(0,3))*0.02)*PI; //expected pixel count (we want a percentage of this ammount)
-                if((double)blobs[l].size>pmin*RED_BLOB_THRESHOLD_SCALE_FACTOR){ //previous threshold was 15 - it was working fine for quad99
+                double pmin=((0.5*(fx+fy)/it->T(0,3))*0.02) * ((0.5*(fx+fy)/it->T(0,3))*0.02)*M_PI; //expected pixel count (we want a percentage of this ammount)
+                if((double)blobs[l].size>pmin*RED_BLOB_THRESHOLD_SCALE_FACTOR){ //previous threshold was 15 - it was working fine for frame0
                     it->state=1;
                     break;
                 }
@@ -505,7 +564,7 @@ int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, 
             double dt = t_now - it->t_old; // time since last transition
             iter_count++;
             it->t_old = t_now; // update start time of new transition
-            it->count = ROUND(dt/dt_min-1); // find index that corresponds to detected frequency
+            it->count = round(dt/dt_min-1); // find index that corresponds to detected frequency
             if((it->count < 10) && (it->count >= 0)){ // ensure that frequency is valid
                 it->frequencies[it->count]++; // increment element corresponding to detected frequency
                 if(it->frequencies[it->count]>it->max)
@@ -533,11 +592,11 @@ int track_markers(unsigned char* buf,unsigned int step, int vl, int vh, int hl, 
             freq/=(double)total;
         }
         //get the quadrotor name from the computed frequency
-        if(ROUND(freq)>3 || ROUND(freq)<0){
+        if(round(freq)>3 || round(freq)<0){
             ROS_INFO("WARNING: selected frequency index out of bounds");
         }
         else{
-            it->name = quad_freq_name[ROUND(freq)].c_str(); //this was not allocated!
+            it->name = quad_freq_name[(int)round(freq)].c_str(); //this was not allocated!
             //cout << "quad id = " << it->name << endl;
         }
     }

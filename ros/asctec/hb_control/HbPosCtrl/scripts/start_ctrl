@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Enable postition controller"
+rosrun dynamic_reconfigure dynparam set /fcu "{'enable_x':'true', 'enable_y':'true', 'enable_z':'true', 'enable_yaw':'true'}"
+

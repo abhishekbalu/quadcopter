@@ -2,6 +2,8 @@
 Blob detection test
 ![](http://www.ultraimg.com/images/2016/07/10/xy_filter_results_2.png)
 OpticalFlow filter test
+![](http://i.imgur.com/yambfyT.png)
+X backward and forwards movement by a frame registered with the algorithm
 # quadcopter
 ## Structure
 
@@ -34,8 +36,8 @@ $ sudo apt-get install python-rosinstall
 After this is done, add source /opt/ros/indigo/setup.bash AND export ROS_PACKAGE_PATH=~/ros:$ROS_PACKAGE_PATH to your .bashrc (sudo nano .bashrc in your home directory).
 # 2 - OpenCV
 You'll also need OpenCV which is a library for image processing (<http://opencv.org>)
-Simply follow the instructions on the following site:
-https://help.ubuntu.com/community/OpenCV
+Simply follow the instructions on the following site (all rights belong to the author):
+http://milq.github.io/install-opencv-ubuntu-debian/
 
 # 3 - PX4 Toolchain
 You'll need to also install the PX4 Toolchain to use some of the packages. Make sure you are in the home directory:
@@ -45,6 +47,8 @@ $ sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 $ sudo apt-get update
 $ sudo apt-get install python-argparse git-core wget zip \
     python-empy qtcreator cmake build-essential genromfs -y
+$ sudo add-apt-repository ppa:openjdk-r/ppa
+$ sudo apt-get update
 $ sudo apt-get install ant protobuf-compiler libeigen3-dev libopencv-dev openjdk-8-jdk openjdk-8-jre clang-3.5 lldb-3.5 -y
 $ sudo apt-get remove modemmanager
 $ sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded -y
@@ -149,9 +153,7 @@ $ make
 ## 7 - optical flow library
 The library should already be in the folders above however you can get it from here aswell:
 <https://github.com/cvg/px-ros-pkg>
-To use it:
-put it in catkin/src (catkin version)
-put it in ros
+To use it either put it in catkin/src (catkin version) or put it in ros folder (rosbuild version)
 ## 8 - NVidia drivers (optional)
 Try to do this. It didn't work for me, might work for you:
 ```
@@ -164,7 +166,7 @@ The folder called theory has some svg files and images that explain most of the 
 ## 9 - P3P Library
 All rights to the p3p library included belong to Laurent Kneip, ETH Zurich and the logic behind the algorithm can be read at: <http://publications.asl.ethz.ch/files/kneip11novel.pdf>
 ## 10 - How to arm the quad and fly manual (RC1)
-   - Turn the Nvidia on and connect the PX4. Log in via ssh. 
+  - Turn the Nvidia on and connect the PX4. Log in via ssh. 
   - Turn the battery on and make sure the motor checkup happens (two small beeps and the rotors turn). The PX4 light should be fading in and out and blue
   - Launch mavros. 
   - Turn the RC transmitter (Spektrum) on. Make sure you can see the connection on the mavros. You'll probably see something like MANUAL CONTROL MODE. The PX4 light should flash green when you do this.
@@ -177,7 +179,7 @@ Disarming:
   - Turn off the RC Transmitter.
 
 ## 11 - How to go into OFFBOARD mode
-After you've done the first 5 steps in the previous section, on the command line you'll need to publish some setpoints before going into OFFBOARD mode. If you don't do this you might get OFFBOARD MODE REJECTED errors by the FCU.
+After you've done the first 5 steps in the previous section, on the command line if you are experiencing problems you may need to publish some setpoints before going into OFFBOARD mode. If you don't do this you might get OFFBOARD MODE REJECTED errors by the FCU, however it will probably work ok.
 ```
 rostopic pub /mavros/setpoint_position/local -r 10 geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x:0.0, y: 0.0, z:0.0}, orientation: {w: 1.0}}}' 
 ```
@@ -187,13 +189,43 @@ To check if you were succesful:
 ```
 rostopic echo /mavros/state 
 ```
-And see if the armed parameter is True (should be if you pressed the red LED button for 2s) and if the mode is OFFBOARD. If you don't want to use the RC Transmitter you may also force the change:
+And see if the armed parameter is True (should be if you pressed the red LED button for 2s) and if the mode is OFFBOARD. If you don't want to use the RC Transmitter you may also force the change (this was not tested):
 ```
-mavsys mode -c OFFBOARD
+rosrun mavros mavsys mode -c OFFBOARD
 ```
 ## 12 - Advice
 1 - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
 
 2 - Be careful with the referentials don't get confused. Optical Flow baseline is the height of the quad, 30 cm.
 
-3 - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty).
+3 - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html).
+
+4 - If you want to change the frequency of the optical flow data that is sent via mavros you have to edit a file in the PX4 SD Card, in etc/extras.txt. If this doesn't exist create it. Then simply add the following to it (to set a rate of 200Hz for example):
+```
+mavlink stream -d /dev/tty/ACM0 -s OPTICAL_FLOW_RAD -r 200
+```
+However, believing what is said [here](http://wiki.ros.org/px4flow_node) the optical flow data from acessing directly the USB is published at 250 Hz with no need to configure.
+
+5 - To connect via Serial to the PX4 (taken from the PX4 Official website and documentation)
+| Pixhawk 1/2 |       | FTDI |                  |
+|-------------|-------|------|------------------|
+| 1           | 5V    |      | n/c              |
+| 2           | S4 TX |      | n/c              |
+| 3           | S4 RX |      | n/c              |
+| 4           | S5 TX | 5    | FTDI RX (yellow) |
+| 5           | S5 RX | 4    | FTDI TX (orange) |
+| 6           | GND   | 1    | FTDI GND (black) |
+Bellow is the connector pinout and a picture of the Pixhawk connected via Serial:
+![](http://i.imgur.com/Un7pBfy.png)
+![](http://i.imgur.com/NoTyiGF.jpg)
+You may want to use an FTDI Cable for this purpose or use a protoboard with an FTDI Chip and some headers like so:
+![](http://i.imgur.com/gpMCH4E.jpg)
+6 - If the NVidia and PX4 are both connected via battery follow the steps:
+  - Find the ip of the quad **sudo arp-scan --interface=wlan0 --localnet** (on our local network QuadBase5 the ip is normally 11.0.3.1 or 11.0.1.5)
+  - Connect the battery
+  - Turn off USB connections
+  - Turn on USB connections
+  - To fly, reboot the PX4 by pressing the small button on the side with a pencil
+  - Turn the RC on
+  - Arm the quad (press the LED)
+  - Run your launches

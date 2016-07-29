@@ -80,6 +80,8 @@ CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/share/
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/share/diagnostic_updater/package.xml
 CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /opt/ros/indigo/share/self_test/package.xml
+CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /home/pedro/ros/quad_msgs/manifest.xml
+CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o -c /home/pedro/ros/cam/src/blob_detection_debug.cpp

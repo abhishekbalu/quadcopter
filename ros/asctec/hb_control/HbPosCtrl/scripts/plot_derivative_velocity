@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo " ### plotting derivative velocity ###"
+rxplot $1/ctrl/debug/evel/x:y:z -b 10

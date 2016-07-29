@@ -1,0 +1,23 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~init_filter" : \b [bool] call filter init using defined scale min: False, default: False, max: True
+- \b "~scale_init" : \b [double] value for initial scale min: 0.001, default: 1.0, max: 30.0
+- \b "~fixed_scale" : \b [bool] fix scale min: False, default: False, max: True
+- \b "~fixed_bias" : \b [bool] fix biases min: False, default: False, max: True
+- \b "~fixed_calib" : \b [bool] fix calibration states min: False, default: False, max: True
+- \b "~noise_acc" : \b [double] noise accelerations (std. dev) min: 0.0001, default: 0.0083, max: 0.5
+- \b "~noise_accbias" : \b [double] noise acceleration bias  (std. dev) min: 1e-07, default: 0.00083, max: 0.1
+- \b "~noise_gyr" : \b [double] noise gyros (std. dev) min: 0.0001, default: 0.0013, max: 0.5
+- \b "~noise_gyrbias" : \b [double] noise gyro biases  (std. dev) min: 1e-07, default: 0.00013, max: 0.1
+- \b "~noise_scale" : \b [double] noise scale (std. dev) min: 0.0, default: 0.0, max: 10.0
+- \b "~noise_qwv" : \b [double] noise qwv (std. dev) min: 0.0, default: 0.0, max: 10.0
+- \b "~noise_qci" : \b [double] noise qci (std. dev) min: 0.0, default: 0.0, max: 10.0
+- \b "~noise_pic" : \b [double] noise pic (std. dev) min: 0.0, default: 0.0, max: 10.0
+- \b "~delay" : \b [double] fix delay in seconds min: -2.0, default: 0.03, max: 2.0
+- \b "~set_height" : \b [bool] call filter init using defined height min: False, default: False, max: True
+- \b "~height" : \b [double] height in m for init min: 0.1, default: 1.0, max: 20.0
+- \b "~meas_noise1" : \b [double] noise for measurement sensor (std. dev) min: 0.0, default: 0.01, max: 10.0
+- \b "~meas_noise2" : \b [double] noise for measurement sensor (std. dev) min: 0.0, default: 0.01, max: 10.0
+

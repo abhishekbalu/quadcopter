@@ -91,6 +91,8 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/QuadPoseList.lisp: /home/pedro/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/QuadPoseList.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/QuadPoseList.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_QuadPoseList.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/cam/msg/QuadPoseList.msg
@@ -134,6 +136,8 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/detections.lisp: /home/pedro/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/detections.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/detections.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_detections.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/cam/msg/detections.msg
@@ -178,6 +182,8 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/QuadPose.lisp: /home/pedro/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/QuadPose.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/QuadPose.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_QuadPose.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/cam/msg/QuadPose.msg

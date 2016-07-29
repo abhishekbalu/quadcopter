@@ -1,0 +1,8 @@
+<launch>
+	<node name="main_control" pkg="main_control" type="main_control" output="screen" >
+		<rosparam command="load" file="$(find main_control)/params/control_params.yaml" />	
+    		<rosparam command="load" file="$(find main_control)/../../common_params.yaml" />
+	</node>
+</launch>
+
+
