@@ -196,6 +196,43 @@ rosrun mavros mavsys mode -c OFFBOARD
 ## 12 - Data
 All data, equations and flow charts of the ideas and experiments conducted can be found [here](https://www.dropbox.com/sh/mmmgt4p6f89z934/AABFnw_2Zww_G8jRH_ggLmYFa?dl=0).
 
+## 13 - QT and GUI
+If you wish to use the camera debug GUI I have made (file blob_camera_debug_qt.cpp) you'll need to install QT like following. If you don't want to use it, please swap the CMakeLists.txt in the cam folder with the old one. On the quadcopter this is not very useful, this is only useful for calibration.
+```
+file /sbin/init
+sudo apt-get install synaptic
+sudo apt-get update
+sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
+```
+Next get a package called QtSdk-offline-linux-x86_64-v1.2.1.run. Download it from wherever you want ([here](https://packages.kitware.com/item/3734) for example).
+```
+cd Downloads
+sudo -s chmod u+x QtSdk-offline-linux-x86_64-v1.2.1.run
+sudo -s ./QtSdk-offline-linux-x86_64-v1.2.1.run -style cleanlooks
+```
+When you install the Qt SDK you will prompted to select a directory where you want the Qt SDK to reside. Select /opt and your Qt SDK will install into a directory called /opt/QtSDK.
+```
+sudo -s chmod -R 777 /opt/QtSDK
+sudo -s chmod -R 777 /home/"your_user_name"/.config/Nokia
+sudo -s nano /etc/profile
+```
+At the end put:
+```
+PATH=/opt/QtSDK/Desktop/Qt/4.8.1/gcc/bin:$PATH
+export PATH
+```
+Now source it and test:
+```
+/etc/profile
+qmake -version
+```
+You should see:
+
+*QMake version 2.01a*
+
+*Using Qt version 4.8.1 in /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib*
+
+
 ## 13 - Advice
 1 - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
 
@@ -232,9 +269,24 @@ You may want to use an FTDI Cable for this purpose or use a protoboard with an F
   - Turn the RC on
   - Arm the quad (press the LED)
   - Run your launches
+
 7 - How to fix a broken propeller
+
+First identify the propeller that is broken like so.
+
+![](http://i.imgur.com/oInAP7i.jpg)
+
+Then proceed to remove the nut that is on top of the propeller (use pliers if you need to). Now, gingerly remove the broken propeller by either turning it and making some force upwards so it slides along the bolt. Be careful because it has washer that may fall off. If you want to you may remove the small round plastic piece if it has been damaged. Most of the times this is not the case so you may leave it there. Below is an image with a new propeller, the nut and the small plastic piece. 
+
+![](http://i.imgur.com/wTRXvMOg.jpg)
+
+Introduce the new propeller along the bol with the part that fits in the small plastic piece. Put the washer on top so it looks like this:
+
+![](http://i.imgur.com/TWSB7My.jpg)
+
+**Finally bolt the nut firmly with pliers and you are done.** When using the quadcopter, remain clear of propeller arc and wear eye and hand protection.
+
 8 - How to charge the batteries
-# Steps for charging batteries in a safe manor
 Connections:
  - Turn on the Charging station by flipping the switch on the power supply
  - Connect the red T plug to the charging station
@@ -252,4 +304,5 @@ Charging:
  - Press Enter to start the charging process
  - Each press of the Dec. button cycles the status of the charging screen
  - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
+
 
