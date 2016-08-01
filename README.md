@@ -1,11 +1,11 @@
-![](http://i.imgur.com/SgiJzWe.png)
-Blob detection test
-![](http://i.imgur.com/vmBSDsR.png)
-OpticalFlow filter test - this velocity Low Pass Filter is too agressive gotta fix that
-![](http://i.imgur.com/yambfyT.png)
-X backward and forwards movement by a frame registered with the algorithm
-![](http://i.imgur.com/I8hS6rS.png)
-Hokuyo URG pose of a series of X and Y movements
+![Blob detection test](http://i.imgur.com/SgiJzWe.png)
+
+![OpticalFlow filter test - this velocity Low Pass Filter is too agressive gotta fix that](http://i.imgur.com/vmBSDsR.png)
+
+![X backward and forwards movement by a frame registered with the algorithm](http://i.imgur.com/yambfyT.png)
+
+![Hokuyo URG pose of a series of X and Y movements](http://i.imgur.com/I8hS6rS.png)
+
 # quadcopter
 ## Structure
 
