@@ -1,7 +1,7 @@
 ![](http://i.imgur.com/SgiJzWe.png)
 Blob detection test
-![](http://www.ultraimg.com/images/2016/07/10/xy_filter_results_2.png)
-OpticalFlow filter test
+![](http://i.imgur.com/vmBSDsR.png)
+OpticalFlow filter test - this velocity Low Pass Filter is too agressive gotta fix that
 ![](http://i.imgur.com/yambfyT.png)
 X backward and forwards movement by a frame registered with the algorithm
 ![](http://i.imgur.com/I8hS6rS.png)
