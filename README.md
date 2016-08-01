@@ -4,6 +4,8 @@ Blob detection test
 OpticalFlow filter test
 ![](http://i.imgur.com/yambfyT.png)
 X backward and forwards movement by a frame registered with the algorithm
+![](http://i.imgur.com/I8hS6rS.png)
+Hokuyo URG pose of a series of X and Y movements
 # quadcopter
 ## Structure
 
@@ -159,6 +161,7 @@ Try to do this. It didn't work for me, might work for you:
 ```
 sudo apt-get install nvidia-bumblebee bumblebee
 ```
+**IMPORTANT** The OpticalFlow needs to know what USB port it should use. To figure out what port the OF is using simply plug it off and do ls /dev. Then plug it in, and do ls /dev again and see what has changed. It's probably /ttyACM0 or /ttyACM1. Now, go to the place where you have the package and go to px_comm/hardware_interface/launch and edit the YAML file there (px4flow_params.yaml I think, might be wrong) to the right USB you just found.
 
 ## 8 - Theory
 The folder called theory has some svg files and images that explain most of the modules (even some with UML) used in this project in a clear manner.
