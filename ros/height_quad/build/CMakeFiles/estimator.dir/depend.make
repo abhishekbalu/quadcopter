@@ -10,7 +10,7 @@ CMakeFiles/estimator.dir/src/estimator.cpp.o: ../msg_gen/cpp/include/height_quad
 CMakeFiles/estimator.dir/src/estimator.cpp.o: ../msg_gen/cpp/include/height_quad/EstimateSingle.h
 CMakeFiles/estimator.dir/src/estimator.cpp.o: ../msg_gen/cpp/include/height_quad/state.h
 CMakeFiles/estimator.dir/src/estimator.cpp.o: ../src/estimator.cpp
-CMakeFiles/estimator.dir/src/estimator.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
+CMakeFiles/estimator.dir/src/estimator.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
 CMakeFiles/estimator.dir/src/estimator.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 CMakeFiles/estimator.dir/src/estimator.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h
 CMakeFiles/estimator.dir/src/estimator.cpp.o: /opt/ros/indigo/include/geometry_msgs/Point.h

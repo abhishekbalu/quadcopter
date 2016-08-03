@@ -6,7 +6,7 @@ CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: ../include/height_quad/debug.h
 CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: ../msg_gen/cpp/include/height_quad/Attitude.h
 CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: ../msg_gen/cpp/include/height_quad/state.h
 CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: ../src/xy_pose.cpp
-CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
+CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
 CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h
 CMakeFiles/xy_pose.dir/src/xy_pose.cpp.o: /opt/ros/indigo/include/geometry_msgs/Point.h

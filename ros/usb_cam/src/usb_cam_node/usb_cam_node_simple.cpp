@@ -69,11 +69,11 @@ public:
     image_transport::ImageTransport it(node_);
     image_pub_ = it.advertiseCamera("image_raw", 1);
 
-    node_.param("video_device", video_device_name_, std::string("/dev/video6"));
+    node_.param("video_device", video_device_name_, std::string("/dev/video0"));
     node_.param("io_method", io_method_name_, std::string("mmap")); // possible values: mmap, read, userptr
-    node_.param("image_width", image_width_, 320);
-    node_.param("image_height", image_height_, 240);
-    node_.param("pixel_format", pixel_format_name_, std::string("yuyv")); // possible values: yuyv, uyvy, mjpeg
+    node_.param("image_width", image_width_, 640);
+    node_.param("image_height", image_height_, 480);
+    node_.param("pixel_format", pixel_format_name_, std::string("mjpeg")); // possible values: yuyv, uyvy, mjpeg
     node_.param("autofocus", autofocus_, false); // enable/disable autofocus
 
     {

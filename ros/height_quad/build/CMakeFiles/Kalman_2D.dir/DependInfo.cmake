@@ -20,9 +20,9 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
-  "/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/include"
-  "/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg/cpp"
-  "/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include"
+  "/home/pedro/ros/px-ros-pkg/px_comm/include"
+  "/home/pedro/ros/px-ros-pkg/px_comm/msg/cpp"
+  "/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include"
   "/opt/ros/indigo/include"
   "../msg_gen/cpp/include"
   )

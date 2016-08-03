@@ -11,8 +11,4 @@ rosbuild_genmsg()
 rosbuild_gensrv()
 rosbuild_add_boost_directories()
 
-find_package(Eigen REQUIRED)
-include_directories(${Eigen_INCLUDE_DIRS})
-add_definitions(${EIGEN_DEFINITIONS})
-
 add_subdirectory(src)

@@ -1,2 +1,0 @@
-- setup-file:
-    local-name: /home/ubuntu/quadcopter/ros/px-ros-pkg-rosbuild/px_hardware_interface/px4flow_node/build/devel/setup.sh

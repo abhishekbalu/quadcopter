@@ -1,7 +1,7 @@
 #ifndef __SENSOR__
 #define __SENSOR__
 
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 #include <vector>
 
 //THIS ALGORITHM IS READY TO OPERATE ON WIDTH LINES, FOR ANY RGB, RGBA, etc. FOR BGR YOU NEED YOURSELF TO INVERT THE ORDER

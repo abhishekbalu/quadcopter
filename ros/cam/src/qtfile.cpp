@@ -59,8 +59,6 @@ MainWindow::MainWindow(){
     slider_hl->setValue(180);
     slider_hh->setValue(250);
 
-    
-
 }
  
 MainWindow::~MainWindow(){}
@@ -78,7 +76,7 @@ void MainWindow::onValueChanged_vl(int value){
             << slider_hh->sliderPosition() << "\n";
     myfile.close();
 
-    QString text = QString::number(pos);
+    QString text = "Value Low" + QString::number(pos);
     lineEdit_vl->setText(text);
 }
 void MainWindow::onValueChanged_vh(int value){
@@ -93,7 +91,7 @@ void MainWindow::onValueChanged_vh(int value){
             << slider_hh->sliderPosition() << "\n";
     myfile.close();
 
-    QString text = QString::number(pos);
+    QString text = "Value High" + QString::number(pos);
     lineEdit_vh->setText(text);
 }
 void MainWindow::onValueChanged_sl(int value){
@@ -108,7 +106,7 @@ void MainWindow::onValueChanged_sl(int value){
             << slider_hh->sliderPosition() << "\n";
     myfile.close();
 
-    QString text = QString::number(pos);
+    QString text = "Saturation Low" + QString::number(pos);
     lineEdit_sl->setText(text);
 }
 void MainWindow::onValueChanged_sh(int value){
@@ -123,7 +121,7 @@ void MainWindow::onValueChanged_sh(int value){
             << slider_hh->sliderPosition() << "\n";
     myfile.close();
 
-    QString text = QString::number(pos);
+    QString text = "Saturation High" + QString::number(pos);
     lineEdit_sh->setText(text);
 }
 void MainWindow::onValueChanged_hl(int value){
@@ -138,7 +136,7 @@ void MainWindow::onValueChanged_hl(int value){
             << slider_hh->sliderPosition() << "\n";
     myfile.close();
 
-    QString text = QString::number(pos);
+    QString text = "Hue Low" + QString::number(pos);
     lineEdit_hl->setText(text);
 }
 void MainWindow::onValueChanged_hh(int value){
@@ -153,6 +151,6 @@ void MainWindow::onValueChanged_hh(int value){
             << slider_hh->sliderPosition() << "\n";
     myfile.close();
     
-    QString text = QString::number(pos);
+    QString text = "Hue High" + QString::number(pos);
     lineEdit_hh->setText(text);
 }

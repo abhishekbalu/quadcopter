@@ -33,13 +33,13 @@ rosbuild_add_library(Kalman_2D src/Kalman_2D.cpp)
 #rosbuild_add_executable(example examples/example.cpp)
 
 # Comment this to use the Mavros Optical Flow
-
+rosbuild_add_executable(floor_tester src/floor_tester.cpp)
 rosbuild_add_executable(xy_pose src/xy_pose.cpp)
 rosbuild_add_executable(estimator src/estimator.cpp)
 #rosbuild_add_executable(xy_pose_original src/xy_pose_original.cpp)
 rosbuild_add_executable(xy_pose_no_mavros src/xy_pose_no_mavros.cpp)
 rosbuild_add_executable(z_pose src/z_pose.cpp)
-rosbuild_add_executable(z_pose_no_mavros src/z_pose.cpp)
+rosbuild_add_executable(z_pose_no_mavros src/z_pose_no_mavros.cpp)
 #rosbuild_add_executable(odometry src/xy_odometry.cpp)
 #rosbuild_add_executable(controller_quad src/controller_quad.cpp)
 #rosbuild_add_executable(controller_quad_z src/controller_quad_z.cpp)

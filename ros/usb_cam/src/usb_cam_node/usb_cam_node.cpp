@@ -48,7 +48,7 @@
 //std libraries
 #include <stdio.h>
 #include <iostream>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 using namespace std;
 using namespace Eigen;
 
@@ -88,11 +88,19 @@ public:
   UsbCamNode() :
       node_("~")
   {
-    double fx,fy,cx,cy,kx1,kx2,ky1,ky2,theta,dt_min;
-    int lochm,lochM,locsm,locsM,locvm,locvM;
-    int save_blobs,noise_active;
-    int width,height;
+   
+    int lochm=180,lochM=250,locsm=50,locsM=110,locvm=80,locvM=110;
+    int save_blobs=0,noise_active=0;
     std::string sensor_camera_topic;
+
+    double fx=470,fy=490; //focal distance guess?
+    double cx=320,cy=240; //center x, center y should be 320 and 240
+    double kx1=0.0000055,kx2=2e-10,ky1=0.0000020,ky2=0.0;
+    double theta = 0.00;
+   
+    int width = 640;
+    int height = 480;
+    double dt_min = 0.1;
 
     //get parameters
     std::string full_name;
@@ -136,7 +144,7 @@ public:
     node_.getParam(full_name.c_str(),noise_active);
     full_name = "/usb_cam_node/colour_img";
     node_.getParam(full_name.c_str(),colour_img);
-    full_name = "/usb_cam_nod e/dt_min";
+    full_name = "/usb_cam_node/dt_min";
     node_.getParam(full_name.c_str(),dt_min);
     full_name = "/usb_cam_node/sensor_camera_topic";
     node_.getParam(full_name.c_str(),sensor_camera_topic);
@@ -145,24 +153,24 @@ public:
     image_transport::ImageTransport it(node_);
     image_pub_ = it.advertiseCamera("image_raw", 1);
     detections_pub=node_.advertise<usb_cam::detections>("sensor/detections",1);
-    //markers_pub=node_.advertise<usb_cam::QuadPoseList>("sensor/markers",1);
-    markers_pub = node_.advertise<usb_cam::QuadPoseList>(sensor_camera_topic,1);
+    markers_pub=node_.advertise<usb_cam::QuadPoseList>("sensor/markers",1);
+    //markers_pub = node_.advertise<usb_cam::QuadPoseList>(sensor_camera_topic,1);
 
     //initialize sensor
     objects=sensor_init(width,height,fx,fy,cx,cy,kx1,kx2,ky1,ky2,theta,dt_min,lochm,lochM,locsm,locsM,locvm,locvM,save_blobs,noise_active);
     blp=get_blobs();
     cout<<width<<" "<<height<<endl;
 
-    node_.param("video_device", video_device_name_, std::string("/dev/video6"));
+    node_.param("video_device", video_device_name_, std::string("/dev/video0"));
     node_.param("io_method", io_method_name_, std::string("mmap")); // possible values: mmap, read, userptr
     image_width_ = width;//node_.param("image_width", image_width_, 320);
     image_height_ = height; //node_.param("image_height", image_height_, 240);
-    node_.param("pixel_format", pixel_format_name_, std::string("yuyv")); // possible values: yuyv, uyvy, mjpeg
+    node_.param("pixel_format", pixel_format_name_, std::string("mjpeg")); // possible values: yuyv, uyvy, mjpeg
     node_.param("autofocus", autofocus_, false); // enable/disable autofocus
 
 
 
-    {
+    
       XmlRpc::XmlRpcValue double_list;
       info_.height = height; //image_height_;
       info_.width = width; //image_width_;
@@ -208,7 +216,7 @@ public:
           info_.P[i] = double_list[i];
         }
       }
-    }
+    
 
     printf("usb_cam video_device set to [%s]\n", video_device_name_.c_str());
     printf("usb_cam io_method set to [%s]\n", io_method_name_.c_str());
@@ -272,7 +280,7 @@ public:
     if(colour_img>=0){ // only publish image if parameter non-negative
 	if(colour_img==1) // publish colour image
 	    fillImage(img_, "rgb8", image_height_, image_width_, 3 * image_width_, camera_image_->image);
-	else if(colour_img==0){ // publish binary image
+	}else if(colour_img==0){ // publish binary image
 	    bin_image = get_binary_image();
 	    for(unsigned int l=0; l<image_height_; l++)
 		for(unsigned int k=0; k<image_width_; k++)
@@ -311,7 +319,7 @@ public:
 	image_pub_.publish(img_, info_);
 
 
-    }
+    
     
     /*
     //perform blob detection
@@ -348,24 +356,24 @@ public:
     quad_poses_msg.header.stamp = ros::Time::now();
     Matrix3d rotation;
     for(vector<marker>::iterator it = detected_quads->begin(); it != detected_quads->end(); ++it){
-	usb_cam::QuadPose quad_pose;
-	quad_pose.name = it->name;
-	quad_pose.position.x = it->T.col(3)[0];
-	quad_pose.position.y = it->T.col(3)[1];
-	quad_pose.position.z = it->T.col(3)[2];
-	rotation.col(0) = it->T.col(0);
-	rotation.col(1) = it->T.col(1);
-	rotation.col(2) = it->T.col(2);
-	Vector3d ea = rotation.eulerAngles(2, 1, 0); //the order of the angles matter
-	double roll = ea[2];
-	double pitch = ea[1];
-	double yaw = ea[0];
-	quad_pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(roll,pitch,yaw);
-	if(it->failures == 0)
-	    quad_pose.pose_updated = 1;
-	else
-	    quad_pose.pose_updated = 0;
-	quad_poses_msg.poses.push_back(quad_pose);
+    	usb_cam::QuadPose quad_pose;
+    	quad_pose.name = it->name;
+    	quad_pose.position.x = it->T.col(3)[0];
+    	quad_pose.position.y = it->T.col(3)[1];
+    	quad_pose.position.z = it->T.col(3)[2];
+    	rotation.col(0) = it->T.col(0);
+    	rotation.col(1) = it->T.col(1);
+    	rotation.col(2) = it->T.col(2);
+    	Vector3d ea = rotation.eulerAngles(2, 1, 0); //the order of the angles matter
+    	double roll = ea[2];
+    	double pitch = ea[1];
+    	double yaw = ea[0];
+    	quad_pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(roll,pitch,yaw);
+    	if(it->failures == 0)
+    	    quad_pose.pose_updated = 1;
+    	else
+    	    quad_pose.pose_updated = 0;
+    	quad_poses_msg.poses.push_back(quad_pose);
     }
 
     markers_pub.publish(quad_poses_msg);
@@ -420,7 +428,7 @@ public:
       }
       loop_rate.sleep();
     }
-    close_blob_files();
+    
     return true;
   }
 };

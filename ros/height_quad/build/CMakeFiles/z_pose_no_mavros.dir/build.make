@@ -49,95 +49,66 @@ include CMakeFiles/z_pose_no_mavros.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/z_pose_no_mavros.dir/flags.make
 
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: CMakeFiles/z_pose_no_mavros.dir/flags.make
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: ../src/z_pose.cpp
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: ../manifest.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/catkin/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospack/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roslib/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genmsg/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genpy/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/cpp_common/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rostime/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp_traits/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp_serialization/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/message_runtime/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/gencpp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genlisp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/message_generation/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosbuild/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosconsole/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/std_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/xmlrpcpp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosgraph/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospy/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: ../manifest.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/catkin/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospack/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roslib/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genmsg/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genpy/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/cpp_common/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rostime/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp_traits/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp_serialization/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/message_runtime/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/gencpp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genlisp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/message_generation/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosbuild/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosconsole/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/std_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/xmlrpcpp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosgraph/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospy/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: CMakeFiles/z_pose_no_mavros.dir/flags.make
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: ../src/z_pose_no_mavros.cpp
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: ../manifest.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/catkin/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rospack/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/roslib/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/genmsg/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/genpy/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/cpp_common/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rostime/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/roscpp_traits/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/roscpp_serialization/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/message_runtime/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/gencpp/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/genlisp/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/message_generation/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rosbuild/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rosconsole/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/std_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/xmlrpcpp/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/roscpp/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rosgraph/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/rospy/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o -c /home/pedro/ros/height_quad/src/z_pose.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o -c /home/pedro/ros/height_quad/src/z_pose_no_mavros.cpp
 
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pedro/ros/height_quad/src/z_pose.cpp > CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.i
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pedro/ros/height_quad/src/z_pose_no_mavros.cpp > CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.i
 
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pedro/ros/height_quad/src/z_pose.cpp -o CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.s
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pedro/ros/height_quad/src/z_pose_no_mavros.cpp -o CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.s
 
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.requires:
-.PHONY : CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.requires
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.requires:
+.PHONY : CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.requires
 
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.provides: CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.requires
-	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.provides.build
-.PHONY : CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.provides
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.provides: CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.requires
+	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.provides.build
+.PHONY : CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.provides
 
-CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.provides.build: CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o
+CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.provides.build: CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o
 
 # Object files for target z_pose_no_mavros
 z_pose_no_mavros_OBJECTS = \
-"CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o"
+"CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o"
 
 # External object files for target z_pose_no_mavros
 z_pose_no_mavros_EXTERNAL_OBJECTS =
 
-../bin/z_pose_no_mavros: CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o
+../bin/z_pose_no_mavros: CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o
 ../bin/z_pose_no_mavros: CMakeFiles/z_pose_no_mavros.dir/build.make
 ../bin/z_pose_no_mavros: /usr/lib/x86_64-linux-gnu/libboost_signals.so
 ../bin/z_pose_no_mavros: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -166,7 +137,7 @@ z_pose_no_mavros_EXTERNAL_OBJECTS =
 CMakeFiles/z_pose_no_mavros.dir/build: ../bin/z_pose_no_mavros
 .PHONY : CMakeFiles/z_pose_no_mavros.dir/build
 
-CMakeFiles/z_pose_no_mavros.dir/requires: CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o.requires
+CMakeFiles/z_pose_no_mavros.dir/requires: CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o.requires
 .PHONY : CMakeFiles/z_pose_no_mavros.dir/requires
 
 CMakeFiles/z_pose_no_mavros.dir/clean:

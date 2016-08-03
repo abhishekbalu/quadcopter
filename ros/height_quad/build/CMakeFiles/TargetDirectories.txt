@@ -29,4 +29,5 @@
 /home/pedro/ros/height_quad/build/CMakeFiles/run_tests.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/Kalman_1D.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/Kalman_2D.dir
+/home/pedro/ros/height_quad/build/CMakeFiles/floor_tester.dir
 /home/pedro/ros/height_quad/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pedro/ros/height_quad/src/z_pose.cpp" "/home/pedro/ros/height_quad/build/CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o"
+  "/home/pedro/ros/height_quad/src/z_pose_no_mavros.cpp" "/home/pedro/ros/height_quad/build/CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -21,9 +21,9 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
-  "/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/include"
-  "/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg/cpp"
-  "/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include"
+  "/home/pedro/ros/px-ros-pkg/px_comm/include"
+  "/home/pedro/ros/px-ros-pkg/px_comm/msg/cpp"
+  "/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include"
   "/opt/ros/indigo/include"
   "../msg_gen/cpp/include"
   )

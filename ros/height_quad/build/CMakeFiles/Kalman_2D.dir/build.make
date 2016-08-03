@@ -76,10 +76,10 @@ CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /opt/ros/indigo/share/rospy/packag
 CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
 CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
 CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
-CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Kalman_2D.dir/src/Kalman_2D.cpp.o -c /home/pedro/ros/height_quad/src/Kalman_2D.cpp

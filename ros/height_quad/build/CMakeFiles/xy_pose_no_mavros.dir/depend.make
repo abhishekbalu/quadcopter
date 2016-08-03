@@ -6,7 +6,7 @@ CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: ../include/height_
 CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: ../msg_gen/cpp/include/height_quad/Attitude.h
 CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: ../msg_gen/cpp/include/height_quad/state.h
 CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: ../src/xy_pose_no_mavros.cpp
-CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
+CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
 CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h
 CMakeFiles/xy_pose_no_mavros.dir/src/xy_pose_no_mavros.cpp.o: /opt/ros/indigo/include/geometry_msgs/Point.h

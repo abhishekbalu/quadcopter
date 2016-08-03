@@ -2,7 +2,7 @@ file(REMOVE_RECURSE
   "../msg_gen"
   "../msg_gen"
   "../src/height_quad/msg"
-  "CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o"
+  "CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o"
   "../bin/z_pose_no_mavros.pdb"
   "../bin/z_pose_no_mavros"
 )

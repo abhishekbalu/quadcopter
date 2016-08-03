@@ -87,10 +87,10 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height_quad/msg/__init__.py
 ../src/height_quad/msg/_state.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/height_quad/msg/_state.py: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../src/height_quad/msg/_state.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/height_quad/msg/_state.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height_quad/msg/_state.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/height_quad/msg/_state.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/height_quad/msg/_state.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height_quad/msg/_state.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height_quad/msg/_state.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height_quad/msg/_state.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height_quad/msg/state.msg
@@ -128,10 +128,10 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height_quad/msg/__init__.py
 ../src/height_quad/msg/_EstimateMulti.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/height_quad/msg/_EstimateMulti.py: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../src/height_quad/msg/_EstimateMulti.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/height_quad/msg/_EstimateMulti.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height_quad/msg/_EstimateMulti.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/height_quad/msg/_EstimateMulti.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/height_quad/msg/_EstimateMulti.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height_quad/msg/_EstimateMulti.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height_quad/msg/_EstimateMulti.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height_quad/msg/_EstimateMulti.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height_quad/msg/EstimateMulti.msg
@@ -167,10 +167,10 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height_quad/msg/__init__.py
 ../src/height_quad/msg/_Estimate.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/height_quad/msg/_Estimate.py: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../src/height_quad/msg/_Estimate.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/height_quad/msg/_Estimate.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height_quad/msg/_Estimate.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/height_quad/msg/_Estimate.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/height_quad/msg/_Estimate.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height_quad/msg/_Estimate.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height_quad/msg/_Estimate.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height_quad/msg/_Estimate.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height_quad/msg/Estimate.msg
@@ -206,10 +206,10 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height_quad/msg/__init__.py
 ../src/height_quad/msg/_full_pose.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/height_quad/msg/_full_pose.py: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../src/height_quad/msg/_full_pose.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/height_quad/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height_quad/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/height_quad/msg/_full_pose.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/height_quad/msg/_full_pose.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height_quad/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height_quad/msg/_full_pose.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height_quad/msg/_full_pose.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height_quad/msg/full_pose.msg
@@ -247,10 +247,10 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height_quad/msg/__init__.py
 ../src/height_quad/msg/_EstimateSingle.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/height_quad/msg/_EstimateSingle.py: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../src/height_quad/msg/_EstimateSingle.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/height_quad/msg/_EstimateSingle.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height_quad/msg/_EstimateSingle.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/height_quad/msg/_EstimateSingle.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/height_quad/msg/_EstimateSingle.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height_quad/msg/_EstimateSingle.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height_quad/msg/_EstimateSingle.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height_quad/msg/_EstimateSingle.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height_quad/msg/EstimateSingle.msg
@@ -283,10 +283,10 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/height_quad/msg/__init__.py
 ../src/height_quad/msg/_Attitude.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/height_quad/msg/_Attitude.py: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../src/height_quad/msg/_Attitude.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/height_quad/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/height_quad/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/height_quad/msg/_Attitude.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/height_quad/msg/_Attitude.py: /opt/ros/indigo/share/nav_msgs/package.xml
-../src/height_quad/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/height_quad/msg/_Attitude.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/height_quad/msg/_Attitude.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/height_quad/msg/Attitude.msg

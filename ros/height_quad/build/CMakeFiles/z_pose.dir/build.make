@@ -76,39 +76,10 @@ CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospy/package.xml
 CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
 CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
 CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: ../manifest.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/catkin/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospack/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roslib/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genmsg/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genpy/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/cpp_common/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rostime/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp_traits/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp_serialization/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/message_runtime/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/gencpp/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/genlisp/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/message_generation/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosbuild/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosconsole/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/std_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosgraph_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/xmlrpcpp/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/roscpp/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rosgraph/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/rospy/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
-CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/z_pose.dir/src/z_pose.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/z_pose.dir/src/z_pose.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/z_pose.dir/src/z_pose.cpp.o -c /home/pedro/ros/height_quad/src/z_pose.cpp

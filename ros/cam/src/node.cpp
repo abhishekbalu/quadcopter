@@ -110,11 +110,12 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		    quad_pose.pose_updated = 0;
 		
 		if(quad_pose.name == "frame0"){
+			printf("ROLL: %f PITCH: %f  YAW: %f\n");
 			//Reject outliers and when the frame is lost
 			value = quad_pose.position.x;
 			if((std::abs(last_value-value) < MAX_DEVIATION || last_value == 0) && quad_pose.position.x !=NULL){
 				std::stringstream ss;
-				ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << quad_pose.orientation.x << "," << quad_pose.orientation.y << "," << quad_pose.orientation.z << "," << quad_pose.orientation.w << "," << datapoints;
+				ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw  << "," << datapoints;
 				std::string s = ss.str();
 				outputfile << s << endl;
 				cout << s << endl;

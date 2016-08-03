@@ -10,7 +10,7 @@
 #include "height_quad/Kalman_1D.h"
 #include "height_quad/debug.h"
 
-#define CENTER_OF_MASS_FILTER_OFFSET 0.06
+#define CENTER_OF_MASS_FILTER_OFFSET 0.00
 #define NUMB_VALUES_TO_DISCARD 4
 #define RATE 10
 #define MAX_DISTANCE 3.0	

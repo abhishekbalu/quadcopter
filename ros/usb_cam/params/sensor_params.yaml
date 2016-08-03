@@ -1,22 +1,22 @@
 colour_img: 1
 noise_active: 0
 save_blobs: 0
-image_width: 320
-image_height: 240
-fx: 220 #230.0
-fy: 300 #270.0
-cx: 160.0
-cy: 120.0
+image_width: 640
+image_height: 480
+fx: 470 #230.0
+fy: 490 #270.0
+cx: 320.0
+cy: 240.0
 kx1: 0.0000080 #0.0000110
 kx2: 0.0000000001 #0.00000000015
 ky1: 0.000002 #0.000009
 ky2: -0.0000000000 #0.0000000000
 theta: 0.00
-lochm: 170
-lochM: 230
-locsm: 55
-locsM: 101
-locvm: 55
-locvM: 101
+lochm: 180
+lochM: 250
+locsm: 50
+locsM: 110
+locvm: 80
+locvM: 110
 dt_min: 0.1
 

@@ -61,7 +61,7 @@
 #ifndef P3P_H_
 #define P3P_H_
 
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 #include <math.h>
 #include <stdlib.h>
 

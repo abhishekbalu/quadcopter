@@ -299,6 +299,19 @@ estimator/fast:
 .PHONY : estimator/fast
 
 #=============================================================================
+# Target rules for targets named floor_tester
+
+# Build rule for target.
+floor_tester: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 floor_tester
+.PHONY : floor_tester
+
+# fast build rule for target.
+floor_tester/fast:
+	$(MAKE) -f CMakeFiles/floor_tester.dir/build.make CMakeFiles/floor_tester.dir/build
+.PHONY : floor_tester/fast
+
+#=============================================================================
 # Target rules for targets named pid
 
 # Build rule for target.
@@ -630,6 +643,30 @@ src/estimator.cpp.s:
 	$(MAKE) -f CMakeFiles/estimator.dir/build.make CMakeFiles/estimator.dir/src/estimator.cpp.s
 .PHONY : src/estimator.cpp.s
 
+src/floor_tester.o: src/floor_tester.cpp.o
+.PHONY : src/floor_tester.o
+
+# target to build an object file
+src/floor_tester.cpp.o:
+	$(MAKE) -f CMakeFiles/floor_tester.dir/build.make CMakeFiles/floor_tester.dir/src/floor_tester.cpp.o
+.PHONY : src/floor_tester.cpp.o
+
+src/floor_tester.i: src/floor_tester.cpp.i
+.PHONY : src/floor_tester.i
+
+# target to preprocess a source file
+src/floor_tester.cpp.i:
+	$(MAKE) -f CMakeFiles/floor_tester.dir/build.make CMakeFiles/floor_tester.dir/src/floor_tester.cpp.i
+.PHONY : src/floor_tester.cpp.i
+
+src/floor_tester.s: src/floor_tester.cpp.s
+.PHONY : src/floor_tester.s
+
+# target to generate assembly for a file
+src/floor_tester.cpp.s:
+	$(MAKE) -f CMakeFiles/floor_tester.dir/build.make CMakeFiles/floor_tester.dir/src/floor_tester.cpp.s
+.PHONY : src/floor_tester.cpp.s
+
 src/pid.o: src/pid.cpp.o
 .PHONY : src/pid.o
 
@@ -708,7 +745,6 @@ src/z_pose.o: src/z_pose.cpp.o
 # target to build an object file
 src/z_pose.cpp.o:
 	$(MAKE) -f CMakeFiles/z_pose.dir/build.make CMakeFiles/z_pose.dir/src/z_pose.cpp.o
-	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.o
 .PHONY : src/z_pose.cpp.o
 
 src/z_pose.i: src/z_pose.cpp.i
@@ -717,7 +753,6 @@ src/z_pose.i: src/z_pose.cpp.i
 # target to preprocess a source file
 src/z_pose.cpp.i:
 	$(MAKE) -f CMakeFiles/z_pose.dir/build.make CMakeFiles/z_pose.dir/src/z_pose.cpp.i
-	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.i
 .PHONY : src/z_pose.cpp.i
 
 src/z_pose.s: src/z_pose.cpp.s
@@ -726,8 +761,31 @@ src/z_pose.s: src/z_pose.cpp.s
 # target to generate assembly for a file
 src/z_pose.cpp.s:
 	$(MAKE) -f CMakeFiles/z_pose.dir/build.make CMakeFiles/z_pose.dir/src/z_pose.cpp.s
-	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose.cpp.s
 .PHONY : src/z_pose.cpp.s
+
+src/z_pose_no_mavros.o: src/z_pose_no_mavros.cpp.o
+.PHONY : src/z_pose_no_mavros.o
+
+# target to build an object file
+src/z_pose_no_mavros.cpp.o:
+	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.o
+.PHONY : src/z_pose_no_mavros.cpp.o
+
+src/z_pose_no_mavros.i: src/z_pose_no_mavros.cpp.i
+.PHONY : src/z_pose_no_mavros.i
+
+# target to preprocess a source file
+src/z_pose_no_mavros.cpp.i:
+	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.i
+.PHONY : src/z_pose_no_mavros.cpp.i
+
+src/z_pose_no_mavros.s: src/z_pose_no_mavros.cpp.s
+.PHONY : src/z_pose_no_mavros.s
+
+# target to generate assembly for a file
+src/z_pose_no_mavros.cpp.s:
+	$(MAKE) -f CMakeFiles/z_pose_no_mavros.dir/build.make CMakeFiles/z_pose_no_mavros.dir/src/z_pose_no_mavros.cpp.s
+.PHONY : src/z_pose_no_mavros.cpp.s
 
 # Help Target
 help:
@@ -769,6 +827,7 @@ help:
 	@echo "... run_tests"
 	@echo "... Kalman_1D"
 	@echo "... Kalman_2D"
+	@echo "... floor_tester"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... install/local"
 	@echo "... gtest"
@@ -782,6 +841,9 @@ help:
 	@echo "... src/estimator.o"
 	@echo "... src/estimator.i"
 	@echo "... src/estimator.s"
+	@echo "... src/floor_tester.o"
+	@echo "... src/floor_tester.i"
+	@echo "... src/floor_tester.s"
 	@echo "... src/pid.o"
 	@echo "... src/pid.i"
 	@echo "... src/pid.s"
@@ -794,6 +856,9 @@ help:
 	@echo "... src/z_pose.o"
 	@echo "... src/z_pose.i"
 	@echo "... src/z_pose.s"
+	@echo "... src/z_pose_no_mavros.o"
+	@echo "... src/z_pose_no_mavros.i"
+	@echo "... src/z_pose_no_mavros.s"
 .PHONY : help
 
 

@@ -15,15 +15,16 @@
 //#include "cam/debug.h" //Comment or uncomment this for verbose
 
 #define MAX_FEATURES 500
-#define SIZE_THRESHOLD 250
-#define BLOB_CONSTANT 2.25
-#define NOISE_ACTIVE 0
-//#define EXPECTED_BLOB_NUMBER 4
-#define MIN_NUMBER_BLOBS 4
-#define BLOB_INFO 1
+
+const int SIZE_THRESHOLD = 100; //Value for 3m which is the max range
+const double BLOB_CONSTANT = 2.25;
+const int NOISE_ACTIVE = 0;
+const double WINDOW_SCALING = 1.5;
+const int MIN_NUMBER_BLOBS = 4;
+#define BLOB_INFO 1 //Comment or uncomment this to see blob info
 #define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
 
-int no=1;  //Blob number - assume there's an initial blob to start
+int no = 1;  //Blob number - assume there's an initial blob to start
 int skip = 0;
 int nvalid = 0;
 int rnd;
@@ -37,11 +38,10 @@ int val_sum = 0;
 int sat_sum_window = 0;
 int val_sum_window = 0;
 
-
-
-
 int last_sat_window_avg = 0;
 int last_val_window_avg = 0;
+int last_sat_total_avg = 0;
+int last_val_total_avg = 0;
 
 int window_pixel_number = 0;
 int pixel_number = 0;
@@ -309,8 +309,10 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             pixel_number++;
             if(initialization == false){
                 for(int j=0; j<nvalid; j++){
-                    if((k > last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size) && k < last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size)) 
-                        && (l > last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size) && l < last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size))){
+                    if((k > last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size)/WINDOW_SCALING 
+                        && k < last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size)/WINDOW_SCALING) 
+                        && (l > last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size)/WINDOW_SCALING 
+                            && l < last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size)/WINDOW_SCALING)){
                         //This pixel is inside one of the windows
                         sat_sum_window+=sat;
                         val_sum_window+=val;
@@ -351,16 +353,22 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             }
         }
     }
-    printf("Total image Average sat: %d, Total image Average val: %d\n", sat_sum/pixel_number, val_sum/pixel_number);
-    if(initialization == false && window_pixel_number != 0){
-        printf("Windows Average sat: %d, Windows Average val: %d, Pixel number in windows: %d\n Max_hue: %d, Min_hue: %d Center_Max_hue: %d, Center_Min_hue:%d \n", sat_sum_window/window_pixel_number, val_sum_window/window_pixel_number, window_pixel_number, max_hue, min_hue, center_pixel_max_hue, center_pixel_min_hue);
-        if(last_val_window_avg!=0 && abs(last_val_window_avg-val_sum_window/window_pixel_number)>12){
-            printf("LIGHTS CHANGED!!! Correcting value...!\n");
-            _vl = val_sum_window/window_pixel_number;
+    #ifdef LIGHT_CALIBRATION
+        printf("Total image Average sat: %d, Total image Average val: %d\n", sat_sum/pixel_number, val_sum/pixel_number);
+        if(initialization == false && window_pixel_number != 0){
+            printf("Windows Average sat: %d, Windows Average val: %d, Pixel number in windows: %d\n Max_hue: %d, Min_hue: %d Center_Max_hue: %d, Center_Min_hue:%d \n", sat_sum_window/window_pixel_number, val_sum_window/window_pixel_number, window_pixel_number, max_hue, min_hue, center_pixel_max_hue, center_pixel_min_hue);
+            if(last_val_total_avg!=0 && abs(last_val_total_avg-val_sum/pixel_number)>12){
+                printf("LIGHTS CHANGED!!! Correcting value (and saturation?)...!\n");
+                printf("Value changed to: ");
+                _vl = val_sum_window/window_pixel_number;
+                _sl = sat_sum_window/window_pixel_number;
+            }
+            last_val_window_avg = val_sum_window/window_pixel_number;
+            last_val_total_avg = val_sum/pixel_number;
+            last_sat_window_avg = sat_sum_window/window_pixel_number;
+            last_sat_total_avg = sat_sum/pixel_number;
         }
-        last_val_window_avg = val_sum_window/window_pixel_number;
-        last_sat_window_avg = sat_sum_window/window_pixel_number;
-    }
+    #endif
     solve_links(); //deliver blobs and solve links -- after this variable no is the total number of blobs
     aggregate_blobs(); //aggregate blobs - (TODO use concept of covariance for thdp) 
     blob_threshold(); //Blob size threshold
@@ -371,14 +379,20 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
     
     if(initialization == false){
         for(int j=0; j<nvalid; j++){
-           printf("Window %d Vertex 1: (%f, %f), Vertex 2: (%f, %f), Vertex 3: (%f, %f), Vertex 4: (%f, %f)\n", j, 
-                      last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size),
-                      last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size),
-                      last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size),
-                      last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size)
-                      ); 
+            #ifdef LIGHT_CALIBRATION
+                printf("Window %d Vertex 1: (%f, %f), Vertex 2: (%f, %f), Vertex 3: (%f, %f), Vertex 4: (%f, %f)\n", j, 
+                          last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size),
+                          last_valid_blobs[j].x-sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size),
+                          last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y-sqrt(last_valid_blobs[j].size),
+                          last_valid_blobs[j].x+sqrt(last_valid_blobs[j].size), last_valid_blobs[j].y+sqrt(last_valid_blobs[j].size)
+                          ); 
+            #endif
         }
+
     }
+    #ifdef LIGHT_CALIBRATION 
+        initialization = false;
+    #endif
     size_avg = 0;
     
     for(int k = 0; k<no; k++){ //Get the new blobs
@@ -390,6 +404,7 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
                 printf("\t \t Size: %f\n", blobs[k].size);
                 printf("\t   Average size: %f\n", size_avg);
             #endif
+            last_valid_blobs[nvalid] = blobs[k];
             nvalid++;
             
         }
@@ -424,28 +439,31 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         sl_adjust =+ 2;
     }*/
     if(nvalid >= MIN_NUMBER_BLOBS){
-        printf("More than 4 blobs detected!\n");
-        if(nvalid%4 == 0){
-            printf("Right number of blobs \n");
+        #ifdef LIGHT_CALIBRATION
+            printf("More than 4 blobs detected!\n");
+            if(nvalid%4 == 0){
+               
+                printf("Right number of blobs \n");
+                
+                sl_adjust = 0;
+                vl_adjust = 0;
+            }
             sl_adjust = 0;
-            vl_adjust = 0;
-        }
-
-        sl_adjust = 0;
+        #endif
     }else{ //normally its even nvalid = 0
+        #ifdef LIGHT_CALIBRATION
         printf("Less than 4 blobs detected!\n");
         printf("Too Bright? %d !!!\n", _sl);
-        sl_adjust = -2;
-        hl_adjust = -1;
-        hh_adjust = -1;
-        vl_adjust = +2;
+        #endif
+        //sl_adjust = -1;
+        //hl_adjust = -1;
+        //hh_adjust = -1;
+        //vl_adjust = +2;
     }
 
     #ifdef BLOB_INFO
         printf("----------------------------------------------\n");
     #endif
-    #ifdef LIGHT_CALIBRATION 
-        initialization = false;
-    #endif
+
     return no;
 }

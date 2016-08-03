@@ -33,9 +33,9 @@ using namespace YAML;
 #define MAX_MARKERS 50
 
 
-int MIN_NUM_FAILURES = 5; //minimal number of failures allowed for a tracked frame
-double RED_BLOB_THRESHOLD_SCALE_FACTOR = 0.4;
-int MARKER_THRESHOLD = 4;
+const int MIN_NUM_FAILURES = 5; //minimal number of failures allowed for a tracked frame
+const double RED_BLOB_THRESHOLD_SCALE_FACTOR = 0.4;
+const int MARKER_THRESHOLD = 4;
 
 
 //................................TRACK MARKER VARIABLES.......................
@@ -590,7 +590,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
                     total+=(double)it->frequencies[l];
                 }
             freq/=(double)total;
-        }
+        
         //get the quadrotor name from the computed frequency
         if(round(freq)>3 || round(freq)<0){
             ROS_INFO("WARNING: selected frequency index out of bounds");
@@ -599,6 +599,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
             it->name = quad_freq_name[(int)round(freq)].c_str(); //this was not allocated!
             //cout << "quad id = " << it->name << endl;
         }
+    }
     }
     return nmarkers;
 }

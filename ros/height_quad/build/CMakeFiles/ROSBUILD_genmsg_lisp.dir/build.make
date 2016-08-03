@@ -94,10 +94,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Attitude.lisp
 ../msg_gen/lisp/state.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/lisp/state.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/lisp/state.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/state.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/state.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/state.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/state.lisp: /opt/ros/indigo/share/nav_msgs/package.xml
-../msg_gen/lisp/state.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/state.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/state.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_state.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/height_quad/msg/state.msg
@@ -141,10 +141,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Attitude.lisp
 ../msg_gen/lisp/EstimateMulti.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/lisp/EstimateMulti.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/lisp/EstimateMulti.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/EstimateMulti.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/EstimateMulti.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/EstimateMulti.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/EstimateMulti.lisp: /opt/ros/indigo/share/nav_msgs/package.xml
-../msg_gen/lisp/EstimateMulti.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/EstimateMulti.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/EstimateMulti.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_EstimateMulti.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/height_quad/msg/EstimateMulti.msg
@@ -186,10 +186,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Attitude.lisp
 ../msg_gen/lisp/Estimate.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/lisp/Estimate.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/lisp/Estimate.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/Estimate.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/Estimate.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/Estimate.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/Estimate.lisp: /opt/ros/indigo/share/nav_msgs/package.xml
-../msg_gen/lisp/Estimate.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/Estimate.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Estimate.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Estimate.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/height_quad/msg/Estimate.msg
@@ -231,10 +231,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Attitude.lisp
 ../msg_gen/lisp/full_pose.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/lisp/full_pose.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/lisp/full_pose.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/full_pose.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/full_pose.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/full_pose.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/full_pose.lisp: /opt/ros/indigo/share/nav_msgs/package.xml
-../msg_gen/lisp/full_pose.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/full_pose.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/full_pose.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_full_pose.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/height_quad/msg/full_pose.msg
@@ -278,10 +278,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Attitude.lisp
 ../msg_gen/lisp/EstimateSingle.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/lisp/EstimateSingle.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/lisp/EstimateSingle.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/EstimateSingle.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/EstimateSingle.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/EstimateSingle.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/EstimateSingle.lisp: /opt/ros/indigo/share/nav_msgs/package.xml
-../msg_gen/lisp/EstimateSingle.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/EstimateSingle.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/EstimateSingle.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_EstimateSingle.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/height_quad/msg/EstimateSingle.msg
@@ -320,10 +320,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Attitude.lisp
 ../msg_gen/lisp/Attitude.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/lisp/Attitude.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/lisp/Attitude.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/Attitude.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/Attitude.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/Attitude.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/Attitude.lisp: /opt/ros/indigo/share/nav_msgs/package.xml
-../msg_gen/lisp/Attitude.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/Attitude.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/height_quad/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Attitude.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Attitude.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/height_quad/msg/Attitude.msg

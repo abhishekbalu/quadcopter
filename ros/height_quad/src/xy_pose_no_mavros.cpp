@@ -19,11 +19,11 @@
 
 using namespace Eigen;
 
-#define GAIN 0.16
-#define FOCAL_LENGTH 12.0
-#define GRAVITY 9.81
-#define ALPHA 0.0625 //double Ts = 0.01; double tau = 0.16; double alpha = Ts/tau;
-#define RATE 10
+const double GAIN = 0.16;
+const double FOCAL_LENGTH = 12.0;
+const double GRAVITY = 9.81;
+const double ALPHA = 0.0625; //double Ts = 0.01; double tau = 0.16; double alpha = Ts/tau;
+const int RATE = 10;
 
 height_quad::Attitude attitude;
 //Custom message
@@ -155,9 +155,14 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
     }else{
 
     	LPF->last_value = LPF->current_value;
-    	
+    	/*
     	LPF->current_value(0) = LPF->last_value(0) + ALPHA * (data->velocity_x - LPF->last_value(0));
     	LPF->current_value(1) = LPF->last_value(1) + ALPHA * (data->velocity_y - LPF->last_value(1));
+    	*/
+    	/*Could do some sort of outlier rejection here*/
+
+    	LPF->current_value(0) = data->velocity_x;
+    	LPF->current_value(1) = data->velocity_y;
 
    		OF = LPF->current_value;
 

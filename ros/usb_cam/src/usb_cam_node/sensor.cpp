@@ -37,7 +37,7 @@ int no=1;
 double thdp=50; //50 for real camera
 unsigned char* simage;
 int nx,ny;
-int lochm=170,lochM=230,locsm=40,locsM=101,locvm=40,locvM=101;
+int lochm=180,lochM=250,locsm=50,locsM=110,locvm=80,locvM=110;
 int objnumb[MAX_FEATURES];
 int objlink[MAX_FEATURES];
 unsigned long objx[MAX_FEATURES];
@@ -49,17 +49,17 @@ blob blobs[MAX_FEATURES];
 int objmark[MAX_FEATURES];
 unsigned char state;
 int localization;
-ofstream floc,fid;
+
 int save_blobs;
 
 //marker extraction parameters (fx=230 fy=230)
-double fx=230,fy=250,cx=160,cy=120;
+double fx=470,fy=490,cx=320,cy=240;
 double kx1=0.0000055,kx2=2e-10,ky1=0.0000020,ky2=0.0;
 double theta_calib;
 double thsz=1,thd=20*20;
 //double objQuad[]={0.20,0.0,0.0,0.0,0.20,0.0,0.1,0.1,0.07,0.0,0.0,0.20,0.05,0.05,0.0}; //ideal quadrotor
 //double objQuad[]={0.24,0.0,0.0,0.0,0.24,0.0,0.06,0.05,0.06,0.0,0.0,0.21,0.08,0.08,0.0}; //real quadrotor
-double objQuad[]={0.24,0.0,0.0,0.0,0.24,0.0,0.04,0.055,0.07,-0.0141,-0.007,0.22,0.08,0.08,0.0}; //real quadrotor
+double objQuad[]={0.22,0.0,0.0, 0.0,0.22,0.0, 0.04,0.08,0.08, -0.0141,-0.007,0.25, 0.08,0.08,0.0};
 double szx=0.4,szy=0.4, szLED=0.08;
 Eigen::Matrix3d camR;
 Eigen::Matrix3d new_frame;
@@ -213,7 +213,7 @@ int track_markers(unsigned char* buf,unsigned int step)
         //detect blobs
         //cout<<it->imx0<<" "<<it->imxf<<" "<<it->imy0<<" "<<it->imyf<<endl;
         localization=0;
-        detect_blobs(buf,step,40,101,350,390,40,101,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED);
+        detect_blobs(buf,step,60,110,350,390,50, 110,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED);
         
         //if red blob was detected with a sufficient size
         int old_state=it->state;
@@ -275,6 +275,7 @@ int track_markers(unsigned char* buf,unsigned int step)
                     total+=(double)it->frequencies[l];
                 }
             freq/=(double)total;
+
 	    //count2++;
 	    //if(count2 > 5){
 	    //	cout << "avg freq for " << it->name << " = " << (double)freq << endl;
@@ -315,7 +316,7 @@ int track_markers(unsigned char* buf,unsigned int step)
             it->name = quad_freq_name[ROUND(freq)].c_str(); //this was not allocated!
             //cout << "quad id = " << it->name << endl;
         }
-        
+        }
     }
     
     return nmarkers;
@@ -742,22 +743,7 @@ int detect_blobs(unsigned char* buf,unsigned int step,int vl,int vh,int hl,int h
             }
           }  
     
-    //print blobs into file except the ones that were aggregated
-    if(save_blobs){
-	for(int k=0;k<no;k++)
-	{
-	    if(blobs[k].valid){
-		if(localization==1)
-		    floc<<blobs[k].x<<" "<<blobs[k].y<<" "<<blobs[k].sz<<endl;
-		else
-		    fid<<blobs[k].x<<" "<<blobs[k].y<<" "<<blobs[k].sz<<endl;
-	    }
-	}
-	if(localization==1)
-	    floc<<"end_scan"<<endl;
-	else
-	    fid<<"end_scan"<<endl;
-    }
+   
 
     //threshold on the blob sizes
     for(int k=0;k<no;k++){
@@ -816,12 +802,7 @@ Eigen::MatrixXd* sensor_init(int width,int height,
 
     cout<<"localization thresholds:\nhm="<<lochm<<" hM="<<lochM<<"\nsm="<<locsm<<" sM="<<locsM<<"\nvm="<<locvm<<" vM="<<locvM<<endl;
 
-    //initialize blob files
-    if(save_blobs){
-	cout<<"openning blob files"<<endl;
-	floc.open("/home/linaro/rosws/sandbox/usb_cam/localization_blobs.txt");
-	fid.open("/home/linaro/rosws/sandbox/usb_cam/id_blobs.txt");
-    }
+
 
     //initialize transformations
     //camR<<-0.6956,0,+0.718,0,-1,0,0.718,0,+0.6956;
@@ -858,14 +839,7 @@ blob* get_blobs()
     return blobs;
 }
 
-void close_blob_files()
-{
-    if(save_blobs){
-    cout<<"closing blob files"<<endl;
-    floc.close();
-    fid.close();
-    }
-}
+
 
 std::vector<marker>* get_markers(){
     return &marker_list;
