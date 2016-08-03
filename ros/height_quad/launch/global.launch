@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="use_z" default="true"/>
+  <arg name="use_xy" default="false"/>
+  <arg name="use_cam" default="false"/>
+  <arg name="use_laser" default="false"/>
+  <arg name="use_estimator" default="true"/>
+
+
+  <include file="$(find px4flow_node)/launch/px4flow.launch"/>
+
+  <!-- Launch xy filtering -->
+  <node pkg="height_quad" type="xy_pose_no_mavros" name="xy_pose_no_mavros" output="screen"/>
+
+  <!-- Launch z filtering -->
+  <node pkg="height_quad" type="z_pose_no_mavros" name="z_pose_no_mavros" output="screen"/>
+
+  <!-- Launch Hokuyo Laser -->
+  <group if="$(arg use_cam)">
+      <!-- Include test.launch -->
+      <include file="$(find cam)/launch/test.launch"/>
+  </group>
+
+</launch>

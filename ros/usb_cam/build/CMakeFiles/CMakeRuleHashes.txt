@@ -1,0 +1,17 @@
+# Hashes of file build rules.
+c28f4b62b2502402e221c43165f9a441 ../msg_gen/cpp/include/usb_cam/QuadPose.h
+fc8a5c51c407fc6bf51b7c36f7893e09 ../msg_gen/cpp/include/usb_cam/QuadPoseList.h
+c7515765a411ba86f77b30bd37fb6b77 ../msg_gen/cpp/include/usb_cam/detections.h
+5ccbcb7cefdadb7f435a4535b7dfe9ec ../msg_gen/lisp/QuadPose.lisp
+ede14c4e4ed2315d74a81204e331c68a ../msg_gen/lisp/QuadPoseList.lisp
+9064066233e42170d44030f9c8157ebf ../msg_gen/lisp/detections.lisp
+ab789631b334b9576803e8229d5330fb ../src/usb_cam/msg/_QuadPose.py
+155ba4532cd78b4fbdbcef3f34d52bb8 ../src/usb_cam/msg/_QuadPoseList.py
+8dce83900cfc74726aef5fbbfe77009b ../src/usb_cam/msg/__init__.py
+2efa2e5a7179556f23f87af60b160a11 ../src/usb_cam/msg/_detections.py
+8e439cc4aa04a038ce58ad552caefb54 CMakeFiles/ROSBUILD_genmsg_cpp
+8e439cc4aa04a038ce58ad552caefb54 CMakeFiles/ROSBUILD_genmsg_lisp
+8e439cc4aa04a038ce58ad552caefb54 CMakeFiles/ROSBUILD_genmsg_py
+6579fb7b733244ff94830599780beeeb CMakeFiles/clean_test_results
+0bdb75e2fa0a4b57624c85c9ad13f866 CMakeFiles/rosbuild_clean-test-results
+2563dc2f64b4805ccfa69aea78e78826 CMakeFiles/test-results
