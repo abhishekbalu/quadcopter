@@ -341,3 +341,5 @@ endif
  - do ```sudo modprobe 8812au```
  - if it gives an error saying it cannot allocate memory, add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf``` . Then reboot. If the error persists or if the driver does not work, you may need to reflash TK1 and add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf```  to the file right after the first boot, reboot again, and proceed from step one.
  - To reflash the TK1, follow [this](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)
+
+10 - If the NVidia doesn't boot up with the battery, disconnect all USB, connect the battery, wait for boot up, and then connect all USB.
