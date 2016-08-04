@@ -19,6 +19,8 @@
 
 using namespace Eigen;
 
+#define PI 3.14159265
+
 const double GAIN = 0.16;
 const double FOCAL_LENGTH = 12.0;
 const double GRAVITY = 9.81;
@@ -60,12 +62,14 @@ Kalman_2D kalman(0.1, 0.1, 1, 0, 0, 1);
 MatrixXd Rroll(3,3);
 MatrixXd Rpitch(3,3);
 MatrixXd Ryaw(3,3);
+MatrixXd ROF(3,3);
 MatrixXd RotMat(3,3);
+
 VectorXd OF(2);
 VectorXd VecG(3);
 VectorXd VecDir(3);
 VectorXd VecAz(3);
-
+VectorXd VAux(3);
 void updateRotMatrixes(){
 	Rroll << 1, 0,          0,
              0, cos(roll), -sin(roll),
@@ -160,9 +164,24 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
     	LPF->current_value(1) = LPF->last_value(1) + ALPHA * (data->velocity_y - LPF->last_value(1));
     	*/
     	/*Could do some sort of outlier rejection here*/
-
-    	LPF->current_value(0) = data->velocity_x;
-    	LPF->current_value(1) = data->velocity_y;
+	VAux(0) = data->velocity_x;
+	VAux(1) = data->velocity_y;
+	VAux(2) = 0;
+/*
+	if(abs(data->velocity_x) < 0.07 && abs(data->velocity_y) < 0.07){ //This wasn't working
+		VAux(0) = 0;
+		VAux(0) = 0;
+	}*/
+	std::cout << ROF << '\n';
+	VAux = ROF * VAux;
+	if(abs(data->velocity_x - LPF->last_value(0)) > 0.12 || abs(data->velocity_y - LPF->last_value(1)) > 0.12){
+		VAux(0) = LPF->last_value(0);
+		VAux(1) = LPF->last_value(1);
+	}
+	
+	
+    	LPF->current_value(0) = VAux(0);
+    	LPF->current_value(1) = VAux(1);
 
    		OF = LPF->current_value;
 
@@ -182,7 +201,7 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 
 		#ifdef VERBOSE
 			ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", phi, theta, yaw);
-			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy);
+			ROS_INFO("X: [%f] Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy, data->quality);
     	#endif
     }
 
@@ -195,6 +214,9 @@ int main(int argc, char** argv){
     VecG << 0,0,GRAVITY;
 	VecDir << 0,0,1;
 	VecAz << 0,0,0;
+ROF << cos(45 * PI/180.0), -sin(45 * PI/180.0), 0,
+            sin(45 * PI/180.0), cos(45 * PI/180.0), 0,
+            0,        0,        0;
 
     Xhat << 0, 0, 0, 0, 0, 0; //initial position
     kalman.Xhat = Xhat;

@@ -34,7 +34,7 @@ int self_robot_index; //variable that indicates the entry of the robot estimatio
 double node_rate; //variable that defines the sensor output rate
 string robot_self_name; //the name of this robot
 void* values_msg_shared; //memory shared address for the values message
-int asctec; //decides the platform to which send commands to
+
 
 void initialize_estimator(std::string param_name)
 {
@@ -84,22 +84,14 @@ void initialize_estimator(std::string param_name)
 	nh.getParam(full_name.c_str(),v_OF);
 	full_name = param_name + "mass"; //robot mass
 	nh.getParam(full_name.c_str(),mass);
-	full_name = param_name + "asctec"; //selected auto-pilot
-	nh.getParam(full_name.c_str(),asctec);
 
 	//select thrust calibration curve according to the selected autopilot
-	if(asctec == 0){ //px4
-		full_name = param_name + "px4_calib_slope";
-		nh.getParam(full_name.c_str(),calib_slope);
-		full_name = param_name + "px4_calib_bias";
-		nh.getParam(full_name.c_str(),calib_bias);
-	}
-	else { //asctec
-		full_name = param_name + "asctec_calib_slope";
-		nh.getParam(full_name.c_str(),calib_slope);
-		full_name = param_name + "asctec_calib_bias";
-		nh.getParam(full_name.c_str(),calib_bias);
-	}
+	//px4
+	full_name = param_name + "px4_calib_slope";
+	nh.getParam(full_name.c_str(),calib_slope);
+	full_name = param_name + "px4_calib_bias";
+	nh.getParam(full_name.c_str(),calib_bias);
+	
 
 	//initialize egomotion estimation variables
 	w_th *= w_th; w_yaw *= w_yaw; v_Z *= v_Z; v_OF *= v_OF; //change to variances
@@ -153,38 +145,6 @@ void RaB3DInfo_callback(const quad_msgs::RaB3DInfo::ConstPtr& info_msg)
 	info_initialized = 1;
 }
 
-void OpticalFlow_callback(const quad_msgs::OpticalFlow::ConstPtr& optical_flow_msg)
-{
-	//update vertical egomtion acording to the measured ground distance
-	egomotion_update_Z_self(optical_flow_msg->ground_distance);
-
-	//get yaw and compensate x, y rotation (from velocity in the world to velocity in the quadrotor frame)
-	double yaw = get_self_yaw();
-	double vx =optical_flow_msg->velocity_x;
-	double vy =optical_flow_msg->velocity_y;
-	double vx1 = cos(yaw)*vx + sin(yaw)*vy;
-	double vy1 = -sin(yaw)*vx + cos(yaw)*vy;
-
-	//update horizontal egomtion acording to the optical flow measurements
-	egomotion_update_OF_self(vx1, vy1);
-}
-void OpticalFlow_callback_px4(const geometry_msgs::TwistWithCovarianceStamped::ConstPtr& optical_flow_msg)
-{
-	//get yaw and compensate x, y rotation
-	//double yaw = get_self_yaw();
-	//double vx = optical_flow_msg->linear.x;
-	//double vy = optical_flow_msg->linear.y;
-	double vx1 = -optical_flow_msg->twist.twist.linear.x; //cos(yaw)*vx - sin(yaw)*vy;
-	double vy1 = -optical_flow_msg->twist.twist.linear.y;//sin(yaw)*vx + cos(yaw)*vy;
-
-	//update horizontal egomtion acording to the optical flow measurements
-	egomotion_update_OF_self(vx1, vy1);
-}
-void Z_callback_px4(const sensor_msgs::Range::ConstPtr& range_msg)
-{
-	//update vertical egomtion acording to the measured ground distance
-	egomotion_update_Z_self(range_msg->range);
-}
 void OpticalFlow_callback_px4_full(const px_comm::OpticalFlow::ConstPtr& optical_flow_msg)
 {
 	//update vertical egomtion acording to the measured ground distance
@@ -225,8 +185,10 @@ int main(int argc, char* argv[])
 	double local_time = ros::Time::now().toSec();
 	while(ros::ok()){ //stop if Ctrl-C is pressed
 		ros::spinOnce(); //do a single ros loop
-		if(info_initialized) break;
-		if( (ros::Time::now().toSec() - local_time) > 4) break; //break also if it took to mutch time to initialize the sensor
+		if(info_initialized) 
+			break;
+		if((ros::Time::now().toSec() - local_time) > 4) 
+			break; //break also if it took to mutch time to initialize the sensor
 	}
 
 	//shutdown RaB3DInfo topic
@@ -263,27 +225,12 @@ int main(int argc, char* argv[])
 
 	//egomotion subscribers
 	ros::Subscriber angle_input;
-	if(asctec)
-		angle_input=nh.subscribe("fcu/imu", 1, angle_callback);
-	else
-		angle_input=nh.subscribe("mavros/imu/data", 1, angle_callback);
+	angle_input=nh.subscribe("mavros/imu/data", 1, angle_callback);
 
-	ros::Subscriber control_input;
-	if(asctec)
-		control_input=nh.subscribe("fcu/control",1,control_callback);
-	else
-		control_input=nh.subscribe("mavros/setpoint_raw/attitude",1,control_callback_px4);
-
-	ros::Subscriber OpticalFlow_sub;
-	ros::Subscriber Z_sub;
-	if(asctec)
-		OpticalFlow_sub=nh.subscribe("sensor/optical_flow", 1, OpticalFlow_callback);
-	else {
-		
-		OpticalFlow_sub=nh.subscribe("/px4flow/opt_flow", 1, OpticalFlow_callback_px4_full);
-		//OpticalFlow_sub=nh.subscribe("visual_odom", 1, OpticalFlow_callback_px4);
-		//Z_sub=nh.subscribe("mavros/px4flow/ground_distance", 1, Z_callback_px4);
-	}
+	ros::Subscriber control_input = nh.subscribe("mavros/setpoint_raw/attitude",1,control_callback_px4);
+	ros::Subscriber OpticalFlow_sub = nh.subscribe("/px4flow/opt_flow", 1, OpticalFlow_callback_px4_full);
+	
+	
 
 	//initialize loop rate
 	ros::Rate loop_rate(node_rate);

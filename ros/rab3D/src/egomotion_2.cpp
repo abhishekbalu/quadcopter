@@ -353,17 +353,7 @@ void angle_callback(const sensor_msgs::Imu::ConstPtr& imu)
 	//signal new measurements (this is important to know if there is new rotations)
 	stamp_imu++;
 }
-void control_callback(const asctec_hl_comm::mav_ctrl::ConstPtr& command)
-{
-	//new input to be followed from this instant
-	thrust_last_time=ros::Time::now().toSec();
-	
-	//convert from thrust to acceleration
-	F=((double)(command->z/robot_calib_slope) - robot_calib_bias/robot_calib_slope)/robot_mass;
 
-	//signal new measurements (this is important to know that the controller is still on)
-	stamp_thrust++;
-}
 void control_callback_px4(const mavros_msgs::AttitudeTarget::ConstPtr& command)
 {
 	//new input to be followed from this instant

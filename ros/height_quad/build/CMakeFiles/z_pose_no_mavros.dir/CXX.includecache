@@ -20,23 +20,23 @@ math.h
 
 ../include/height_quad/debug.h
 
-/home/pedro/ros/height_quad/src/z_pose_no_mavros.cpp
+/home/ubuntu/quadcopter/ros/height_quad/src/z_pose_no_mavros.cpp
 list
 -
 math.h
 -
 ros/ros.h
-/home/pedro/ros/height_quad/src/ros/ros.h
+/home/ubuntu/quadcopter/ros/height_quad/src/ros/ros.h
 sensor_msgs/Range.h
 -
 px_comm/OpticalFlow.h
 -
 height_quad/Kalman_1D.h
-/home/pedro/ros/height_quad/src/height_quad/Kalman_1D.h
+/home/ubuntu/quadcopter/ros/height_quad/src/height_quad/Kalman_1D.h
 height_quad/debug.h
-/home/pedro/ros/height_quad/src/height_quad/debug.h
+/home/ubuntu/quadcopter/ros/height_quad/src/height_quad/debug.h
 
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
 string
 -
 vector
@@ -46,19 +46,19 @@ map
 ostream
 -
 ros/serialization.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/serialization.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/serialization.h
 ros/builtin_message_traits.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/builtin_message_traits.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/builtin_message_traits.h
 ros/message_operations.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/message_operations.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/message_operations.h
 ros/time.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/time.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/time.h
 ros/macros.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/macros.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/macros.h
 ros/assert.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/assert.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/assert.h
 std_msgs/Header.h
-/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/std_msgs/Header.h
+/home/ubuntu/ros/quad_control_rosbuild/px4/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/std_msgs/Header.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -202,8 +202,6 @@ set
 list
 -
 boost/shared_ptr.hpp
--
-boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

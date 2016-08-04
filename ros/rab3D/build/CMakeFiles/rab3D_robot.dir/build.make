@@ -75,11 +75,11 @@ CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/quad_msgs/manifest.x
 CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o -c /home/pedro/ros/rab3D/src/RaB3D.cpp
@@ -127,11 +127,11 @@ CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/quad_msgs/
 CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o -c /home/pedro/ros/rab3D/src/estimator_robot.cpp
@@ -179,11 +179,11 @@ CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/quad_msgs/mani
 CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.o -c /home/pedro/ros/rab3D/src/egomotion_2.cpp
@@ -231,11 +231,11 @@ CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/quad_msgs/
 CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
-CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/rab3D_robot.dir/src/rab3D_robot_sim.cpp.o -c /home/pedro/ros/rab3D/src/rab3D_robot_sim.cpp

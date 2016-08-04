@@ -30,7 +30,7 @@ ros/assert.h
 std_msgs/Header.h
 /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/cpp/include/asctec_hl_comm/std_msgs/Header.h
 
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/OpticalFlow.h
 string
 -
 vector
@@ -40,19 +40,19 @@ map
 ostream
 -
 ros/serialization.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/serialization.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/serialization.h
 ros/builtin_message_traits.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/builtin_message_traits.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/builtin_message_traits.h
 ros/message_operations.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/message_operations.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/message_operations.h
 ros/time.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/time.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/time.h
 ros/macros.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/macros.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/macros.h
 ros/assert.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/ros/assert.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/ros/assert.h
 std_msgs/Header.h
-/home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/cpp/include/px_comm/std_msgs/Header.h
+/home/pedro/ros/px-ros-pkg/px_comm/msg_gen/cpp/include/px_comm/std_msgs/Header.h
 
 /home/pedro/ros/quad_msgs/msg_gen/cpp/include/quad_msgs/Estimate.h
 string

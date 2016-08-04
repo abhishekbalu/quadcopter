@@ -82,11 +82,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/rab3D/msg/__init__.py
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/quad_msgs/msg_gen/generated
 ../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 ../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/rab3D/msg/_Rab3DMsg.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/rab3D/msg/Rab3DMsg.msg
@@ -118,11 +118,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/rab3D/msg/__init__.py
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/quad_msgs/msg_gen/generated
 ../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 ../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/rab3D/msg/_Rab3DObj.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/rab3D/msg/Rab3DObj.msg

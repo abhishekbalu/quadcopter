@@ -52,7 +52,7 @@ void egomotion_predict(egomotion* ego, VectorXd& x1, MatrixXd& P1);
 
 //callbacks
 void angle_callback(const sensor_msgs::Imu::ConstPtr& imu);
-void control_callback(const asctec_hl_comm::mav_ctrl::ConstPtr& command);
+
 void control_callback_px4(const mavros_msgs::AttitudeTarget::ConstPtr& command);
 
 //generate egomotion ros message

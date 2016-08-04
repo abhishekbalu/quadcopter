@@ -81,11 +81,11 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Rab3DObj.lisp
 ../msg_gen/lisp/Rab3DMsg.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../msg_gen/lisp/Rab3DMsg.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
 ../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 ../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/Rab3DMsg.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Rab3DMsg.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Rab3DMsg.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/rab3D/msg/Rab3DMsg.msg
@@ -123,11 +123,11 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Rab3DObj.lisp
 ../msg_gen/lisp/Rab3DObj.lisp: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../msg_gen/lisp/Rab3DObj.lisp: /opt/ros/indigo/share/mavros_msgs/package.xml
-../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/manifest.xml
+../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
 ../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
 ../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/px-ros-pkg-rosbuild/px_comm/msg_gen/generated
+../msg_gen/lisp/Rab3DObj.lisp: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Rab3DObj.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Rab3DObj.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/rab3D/msg/Rab3DObj.msg

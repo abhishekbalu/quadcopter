@@ -264,7 +264,21 @@ Bellow is the connector pinout and a picture of the Pixhawk connected via Serial
 You may want to use an FTDI Cable for this purpose or use a protoboard with an FTDI Chip and some headers like so:
 ![](http://i.imgur.com/gpMCH4E.jpg)
 6 - If the NVidia and PX4 are both connected via battery follow the steps:
-  - Find the ip of the quad **sudo arp-scan --interface=wlan0 --localnet** (on our local network QuadBase5 the ip is normally 11.0.3.1 or 11.0.1.5. If you are on windows, ping these two, and you'll probably find it)
+  - Find the ip of the quad **sudo arp-scan --interface=wlan0 --localnet** (on our local network QuadBase5 the ip is normally 11.0.3.1 or 11.0.1.5. If you are on windows, ping these two, and you'll probably find it). IF you want to connect via ethernet my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
+  
+(
+
+  - With the ethernet disconnected, connect the dongle.
+  - login via ssh. Insert the ethernet cable on the NVidia.
+```
+ifconfig
+```
+  - see the IP address of eth0
+  - Logout ssh and login with that IP address. Remove the wifi dongle.
+
+)
+
+
   - Connect the battery
   - Turn off USB connections
   - Turn on USB connections
