@@ -322,4 +322,22 @@ Charging:
  - Each press of the Dec. button cycles the status of the charging screen
  - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
 
-
+9 - How to setup Wifi with the USB ASUS dongles:
+ - Download driver from [here](https://github.com/codeworkx/rtl8812au_asus)
+ - Add ```CONFIG_PLATFORM_TEGRA_K1 = y``` to the Makefile on platform related; make sure all other platforms are set as ```=n```
+ - After I386 make rules, add:
+```
+ifeq ($(CONFIG_PLATFORM_TEGRA_K1), y)
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
+ARCH := arm
+CROSS_COMPILE := arm-linux-gnueabihf-
+KVER := $(shell uname -r)
+KSRC ?= /usr/src/linux-headers-$(KVER)
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+endif
+```
+ - Do ```make```. If it asks to ```make modules_prepare``` on ```/usr/src/linux-headers-KVER```, do so
+ - do ```sudo make install```
+ - do ```sudo modprobe 8812au```
+ - if it gives an error saying it cannot allocate memory, add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf``` . Then reboot. If the error persists or if the driver does not work, you may need to reflash TK1 and add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf```  to the file right after the first boot, reboot again, and proceed from step one.
+ - To reflash the TK1, follow [this](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)
