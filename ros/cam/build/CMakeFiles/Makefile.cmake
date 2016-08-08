@@ -181,6 +181,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake"
   "CMakeFiles/clean_test_results.dir/DependInfo.cmake"
   "CMakeFiles/run_tests.dir/DependInfo.cmake"
+  "CMakeFiles/blob_detection_simple.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_gensrv_cpp.dir/DependInfo.cmake"
   "CMakeFiles/blob_debug.dir/DependInfo.cmake"
   "CMakeFiles/usb_cam.dir/DependInfo.cmake"

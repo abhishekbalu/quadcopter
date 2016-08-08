@@ -210,7 +210,7 @@ blob_debug_qt_EXTERNAL_OBJECTS =
 ../bin/blob_debug_qt: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 ../bin/blob_debug_qt: /usr/lib/x86_64-linux-gnu/libpthread.so
 ../bin/blob_debug_qt: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-../bin/blob_debug_qt: ../lib/libblob_detection.so
+../bin/blob_debug_qt: ../lib/libblob_detection_simple.so
 ../bin/blob_debug_qt: /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib/libQtOpenGL.so
 ../bin/blob_debug_qt: /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib/libQtGui.so
 ../bin/blob_debug_qt: /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib/libQtXml.so

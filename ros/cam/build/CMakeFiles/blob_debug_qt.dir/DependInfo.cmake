@@ -22,7 +22,7 @@ set(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pedro/ros/cam/build/CMakeFiles/blob_detection.dir/DependInfo.cmake"
+  "/home/pedro/ros/cam/build/CMakeFiles/blob_detection_simple.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

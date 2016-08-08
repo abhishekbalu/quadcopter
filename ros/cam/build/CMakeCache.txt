@@ -889,6 +889,9 @@ blob_LIB_DEPENDS:STATIC=general;image_transport;general;message_filters;general;
 //Dependencies for the target
 blob_detection_LIB_DEPENDS:STATIC=general;image_transport;general;message_filters;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;class_loader;general;/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;roscpp;general;pthread;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;rosconsole;general;rosconsole_log4cxx;general;rosconsole_backend_interface;general;/usr/lib/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;cpp_common;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
+//Dependencies for the target
+blob_detection_simple_LIB_DEPENDS:STATIC=general;image_transport;general;message_filters;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;class_loader;general;/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;roscpp;general;pthread;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;rosconsole;general;rosconsole_log4cxx;general;rosconsole_backend_interface;general;/usr/lib/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;cpp_common;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
 //Value Computed by CMake
 cam_BINARY_DIR:STATIC=/home/pedro/ros/cam/build
 

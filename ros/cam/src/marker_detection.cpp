@@ -31,16 +31,14 @@ using namespace YAML;
 
 #define MAX_FEATURES 500
 #define MAX_MARKERS 50
-
-
+const int BLUE = 1;
+const int RED = 0;
 const int MIN_NUM_FAILURES = 5; //minimal number of failures allowed for a tracked frame
 const double RED_BLOB_THRESHOLD_SCALE_FACTOR = 0.4;
 const int MARKER_THRESHOLD = 4;
 
-
 //................................TRACK MARKER VARIABLES.......................
 int localization;
-
 int nquad_freq=4;
 double quad_freq[]={0,1,2,3};
 string quad_freq_name[]={"frame0","frame1","frame2","frame3"};
@@ -63,9 +61,9 @@ int blue_blob_hh = 250;
 int blue_blob_vl = 80;
 int blue_blob_vh = 110;
 
-std::string blue_blob_settings = "yamls/blue_blob_settings.yaml";
-std::string red_blob_settings = "yamls/red_blob_settings.yaml";
-std::string tracking_params = "yamls/tracking_params.yaml";
+std::string blue_blob_settings = "~/ros/cam/params/blue_blob_settings.yaml";
+std::string red_blob_settings = "~/ros/cam/params/red_blob_settings.yaml";
+std::string tracking_params = "~/ros/cam/params/tracking_params.yaml";
 
 int objcnt=0;
 int nmarkers=0;
@@ -123,8 +121,8 @@ void readTrackingParams(std::string file){
     try{
         fx = root["fx"].as<int>();
         fy = root["fy"].as<int>();
-        cx = root["hl"].as<int>();
-        cy = root["hh"].as<int>();
+        cx = root["cx"].as<int>();
+        cy = root["cy"].as<int>();
         kx1 = root["kx1"].as<double>();
         kx2 = root["kx2"].as<double>();
         ky1 = root["ky1"].as<double>();
@@ -458,7 +456,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
 
 	int erase[MAX_MARKERS];
 	//int lochm=170,lochM=230,locsm=40,locsM=101,locvm=40,locvM=101;
-	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height);
+	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height, BLUE);
     #ifdef VERBOSE
         printf("Ran detec_blobs inside track_markers: %d\n", no);
 	#endif
@@ -547,7 +545,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
     //Search for red blobs
     for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
         localization=0;
-        detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height);
+        detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height, RED);
         int old_state=it->state;
         it->state=0;
         for(int l=0;l<no;l++)

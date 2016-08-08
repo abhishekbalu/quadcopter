@@ -20,19 +20,19 @@ math.h
 
 ../include/height_quad/debug.h
 
-/home/ubuntu/quadcopter/ros/height_quad/src/z_pose.cpp
+/home/pedro/ros/height_quad/src/z_pose.cpp
 list
 -
 math.h
 -
 ros/ros.h
-/home/ubuntu/quadcopter/ros/height_quad/src/ros/ros.h
+/home/pedro/ros/height_quad/src/ros/ros.h
 sensor_msgs/Range.h
 -
 height_quad/Kalman_1D.h
-/home/ubuntu/quadcopter/ros/height_quad/src/height_quad/Kalman_1D.h
+/home/pedro/ros/height_quad/src/height_quad/Kalman_1D.h
 height_quad/debug.h
-/home/ubuntu/quadcopter/ros/height_quad/src/height_quad/debug.h
+/home/pedro/ros/height_quad/src/height_quad/debug.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -176,6 +176,8 @@ set
 list
 -
 boost/shared_ptr.hpp
+-
+boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

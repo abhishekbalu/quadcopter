@@ -23,13 +23,16 @@
 
 #include "cam/QuadPose.h"
 #include "cam/QuadPoseList.h"
+#include "std_msgs/MultiArrayLayout.h"
+#include "std_msgs/MultiArrayDimension.h"
+#include "std_msgs/Float32MultiArray.h"
 
 using namespace std;
 using namespace YAML;
 using namespace Eigen;
 
 #define MAX_DEVIATION 0.2
-
+std_msgs::Float32MultiArray val_arr;
 vector<marker>* detected_quads; //Remember, marker struct = one quad
 MatrixXd* objects;
 unsigned char* bufb,* buf;
@@ -38,7 +41,6 @@ int nblobs,nobjects;
 
 int datapoints = 0;
 ofstream outputfile;
-
 
 double value = 0.0;
 double last_value = 0.0;
@@ -50,7 +52,8 @@ static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher markers_pub;
-std::string image_settings = "yamls/image_settings.yaml";
+static ros::Publisher frame_pub;
+std::string image_settings = "~/ros/cam/params/image_settings.yaml";
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
 	//get image
@@ -109,8 +112,8 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		else
 		    quad_pose.pose_updated = 0;
 		
-		if(quad_pose.name == "frame0"){
-			printf("ROLL: %f PITCH: %f  YAW: %f\n");
+		if(quad_pose.name == "frame0" || quad_pose.name == "unknown"){
+			printf("ROLL: %f PITCH: %f  YAW: %f\n", roll, pitch, yaw);
 			//Reject outliers and when the frame is lost
 			value = quad_pose.position.x;
 			if((std::abs(last_value-value) < MAX_DEVIATION || last_value == 0) && quad_pose.position.x !=NULL){
@@ -121,13 +124,18 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 				cout << s << endl;
 				datapoints++;
 				last_value = value;
+				if(value <= 17.5){
+					value = 17.5;
+				}
+				val_arr.data.clear();
+				val_arr.data.push_back(last_value);
 			}
 			
 		}
 		quad_poses_msg.poses.push_back(quad_pose);
 	}
 	markers_pub.publish(quad_poses_msg);
-
+	frame_pub.publish(val_arr);
     return;
 }
 
@@ -166,6 +174,7 @@ int main(int argc, char** argv){
     bin_image_pub=nh.advertise<sensor_msgs::Image>("node/binary_image",1);
     detections_pub=nh.advertise<cam::detections>("node/detections",1);
     markers_pub = nh.advertise<cam::QuadPoseList>("node/markers",1);
+    frame_pub = nh.advertise<std_msgs::Float32MultiArray>("node/frame", 1);
 
     ros::Rate loop_rate(30);
    

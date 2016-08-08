@@ -11,6 +11,8 @@
 /home/pedro/ros/cam/src/blob_detection.cpp
 iostream
 -
+ostream
+-
 fstream
 -
 vector

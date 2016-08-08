@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/ubuntu/quadcopter/ros/height_quad/build/devel/setup.sh
+    local-name: /home/pedro/ros/height_quad/build/devel/setup.sh

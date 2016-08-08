@@ -1,0 +1,36 @@
+width: 640
+height: 480
+
+blue_vl: 50
+blue_vh: 110
+blue_hl: 180
+blue_hh: 250
+blue_sl: 80
+blue_sh: 110
+
+red_vl: 60
+red_vh: 110
+red_hl: 350
+red_hh: 390
+red_sl: 50
+red_sh: 110
+
+fx: 470
+fy: 490
+cx: 320
+cy: 240
+kx1: 0.0000055
+kx2: 0.0009765625
+ky1: 0.0000020
+ky2: 0.0
+theta_calib: 0.00
+szx: 0.4
+szy: 0.4
+szLED: 0.08
+thsz: 1
+thd: 400
+nx: 640
+ny: 480
+objQuad: [0.22,0.0,0.0, 0.0,0.22,0.0, 0.04,0.08,0.08, -0.0141,-0.007,0.25, 0.08,0.08,0.0]
+dt_min: 0.1
+

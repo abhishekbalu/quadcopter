@@ -75,6 +75,10 @@ CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rosgraph
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rospy/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
+CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/mavros_msgs/package.xml
+CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
+CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
+CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/nav_msgs/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/message_filters/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rosclean/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rosmaster/package.xml
@@ -91,7 +95,6 @@ CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rosnode/
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rosmsg/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rosservice/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/roswtf/package.xml
-CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/actionlib_msgs/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/tf2_msgs/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/tf2/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/rostest/package.xml
@@ -99,6 +102,7 @@ CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/actionli
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/tf2_py/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/tf2_ros/package.xml
 CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /opt/ros/indigo/share/tf/package.xml
+CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/laser/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/rpy.dir/src/rpy_from_quaternion.cpp.o -c /home/pedro/ros/laser/src/rpy_from_quaternion.cpp

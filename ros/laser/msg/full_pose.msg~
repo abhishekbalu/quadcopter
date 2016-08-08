@@ -1,0 +1,10 @@
+Header header
+geometry_msgs/Vector3 ang_vel
+geometry_msgs/Vector3 lin_acc
+quad_can_driver/Attitude attitude
+float64 z
+float64 x
+float64 y
+float64 vx
+float64 vy
+int8 quality

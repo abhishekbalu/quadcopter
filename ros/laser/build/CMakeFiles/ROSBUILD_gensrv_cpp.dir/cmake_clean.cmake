@@ -1,3 +1,8 @@
+file(REMOVE_RECURSE
+  "../msg_gen"
+  "../msg_gen"
+  "../src/laser/msg"
+)
 
 # Per-language clean rules from dependency scanning.
 foreach(lang)

@@ -26,6 +26,7 @@
 /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/pedro/ros/cam/build/CMakeFiles/clean_test_results.dir
 /home/pedro/ros/cam/build/CMakeFiles/run_tests.dir
+/home/pedro/ros/cam/build/CMakeFiles/blob_detection_simple.dir
 /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir
 /home/pedro/ros/cam/build/CMakeFiles/blob_debug.dir
 /home/pedro/ros/cam/build/CMakeFiles/usb_cam.dir

@@ -4,9 +4,10 @@
   <arg name="use_test" default="true"/>
   <arg name="use_laser" default="true"/>
   <arg name="use_mapping" default="true"/>
-
+  <!-- Launch the sonar -->
+  <node pkg="laser" type="z_pose.cpp" name="z_pose" output="screen"/>
   <!-- Launch robot publisher -->
-  <node pkg="danielpa" type="rob_brod.py" name="robot_publisher" output="screen"/>
+  <node pkg="laser" type="rob_brod.py" name="robot_publisher" output="screen"/>
 
   <!-- Launch Hokuyo Laser -->
   <group if="$(arg use_laser)">
@@ -21,12 +22,12 @@
 
   <!-- Launch Hector mapping -->
   <group if="$(arg use_mapping)">
-    <include file="$(find danielpa)/launch/mapping.launch"/>
+    <include file="$(find laser)/launch/mapping.launch"/>
   </group>
 
   <!-- Test Launch File --> 
     <group if="$(arg use_test)">
-      <include file="$(find danielpa)/launch/laser_test.launch"/>
+      <include file="$(find laser)/launch/laser_test.launch"/>
     </group> 
 
 </launch>

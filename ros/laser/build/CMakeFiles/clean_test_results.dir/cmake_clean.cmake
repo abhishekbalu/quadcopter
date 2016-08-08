@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "../msg_gen"
+  "../msg_gen"
+  "../src/laser/msg"
   "CMakeFiles/clean_test_results"
 )
 

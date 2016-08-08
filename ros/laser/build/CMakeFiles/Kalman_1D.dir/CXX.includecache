@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/laser/Kalman_1D.h
+eigen3/Eigen/Eigen
+-
+eigen3/Eigen/LU
+-
+eigen3/Eigen/Dense
+-
+eigen3/Eigen/Core
+-
+math.h
+-
+
+/home/pedro/ros/laser/src/Kalman_1D.cpp
+laser/Kalman_1D.h
+-
+

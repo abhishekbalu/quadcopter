@@ -88,7 +88,10 @@ CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/sensor_msgs/Image.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/sensor_msgs/RegionOfInterest.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/sensor_msgs/fill_image.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/sensor_msgs/image_encodings.h
+CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/std_msgs/Float32MultiArray.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/std_msgs/Header.h
+CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/std_msgs/MultiArrayDimension.h
+CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/std_msgs/MultiArrayLayout.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/std_msgs/String.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/tf/LinearMath/Matrix3x3.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/tf/LinearMath/MinMax.h

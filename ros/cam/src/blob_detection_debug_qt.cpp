@@ -18,7 +18,7 @@
 #include <std_msgs/Int8.h>
 //user libraries
 #include "cam/detections.h"
-#include "cam/blob_detection.h"
+#include "cam/blob_detection_simple.h"
 #include "cam/debug.h" //Comment or uncomment this for verbose
 #include "yaml-cpp/yaml.h"
 
@@ -29,6 +29,7 @@ using namespace YAML;
 
 #define GUI 1
 
+const int BLUE = 1;
 int fd;
 
 
@@ -52,8 +53,8 @@ static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher valid_blobs_pub;
-std::string blob_settings = "yamls/blue_blob_settings.yaml";
-std::string image_settings = "yamls/image_settings.yaml";
+std::string blob_settings = "~/ros/cam/params/blue_blob_settings.yaml";
+std::string image_settings = "~/ros/cam/params/image_settings.yaml";
 std_msgs::Int8 valid_msg;
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 

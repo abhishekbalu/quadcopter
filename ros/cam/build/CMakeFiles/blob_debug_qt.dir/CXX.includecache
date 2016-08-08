@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/cam/blob_detection.h
+../include/cam/blob_detection_simple.h
 
 ../include/cam/debug.h
 
@@ -73,8 +73,8 @@ std_msgs/Int8.h
 -
 cam/detections.h
 /home/pedro/ros/cam/src/cam/detections.h
-cam/blob_detection.h
-/home/pedro/ros/cam/src/cam/blob_detection.h
+cam/blob_detection_simple.h
+/home/pedro/ros/cam/src/cam/blob_detection_simple.h
 cam/debug.h
 /home/pedro/ros/cam/src/cam/debug.h
 yaml-cpp/yaml.h

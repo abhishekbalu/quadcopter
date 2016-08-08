@@ -260,6 +260,19 @@ blob_detection/fast:
 .PHONY : blob_detection/fast
 
 #=============================================================================
+# Target rules for targets named blob_detection_simple
+
+# Build rule for target.
+blob_detection_simple: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blob_detection_simple
+.PHONY : blob_detection_simple
+
+# fast build rule for target.
+blob_detection_simple/fast:
+	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/build
+.PHONY : blob_detection_simple/fast
+
+#=============================================================================
 # Target rules for targets named clean_test_results
 
 # Build rule for target.
@@ -617,6 +630,30 @@ src/blob_detection_debug_qt.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.s
 .PHONY : src/blob_detection_debug_qt.cpp.s
 
+src/blob_detection_simple.o: src/blob_detection_simple.cpp.o
+.PHONY : src/blob_detection_simple.o
+
+# target to build an object file
+src/blob_detection_simple.cpp.o:
+	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/src/blob_detection_simple.cpp.o
+.PHONY : src/blob_detection_simple.cpp.o
+
+src/blob_detection_simple.i: src/blob_detection_simple.cpp.i
+.PHONY : src/blob_detection_simple.i
+
+# target to preprocess a source file
+src/blob_detection_simple.cpp.i:
+	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/src/blob_detection_simple.cpp.i
+.PHONY : src/blob_detection_simple.cpp.i
+
+src/blob_detection_simple.s: src/blob_detection_simple.cpp.s
+.PHONY : src/blob_detection_simple.s
+
+# target to generate assembly for a file
+src/blob_detection_simple.cpp.s:
+	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/src/blob_detection_simple.cpp.s
+.PHONY : src/blob_detection_simple.cpp.s
+
 src/marker_detection.o: src/marker_detection.cpp.o
 .PHONY : src/marker_detection.o
 
@@ -798,6 +835,7 @@ help:
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... clean_test_results"
 	@echo "... run_tests"
+	@echo "... blob_detection_simple"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... install/local"
 	@echo "... blob_debug"
@@ -813,6 +851,9 @@ help:
 	@echo "... src/blob_detection_debug_qt.o"
 	@echo "... src/blob_detection_debug_qt.i"
 	@echo "... src/blob_detection_debug_qt.s"
+	@echo "... src/blob_detection_simple.o"
+	@echo "... src/blob_detection_simple.i"
+	@echo "... src/blob_detection_simple.s"
 	@echo "... src/marker_detection.o"
 	@echo "... src/marker_detection.i"
 	@echo "... src/marker_detection.s"
