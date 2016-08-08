@@ -144,10 +144,9 @@ alias publish_setpoints='rostopic pub /mavros/setpoint_position/local -r 10 geom
 
 ## 6 - yaml.cpp 
 ```sh
-$ git https://github.com/jbeder/yaml-cpp
+$ git clone https://github.com/jbeder/yaml-cpp
 $ cd yaml-cpp/src
 $ mkdir build
-$ cd ..
 $ cd ..
 $ cmake -G "Unix Makefiles"
 $ make
@@ -248,10 +247,15 @@ You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 
 - If you go really fast with the quadcopter the laser does not have enough time to update its measurement.
 - The flying frame is the following (on our Quad2):
 ![](http://i.imgur.com/MkfNZTy.jpg)
-
+- On our quad that has the Hokuyo, the launch file sequence to get the SLAM pose is two step, one to launch the hokuyo_node and another to do a transform: ```px4_laser_launch``` and ```laser_test_launch```. 
+- When issuing the last launch file to public the transform between laser and map frames, you may have to re-issue the launch command.
 ## 17 NVidia ssh
  - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html).
-  - Find the ip of the quad ```sudo arp-scan --interface=wlan0 --localnet``` (on our local network QuadBase5 the ip is normally ```11.0.3.1```, ```11.0.1.5``` or ```11.0.1.51```. If you are on Windows, ```ping``` these two, and you'll probably find the right one). IF you want to connect via ethernet my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
+  - Find the ip of the quad ```sudo arp-scan --interface=wlan0 --localnet``` (on our local network QuadBase5 the ips are normally
+    - **Quad1**: *Wifi* ```11.0.3.1```, ```11.0.1.5``` or ```11.0.1.51`` *Ethernet* ```10.0.29.251```
+    - **Quad2**: *Wifi* ```11.0.3.2``` *Ethernet* ```10.0.20.205```
+
+   If you are on Windows, ```ping``` these, and you'll probably find the right one). IF you want to connect via ethernet and the ethernet ports are not the listed above, my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
     - With the ethernet disconnected, connect the dongle.
     - login via ssh. Insert the ethernet cable on the NVidia. Wait a bit and do ```ifconfig```
     - see the IP address of **eth0**
