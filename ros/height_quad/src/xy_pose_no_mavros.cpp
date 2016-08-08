@@ -214,8 +214,8 @@ int main(int argc, char** argv){
     VecG << 0,0,GRAVITY;
 	VecDir << 0,0,1;
 	VecAz << 0,0,0;
-ROF << cos(45 * PI/180.0), -sin(45 * PI/180.0), 0,
-            sin(45 * PI/180.0), cos(45 * PI/180.0), 0,
+ROF << cos(-45 * PI/180.0), -sin(-45 * PI/180.0), 0,
+            sin(-45 * PI/180.0), cos(-45 * PI/180.0), 0,
             0,        0,        0;
 
     Xhat << 0, 0, 0, 0, 0, 0; //initial position

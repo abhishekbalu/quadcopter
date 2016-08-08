@@ -1,11 +1,12 @@
-![](http://i.imgur.com/SgiJzWe.png)
-*Blob detection test*
-![](http://i.imgur.com/vmBSDsR.png)
+*Blob detection with red and blue marker detection, blob info and windows for light adaptation*
+![](http://i.imgur.com/bTpOeNh.png)
 *OpticalFlow filter test - this velocity Low Pass Filter is too agressive gotta fix that*
-![](http://i.imgur.com/yambfyT.png)
+![](http://i.imgur.com/5OC1Vw0.png)
 *X backward and forwards movement by a frame registered with the algorithm*
-![](http://i.imgur.com/I8hS6rS.png)
-*Hokuyo URG pose of a series of X and Y movements*
+![](http://i.imgur.com/yambfyT.png)
+*Hokuyo URG pose of a series of X and Y movements and then turning the quad 90 degrees on the XY plane - yaw*
+![](http://i.imgur.com/N9kTdRk.png)
+![](http://i.imgur.com/BOZ6qY1.png)
 # quadcopter
 ## Structure
 
@@ -21,7 +22,7 @@ This project has two folders, ros and catkin. ros is the rosbuild workspace and 
 
 ## Set up
 
-Requirements: It is assumed you have a stable, clean instalation of Ubuntu 14.04, either on a virtual machine or on your computer.
+Requirements: It is assumed you have a stable, clean instalation of Ubuntu 14.04, either on a virtual machine or on your computer. You'll need a quadcopter with a Nvidia Jetson TK1 with Tegra Ubuntu installed (Linux4Tegra), you'll need a PX4 Pixhawk onboard controller, an OpticalFlow board from PX4, and either a USB Cam or Hokuyo Laser.
 
 ## 1 - ROS
 You will need to install ROS Indigo (latest stable version as of 06/07/2016) <http://wiki.ros.org/indigo/Installation/Ubuntu>:
@@ -152,8 +153,8 @@ $ cmake -G "Unix Makefiles"
 $ make
 ```
 
-## 7 - optical flow library
-The library should already be in the folders above however you can get it from here aswell:
+## 7 - Optical Flow package
+The package should already be in the folders above however you can get it from here aswell:
 <https://github.com/cvg/px-ros-pkg>
 To use it either put it in catkin/src (catkin version) or put it in ros folder (rosbuild version)
 ## 8 - NVidia drivers (optional)
@@ -161,7 +162,7 @@ Try to do this. It didn't work for me, might work for you:
 ```
 sudo apt-get install nvidia-bumblebee bumblebee
 ```
-**IMPORTANT** The OpticalFlow needs to know what USB port it should use. To figure out what port the OF is using simply plug it off and do ls /dev. Then plug it in, and do ls /dev again and see what has changed. It's probably /ttyACM0 or /ttyACM1. Now, go to the place where you have the package and go to px_comm/hardware_interface/launch and edit the YAML file there (px4flow_params.yaml I think, might be wrong) to the right USB you just found.
+
 
 ## 8 - Theory
 The folder called theory has some svg files and images that explain most of the modules (even some with UML) used in this project in a clear manner.
@@ -199,7 +200,7 @@ rosrun mavros mavsys mode -c OFFBOARD
 ## 12 - Data
 All data, equations and flow charts of the ideas and experiments conducted can be found [here](https://www.dropbox.com/sh/mmmgt4p6f89z934/AABFnw_2Zww_G8jRH_ggLmYFa?dl=0).
 
-## 13 - QT and GUI
+## 13 - QT and GUI (optional)
 If you wish to use the camera debug GUI I have made (file blob_camera_debug_qt.cpp) you'll need to install QT like following. If you don't want to use it, please swap the CMakeLists.txt in the cam folder with the old one. On the quadcopter this is not very useful, this is only useful for calibration.
 ```
 file /sbin/init
@@ -229,66 +230,34 @@ Now source it and test:
 /etc/profile
 qmake -version
 ```
-You should see:
+You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 in /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib```
 
-*QMake version 2.01a*
+## 14 Optical Flow and Sonar issues and reminders
+ - **IMPORTANT**: The OpticalFlow needs to know what USB port it should use. To figure out what port the OF is using simply plug it off and do ```ls /dev```. Then plug it in, and do ```ls /dev``` again and see what has changed. It's probably ```/ttyACM0``` or ```/ttyACM1```. Now, go to the place where you have the package and go to ```px_comm/hardware_interface/launch``` and edit the YAML file there (```px4flow_params.yaml```) to the right port you just found.
+ - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
 
-*Using Qt version 4.8.1 in /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib*
+ - Be careful with the referentials don't get confused. PX4 uses NED (North - East - Down), Optical flow uses xyz, but since it's mounted on the quadcopter at 45º and the flying frame is the center of the quadcopter a rotation is applied to obtain the flying frame. Estimator position is (for now) delivered in the flying frame relative to the starting point or a fixed point in the world. Sonar baseline is the minimum operational height - 30 cm, its maximum height is 3m. On Quad1 in our lab, there's an image below that will help you recognize the flying frame:
+![](http://i.imgur.com/uDQzhmV.png)
 
+- The sonar doesn't work in all surfaces. Since this is intended for indoor uses, one thing you should be especially wary is *carpets* and *rugs* since their surface does not reflect well. There is a similar effect for the OpticalFlow. Shiny surfaces with very little features aren't ideal. 
 
-## 13 - Advice
-1 - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
+## 15 Cam issues and reminders
+- The cam should be at least more than 17 cm from a frame and less than 3m. At less than 20 cm the readings may become incoherent. After 3m the blobs may become too small and thus not recognizeable by the algorithm.
 
-2 - Be careful with the referentials don't get confused. Optical Flow baseline is the height of the quad, 30 cm.
+## 16 Laser issues and reminders
+- If you go really fast with the quadcopter the laser does not have enough time to update its measurement.
+- The flying frame is the following (on our Quad2):
+![](http://i.imgur.com/MkfNZTy.jpg)
 
-3 - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html).
+## 17 NVidia ssh
+ - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html).
+  - Find the ip of the quad ```sudo arp-scan --interface=wlan0 --localnet``` (on our local network QuadBase5 the ip is normally ```11.0.3.1```, ```11.0.1.5``` or ```11.0.1.51```. If you are on Windows, ```ping``` these two, and you'll probably find the right one). IF you want to connect via ethernet my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
+    - With the ethernet disconnected, connect the dongle.
+    - login via ssh. Insert the ethernet cable on the NVidia. Wait a bit and do ```ifconfig```
+    - see the IP address of **eth0**
+    - Logout ssh and login with that IP address. Remove the wifi dongle.
 
-4 - If you want to change the frequency of the optical flow data that is sent via mavros you have to edit a file in the PX4 SD Card, in etc/extras.txt. If this doesn't exist create it. Then simply add the following to it (to set a rate of 200Hz for example):
-```
-mavlink stream -d /dev/tty/ACM0 -s OPTICAL_FLOW_RAD -r 200
-```
-However, believing what is said [here](http://wiki.ros.org/px4flow_node) the optical flow data from acessing directly the USB is published at 250 Hz with no need to configure.
-
-5 - To connect via Serial to the PX4 (taken from the PX4 Official website and documentation)
-| Pixhawk 1/2 |       | FTDI |                  |
-|-------------|-------|------|------------------|
-| 1           | 5V    |      | n/c              |
-| 2           | S4 TX |      | n/c              |
-| 3           | S4 RX |      | n/c              |
-| 4           | S5 TX | 5    | FTDI RX (yellow) |
-| 5           | S5 RX | 4    | FTDI TX (orange) |
-| 6           | GND   | 1    | FTDI GND (black) |
-Bellow is the connector pinout and a picture of the Pixhawk connected via Serial:
-![](http://i.imgur.com/Un7pBfy.png)
-![](http://i.imgur.com/NoTyiGF.jpg)
-You may want to use an FTDI Cable for this purpose or use a protoboard with an FTDI Chip and some headers like so:
-![](http://i.imgur.com/gpMCH4E.jpg)
-6 - If the NVidia and PX4 are both connected via battery follow the steps:
-  - Find the ip of the quad **sudo arp-scan --interface=wlan0 --localnet** (on our local network QuadBase5 the ip is normally 11.0.3.1 or 11.0.1.5. If you are on windows, ping these two, and you'll probably find it). IF you want to connect via ethernet my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
-  
-(
-
-  - With the ethernet disconnected, connect the dongle.
-  - login via ssh. Insert the ethernet cable on the NVidia.
-```
-ifconfig
-```
-  - see the IP address of eth0
-  - Logout ssh and login with that IP address. Remove the wifi dongle.
-
-)
-
-
-  - Connect the battery
-  - Turn off USB connections
-  - Turn on USB connections
-  - To fly, reboot the PX4 by pressing the small button on the side with a pencil or with the toothpick that is under one of the ESCs
-  - Turn the RC on
-  - Arm the quad (press the LED)
-  - Run your launches
-
-7 - How to fix a broken propeller
-
+## 18 - How to fix a broken propeller
 First identify the propeller that is broken like so.
 
 ![](http://i.imgur.com/oInAP7i.jpg)
@@ -303,26 +272,34 @@ Introduce the new propeller along the bol with the part that fits in the small p
 
 **Finally bolt the nut firmly with pliers and you are done.** When using the quadcopter, remain clear of propeller arc and wear eye and hand protection.
 
-8 - How to charge the batteries
-Connections:
- - Turn on the Charging station by flipping the switch on the power supply
- - Connect the red T plug to the charging station
- - Connect the white voltage balancer to the charging station
+## 19 - How to boot and get everything ready
+  - Remove all USB connections
+  - Connect the battery
+  - Wait for NVidia to boot up
+  - Connect all USB connections
+  - To fly, reboot the PX4 by pressing the small button on the side with a pencil or with the toothpick that is under one of the ESCs
+  - Turn the RC on
+  - Arm the quad (press the LED)
+  - Run your launch files
 
-Settings:
- - Select the type of battery, change type with the Batt. Type button and confirm with Enter
- - Confirm the Charging Station is on Charge mode, by using Dec and Inc buttons to select it
- - Press Enter to select the charging amperage and Enter again to confirm
- - Select the end voltage and confirm it with Enter
-
-Charging:
- - Press and Hold the Enter Button
- - Check if the selected number of battery’s cell is equal to the number of cell read by the station
- - Press Enter to start the charging process
- - Each press of the Dec. button cycles the status of the charging screen
- - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
-
-9 - How to setup Wifi with the USB ASUS dongles:
+## 20 - How to charge the batteries
+ - Connections:
+   - Turn on the Charging station by flipping the switch on the power supply
+   - Connect the red T plug to the charging station
+   - Connect the white voltage balancer to the charging station
+ - Settings:
+   - Select the type of battery, change type with the Batt. Type button and confirm with Enter
+   - Confirm the Charging Station is on Charge mode, by using Dec and Inc buttons to select it
+   - Press Enter to select the charging amperage and Enter again to confirm
+   - Select the end voltage and confirm it with Enter
+ - Charging:
+   - Press and Hold the Enter Button
+   - Check if the selected number of battery’s cell is equal to the number of cell read by the station
+   - Press Enter to start the charging process
+   - Each press of the Dec. button cycles the status of the charging screen
+   - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
+   
+## 21 - How to setup wifi with the USB ASUS Wifi dongles:
  - Download driver from [here](https://github.com/codeworkx/rtl8812au_asus)
  - Add ```CONFIG_PLATFORM_TEGRA_K1 = y``` to the Makefile on platform related; make sure all other platforms are set as ```=n```
  - After I386 make rules, add:
@@ -341,5 +318,20 @@ endif
  - do ```sudo modprobe 8812au```
  - if it gives an error saying it cannot allocate memory, add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf``` . Then reboot. If the error persists or if the driver does not work, you may need to reflash TK1 and add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf```  to the file right after the first boot, reboot again, and proceed from step one.
  - To reflash the TK1, follow [this](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)
+## 22 To connect via Serial to the PX4 (taken from the PX4 Official website and documentation) (optional)
 
-10 - If the NVidia doesn't boot up with the battery, disconnect all USB, connect the battery, wait for boot up, and then connect all USB.
+| Pixhawk 1/2 |       | FTDI |                  |
+|-------------|-------|------|------------------|
+| 1           | 5V    |      | n/c              |
+| 2           | S4 TX |      | n/c              |
+| 3           | S4 RX |      | n/c              |
+| 4           | S5 TX | 5    | FTDI RX (yellow) |
+| 5           | S5 RX | 4    | FTDI TX (orange) |
+| 6           | GND   | 1    | FTDI GND (black) |
+Bellow is the connector pinout and a picture of the Pixhawk connected via Serial:
+![](http://i.imgur.com/Un7pBfy.png)
+![](http://i.imgur.com/NoTyiGF.jpg)
+You may want to use an FTDI Cable for this purpose or use a protoboard with an FTDI Chip and some headers like so:
+![](http://i.imgur.com/gpMCH4E.jpg)
+
+ 
