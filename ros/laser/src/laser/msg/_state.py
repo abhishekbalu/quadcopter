@@ -46,6 +46,7 @@ float64 yaw
 float64 pitch
 # Roll  [-pi/4 .. pi/4] (0 = neutral)
 float64 roll
+
 """
   __slots__ = ['header','attitude','x','y','vx','vy','quality']
   _slot_types = ['std_msgs/Header','laser/Attitude','float64','float64','float64','float64','int8']
@@ -115,8 +116,8 @@ float64 roll
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_struct_7db.pack(_x.attitude.yaw, _x.attitude.pitch, _x.attitude.roll, _x.x, _x.y, _x.vx, _x.vy, _x.quality))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize(self, str):
     """
@@ -171,8 +172,8 @@ float64 roll
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_struct_7db.pack(_x.attitude.yaw, _x.attitude.pitch, _x.attitude.roll, _x.x, _x.y, _x.vx, _x.vy, _x.quality))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize_numpy(self, str, numpy):
     """

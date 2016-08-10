@@ -1,12 +1,19 @@
 *Blob detection with red and blue marker detection, blob info and windows for light adaptation*
 ![](http://i.imgur.com/bTpOeNh.png)
-*OpticalFlow filter test - this velocity Low Pass Filter is too agressive gotta fix that*
+*Here you can see a video of the light adaption working, while the camera estimation for position doesn't change*
+
+[![](http://i.imgur.com/8Iq8fND.png)](https://www.youtube.com/watch?v=NCk6dnQ-WS0&feature=youtu.be "light adaptation algorithm in blob detection ")
+
+*OpticalFlow/Sonar filter test with filtering (notice that the raw OF frame and the flying frame are different)*
 ![](http://i.imgur.com/5OC1Vw0.png)
 *X backward and forwards movement by a frame registered with the algorithm*
 ![](http://i.imgur.com/yambfyT.png)
 *Hokuyo URG pose of a series of X and Y movements and then turning the quad 90 degrees on the XY plane - yaw*
 ![](http://i.imgur.com/N9kTdRk.png)
 ![](http://i.imgur.com/BOZ6qY1.png)
+*Using a model and knowing the velocity from the OF and using a filter, the OF can also estimate X and Y position (this is sort of a bonus feature). Here is a graph of an XY movement, with both OF and laser adjusted to the same frame (flying frame)*:
+![](http://i.imgur.com/qRQlvvw.png)
+
 # quadcopter
 ## Structure
 
@@ -117,10 +124,13 @@ $ rm -rf models.gazebosim.org
 
 ## 5 - .bashrc
 Your .bashrc may have the following aspect at the end (add the aliases). In these aliases we use rqt_image_view to quickly see an image. However you should have rqt running from the beggining and you can use the gui to display images side-by-side (like shown at the beggining of this document: <http://wiki.ros.org/rqt_image_view>. Rqt_image_view does not need OpenCV support. This bashrc is mainly local to your machine for testing purposes.
+**LOCAL**
 ```sh
 source /opt/ros/indigo/setup.bash
 export ROS_PACKAGE_PATH=~/ros:$ROS_PACKAGE_PATH
-export GAZEBO_MODEL_PATH="/home/pedro/quad_urdf/models"
+export ROS_PACKAGE_PATH=~/ros:$ROS_PACKAGE_PATH
+source /usr/share/gazebo/setup.sh
+export GAZEBO_MODEL_PATH="~/quad_urdf/models"
 alias launch='roslaunch ~/ros/simulation/launch/simulation_quad.launch'
 alias teleop='rosrun teleop_twist_keyboard teleop_twist_keyboard.py'
 alias takeoff='rostopic pub /syscommand std_msgs/String "takeoff"'
@@ -129,20 +139,49 @@ alias cam_launch='roslaunch ~/ros/cam/launch/usb_cam.launch'
 alias cd_catkin_exec='cd catkin/devel/lib'
 alias view_images='rosrun rqt_image_view rqt_image_view'
 alias view_detections='rostopic echo cam/detections'
-alias calibrate='rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image_raw camera:=/usb_cam'
+alias calibrate='rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/im$
+alias tf='cd /var/tmp && rosrun tf view_frames && evince frames.pdf'
+alias px4flow_launch='roslaunch px4flow_node px4flow.launch'
+foo(){
+   rostopic type $1 | rosmsg show
+}
+alias show_msgtype=foo
 ```
-The bashrc file on the quad is a different as it has suitable alias for flying not for the simulation or testing:
+The bashrc file on the quads is a different as it has suitable alias for flying not for the simulation or testing:
+
+**QUAD1**
 ```sh
 source /opt/ros/indigo/setup.bash
-export ROS_PACKAGE_PATH=~/quadcopter:$ROS_PACKAGE_PATH
-
-alias mavros_launch='roslaunch mavros px4.launch'
+source ~/catkin_ws/devel/setup.bash
+export ROS_PACKAGE_PATH=~/quadcopter:${ROS_PACKAGE_PATH}
+export ROS_PACKAGE_PATH=~/ros:${ROS_PACKAGE_PATH}
+alias mavros_launch='roslaunch  ~/catkin_ws/src/danielpa/launch/pixhawk.launch'
 alias takeoff='rostopic pub /syscommand std_msgs/String "takeoff"'
 alias land='rostopic pub /syscommand std_msgs/String "land"'
-alias publish_setpoints='rostopic pub /mavros/setpoint_position/local -r 10 geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x:0.0, y: 0.0, z:0.0}, orientation: {w: 1.0}}}''
+#alias publish_setpoints='rostopic pub /mavros/setpoint_position/local -r 10 geometry_msgs/PoseStamped '{header: {stamp: $
+alias shutdown='sudo shutdown -h now'
+alias px4flow_launch='roslaunch px4flow_node px4flow.launch'
+```
+**QUAD2**
+```sh
+source /opt/ros/indigo/setup.bash
+source ~/ros/quad_control_catkin/devel/setup.bash
+export ROS_PACKAGE_PATH=~/ros/quad_control_rosbuild:${ROS_PACKAGE_PATH}
+export ROS_PACKAGE_PATH=~/quadcopter:${ROS_PACKAGE_PATH}
+alias px4flow_launch='roslaunch px4flow_node px4flow.launch'
+alias px4_laser_launch='roslaunch ~/ros/quad_control_catkin/src/control/danielpa/launch/quad.launch'
+alias laser_test_launch='roslaunch ~/ros/quad_control_catkin/src/control/danielpa/launch/laser_test.launch'
+alias shutdown='shutdown -h now'
 ```
 
 ## 6 - yaml.cpp 
+https://github.com/jbeder/yaml-cpp
+
+**Why yaml.cpp and not use the rosparam Param Server?** For three main reasons:
+ - *Modularity*: yaml.cpp allows to have neatly separated YAML files, each with its own set of parameters.
+ - *Local code*: Reading the file is local and uses the library to parse the YAML file. It doesn't spend time fetching things from ROS or acessing a nodehandle.
+ - *Simplicity*: There are alot of examples online on how to use this library and they are very straightforward. Also, loading C arrays (not C++ vectors) is easier. To install the library:
+
 ```sh
 $ git clone https://github.com/jbeder/yaml-cpp
 $ cd yaml-cpp/src
@@ -175,7 +214,7 @@ All rights to the p3p library included belong to Laurent Kneip, ETH Zurich and t
   - Turn the RC transmitter (Spektrum) on. Make sure you can see the connection on the mavros. You'll probably see something like MANUAL CONTROL MODE. The PX4 light should flash green when you do this.
   - Arm the quad by pushing the blinking red LED button for 2 seconds, make sure the left and right levers are in the down center position. The PX4 light should flash white when you do this.
   - To begin flying move the left lever to the down right position. After arming the RC controller the motors should start on iddle.
-![](http://www.ultraimg.com/images/2016/07/10/spektrumleverpositions.png)
+![](http://i.imgur.com/o6DXJMp.jpg)
 Disarming:
    - Move the RC Transmitter left lever to the down-left position
   - Disconnect the battery. The PX4 light should be fading in and out and blue
@@ -247,19 +286,27 @@ You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 
 - If you go really fast with the quadcopter the laser does not have enough time to update its measurement.
 - The flying frame is the following (on our Quad2):
 ![](http://i.imgur.com/MkfNZTy.jpg)
+- Here is how all the frames go together. The x_laser and y_laser in the image below are the frame above presented:
+![](http://i.imgur.com/kzwIPOj.png)
 - On our quad that has the Hokuyo, the launch file sequence to get the SLAM pose is two step, one to launch the hokuyo_node and another to do a transform: ```px4_laser_launch``` and ```laser_test_launch```. 
 - When issuing the last launch file to public the transform between laser and map frames, you may have to re-issue the launch command.
+- We use the urg/hokuyo node for the **UTM-30LX** laser mounted on our quad. This [link](http://wiki.ros.org/urg_node) provides a ROS API and driver to set params  (there is an older driver [here](http://wiki.ros.org/hokuyo_node)). For the SLAM approach we use hector_mapping that was made by Stefan Kohlbrecher and Johannes Meyer at Darmstadt, it is maintained, and provides 2D pose estimates at 40Hz. You can find a link [here](http://wiki.ros.org/hector_mapping) that has detailed information.
+
 ## 17 NVidia ssh
  - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html).
-  - Find the ip of the quad ```sudo arp-scan --interface=wlan0 --localnet``` (on our local network QuadBase5 the ips are normally
+ - QuadBase wireless network is the local network used, either on Quad-Base
+  - Find the ip of the quad ```sudo arp-scan --interface=wlan0 --localnet``` (on our local network QuadBase5 the ips are normally the following - they are linked with the quad ID, which is marked on the quadcopter on a white tape)
     - **Quad1**: *Wifi* ```11.0.3.1```, ```11.0.1.5``` or ```11.0.1.51`` *Ethernet* ```10.0.29.251```
     - **Quad2**: *Wifi* ```11.0.3.2``` *Ethernet* ```10.0.20.205```
 
    If you are on Windows, ```ping``` these, and you'll probably find the right one). IF you want to connect via ethernet and the ethernet ports are not the listed above, my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
     - With the ethernet disconnected, connect the dongle.
-    - login via ssh. Insert the ethernet cable on the NVidia. Wait a bit and do ```ifconfig```
+    - login via ssh, ```ssh ubuntu@ip```, where ip is one of the above, and accept the ssh key. The password is using the security protocol WPA/WPA2. Now you are connected to the NVidia. If you want to add work to this work please do so in a separate folder placed in ```/home/ubuntu```. To do so, ```mkdir ~/FirstnameLastname```.
+    **DISCLAIMER**: spreading files outside your directory might lead into accidental deletion of part of your work. Also, make sure that all your files are also stored somewhere outside the device (GitLab/Github/etc...)
+    - Insert the ethernet cable on the NVidia. Wait a bit and do ```ifconfig```.
     - see the IP address of **eth0**
     - Logout ssh and login with that IP address. Remove the wifi dongle.
+    - After you've done all this, please remember to do ```shutdown -h now``` to shut the NVidia down.
 
 ## 18 - How to fix a broken propeller
 First identify the propeller that is broken like so.

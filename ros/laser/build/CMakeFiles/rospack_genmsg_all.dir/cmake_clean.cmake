@@ -1,10 +1,11 @@
-file(REMOVE_RECURSE
+FILE(REMOVE_RECURSE
   "../msg_gen"
   "../msg_gen"
   "../src/laser/msg"
+  "CMakeFiles/rospack_genmsg_all"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang)
-  include(CMakeFiles/rospack_genmsg_all.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach()
+FOREACH(lang)
+  INCLUDE(CMakeFiles/rospack_genmsg_all.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

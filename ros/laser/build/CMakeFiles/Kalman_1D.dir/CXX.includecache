@@ -18,7 +18,7 @@ eigen3/Eigen/Core
 math.h
 -
 
-/home/pedro/ros/laser/src/Kalman_1D.cpp
+/home/ubuntu/quadcopter/ros/laser/src/Kalman_1D.cpp
 laser/Kalman_1D.h
 -
 

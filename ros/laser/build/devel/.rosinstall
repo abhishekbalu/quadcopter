@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/pedro/ros/laser/build/devel/setup.sh
+    local-name: /home/ubuntu/quadcopter/ros/laser/build/devel/setup.sh
