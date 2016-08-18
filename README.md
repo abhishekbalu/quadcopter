@@ -139,7 +139,7 @@ alias cam_launch='roslaunch ~/ros/cam/launch/usb_cam.launch'
 alias cd_catkin_exec='cd catkin/devel/lib'
 alias view_images='rosrun rqt_image_view rqt_image_view'
 alias view_detections='rostopic echo cam/detections'
-alias calibrate='rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/im$
+alias calibrate='rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image'
 alias tf='cd /var/tmp && rosrun tf view_frames && evince frames.pdf'
 alias px4flow_launch='roslaunch px4flow_node px4flow.launch'
 foo(){
@@ -190,11 +190,25 @@ $ cd ..
 $ cmake -G "Unix Makefiles"
 $ make
 ```
+## 6.5 - kalman.hpp
 
+**Why kalman.hpp and not write my own kalman filter?** For two main reasons:
+ - *Readability* - The code is much shorter
+ - *Efficiency* - The code is more efficient since the library is highly optimized
+ - *Ease of implementation* - The logic behind the filter is much more obvious
+
+Download the code from sourceforge: []() and place it in your home folder.
+```sh
+$ make
+$ sudo -s
+$ make install
+$ ranlib /usr/local/lib/libkalman.a
+```
 ## 7 - Optical Flow package
 The package should already be in the folders above however you can get it from here aswell:
 <https://github.com/cvg/px-ros-pkg>
 To use it either put it in catkin/src (catkin version) or put it in ros folder (rosbuild version)
+
 ## 8 - NVidia drivers (optional)
 Try to do this. It didn't work for me, might work for you:
 ```
@@ -271,16 +285,20 @@ qmake -version
 You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 in /opt/QtSDK/Desktop/Qt/4.8.1/gcc/lib```
 
 ## 14 Optical Flow and Sonar issues and reminders
- - **IMPORTANT**: The OpticalFlow needs to know what USB port it should use. To figure out what port the OF is using simply plug it off and do ```ls /dev```. Then plug it in, and do ```ls /dev``` again and see what has changed. It's probably ```/ttyACM0``` or ```/ttyACM1```. Now, go to the place where you have the package and go to ```px_comm/hardware_interface/launch``` and edit the YAML file there (```px4flow_params.yaml```) to the right port you just found.
- - When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
+- There are two ways of using the Optical Flow board, one uses the mavlink protocol and thus communicates to the mavros node launched via PX4 and the other gets serial data directly via USB using a package that is linked above in another point. The one that communicates via mavlink has a different data format and since it needs to be processed before it is in the desired format it is slower, while the direct serial data can reach to up to 200Hz.
+- **IMPORTANT**: The OpticalFlow needs to know what USB port it should use. To figure out what port the OF is using simply plug it off and do ```ls /dev```. Then plug it in, and do ```ls /dev``` again and see what has changed. It's probably ```/ttyACM0``` or ```/ttyACM1```. Now, go to the place where you have the package and go to ```px_comm/hardware_interface/launch``` and edit the YAML file there (```px4flow_params.yaml```) to the right port you just found.
+- When using the optical flow some of the baseline readings may not be 0 if there are reflections or LEDs flashing. Be careful of this as it will cause velocities to have high values and it will cause instability for the estimators and the x and y values will diverge to infinity.
 
- - Be careful with the referentials don't get confused. PX4 uses NED (North - East - Down), Optical flow uses xyz, but since it's mounted on the quadcopter at 45º and the flying frame is the center of the quadcopter a rotation is applied to obtain the flying frame. Estimator position is (for now) delivered in the flying frame relative to the starting point or a fixed point in the world. Sonar baseline is the minimum operational height - 30 cm, its maximum height is 3m. On Quad1 in our lab, there's an image below that will help you recognize the flying frame:
+- Be careful with the referentials don't get confused. PX4 uses NED (North - East - Down), Optical flow uses xyz, but since it's mounted on the quadcopter at 45º and the flying frame is the center of the quadcopter a rotation is applied to obtain the flying frame. Estimator position is (for now) delivered in the flying frame relative to the starting point or a fixed point in the world. Sonar baseline is the minimum operational height - 30 cm, its maximum height is 3m. On Quad1 in our lab, there's an image below that will help you recognize the flying frame:
 ![](http://i.imgur.com/uDQzhmV.png)
 
-- The sonar doesn't work in all surfaces. Since this is intended for indoor uses, one thing you should be especially wary is *carpets* and *rugs* since their surface does not reflect well. There is a similar effect for the OpticalFlow. Shiny surfaces with very little features aren't ideal. 
+- The sonar doesn't work in all surfaces. Since this is intended for indoor uses, one thing you should be especially wary is *carpets* and *rugs* since their surface do not reflect well. There is a similar effect for the OpticalFlow. Shiny surfaces with very little features aren't ideal. 
+- The sonar may have a small height offset of a few mm to the center of mass of the quad.
 
 ## 15 Cam issues and reminders
+- The cam is on a fixed frame like this ![](http://i.imgur.com/tACf4n3.jpg) and should NOT be moved. It was put this way to have the same xyz frame as the opticalflow/sonar pair and to compare reads.
 - The cam should be at least more than 17 cm from a frame and less than 3m. At less than 20 cm the readings may become incoherent. After 3m the blobs may become too small and thus not recognizeable by the algorithm.
+- To calibrate you should run ```rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image```. This calibration uses the cameracalibrator.py script that comes with the package. You'll have to provide it with a checkerboard and with the dimensions of the checkerboard. If you print [this](http://www.imagequalitylabs.com/resources/uploads/product/product_image1338282549.jpg) checkerboard on an A4 paper you'll have the dimensions in the command. For more indepth guide to calibration please see [this](http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration) link.
 
 ## 16 Laser issues and reminders
 - If you go really fast with the quadcopter the laser does not have enough time to update its measurement.
@@ -289,24 +307,35 @@ You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 
 - Here is how all the frames go together. The x_laser and y_laser in the image below are the frame above presented:
 ![](http://i.imgur.com/kzwIPOj.png)
 - On our quad that has the Hokuyo, the launch file sequence to get the SLAM pose is two step, one to launch the hokuyo_node and another to do a transform: ```px4_laser_launch``` and ```laser_test_launch```. 
-- When issuing the last launch file to public the transform between laser and map frames, you may have to re-issue the launch command.
+- When issuing the last launch file to public the transform between laser and map frames, you may have to re-issue the launch command
+
 - We use the urg/hokuyo node for the **UTM-30LX** laser mounted on our quad. This [link](http://wiki.ros.org/urg_node) provides a ROS API and driver to set params  (there is an older driver [here](http://wiki.ros.org/hokuyo_node)). For the SLAM approach we use hector_mapping that was made by Stefan Kohlbrecher and Johannes Meyer at Darmstadt, it is maintained, and provides 2D pose estimates at 40Hz. You can find a link [here](http://wiki.ros.org/hector_mapping) that has detailed information.
 
-## 17 NVidia ssh
- - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html).
+## 17 NVidia/Quad ssh and wifi
+ - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html). The Wifi dongle used is [this](https://www.asus.com/Networking/USBAC56/) one.
  - QuadBase wireless network is the local network used, either on Quad-Base
   - Find the ip of the quad ```sudo arp-scan --interface=wlan0 --localnet``` (on our local network QuadBase5 the ips are normally the following - they are linked with the quad ID, which is marked on the quadcopter on a white tape)
     - **Quad1**: *Wifi* ```11.0.3.1```, ```11.0.1.5``` or ```11.0.1.51`` *Ethernet* ```10.0.29.251```
     - **Quad2**: *Wifi* ```11.0.3.2``` *Ethernet* ```10.0.20.205```
-
+  - **NEW** To solve some issues of the old procedure a new procedure is in order (by Pedro Agostinho):
+    - Jetson network definitions should use DHCP which is the default and it is asked of the users to revert any IP configurations that they have done both on the computers and on the Nvidia boards.
+    - Each quad should be paired with a wifi adaptor.
+    - The following procedure should be followed for each quad and for the users:
+      - IP intervals:
+        - 11.0.1.1 a 11.0.1.50 are for the quads (as explained above)
+        - The IP's from 11.0.1.51 onwards are reserved for users. Each user should register with the smallest non-used IP
+        - The first step is to obtain the MAC address of the Wifi dongle using ```ifconfig```. Obtain also the MAC address of your own computer if you are a user
+        - Next head to the browser page of the Quad-Base *http://tplinklogin.net/* user: admin pass: admin
+        - Head to *DHCP Options* and then to *Address Reservation*
+        - Then all you have to do is associate an IP to that MAC address
    If you are on Windows, ```ping``` these, and you'll probably find the right one). IF you want to connect via ethernet and the ethernet ports are not the listed above, my advice is rather than using a scanner to find the IP which can be time consuming, simply do the following:
     - With the ethernet disconnected, connect the dongle.
-    - login via ssh, ```ssh ubuntu@ip```, where ip is one of the above, and accept the ssh key. The password is using the security protocol WPA/WPA2. Now you are connected to the NVidia. If you want to add work to this work please do so in a separate folder placed in ```/home/ubuntu```. To do so, ```mkdir ~/FirstnameLastname```.
+    - login via ssh, ```ssh ubuntu@ip```, where ip is one of the above, and accept the ssh key. The password is using the security protocol WPA/WPA2. Now you are connected to the NVidia. If you want to add work to this work please do so in a separate folder placed in ```/home/ubuntu```. To do so, ```mkdir ~/FirstnameLastname```
     **DISCLAIMER**: spreading files outside your directory might lead into accidental deletion of part of your work. Also, make sure that all your files are also stored somewhere outside the device (GitLab/Github/etc...)
-    - Insert the ethernet cable on the NVidia. Wait a bit and do ```ifconfig```.
+    - Insert the ethernet cable on the NVidia. Wait a bit and do ```ifconfig```
     - see the IP address of **eth0**
     - Logout ssh and login with that IP address. Remove the wifi dongle.
-    - After you've done all this, please remember to do ```shutdown -h now``` to shut the NVidia down.
+    - After you've done all this, please remember to do ```shutdown -h now``` to shut the NVidia down
 
 ## 18 - How to fix a broken propeller
 First identify the propeller that is broken like so.
@@ -333,7 +362,8 @@ Introduce the new propeller along the bol with the part that fits in the small p
   - Arm the quad (press the LED)
   - Run your launch files
 
-## 20 - How to charge the batteries
+## 20 - How to charge the batteries and some recommendations:
+**How to charge the batteries**:
  - Connections:
    - Turn on the Charging station by flipping the switch on the power supply
    - Connect the red T plug to the charging station
@@ -349,7 +379,10 @@ Introduce the new propeller along the bol with the part that fits in the small p
    - Press Enter to start the charging process
    - Each press of the Dec. button cycles the status of the charging screen
    - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
-   
+**Recommendations**:
+ - Don't let the battery voltage go below 12V, because that damages the batteries. If they go below that they can still be charged but will irrevocably have less autonomy.
+ - There are **CHARGED** and **DISCHARGED** areas to place the batteries right next to the charger. If you see a battery in the **DISCHARGED** area please recharge them. In our lab there are only 3 batteries and it is inconvenient to find all three discharged. As such, **when you leave the lab please make sure you leave at least 1 charged battery**
+ - As a safeguard, make sure the battery really has at least 12V with the voltmeter.
 ## 21 - How to setup wifi with the USB ASUS Wifi dongles:
  - Download driver from [here](https://github.com/codeworkx/rtl8812au_asus)
  - Add ```CONFIG_PLATFORM_TEGRA_K1 = y``` to the Makefile on platform related; make sure all other platforms are set as ```=n```
@@ -369,20 +402,3 @@ endif
  - do ```sudo modprobe 8812au```
  - if it gives an error saying it cannot allocate memory, add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf``` . Then reboot. If the error persists or if the driver does not work, you may need to reflash TK1 and add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf```  to the file right after the first boot, reboot again, and proceed from step one.
  - To reflash the TK1, follow [this](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)
-## 22 To connect via Serial to the PX4 (taken from the PX4 Official website and documentation) (optional)
-
-| Pixhawk 1/2 |       | FTDI |                  |
-|-------------|-------|------|------------------|
-| 1           | 5V    |      | n/c              |
-| 2           | S4 TX |      | n/c              |
-| 3           | S4 RX |      | n/c              |
-| 4           | S5 TX | 5    | FTDI RX (yellow) |
-| 5           | S5 RX | 4    | FTDI TX (orange) |
-| 6           | GND   | 1    | FTDI GND (black) |
-Bellow is the connector pinout and a picture of the Pixhawk connected via Serial:
-![](http://i.imgur.com/Un7pBfy.png)
-![](http://i.imgur.com/NoTyiGF.jpg)
-You may want to use an FTDI Cable for this purpose or use a protoboard with an FTDI Chip and some headers like so:
-![](http://i.imgur.com/gpMCH4E.jpg)
-
- 

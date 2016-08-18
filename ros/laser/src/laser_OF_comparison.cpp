@@ -29,7 +29,7 @@ const double GAIN = 0.16;
 const double FOCAL_LENGTH = 12.0;
 const double GRAVITY = 9.81;
 const double ALPHA = 0.0625; //double Ts = 0.01; double tau = 0.16; double alpha = Ts/tau;
-const int RATE = 10;
+const int RATE = 50;
 const int OF_FRAME_X_WORLD = 0;
 const int OF_FRAME_Y_WORLD = 0;
 
@@ -69,18 +69,14 @@ Kalman_2D kalman(0.1, 0.1, 1, 0, 0, 1);
 MatrixXd Rroll(3,3);
 MatrixXd Rpitch(3,3);
 MatrixXd Ryaw(3,3);
-MatrixXd ROF(2,2);
+MatrixXd ROF(3,3);
 MatrixXd RotMat(3,3);
-double x_dif = 0;
-double y_dif = 0;
+
 VectorXd OF(2);
 VectorXd VecG(3);
 VectorXd VecDir(3);
 VectorXd VecAz(3);
 VectorXd VAux(2);
-
-VectorXd VLaser(2);
-MatrixXd RLaser(2,2);
 void updateRotMatrixes(){
 	Rroll << 1, 0,          0,
              0, cos(roll), -sin(roll),
@@ -148,7 +144,7 @@ void getImu(const sensor_msgs::Imu::ConstPtr& data){ //gets quaternion of orient
     attitude.roll = roll;
     attitude.yaw = yaw;
     #ifdef VERBOSE
-    	//ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", roll, pitch, yaw);
+    	ROS_INFO("Phi(Roll): [%f] , Theta(Pitch): [%f], Psi(Yaw): [%f]", roll, pitch, yaw);
 	#endif
 	//getzAccel
 	aZ->last_t = aZ->current_t;
@@ -184,7 +180,7 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 		VAux(0) = 0;
 		VAux(0) = 0;
 	}*/
-	//std::cout << ROF << '\n';
+	std::cout << ROF << '\n';
 	VAux = ROF * VAux;
 	if(abs(data->velocity_x - LPF->last_value(0)) > 0.12 || abs(data->velocity_y - LPF->last_value(1)) > 0.12){
 		VAux(0) = LPF->last_value(0);
@@ -212,34 +208,23 @@ void getOptFlow(const px_comm::OpticalFlow::ConstPtr& data){
 		state.vy = kalman.Xhat(3,0);
 
 		#ifdef VERBOSE
-			//ROS_INFO("OF_X: [%f] OF_Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy, data->quality);
+			ROS_INFO("OF_X: [%f] OF_Y: [%f] vX: [%f] vY: [%f], quality: [%d]", state.x, state.y, state.vx, state.vy, data->quality);
     	#endif
     }
 
 }
 void getLaser(geometry_msgs::PoseStamped data) {
 	array.data.clear();
-	VLaser(0) = -data.pose.position.x;
-	VLaser(1) = data.pose.position.y;
-	VLaser = RLaser * VLaser;
 	#ifdef VERBOSE
-		ROS_INFO("LASER_X: [%f], OF_X: [%f], LASER_Y: [%f] OF_Y: [%f]", VLaser(0), VLaser(1), state.x, state.y);
+		ROS_INFO("LASER_X: [%f], LASER_Y: [%f]", data.pose.position.x, data.pose.position.y);
 	#endif
-	x_dif = (VLaser(0) - state.x);
-	if(x_dif < 0)
-		x_dif = -x_dif;
-	y_dif = (VLaser(1) - state.y);
-	if(y_dif < 0)
-		y_dif = -y_dif;
+	double x_dif = abs(data.pose.position.x - state.x);
+	double y_dif = abs(data.pose.position.y - state.y);
 	#ifdef VERBOSE
 		ROS_INFO("x_dif: %f, y_dif: %f", x_dif, y_dif);
 	#endif
 	array.data.push_back(x_dif);
 	array.data.push_back(y_dif);
-	array.data.push_back(VLaser(0));
-	array.data.push_back(VLaser(1));
-	array.data.push_back(state.x);
-	array.data.push_back(state.y);
 }
 
 int main(int argc, char** argv){
@@ -252,8 +237,7 @@ int main(int argc, char** argv){
 	VecAz << 0,0,0;
 	ROF << cos(-45 * PI/180.0), -sin(-45 * PI/180.0),
            sin(-45 * PI/180.0), cos(-45 * PI/180.0);
-	RLaser << cos(-90 * PI/180.0), -sin(-90 * PI/180.0),
-           sin(-90 * PI/180.0), cos(-45 * PI/180.0);
+
     Xhat << 0, 0, 0, 0, 0, 0; //initial position
     kalman.Xhat = Xhat;
 

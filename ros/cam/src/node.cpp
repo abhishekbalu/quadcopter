@@ -32,6 +32,7 @@ using namespace YAML;
 using namespace Eigen;
 
 #define MAX_DEVIATION 0.2
+const int RATE = 50;
 std_msgs::Float32MultiArray val_arr;
 vector<marker>* detected_quads; //Remember, marker struct = one quad
 MatrixXd* objects;
@@ -41,6 +42,7 @@ int nblobs,nobjects;
 
 int datapoints = 0;
 ofstream outputfile;
+
 
 double value = 0.0;
 double last_value = 0.0;
@@ -176,7 +178,7 @@ int main(int argc, char** argv){
     markers_pub = nh.advertise<cam::QuadPoseList>("node/markers",1);
     frame_pub = nh.advertise<std_msgs::Float32MultiArray>("node/frame", 1);
 
-    ros::Rate loop_rate(30);
+    ros::Rate loop_rate(RATE);
    
     //main loop
     while(ros::ok()){

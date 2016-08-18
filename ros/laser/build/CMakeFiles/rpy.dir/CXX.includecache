@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/quadcopter/ros/laser/src/rpy_from_quaternion.cpp
+/home/pedro/ros/laser/src/rpy_from_quaternion.cpp
 ros/ros.h
 -
 math.h
@@ -14,13 +14,13 @@ math.h
 tf/transform_datatypes.h
 -
 geometry_msgs/PoseStamped.h
-/home/ubuntu/quadcopter/ros/laser/src/geometry_msgs/PoseStamped.h
+/home/pedro/ros/laser/src/geometry_msgs/PoseStamped.h
 std_msgs/MultiArrayLayout.h
-/home/ubuntu/quadcopter/ros/laser/src/std_msgs/MultiArrayLayout.h
+/home/pedro/ros/laser/src/std_msgs/MultiArrayLayout.h
 std_msgs/MultiArrayDimension.h
-/home/ubuntu/quadcopter/ros/laser/src/std_msgs/MultiArrayDimension.h
+/home/pedro/ros/laser/src/std_msgs/MultiArrayDimension.h
 std_msgs/Float32MultiArray.h
-/home/ubuntu/quadcopter/ros/laser/src/std_msgs/Float32MultiArray.h
+/home/pedro/ros/laser/src/std_msgs/Float32MultiArray.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -352,6 +352,8 @@ set
 list
 -
 boost/shared_ptr.hpp
+-
+boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

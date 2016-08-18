@@ -21,6 +21,7 @@ using namespace YAML;
 
 
 const int BLUE = 1;
+const int RATE = 50;
 unsigned char* bufb,* buf;
 blob* blp;
 int nblobs,nobjects;
@@ -35,15 +36,15 @@ int sl; //min sat
 int sh; //max sat 
 int width;
 int height;
+int r,g,b;
 static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher valid_blobs_pub;
-std::string blob_settings = "yamls/blue_blob_settings.yaml";
-std::string image_settings = "yamls/image_settings.yaml";
+std::string blob_settings = "~/ros/cam/params/blue_blob_settings.yaml";
+std::string image_settings = "~/ros/cam/params/image_settings.yaml";
 std_msgs::Int8 valid_msg;
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
-
 	//get image
 	const sensor_msgs::Image img = *msg;
 
@@ -52,9 +53,21 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
     for(unsigned int l=0;l<img.height;l++){
         for(unsigned int k=0;k<img.width;k++){
         	//CONVERT RGB TO YUYV -- https://en.wikipedia.org/wiki/YUV
-        	int red = img.data[cnt];
-        	int green = img.data[cnt +1];
-        	int blue = img.data[cnt + 2];
+            int y = img.data[cnt];
+            int cb = img.data[cnt +1];
+            int cr = img.data[cnt + 2];
+            r = y + (1.4065 * (cr - 128));
+            g = y - (0.3455 * (cb - 128)) - (0.7169 * (cr - 128));
+            b = y + (1.7790 * (cb - 128));
+
+            //This prevents colour distortions in your rgb image
+            if (r < 0) r = 0;
+            else if (r > 255) r = 255;
+            if (g < 0) g = 0;
+            else if (g > 255) g = 255;
+            if (b < 0) b = 0;
+            else if (b > 255) b = 255;
+
         	//printf("RED: %d, GREEN: %d, BLUE: %d\n", red, green, blue);
         	/*
         	int y = (0.299 * red) + (0.587 * green) + (0.114 * blue);
@@ -65,9 +78,9 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
     		int u = (0.439 * blue) - (0.148 * red) - (0.291 * green);
     		int v = (0.439 * red) - (0.368 * green)  - (0.071 * blue);
     		printf("Y: %d, U: %d, V: %d\n", y, u, v);*/
-            buf[cnt] = red;
-            buf[cnt+1] = green;
-            buf[cnt+2] = blue;
+            buf[cnt] = r;
+            buf[cnt+1] = g;
+            buf[cnt+2] = b;
             cnt+=3;
         }
     }
@@ -177,7 +190,7 @@ int main(int argc, char** argv){
     detections_pub=nh.advertise<cam::detections>("cam/detections",1);
     valid_blobs_pub=nh.advertise<std_msgs::Int8>("/valid_blobs", 1);
 
-    ros::Rate loop_rate(1);
+    ros::Rate loop_rate(RATE);
    
 
     //main loop

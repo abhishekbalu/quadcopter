@@ -1,13 +1,4 @@
 <?xml version="1.0"?>
 <launch>
-  <param name="hokuyo/calibrate_time" type="bool" value="false"/>
-  <param name="port" type="string" value="/dev/ttyHokuyo"/>
-  <!-- default laser parameters -->
-  <param name="intensity" value="false"/>
-  <param name="cluster" value="1"/>
-  <param name="skip" value="0"/>
-  
-
   <node pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 0 0 0 map laser 20"/>
-  
 </launch>
