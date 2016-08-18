@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="use_test" default="false"/>
+  <arg name="use_laser" default="true"/>
+  <arg name="use_mapping" default="true"/>
+  <arg name="use_navigation" default="false"/>
+
+  <!-- Include pixhawk.launch -->
+  <include file="$(find height_quad)/launch/pixhawk.launch"/>
+
+  <!-- Launch robot publisher -->
+  <node pkg="height_quad" type="rob_brod.py" name="robot_publisher" output="screen"/>
+
+  <!-- Launch Hokuyo Laser -->
+  <group if="$(arg use_laser)">
+    <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_scans">
+      <param name="hokuyo_node/calibrate_time" type="bool" value="false"/>
+      <param name="port" type="string" value="/dev/ttyHokuyo"/>
+        <!-- default laser parameters -->
+      <param name="intensity" value="false"/>
+      <param name="cluster" value="1"/>
+      <param name="skip" value="0"/>
+      <param name="frame_id" value="laser_link"/>
+	    <param name="min_ang" value="-2.2689"/>
+      <param name="max_ang" value="2.2689"/>
+    </node>
+  </group>
+
+  <!-- Launch Hector mapping -->
+  <group if="$(arg use_mapping)">
+    <include file="$(find danielpa)/launch/mapping.launch"/>
+  </group>
+</launch>
