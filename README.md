@@ -122,6 +122,19 @@ $ mv models.gazebosim.org/* .
 $ rm -rf models.gazebosim.org
 ```
 
+
+## 4.5 - QGroundControl
+QGroundControl is a great tool to have on your own computer to debug many sensors and quadcopter controllers (also to communicate and gather info from the quad). To install go [here](http://qgroundcontrol.com/installing-qgroundcontrol/) and [here](https://github.com/mavlink/qgroundcontrol/releases/).
+```sh
+tar xvjf QGroundControl.tar.bz2
+sudo apt-get install espeak libespeak-dev libudev-dev libsdl1.2-dev
+```
+To run QGroundControl:
+```sh
+cd qgroundcontrol
+./qgroundcontrol-start.sh
+```
+
 ## 5 - .bashrc
 Your .bashrc may have the following aspect at the end (add the aliases). In these aliases we use rqt_image_view to quickly see an image. However you should have rqt running from the beggining and you can use the gui to display images side-by-side (like shown at the beggining of this document: <http://wiki.ros.org/rqt_image_view>. Rqt_image_view does not need OpenCV support. This bashrc is mainly local to your machine for testing purposes.
 **LOCAL**
@@ -141,6 +154,7 @@ alias view_images='rosrun rqt_image_view rqt_image_view'
 alias view_detections='rostopic echo cam/detections'
 alias calibrate='rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image'
 alias tf='cd /var/tmp && rosrun tf view_frames && evince frames.pdf'
+alias qgroundcontrol='cd ~/Downloads/qgroundcontrol && ./qgroundcontrol-start.sh'
 alias px4flow_launch='roslaunch px4flow_node px4flow.launch'
 foo(){
    rostopic type $1 | rosmsg show
@@ -190,20 +204,7 @@ $ cd ..
 $ cmake -G "Unix Makefiles"
 $ make
 ```
-## 6.5 - kalman.hpp
 
-**Why kalman.hpp and not write my own kalman filter?** For two main reasons:
- - *Readability* - The code is much shorter
- - *Efficiency* - The code is more efficient since the library is highly optimized
- - *Ease of implementation* - The logic behind the filter is much more obvious
-
-Download the code from sourceforge: []() and place it in your home folder.
-```sh
-$ make
-$ sudo -s
-$ make install
-$ ranlib /usr/local/lib/libkalman.a
-```
 ## 7 - Optical Flow package
 The package should already be in the folders above however you can get it from here aswell:
 <https://github.com/cvg/px-ros-pkg>
@@ -299,6 +300,10 @@ You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 
 - The cam is on a fixed frame like this ![](http://i.imgur.com/tACf4n3.jpg) and should NOT be moved. It was put this way to have the same xyz frame as the opticalflow/sonar pair and to compare reads.
 - The cam should be at least more than 17 cm from a frame and less than 3m. At less than 20 cm the readings may become incoherent. After 3m the blobs may become too small and thus not recognizeable by the algorithm.
 - To calibrate you should run ```rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image```. This calibration uses the cameracalibrator.py script that comes with the package. You'll have to provide it with a checkerboard and with the dimensions of the checkerboard. If you print [this](http://www.imagequalitylabs.com/resources/uploads/product/product_image1338282549.jpg) checkerboard on an A4 paper you'll have the dimensions in the command. For more indepth guide to calibration please see [this](http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration) link.
+Below is an example of a raw image 640x480(YUYV) from the quadcopter in the ISR 6.12 room:
+![](http://i.imgur.com/bW0w0V7.png)
+For testing, I made a blob frame, which is a quadcopter 3 axis frame with blobs placed similar to the quad leg tips. It also has a place to put an optical flow board, to test its raw data.
+![](http://i.imgur.com/Ss37cXs.jpg)
 
 ## 16 Laser issues and reminders
 - If you go really fast with the quadcopter the laser does not have enough time to update its measurement.
@@ -309,7 +314,8 @@ You should see ```QMake version 2.01a```, followed by ```Using Qt version 4.8.1 
 - On our quad that has the Hokuyo, the launch file sequence to get the SLAM pose is two step, one to launch the hokuyo_node and another to do a transform: ```px4_laser_launch``` and ```laser_test_launch```. 
 - When issuing the last launch file to public the transform between laser and map frames, you may have to re-issue the launch command
 
-- We use the urg/hokuyo node for the **UTM-30LX** laser mounted on our quad. This [link](http://wiki.ros.org/urg_node) provides a ROS API and driver to set params  (there is an older driver [here](http://wiki.ros.org/hokuyo_node)). For the SLAM approach we use hector_mapping that was made by Stefan Kohlbrecher and Johannes Meyer at Darmstadt, it is maintained, and provides 2D pose estimates at 40Hz. You can find a link [here](http://wiki.ros.org/hector_mapping) that has detailed information.
+- We use the urg/hokuyo node for the **UTM-04LX** laser mounted on our quad ![](https://www.hokuyo-aut.jp/02sensor/07scanner/img/urg_ed_eg.gif)
+This [link](http://wiki.ros.org/urg_node) provides a ROS API and driver to set params  (there is an older driver [here](http://wiki.ros.org/hokuyo_node)). For the SLAM approach we use hector_mapping that was made by Stefan Kohlbrecher and Johannes Meyer at Darmstadt, it is maintained, and provides 2D pose estimates at 40Hz. You can find a link [here](http://wiki.ros.org/hector_mapping) that has detailed information.
 
 ## 17 NVidia/Quad ssh and wifi
  - Since you login to the NVidia via ssh consider using some sort of graphical program to allow you visualize data onboard such as X. (ssh x for Unix, something like XLaunch with X11 setup in Putty). Also consider using some sort of terminal emulator like [tmux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-tmux-on-ubuntu-12-10--2) or [terminator](http://technicalworldforyou.blogspot.pt/2012/11/install-terminator-terminal-emulator-in.html). The Wifi dongle used is [this](https://www.asus.com/Networking/USBAC56/) one.
@@ -379,6 +385,10 @@ Introduce the new propeller along the bol with the part that fits in the small p
    - Press Enter to start the charging process
    - Each press of the Dec. button cycles the status of the charging screen
    - Pressing the Inc. change the screen to display the actual voltage of each battery's cell
+
+**UPDATE** The connectors are no longer T-connectors. Below is an image of the the new connector type:
+![](http://i.imgur.com/pvsvXzR.jpg)
+
 **Recommendations**:
  - Don't let the battery voltage go below 12V, because that damages the batteries. If they go below that they can still be charged but will irrevocably have less autonomy.
  - There are **CHARGED** and **DISCHARGED** areas to place the batteries right next to the charger. If you see a battery in the **DISCHARGED** area please recharge them. In our lab there are only 3 batteries and it is inconvenient to find all three discharged. As such, **when you leave the lab please make sure you leave at least 1 charged battery**
@@ -402,3 +412,21 @@ endif
  - do ```sudo modprobe 8812au```
  - if it gives an error saying it cannot allocate memory, add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf``` . Then reboot. If the error persists or if the driver does not work, you may need to reflash TK1 and add ```vmalloc=512M``` on ```/boot/extlinux/extlinux.conf```  to the file right after the first boot, reboot again, and proceed from step one.
  - To reflash the TK1, follow [this](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)
+
+ ## 22 - Xbee communication and configuration
+ To configure the xbee's you need to follow this installation guide:[http://knowledge.digi.com/articles/Knowledge_Base_Article/HOW-TO-Install-XCTU-in-Linux](http://knowledge.digi.com/articles/Knowledge_Base_Article/HOW-TO-Install-XCTU-in-Linux)
+ After that, ```./opt/Digi/XCTU-NG/app``` to run the configure app, set the receiver to admin and the baudrate to 57600. Note that on your computer the Xbee receiver should appear as ```/ttyUSB0```. In doubt, do ```ls /dev```.
+ The quadcopters (only Quad1 so far) have an xbee communication system that allows you to see attitude and gyroscope measurements from QGroundControl. The quadcopter has a transmitter and you have a receiver (images below):
+ *Receiver - The custom board to interact via FTDI with the USB Port was designed by Pedro Roque*
+ ![](http://i.imgur.com/UkLAgyl.jpg)
+ *Transmitter - Just attach a simple high gain directional HF antenna*
+ ![](http://i.imgur.com/O4P8X3V.jpg)
+
+You'll need to run QGroundControl, click the Q purple icon on the top left corner, and select Comm Links. Then click Add to add the Xbee link:
+![](http://i.imgur.com/fgfgmYp.png)
+Name it something easy to recognize (XBEE), Type is Serial, set the baud rate to the 57600 and change the Port to /ttyUSB0 (if that's the serial port of the receiver). After that is done, the receiver should be connected to the transmitter on the quadcopter that is paired with the PX4 flight controller to relay information to you.
+![](http://i.imgur.com/PwCmXJx.png)
+
+## 23 - Balancing the quads
+Whenever you add something to the quads you should make sure that the quad is still balanced. To do so, unscrew the top part of the quadcopter and screw the transparent white platform that has a notch with a fishline tied to it. Tie to a chair or something vertical (you can also hold it but please be very careful) and leveled with the quadcopter access if there's any tilting. Try to wrap wires around the frame legs to balance wire. Below is an image of the platform and the fishline:
+![](http://i.imgur.com/GL1qBn8.jpg)
