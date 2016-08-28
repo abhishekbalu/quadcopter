@@ -276,13 +276,16 @@ void blob_threshold(){
 }
 /*-------------------------------Detect Blobs Function--------------------------------------------*/
 int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
-	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height, int colour){
-
+	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height, int colour, int toggle){
+    printf("%d\n", toggle);
 	int is_blob = init(width, height);
     if(colour != last_colour){
         initialization = true;
         last_colour = colour;
     }
+    if(toggle == 0)
+        initialization = true;
+
     if(initialization){
         _sl = sl;_hl = hl;_vl = vl;
         _sh = sh;_hh = hh;_vh = vh;
@@ -393,7 +396,8 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
 
     }*/
     #ifdef LIGHT_CALIBRATION 
-        initialization = false;
+        if(toggle == 1)
+            initialization = false;
     #endif
 
     nvalid = 0;
@@ -410,35 +414,36 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             
         }
     }
-        
-    if(colour == BLUE){
-        if(nvalid >= MIN_NUMBER_BLOBS && nvalid < MAX_NUMBER_BLOBS+1){
-            #ifdef LIGHT_CALIBRATION
-                printf(">=4 blobs detected!\n");
-                if(nvalid%MIN_NUMBER_BLOBS == 0){
-                   
-                    printf("Right number of blobs \n");
+    if(initialization == false){
+        if(colour == BLUE){
+            if(nvalid >= MIN_NUMBER_BLOBS && nvalid < MAX_NUMBER_BLOBS+1){
+                #ifdef LIGHT_CALIBRATION
+                    printf(">=4 blobs detected!\n");
+                    if(nvalid%MIN_NUMBER_BLOBS == 0){
+                       
+                        printf("Right number of blobs \n");
+                        sl_adjust = 0;
+                        vl_adjust = 0;
+                    }
                     sl_adjust = 0;
-                    vl_adjust = 0;
-                }
-                sl_adjust = 0;
-            #endif
-        }else{ //normally it derails to nvalid = 0
-            #ifdef LIGHT_CALIBRATION
-            printf("<4 blobs detected! Too Bright? %d !!!\n", _sl);
+                #endif
+            }else{ //normally it derails to nvalid = 0
+                #ifdef LIGHT_CALIBRATION
+                printf("<4 blobs detected! Too Bright? %d !!!\n", _sl);
 
-            #endif
-            if(nvalid == 0){
-                printf("RESETTING TO ORIGINAL PARAMS\n");
-                _sl = sl;_hl = hl;_vl = vl;
-                _sh = sh;_hh = hh;_vh = vh;
+                #endif
+                if(nvalid == 0){
+                    printf("RESETTING TO ORIGINAL PARAMS\n");
+                    _sl = sl;_hl = hl;_vl = vl;
+                    _sh = sh;_hh = hh;_vh = vh;
+                }
+                hits++;
+                
+                //sl_adjust = -1;
+                //hl_adjust = -1;
+                //hh_adjust = -1;
+                //vl_adjust = +2;
             }
-            hits++;
-            
-            //sl_adjust = -1;
-            //hl_adjust = -1;
-            //hh_adjust = -1;
-            //vl_adjust = +2;
         }
     }
     #ifdef LIGHT_CALIBRATION

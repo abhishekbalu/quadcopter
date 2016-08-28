@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/cam
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/cam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 
 # Utility rule file for rospack_genmsg.
 
@@ -57,6 +57,6 @@ CMakeFiles/rospack_genmsg.dir/clean:
 .PHONY : CMakeFiles/rospack_genmsg.dir/clean
 
 CMakeFiles/rospack_genmsg.dir/depend:
-	cd /home/pedro/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/cam /home/pedro/ros/cam /home/pedro/ros/cam/build /home/pedro/ros/cam/build /home/pedro/ros/cam/build/CMakeFiles/rospack_genmsg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build/CMakeFiles/rospack_genmsg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rospack_genmsg.dir/depend
 

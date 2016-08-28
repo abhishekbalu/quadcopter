@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/cam
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/cam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 
 # Utility rule file for ROSBUILD_genmsg_cpp.
 
@@ -85,11 +85,11 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/self_test/package.xml
-../msg_gen/cpp/include/cam/QuadPoseList.h: /home/pedro/ros/quad_msgs/manifest.xml
-../msg_gen/cpp/include/cam/QuadPoseList.h: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+../msg_gen/cpp/include/cam/QuadPoseList.h: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/QuadPoseList.h: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPoseList.h"
-	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/QuadPoseList.msg
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/quadcopter/ros/cam/msg/QuadPoseList.msg
 
 ../msg_gen/cpp/include/cam/detections.h: ../msg/detections.msg
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -124,11 +124,11 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/self_test/package.xml
-../msg_gen/cpp/include/cam/detections.h: /home/pedro/ros/quad_msgs/manifest.xml
-../msg_gen/cpp/include/cam/detections.h: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+../msg_gen/cpp/include/cam/detections.h: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/detections.h: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/detections.h"
-	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/detections.msg
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/quadcopter/ros/cam/msg/detections.msg
 
 ../msg_gen/cpp/include/cam/QuadPose.h: ../msg/QuadPose.msg
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -164,11 +164,11 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/self_test/package.xml
-../msg_gen/cpp/include/cam/QuadPose.h: /home/pedro/ros/quad_msgs/manifest.xml
-../msg_gen/cpp/include/cam/QuadPose.h: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+../msg_gen/cpp/include/cam/QuadPose.h: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/QuadPose.h: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPose.h"
-	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/ros/cam/msg/QuadPose.msg
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/pedro/quadcopter/ros/cam/msg/QuadPose.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
@@ -186,6 +186,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend:
-	cd /home/pedro/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/cam /home/pedro/ros/cam /home/pedro/ros/cam/build /home/pedro/ros/cam/build /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 

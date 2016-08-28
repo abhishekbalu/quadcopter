@@ -8,7 +8,7 @@ CMakeFiles/node.dir/src/node.cpp.o
  ../msg_gen/cpp/include/cam/QuadPose.h
  ../msg_gen/cpp/include/cam/QuadPoseList.h
  ../msg_gen/cpp/include/cam/detections.h
- /home/pedro/ros/cam/src/node.cpp
+ /home/pedro/quadcopter/ros/cam/src/node.cpp
  /opt/ros/indigo/include/XmlRpcDecl.h
  /opt/ros/indigo/include/XmlRpcValue.h
  /opt/ros/indigo/include/geometry_msgs/Point.h

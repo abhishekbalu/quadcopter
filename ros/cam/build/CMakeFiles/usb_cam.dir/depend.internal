@@ -3,4 +3,4 @@
 
 CMakeFiles/usb_cam.dir/src/usb_cam.cpp.o
  ../include/cam/usb_cam.h
- /home/pedro/ros/cam/src/usb_cam.cpp
+ /home/pedro/quadcopter/ros/cam/src/usb_cam.cpp

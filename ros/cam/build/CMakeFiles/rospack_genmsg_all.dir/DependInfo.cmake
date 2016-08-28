@@ -20,13 +20,13 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
-  "/home/pedro/ros/quad_msgs/msg_gen/cpp/include"
+  "/home/pedro/quadcopter/ros/quad_msgs/msg_gen/cpp/include"
   "/opt/ros/indigo/include"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtOpenGL"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtGui"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtXml"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtCore"
+  "/usr/include/qt4"
+  "/usr/include/qt4/QtOpenGL"
+  "/usr/include/qt4/QtGui"
+  "/usr/include/qt4/QtXml"
+  "/usr/include/qt4/QtCore"
   "../msg_gen/cpp/include"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

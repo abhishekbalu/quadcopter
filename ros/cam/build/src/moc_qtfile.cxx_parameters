@@ -1,12 +1,12 @@
--I/home/pedro/ros/cam/include
--I/home/pedro/ros/quad_msgs/msg_gen/cpp/include
+-I/home/pedro/quadcopter/ros/cam/include
+-I/home/pedro/quadcopter/ros/quad_msgs/msg_gen/cpp/include
 -I/opt/ros/indigo/include
 -I/usr/include
--I/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include
--I/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtOpenGL
--I/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtGui
--I/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtXml
--I/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtCore
+-I/usr/include/qt4
+-I/usr/include/qt4/QtOpenGL
+-I/usr/include/qt4/QtGui
+-I/usr/include/qt4/QtXml
+-I/usr/include/qt4/QtCore
 -DROS_PACKAGE_NAME="cam"
 -D$<$<NOT:$<CONFIG:Debug>>:QT_NO_DEBUG>
 -DQT_OPENGL_LIB
@@ -14,5 +14,5 @@
 -DQT_XML_LIB
 -DQT_CORE_LIB
 -o
-/home/pedro/ros/cam/build/src/moc_qtfile.cxx
-/home/pedro/ros/cam/src/qtfile.h
+/home/pedro/quadcopter/ros/cam/build/src/moc_qtfile.cxx
+/home/pedro/quadcopter/ros/cam/src/qtfile.h

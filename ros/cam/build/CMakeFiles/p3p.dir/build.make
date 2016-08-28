@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/cam
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/cam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/p3p.dir/depend.make
@@ -80,19 +80,19 @@ CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/image_transport/package.
 CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/diagnostic_updater/package.xml
 CMakeFiles/p3p.dir/src/p3p.cpp.o: /opt/ros/indigo/share/self_test/package.xml
-CMakeFiles/p3p.dir/src/p3p.cpp.o: /home/pedro/ros/quad_msgs/manifest.xml
-CMakeFiles/p3p.dir/src/p3p.cpp.o: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+CMakeFiles/p3p.dir/src/p3p.cpp.o: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+CMakeFiles/p3p.dir/src/p3p.cpp.o: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/p3p.dir/src/p3p.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/p3p.dir/src/p3p.cpp.o -c /home/pedro/ros/cam/src/p3p.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/p3p.dir/src/p3p.cpp.o -c /home/pedro/quadcopter/ros/cam/src/p3p.cpp
 
 CMakeFiles/p3p.dir/src/p3p.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/p3p.dir/src/p3p.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pedro/ros/cam/src/p3p.cpp > CMakeFiles/p3p.dir/src/p3p.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pedro/quadcopter/ros/cam/src/p3p.cpp > CMakeFiles/p3p.dir/src/p3p.cpp.i
 
 CMakeFiles/p3p.dir/src/p3p.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/p3p.dir/src/p3p.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pedro/ros/cam/src/p3p.cpp -o CMakeFiles/p3p.dir/src/p3p.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pedro/quadcopter/ros/cam/src/p3p.cpp -o CMakeFiles/p3p.dir/src/p3p.cpp.s
 
 CMakeFiles/p3p.dir/src/p3p.cpp.o.requires:
 .PHONY : CMakeFiles/p3p.dir/src/p3p.cpp.o.requires
@@ -139,6 +139,6 @@ CMakeFiles/p3p.dir/clean:
 .PHONY : CMakeFiles/p3p.dir/clean
 
 CMakeFiles/p3p.dir/depend:
-	cd /home/pedro/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/cam /home/pedro/ros/cam /home/pedro/ros/cam/build /home/pedro/ros/cam/build /home/pedro/ros/cam/build/CMakeFiles/p3p.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build/CMakeFiles/p3p.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/p3p.dir/depend
 

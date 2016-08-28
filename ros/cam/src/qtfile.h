@@ -3,16 +3,28 @@
  
 #include <QMainWindow>
 #include <QApplication>
+#include <QDesktopWidget>
 #include <QVBoxLayout>
 #include <QSlider>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QWidget>
+#include <QProgressBar>
+#include <QPaintEvent>
 #include <QDebug>
+#include <QPushButton>
+#include <QPainter>
+#include <QBrush>
+#include <QStyle>
+#include <QPen>
+#include <QColor>
 #include <iostream>
 #include <fstream>
 using namespace std;
 class MainWindow: public QMainWindow{
     Q_OBJECT
+    QProgressBar *bar_low;
+    QProgressBar *bar_high;
     QSlider *slider_vl;
     QLineEdit *lineEdit_vl;
     QSlider *slider_vh;
@@ -25,13 +37,15 @@ class MainWindow: public QMainWindow{
     QLineEdit *lineEdit_hl;
     QSlider *slider_hh;
     QLineEdit *lineEdit_hh;
- 
+    QPushButton *but;
 public:
+    int toggle;
     ofstream myfile;
     MainWindow();
     ~MainWindow();
  
 private slots:
+    void handleButton();
     void onValueChanged_vl(int value);
     void onValueChanged_vh(int value);
     void onValueChanged_sl(int value);

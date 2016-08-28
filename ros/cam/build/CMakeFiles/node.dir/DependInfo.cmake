@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pedro/ros/cam/src/node.cpp" "/home/pedro/ros/cam/build/CMakeFiles/node.dir/src/node.cpp.o"
+  "/home/pedro/quadcopter/ros/cam/src/node.cpp" "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/node.dir/src/node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,21 +20,21 @@ set(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pedro/ros/cam/build/CMakeFiles/marker_detection.dir/DependInfo.cmake"
-  "/home/pedro/ros/cam/build/CMakeFiles/blob_detection.dir/DependInfo.cmake"
-  "/home/pedro/ros/cam/build/CMakeFiles/p3p.dir/DependInfo.cmake"
+  "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/marker_detection.dir/DependInfo.cmake"
+  "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/blob_detection.dir/DependInfo.cmake"
+  "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/p3p.dir/DependInfo.cmake"
   )
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
-  "/home/pedro/ros/quad_msgs/msg_gen/cpp/include"
+  "/home/pedro/quadcopter/ros/quad_msgs/msg_gen/cpp/include"
   "/opt/ros/indigo/include"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtOpenGL"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtGui"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtXml"
-  "/opt/QtSDK/Desktop/Qt/4.8.1/gcc/include/QtCore"
+  "/usr/include/qt4"
+  "/usr/include/qt4/QtOpenGL"
+  "/usr/include/qt4/QtGui"
+  "/usr/include/qt4/QtXml"
+  "/usr/include/qt4/QtCore"
   "../msg_gen/cpp/include"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

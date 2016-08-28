@@ -1,8 +1,0 @@
-<launch>
-
-   <node name="blob_detection_tools" pkg="usb_cam" type="blob_detection_tools" output="screen" >
-                <rosparam command="load" file="$(find usb_cam)/params/sensor_params.yaml" />
-    </node>
-
-</launch>
-

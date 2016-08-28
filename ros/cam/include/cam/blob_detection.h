@@ -9,7 +9,7 @@ typedef struct _blob{
 }blob;
 //Main function in this module
 int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
-	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height, int colour);
+	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height, int colour, int toggle);
 //Return binary image simage
 unsigned char* get_binary_image();
 //Return blob array

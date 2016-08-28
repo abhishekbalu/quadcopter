@@ -26,7 +26,7 @@ math.h
 stdlib.h
 -
 
-/home/pedro/ros/cam/src/marker_detection.cpp
+/home/pedro/quadcopter/ros/cam/src/marker_detection.cpp
 iostream
 -
 fstream
@@ -54,15 +54,15 @@ eigen3/Eigen/LU
 eigen3/Eigen/Core
 -
 yaml-cpp/yaml.h
-/home/pedro/ros/cam/src/yaml-cpp/yaml.h
+/home/pedro/quadcopter/ros/cam/src/yaml-cpp/yaml.h
 ros/ros.h
 -
 cam/blob_detection.h
-/home/pedro/ros/cam/src/cam/blob_detection.h
+/home/pedro/quadcopter/ros/cam/src/cam/blob_detection.h
 cam/marker_detection.h
-/home/pedro/ros/cam/src/cam/marker_detection.h
+/home/pedro/quadcopter/ros/cam/src/cam/marker_detection.h
 cam/p3p.hpp
-/home/pedro/ros/cam/src/cam/p3p.hpp
+/home/pedro/quadcopter/ros/cam/src/cam/p3p.hpp
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h

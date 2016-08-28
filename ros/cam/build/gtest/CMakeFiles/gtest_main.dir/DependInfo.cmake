@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/usr/src/gtest/src/gtest_main.cc" "/home/pedro/ros/cam/build/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+  "/usr/src/gtest/src/gtest_main.cc" "/home/pedro/quadcopter/ros/cam/build/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,14 +16,12 @@ set(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pedro/ros/cam/build/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
+  "/home/pedro/quadcopter/ros/cam/build/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
   )
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/pedro/ros/cam/include"
-  "/home/pedro/ros/quad_msgs/msg_gen/cpp/include"
-  "/opt/ros/indigo/include"
+  "/home/pedro/quadcopter/ros/cam/include"
   "/usr/src/gtest/include"
   "/usr/src/gtest"
   )

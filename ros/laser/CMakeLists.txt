@@ -32,8 +32,6 @@ rosbuild_add_library(Kalman_1D src/Kalman_1D.cpp)
 rosbuild_add_executable(rpy_laser src/rpy_laser.cpp)
 rosbuild_add_executable(rpy_imu src/rpy_imu.cpp)
 
-rosbuild_add_executable(laser_kalman src/laser_kalman.cpp)
 rosbuild_add_executable(laser_OF_comparison src/laser_OF_comparison.cpp)
 target_link_libraries(laser_OF_comparison Kalman_2D)
-target_link_libraries(laser_kalman kalman)
 #target_link_libraries(example ${PROJECT_NAME})

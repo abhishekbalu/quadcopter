@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/cam
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/cam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 
 # Utility rule file for ROSBUILD_genmsg_lisp.
 
@@ -91,11 +91,11 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/self_test/package.xml
-../msg_gen/lisp/QuadPoseList.lisp: /home/pedro/ros/quad_msgs/manifest.xml
-../msg_gen/lisp/QuadPoseList.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+../msg_gen/lisp/QuadPoseList.lisp: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/QuadPoseList.lisp: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/QuadPoseList.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_QuadPoseList.lisp"
-	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/cam/msg/QuadPoseList.msg
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/quadcopter/ros/cam/msg/QuadPoseList.msg
 
 ../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/QuadPoseList.lisp
 	@$(CMAKE_COMMAND) -E touch_nocreate ../msg_gen/lisp/_package.lisp
@@ -136,11 +136,11 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/self_test/package.xml
-../msg_gen/lisp/detections.lisp: /home/pedro/ros/quad_msgs/manifest.xml
-../msg_gen/lisp/detections.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+../msg_gen/lisp/detections.lisp: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/detections.lisp: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/detections.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_detections.lisp"
-	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/cam/msg/detections.msg
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/quadcopter/ros/cam/msg/detections.msg
 
 ../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/detections.lisp
 	@$(CMAKE_COMMAND) -E touch_nocreate ../msg_gen/lisp/_package.lisp
@@ -182,11 +182,11 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/self_test/package.xml
-../msg_gen/lisp/QuadPose.lisp: /home/pedro/ros/quad_msgs/manifest.xml
-../msg_gen/lisp/QuadPose.lisp: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+../msg_gen/lisp/QuadPose.lisp: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/QuadPose.lisp: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/QuadPose.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_QuadPose.lisp"
-	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/cam/msg/QuadPose.msg
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/quadcopter/ros/cam/msg/QuadPose.msg
 
 ../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/QuadPose.lisp
 	@$(CMAKE_COMMAND) -E touch_nocreate ../msg_gen/lisp/_package.lisp
@@ -216,6 +216,6 @@ CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend:
-	cd /home/pedro/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/cam /home/pedro/ros/cam /home/pedro/ros/cam/build /home/pedro/ros/cam/build /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend
 

@@ -42,10 +42,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/cam
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/cam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,9 +113,9 @@ install/local/fast: install/local
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/cam/build/CMakeFiles /home/pedro/ros/cam/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/ros/cam/build/CMakeFiles /home/pedro/quadcopter/ros/cam/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/cam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/ros/cam/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -221,19 +221,6 @@ _catkin_empty_exported_target/fast:
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================
-# Target rules for targets named blob_debug
-
-# Build rule for target.
-blob_debug: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 blob_debug
-.PHONY : blob_debug
-
-# fast build rule for target.
-blob_debug/fast:
-	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/build
-.PHONY : blob_debug/fast
-
-#=============================================================================
 # Target rules for targets named blob_debug_qt
 
 # Build rule for target.
@@ -258,19 +245,6 @@ blob_detection: cmake_check_build_system
 blob_detection/fast:
 	$(MAKE) -f CMakeFiles/blob_detection.dir/build.make CMakeFiles/blob_detection.dir/build
 .PHONY : blob_detection/fast
-
-#=============================================================================
-# Target rules for targets named blob_detection_simple
-
-# Build rule for target.
-blob_detection_simple: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 blob_detection_simple
-.PHONY : blob_detection_simple
-
-# fast build rule for target.
-blob_detection_simple/fast:
-	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/build
-.PHONY : blob_detection_simple/fast
 
 #=============================================================================
 # Target rules for targets named clean_test_results
@@ -582,30 +556,6 @@ src/blob_detection.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_detection.dir/build.make CMakeFiles/blob_detection.dir/src/blob_detection.cpp.s
 .PHONY : src/blob_detection.cpp.s
 
-src/blob_detection_debug.o: src/blob_detection_debug.cpp.o
-.PHONY : src/blob_detection_debug.o
-
-# target to build an object file
-src/blob_detection_debug.cpp.o:
-	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.o
-.PHONY : src/blob_detection_debug.cpp.o
-
-src/blob_detection_debug.i: src/blob_detection_debug.cpp.i
-.PHONY : src/blob_detection_debug.i
-
-# target to preprocess a source file
-src/blob_detection_debug.cpp.i:
-	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.i
-.PHONY : src/blob_detection_debug.cpp.i
-
-src/blob_detection_debug.s: src/blob_detection_debug.cpp.s
-.PHONY : src/blob_detection_debug.s
-
-# target to generate assembly for a file
-src/blob_detection_debug.cpp.s:
-	$(MAKE) -f CMakeFiles/blob_debug.dir/build.make CMakeFiles/blob_debug.dir/src/blob_detection_debug.cpp.s
-.PHONY : src/blob_detection_debug.cpp.s
-
 src/blob_detection_debug_qt.o: src/blob_detection_debug_qt.cpp.o
 .PHONY : src/blob_detection_debug_qt.o
 
@@ -629,30 +579,6 @@ src/blob_detection_debug_qt.s: src/blob_detection_debug_qt.cpp.s
 src/blob_detection_debug_qt.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.s
 .PHONY : src/blob_detection_debug_qt.cpp.s
-
-src/blob_detection_simple.o: src/blob_detection_simple.cpp.o
-.PHONY : src/blob_detection_simple.o
-
-# target to build an object file
-src/blob_detection_simple.cpp.o:
-	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/src/blob_detection_simple.cpp.o
-.PHONY : src/blob_detection_simple.cpp.o
-
-src/blob_detection_simple.i: src/blob_detection_simple.cpp.i
-.PHONY : src/blob_detection_simple.i
-
-# target to preprocess a source file
-src/blob_detection_simple.cpp.i:
-	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/src/blob_detection_simple.cpp.i
-.PHONY : src/blob_detection_simple.cpp.i
-
-src/blob_detection_simple.s: src/blob_detection_simple.cpp.s
-.PHONY : src/blob_detection_simple.s
-
-# target to generate assembly for a file
-src/blob_detection_simple.cpp.s:
-	$(MAKE) -f CMakeFiles/blob_detection_simple.dir/build.make CMakeFiles/blob_detection_simple.dir/src/blob_detection_simple.cpp.s
-.PHONY : src/blob_detection_simple.cpp.s
 
 src/marker_detection.o: src/marker_detection.cpp.o
 .PHONY : src/marker_detection.o
@@ -835,25 +761,17 @@ help:
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... clean_test_results"
 	@echo "... run_tests"
-	@echo "... blob_detection_simple"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... install/local"
-	@echo "... blob_debug"
 	@echo "... usb_cam"
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... src/blob_detection.o"
 	@echo "... src/blob_detection.i"
 	@echo "... src/blob_detection.s"
-	@echo "... src/blob_detection_debug.o"
-	@echo "... src/blob_detection_debug.i"
-	@echo "... src/blob_detection_debug.s"
 	@echo "... src/blob_detection_debug_qt.o"
 	@echo "... src/blob_detection_debug_qt.i"
 	@echo "... src/blob_detection_debug_qt.s"
-	@echo "... src/blob_detection_simple.o"
-	@echo "... src/blob_detection_simple.i"
-	@echo "... src/blob_detection_simple.s"
 	@echo "... src/marker_detection.o"
 	@echo "... src/marker_detection.i"
 	@echo "... src/marker_detection.s"

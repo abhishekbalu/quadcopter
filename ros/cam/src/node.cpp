@@ -47,7 +47,7 @@ ofstream outputfile;
 double value = 0.0;
 double last_value = 0.0;
 
-
+ros::Time t;
 int width;
 int height;
 static ros::Publisher rgb_image_pub;
@@ -55,7 +55,7 @@ static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher markers_pub;
 static ros::Publisher frame_pub;
-std::string image_settings = "~/ros/cam/params/image_settings.yaml";
+std::string image_settings = "yamls/image_settings.yaml";
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
 	//get image
@@ -120,7 +120,8 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 			value = quad_pose.position.x;
 			if((std::abs(last_value-value) < MAX_DEVIATION || last_value == 0) && quad_pose.position.x !=NULL){
 				std::stringstream ss;
-				ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw  << "," << datapoints;
+				t = ros::Time::now();
+				ss << t << "," << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw  << "," << datapoints;
 				std::string s = ss.str();
 				outputfile << s << endl;
 				cout << s << endl;

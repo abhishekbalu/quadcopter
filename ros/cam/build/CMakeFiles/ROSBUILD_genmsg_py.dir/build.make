@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/cam
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/cam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/cam/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 
 # Utility rule file for ROSBUILD_genmsg_py.
 
@@ -50,9 +50,9 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 ../src/cam/msg/__init__.py: ../src/cam/msg/_QuadPoseList.py
 ../src/cam/msg/__init__.py: ../src/cam/msg/_detections.py
 ../src/cam/msg/__init__.py: ../src/cam/msg/_QuadPose.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/__init__.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/ros/cam/msg/QuadPoseList.msg /home/pedro/ros/cam/msg/detections.msg /home/pedro/ros/cam/msg/QuadPose.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/quadcopter/ros/cam/msg/QuadPoseList.msg /home/pedro/quadcopter/ros/cam/msg/detections.msg /home/pedro/quadcopter/ros/cam/msg/QuadPose.msg
 
 ../src/cam/msg/_QuadPoseList.py: ../msg/QuadPoseList.msg
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -90,11 +90,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../src/cam/msg/_QuadPoseList.py: /opt/ros/indigo/share/self_test/package.xml
-../src/cam/msg/_QuadPoseList.py: /home/pedro/ros/quad_msgs/manifest.xml
-../src/cam/msg/_QuadPoseList.py: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+../src/cam/msg/_QuadPoseList.py: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../src/cam/msg/_QuadPoseList.py: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/_QuadPoseList.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/cam/msg/QuadPoseList.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/quadcopter/ros/cam/msg/QuadPoseList.msg
 
 ../src/cam/msg/_detections.py: ../msg/detections.msg
 ../src/cam/msg/_detections.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -129,11 +129,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 ../src/cam/msg/_detections.py: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../src/cam/msg/_detections.py: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../src/cam/msg/_detections.py: /opt/ros/indigo/share/self_test/package.xml
-../src/cam/msg/_detections.py: /home/pedro/ros/quad_msgs/manifest.xml
-../src/cam/msg/_detections.py: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+../src/cam/msg/_detections.py: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../src/cam/msg/_detections.py: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/_detections.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/cam/msg/detections.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/quadcopter/ros/cam/msg/detections.msg
 
 ../src/cam/msg/_QuadPose.py: ../msg/QuadPose.msg
 ../src/cam/msg/_QuadPose.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -169,11 +169,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
 ../src/cam/msg/_QuadPose.py: /opt/ros/indigo/share/diagnostic_msgs/package.xml
 ../src/cam/msg/_QuadPose.py: /opt/ros/indigo/share/diagnostic_updater/package.xml
 ../src/cam/msg/_QuadPose.py: /opt/ros/indigo/share/self_test/package.xml
-../src/cam/msg/_QuadPose.py: /home/pedro/ros/quad_msgs/manifest.xml
-../src/cam/msg/_QuadPose.py: /home/pedro/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_4)
+../src/cam/msg/_QuadPose.py: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
+../src/cam/msg/_QuadPose.py: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/cam/msg/_QuadPose.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/cam/msg/QuadPose.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/quadcopter/ros/cam/msg/QuadPose.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/cam/msg/__init__.py
@@ -192,6 +192,6 @@ CMakeFiles/ROSBUILD_genmsg_py.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_py.dir/depend:
-	cd /home/pedro/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/cam /home/pedro/ros/cam /home/pedro/ros/cam/build /home/pedro/ros/cam/build /home/pedro/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build/CMakeFiles/ROSBUILD_genmsg_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 
