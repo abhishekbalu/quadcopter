@@ -23,8 +23,7 @@ include(${QT_USE_FILE})
 #ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 
 set(qt_srcs src/qtfile.cpp)
-set(qt_hdrs src/qtfile.h)
-qt4_automoc(${qt_srcs})
+set(qt_hdrs src/qtfile.h yaml-cpp)
 QT4_WRAP_CPP(qt_moc_srcs ${qt_hdrs})
 
 #set the default path for built executables to the "bin" directory

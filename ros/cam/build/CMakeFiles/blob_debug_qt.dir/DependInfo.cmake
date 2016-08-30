@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pedro/quadcopter/ros/cam/build/moc_yaml-cpp.cxx" "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o"
   "/home/pedro/quadcopter/ros/cam/src/blob_detection_debug_qt.cpp" "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o"
   "/home/pedro/quadcopter/ros/cam/build/src/moc_qtfile.cxx" "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o"
   "/home/pedro/quadcopter/ros/cam/src/qtfile.cpp" "/home/pedro/quadcopter/ros/cam/build/CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o"

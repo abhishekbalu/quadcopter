@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-	<node pkg="height_quad" type="xy_odometry" name="xy_odometry" output="screen"/>
-	<node pkg="height_quad" type="z_pose" name="z_pose" output="screen"/>
-	<node pkg="height_quad" type="xy_pose" name="xy_pose" output="screen"/>
-	<node pkg="height_quad" type="repeater_node" name="repeater_node" output="screen"/>
-	<node pkg="height_quad" type="controller_quad_z" name="controller_quad_z" output="screen"/>
-</launch>

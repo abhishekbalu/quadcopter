@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/px-ros-pkg/px_comm
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/px-ros-pkg/px_comm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/px-ros-pkg/px_comm/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build
 
 # Utility rule file for ROSBUILD_genmsg_lisp.
 
@@ -54,9 +54,9 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_OpticalFlow.lisp
 ../msg_gen/lisp/OpticalFlow.lisp: /opt/ros/indigo/lib/roslib/gendeps
 ../msg_gen/lisp/OpticalFlow.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
 ../msg_gen/lisp/OpticalFlow.lisp: ../manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/px-ros-pkg/px_comm/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/OpticalFlow.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_OpticalFlow.lisp"
-	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/ros/px-ros-pkg/px_comm/msg/OpticalFlow.msg
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/msg/OpticalFlow.msg
 
 ../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/OpticalFlow.lisp
 	@$(CMAKE_COMMAND) -E touch_nocreate ../msg_gen/lisp/_package.lisp
@@ -80,6 +80,6 @@ CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend:
-	cd /home/pedro/ros/px-ros-pkg/px_comm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/px-ros-pkg/px_comm /home/pedro/ros/px-ros-pkg/px_comm /home/pedro/ros/px-ros-pkg/px_comm/build /home/pedro/ros/px-ros-pkg/px_comm/build /home/pedro/ros/px-ros-pkg/px_comm/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/px-ros-pkg/px_comm /home/pedro/quadcopter/ros/px-ros-pkg/px_comm /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend
 

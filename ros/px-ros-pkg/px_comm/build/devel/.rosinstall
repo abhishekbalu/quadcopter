@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/pedro/ros/px-ros-pkg/px_comm/build/devel/setup.sh
+    local-name: /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/devel/setup.sh

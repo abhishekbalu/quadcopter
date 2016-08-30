@@ -21,6 +21,8 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/home/pedro/quadcopter/ros/cam/include"
+  "/home/pedro/quadcopter/ros/quad_msgs/msg_gen/cpp/include"
+  "/opt/ros/indigo/include"
   "/usr/src/gtest/include"
   "/usr/src/gtest"
   )

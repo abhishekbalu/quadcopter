@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/px-ros-pkg/px_comm
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/px-ros-pkg/px_comm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/px-ros-pkg/px_comm/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build
 
 # Utility rule file for ROSBUILD_gensrv_cpp.
 
@@ -57,6 +57,6 @@ CMakeFiles/ROSBUILD_gensrv_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_gensrv_cpp.dir/depend:
-	cd /home/pedro/ros/px-ros-pkg/px_comm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/px-ros-pkg/px_comm /home/pedro/ros/px-ros-pkg/px_comm /home/pedro/ros/px-ros-pkg/px_comm/build /home/pedro/ros/px-ros-pkg/px_comm/build /home/pedro/ros/px-ros-pkg/px_comm/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/px-ros-pkg/px_comm /home/pedro/quadcopter/ros/px-ros-pkg/px_comm /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/depend
 

@@ -85,6 +85,8 @@ qtfile.h
 /home/pedro/quadcopter/ros/cam/src/qtfile.cpp
 qtfile.h
 /home/pedro/quadcopter/ros/cam/src/qtfile.h
+yaml-cpp/yaml.h
+/home/pedro/quadcopter/ros/cam/src/yaml-cpp/yaml.h
 
 /home/pedro/quadcopter/ros/cam/src/qtfile.h
 QMainWindow

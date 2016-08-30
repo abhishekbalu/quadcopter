@@ -1,9 +1,35 @@
 #include "qtfile.h"
-
+#include "yaml-cpp/yaml.h"
 
 using namespace std;
-static void HSVToRGB(float h, float s, float v, float *r, float *g, float *b)
-{
+
+int _vl = 49;
+int _vh = 100;
+int _hl = 192;
+int _hh = 238;
+int _sl = 50;
+int _sh = 100;
+std::string blob_settings = "params/blue_blob_settings.yaml";
+void readBlobParams(std::string file){
+    YAML::Node root = YAML::LoadFile(file);
+    try{
+        _vl = root["vl"].as<int>();
+        _vh = root["vh"].as<int>();
+        _hl = root["hl"].as<int>();
+        _hh = root["hh"].as<int>();
+        _sl = root["sl"].as<int>();
+        _sh = root["sh"].as<int>();
+        #ifdef VERBOSE
+            std::cout << root["vl"].as<int>() << "\n";
+            std::cout << root["vh"].as<int>() << "\n";
+            std::cout << root["hl"].as<int>() << "\n";
+            std::cout << root["hh"].as<int>() << "\n";
+            std::cout << root["sl"].as<int>() << "\n";
+            std::cout << root["sh"].as<int>() << "\n";
+        #endif
+    }catch(const BadConversion& e){}
+}
+static void HSVToRGB(float h, float s, float v, float *r, float *g, float *b){
     if (h < 0) h = 0;
     if (h > 359) h = 359;
     if (s < 0) s = 0;
@@ -79,12 +105,12 @@ MainWindow::MainWindow(){
     QObject::connect(slider_sh, SIGNAL(valueChanged(int)), this, SLOT(onValueChanged_sh(int)));
 
     slider_hl = new QSlider(Qt::Horizontal); 
-    slider_hl->setRange(0, 500);
+    slider_hl->setRange(0, 360);
     lineEdit_hl = new QLineEdit();
     QObject::connect(slider_hl, SIGNAL(valueChanged(int)), this, SLOT(onValueChanged_hl(int)));
 
     slider_hh = new QSlider(Qt::Horizontal); 
-    slider_hh->setRange(0, 500);
+    slider_hh->setRange(0, 360);
     lineEdit_hh = new QLineEdit();
     QObject::connect(slider_hh, SIGNAL(valueChanged(int)), this, SLOT(onValueChanged_hh(int)));
  
@@ -106,21 +132,22 @@ MainWindow::MainWindow(){
     wrapper->setLayout(layout);
     setCentralWidget(wrapper);
     //Set initial values
-    slider_sl->setValue(80);
-    slider_sh->setValue(100);
-    slider_vl->setValue(50);
-    slider_vh->setValue(100);
-    slider_hl->setValue(180);
-    slider_hh->setValue(250);
+    readBlobParams(blob_settings);
+    slider_sl->setValue(_sl);
+    slider_sh->setValue(_sh);
+    slider_vl->setValue(_vl);
+    slider_vh->setValue(_vh);
+    slider_hl->setValue(_hl);
+    slider_hh->setValue(_hh);
 
     float r_l;
     float g_l;
     float b_l;
-    HSVToRGB(180.0, (float)80.0/100.0, (float)50.0/100.0, &r_l, &g_l, &b_l);
+    HSVToRGB((float)_hl, (float)_sl/100.0, (float)_vl/100.0, &r_l, &g_l, &b_l);
     float r_h;
     float g_h;
     float b_h;
-    HSVToRGB(250.0, (float)100.0/100.0, (float)100.0/100.0, &r_h, &g_h, &b_h);
+    HSVToRGB((float)_hh, (float)_sh/100.0, (float)_vh/100.0, &r_h, &g_h, &b_h);
     but = new QPushButton("set", this);
     but->setGeometry(QRect(QPoint(90, 250),
     QSize(30, 30)));
@@ -158,13 +185,13 @@ void MainWindow::handleButton(){
     toggle = 1;
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile  << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
 
     //Close window and put toggle to invalid number just before closing
@@ -200,13 +227,13 @@ void MainWindow::onValueChanged_vl(int value){
 
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile  << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
 
     QString text = "Value Low " + QString::number(pos);
@@ -237,13 +264,13 @@ void MainWindow::onValueChanged_vh(int value){
 
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile  << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
 
     QString text = "Value High " + QString::number(pos);
@@ -272,13 +299,13 @@ void MainWindow::onValueChanged_sl(int value){
 
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile  << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
 
     QString text = "Saturation Low " + QString::number(pos);
@@ -308,13 +335,13 @@ void MainWindow::onValueChanged_sh(int value){
 
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile  << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
 
     QString text = "Saturation High " + QString::number(pos);
@@ -342,13 +369,13 @@ void MainWindow::onValueChanged_hl(int value){
     slider_hl->setStyleSheet(ss.arg(red).arg(green).arg(blue));
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile  << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
 
     QString text = "Hue Low " + QString::number(pos);
@@ -378,13 +405,13 @@ void MainWindow::onValueChanged_hh(int value){
     slider_hh->setStyleSheet(ss.arg(red).arg(green).arg(blue));
 
     myfile.open ("pipe.txt");
-    myfile  << slider_sl->sliderPosition() << "|" 
-            << slider_sh->sliderPosition() << "|"
-            << slider_vl->sliderPosition() << "|"
-            << slider_vh->sliderPosition() << "|"
-            << slider_hl->sliderPosition() << "|"
-            << slider_hh->sliderPosition() << "|"
-            << toggle << "\n";
+    myfile << slider_sl->sliderPosition() << "\n" 
+            << slider_sh->sliderPosition() << "\n"
+            << slider_vl->sliderPosition() << "\n"
+            << slider_vh->sliderPosition() << "\n"
+            << slider_hl->sliderPosition() << "\n"
+            << slider_hh->sliderPosition() << "\n"
+            << toggle;
     myfile.close();
     
     QString text = "Hue High " + QString::number(pos);

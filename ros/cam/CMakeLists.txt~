@@ -24,17 +24,13 @@ include(${QT_USE_FILE})
 
 set(qt_srcs src/qtfile.cpp)
 set(qt_hdrs src/qtfile.h)
-qt4_automoc(${qt_srcs})
 QT4_WRAP_CPP(qt_moc_srcs ${qt_hdrs})
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-set(avcodec_LIBRARIES ~/ffmpeg_build/lib/libavcodec.a)
-set(swscale_LIBRARIES ~/ffmpeg_build/lib/libswscale.a)
-set(avcodec_INCLUDE_DIRS ~/ffmpeg_build/include/libavcodec)
-set(swscale_INCLUDE_DIRS ~/ffmpeg_build/include/libswscale)
+
 #-------------------------------------------------MESSAGES AND SERVICES------------------------------------------------------
 #uncomment if you have defined messages
 rosbuild_genmsg()

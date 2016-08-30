@@ -65,9 +65,9 @@ int blue_blob_hh = 250;
 int blue_blob_vl = 80;
 int blue_blob_vh = 110;
 
-std::string blue_blob_settings = "yamls/blue_blob_settings.yaml";
-std::string red_blob_settings = "yamls/red_blob_settings.yaml";
-std::string tracking_params = "yamls/tracking_params.yaml";
+std::string blue_blob_settings = "params/blue_blob_settings.yaml";
+std::string red_blob_settings = "params/red_blob_settings.yaml";
+std::string tracking_params = "params/tracking_params.yaml";
 
 int objcnt=0;
 int nmarkers=0;

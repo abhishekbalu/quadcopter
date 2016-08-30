@@ -55,6 +55,12 @@ src/moc_qtfile.cxx: src/moc_qtfile.cxx_parameters
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating src/moc_qtfile.cxx"
 	cd /home/pedro/quadcopter/ros/cam/build/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/pedro/quadcopter/ros/cam/build/src/moc_qtfile.cxx_parameters
 
+moc_yaml-cpp.cxx: ../yaml-cpp
+moc_yaml-cpp.cxx: moc_yaml-cpp.cxx_parameters
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_yaml-cpp.cxx"
+	/usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/pedro/quadcopter/ros/cam/build/moc_yaml-cpp.cxx_parameters
+
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: CMakeFiles/blob_debug_qt.dir/flags.make
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: ../src/blob_detection_debug_qt.cpp
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: ../manifest.xml
@@ -88,7 +94,7 @@ CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: /opt/ros/indigo/
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: /opt/ros/indigo/share/self_test/package.xml
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o -c /home/pedro/quadcopter/ros/cam/src/blob_detection_debug_qt.cpp
 
@@ -142,7 +148,7 @@ CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o: /opt/ros/indigo/share/diagnostic_
 CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o: /opt/ros/indigo/share/self_test/package.xml
 CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o: /home/pedro/quadcopter/ros/quad_msgs/manifest.xml
 CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o: /home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o -c /home/pedro/quadcopter/ros/cam/src/qtfile.cpp
 
@@ -165,7 +171,7 @@ CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o.provides.build: CMakeFiles/blob_de
 
 CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o: CMakeFiles/blob_debug_qt.dir/flags.make
 CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o: src/moc_qtfile.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o -c /home/pedro/quadcopter/ros/cam/build/src/moc_qtfile.cxx
 
@@ -186,11 +192,35 @@ CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o.provides: CMakeFiles/blob_debu
 
 CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o.provides.build: CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o
 
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o: CMakeFiles/blob_debug_qt.dir/flags.make
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o: moc_yaml-cpp.cxx
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o -c /home/pedro/quadcopter/ros/cam/build/moc_yaml-cpp.cxx
+
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pedro/quadcopter/ros/cam/build/moc_yaml-cpp.cxx > CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.i
+
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pedro/quadcopter/ros/cam/build/moc_yaml-cpp.cxx -o CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.s
+
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.requires:
+.PHONY : CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.requires
+
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.provides: CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.requires
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.provides.build
+.PHONY : CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.provides
+
+CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.provides.build: CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o
+
 # Object files for target blob_debug_qt
 blob_debug_qt_OBJECTS = \
 "CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o" \
 "CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o" \
-"CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o"
+"CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o" \
+"CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o"
 
 # External object files for target blob_debug_qt
 blob_debug_qt_EXTERNAL_OBJECTS =
@@ -198,6 +228,7 @@ blob_debug_qt_EXTERNAL_OBJECTS =
 ../bin/blob_debug_qt: CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o
 ../bin/blob_debug_qt: CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o
 ../bin/blob_debug_qt: CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o
+../bin/blob_debug_qt: CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o
 ../bin/blob_debug_qt: CMakeFiles/blob_debug_qt.dir/build.make
 ../bin/blob_debug_qt: /usr/lib/x86_64-linux-gnu/libtinyxml.so
 ../bin/blob_debug_qt: /usr/lib/libPocoFoundation.so
@@ -237,6 +268,7 @@ CMakeFiles/blob_debug_qt.dir/build: ../bin/blob_debug_qt
 CMakeFiles/blob_debug_qt.dir/requires: CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o.requires
 CMakeFiles/blob_debug_qt.dir/requires: CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o.requires
 CMakeFiles/blob_debug_qt.dir/requires: CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o.requires
+CMakeFiles/blob_debug_qt.dir/requires: CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o.requires
 .PHONY : CMakeFiles/blob_debug_qt.dir/requires
 
 CMakeFiles/blob_debug_qt.dir/clean:
@@ -244,6 +276,7 @@ CMakeFiles/blob_debug_qt.dir/clean:
 .PHONY : CMakeFiles/blob_debug_qt.dir/clean
 
 CMakeFiles/blob_debug_qt.dir/depend: src/moc_qtfile.cxx
+CMakeFiles/blob_debug_qt.dir/depend: moc_yaml-cpp.cxx
 	cd /home/pedro/quadcopter/ros/cam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build /home/pedro/quadcopter/ros/cam/build/CMakeFiles/blob_debug_qt.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/blob_debug_qt.dir/depend
 

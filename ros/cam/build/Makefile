@@ -50,16 +50,6 @@ CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/cam/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-.PHONY : install/strip/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -532,6 +522,30 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+moc_yaml-cpp.o: moc_yaml-cpp.cxx.o
+.PHONY : moc_yaml-cpp.o
+
+# target to build an object file
+moc_yaml-cpp.cxx.o:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.o
+.PHONY : moc_yaml-cpp.cxx.o
+
+moc_yaml-cpp.i: moc_yaml-cpp.cxx.i
+.PHONY : moc_yaml-cpp.i
+
+# target to preprocess a source file
+moc_yaml-cpp.cxx.i:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.i
+.PHONY : moc_yaml-cpp.cxx.i
+
+moc_yaml-cpp.s: moc_yaml-cpp.cxx.s
+.PHONY : moc_yaml-cpp.s
+
+# target to generate assembly for a file
+moc_yaml-cpp.cxx.s:
+	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/moc_yaml-cpp.cxx.s
+.PHONY : moc_yaml-cpp.cxx.s
+
 src/blob_detection.o: src/blob_detection.cpp.o
 .PHONY : src/blob_detection.o
 
@@ -732,7 +746,6 @@ help:
 	@echo "... depend"
 	@echo "... ROSBUILD_genmsg_py"
 	@echo "... rospack_genmsg_all"
-	@echo "... install/strip"
 	@echo "... marker_detection"
 	@echo "... download_extra_data"
 	@echo "... rospack_gensrv"
@@ -766,6 +779,9 @@ help:
 	@echo "... usb_cam"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... moc_yaml-cpp.o"
+	@echo "... moc_yaml-cpp.i"
+	@echo "... moc_yaml-cpp.s"
 	@echo "... src/blob_detection.o"
 	@echo "... src/blob_detection.i"
 	@echo "... src/blob_detection.s"

@@ -7,6 +7,6 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/pedro/ros/px-ros-pkg/px_comm/build/devel:$CMAKE_PREFIX_PATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/pedro/ros/px-ros-pkg/px_comm/build/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/pedro/ros/px-ros-pkg/px_comm:/opt/ros/indigo/share:/opt/ros/indigo/stacks"
+export CMAKE_PREFIX_PATH="/home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/devel:$CMAKE_PREFIX_PATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/pedro/ros/px-ros-pkg/px_comm:/home/pedro/quadcopter/ros/px-ros-pkg/px_comm:/opt/ros/indigo/share:/opt/ros/indigo/stacks"

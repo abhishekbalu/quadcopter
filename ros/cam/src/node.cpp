@@ -55,7 +55,7 @@ static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher markers_pub;
 static ros::Publisher frame_pub;
-std::string image_settings = "yamls/image_settings.yaml";
+std::string image_settings = "params/image_settings.yaml";
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
 	//get image
