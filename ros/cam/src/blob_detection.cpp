@@ -17,16 +17,19 @@
 
 using namespace std;
 #define MAX_FEATURES 500
-#define BLOB_INFO 1 //Comment or uncomment this to see blob info
-#define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
+
+//#define BLOB_INFO 1 //Comment or uncomment this to see blob info
+//#define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
+
+#define HIT_NUMBERS 10
 
 const int SIZE_THRESHOLD = 100; //Value for 3m which is the max range
 const double BLOB_CONSTANT = 2.25;
 const int NOISE_ACTIVE = 0;
-const double WINDOW_SCALING = 1.5;
-int MIN_NUMBER_BLOBS = 4; //defaults to blue markers
+const double WINDOW_SCALING = 1.7;
+int MIN_NUMBER_BLOBS = 3; //defaults to blue markers
 int NUMBER_OF_QUADS = 1;
-int MAX_NUMBER_BLOBS = NUMBER_OF_QUADS * 4; //defaults to blue markers
+int MAX_NUMBER_BLOBS = 5; //defaults to blue markers
 const int BLUE = 1;
 const int RED = 0;
 int last_colour = 1;
@@ -277,7 +280,9 @@ void blob_threshold(){
 /*-------------------------------Detect Blobs Function--------------------------------------------*/
 int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
 	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height, int colour, int toggle){
-    printf("%d\n", toggle);
+    #ifdef VERBOSE
+        printf("Toggle: %d\n", toggle);
+    #endif
 	int is_blob = init(width, height);
     if(colour != last_colour){
         initialization = true;
@@ -361,10 +366,11 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         if(colour == BLUE){
             if(initialization == false && window_pixel_number != 0){
                 printf("Windows Average sat: %d, Windows Average val: %d, Pixel number in windows: %d\n Max_hue: %d, Min_hue: %d Center_Max_hue: %d, Center_Min_hue:%d \n", sat_sum_window/window_pixel_number, val_sum_window/window_pixel_number, window_pixel_number, max_hue, min_hue, center_pixel_max_hue, center_pixel_min_hue);
-                if( ((last_val_total_avg!=0) && (abs(last_val_total_avg-val_sum/pixel_number)>12)) || (hits > 3 ) ){
+                if( ((last_val_total_avg!=0) && (abs(last_val_total_avg-val_sum/pixel_number)>13)) || (hits > HIT_NUMBERS ) ){
                     printf("LIGHTS CHANGED!!! Correcting value (and saturation?)...!\n");
                     _vl = val_sum_window/window_pixel_number;
                     _sl = sat_sum_window/window_pixel_number;
+
                     hits = 0;
                 }
                 last_val_window_avg = val_sum_window/window_pixel_number;
@@ -434,8 +440,11 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
                 #endif
                 if(nvalid == 0){
                     printf("RESETTING TO ORIGINAL PARAMS\n");
+
                     _sl = sl;_hl = hl;_vl = vl;
                     _sh = sh;_hh = hh;_vh = vh;
+                    _vl = val_sum_window/window_pixel_number;
+                    _sl = sat_sum_window/window_pixel_number;
                 }
                 hits++;
                 

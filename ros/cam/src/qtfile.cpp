@@ -1,5 +1,4 @@
 #include "qtfile.h"
-#include "yaml-cpp/yaml.h"
 
 using namespace std;
 
@@ -9,26 +8,7 @@ int _hl = 192;
 int _hh = 238;
 int _sl = 50;
 int _sh = 100;
-std::string blob_settings = "params/blue_blob_settings.yaml";
-void readBlobParams(std::string file){
-    YAML::Node root = YAML::LoadFile(file);
-    try{
-        _vl = root["vl"].as<int>();
-        _vh = root["vh"].as<int>();
-        _hl = root["hl"].as<int>();
-        _hh = root["hh"].as<int>();
-        _sl = root["sl"].as<int>();
-        _sh = root["sh"].as<int>();
-        #ifdef VERBOSE
-            std::cout << root["vl"].as<int>() << "\n";
-            std::cout << root["vh"].as<int>() << "\n";
-            std::cout << root["hl"].as<int>() << "\n";
-            std::cout << root["hh"].as<int>() << "\n";
-            std::cout << root["sl"].as<int>() << "\n";
-            std::cout << root["sh"].as<int>() << "\n";
-        #endif
-    }catch(const BadConversion& e){}
-}
+
 static void HSVToRGB(float h, float s, float v, float *r, float *g, float *b){
     if (h < 0) h = 0;
     if (h > 359) h = 359;
@@ -105,12 +85,12 @@ MainWindow::MainWindow(){
     QObject::connect(slider_sh, SIGNAL(valueChanged(int)), this, SLOT(onValueChanged_sh(int)));
 
     slider_hl = new QSlider(Qt::Horizontal); 
-    slider_hl->setRange(0, 360);
+    slider_hl->setRange(0, 450);
     lineEdit_hl = new QLineEdit();
     QObject::connect(slider_hl, SIGNAL(valueChanged(int)), this, SLOT(onValueChanged_hl(int)));
 
     slider_hh = new QSlider(Qt::Horizontal); 
-    slider_hh->setRange(0, 360);
+    slider_hh->setRange(0, 450);
     lineEdit_hh = new QLineEdit();
     QObject::connect(slider_hh, SIGNAL(valueChanged(int)), this, SLOT(onValueChanged_hh(int)));
  
@@ -132,7 +112,7 @@ MainWindow::MainWindow(){
     wrapper->setLayout(layout);
     setCentralWidget(wrapper);
     //Set initial values
-    readBlobParams(blob_settings);
+    
     slider_sl->setValue(_sl);
     slider_sh->setValue(_sh);
     slider_vl->setValue(_vl);

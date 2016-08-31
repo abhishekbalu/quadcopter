@@ -3,7 +3,6 @@
 
 CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o
  ../include/cam/blob_detection.h
- ../include/cam/debug.h
  ../msg_gen/cpp/include/cam/detections.h
  /home/pedro/quadcopter/ros/cam/src/blob_detection_debug_qt.cpp
  /home/pedro/quadcopter/ros/cam/src/qtfile.h

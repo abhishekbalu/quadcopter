@@ -21,7 +21,7 @@
 #include "cam/marker_detection.h"
 #include "cam/p3p.hpp"
 //Verbose
-//#include "cam/debug.h" //Comment or uncomment this for verbose
+#include "cam/debug.h" //Comment or uncomment this for verbose
 //#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 
 using namespace Eigen;

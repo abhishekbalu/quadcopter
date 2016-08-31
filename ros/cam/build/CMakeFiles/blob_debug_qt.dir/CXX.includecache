@@ -8,8 +8,6 @@
 
 ../include/cam/blob_detection.h
 
-../include/cam/debug.h
-
 ../msg_gen/cpp/include/cam/detections.h
 string
 -
@@ -75,8 +73,6 @@ cam/detections.h
 /home/pedro/quadcopter/ros/cam/src/cam/detections.h
 cam/blob_detection.h
 /home/pedro/quadcopter/ros/cam/src/cam/blob_detection.h
-cam/debug.h
-/home/pedro/quadcopter/ros/cam/src/cam/debug.h
 yaml-cpp/yaml.h
 /home/pedro/quadcopter/ros/cam/src/yaml-cpp/yaml.h
 qtfile.h
@@ -85,8 +81,6 @@ qtfile.h
 /home/pedro/quadcopter/ros/cam/src/qtfile.cpp
 qtfile.h
 /home/pedro/quadcopter/ros/cam/src/qtfile.h
-yaml-cpp/yaml.h
-/home/pedro/quadcopter/ros/cam/src/yaml-cpp/yaml.h
 
 /home/pedro/quadcopter/ros/cam/src/qtfile.h
 QMainWindow

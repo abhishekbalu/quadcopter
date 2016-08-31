@@ -149,7 +149,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "catkin_generated/env_cached.sh"
   "catkin_generated/stamps/cam/interrogate_setup_dot_py.py.stamp"
   "src/moc_qtfile.cxx_parameters"
-  "moc_yaml-cpp.cxx_parameters"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
   )

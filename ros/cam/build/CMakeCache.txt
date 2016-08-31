@@ -26,6 +26,9 @@ CATKIN_PACKAGE_PREFIX:STRING=
 //Catkin skip testing
 CATKIN_SKIP_TESTING:BOOL=OFF
 
+//Path to a program.
+CMAKE_AR:FILEPATH=/usr/bin/ar
+
 //For backwards compatibility, what version of CMake commands and
 // syntax should this version of CMake try to support.
 CMAKE_BACKWARDS_COMPATIBILITY:STRING=2.4
@@ -36,6 +39,9 @@ CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
+
+//CXX compiler
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
 
 //Flags used by the compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -52,6 +58,9 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the compiler during release builds with debug info.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
+
+//C compiler
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
 
 //Flags used by the compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -91,6 +100,9 @@ CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
 
 //Path to a program.
+CMAKE_LINKER:FILEPATH=/usr/bin/ld
+
+//Path to a program.
 CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
 //Flags used by the linker during the creation of modules.
@@ -108,8 +120,20 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
+//Path to a program.
+CMAKE_NM:FILEPATH=/usr/bin/nm
+
+//Path to a program.
+CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
+
+//Path to a program.
+CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
+
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=cam
+
+//Path to a program.
+CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
 
 //Flags used by the linker during the creation of dll's.
 CMAKE_SHARED_LINKER_FLAGS:STRING=
@@ -147,6 +171,9 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
+
+//Path to a program.
+CMAKE_STRIP:FILEPATH=/usr/bin/strip
 
 //No help, variable specified on the command line.
 CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/opt/ros/indigo/share/ros/core/rosbuild/rostoolchain.cmake
@@ -854,7 +881,7 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Path to a file.
-_file_name:FILEPATH=_file_name-NOTFOUND
+_file_name:FILEPATH=//home/pedro/quadcopter/ros/cam/build/src/moc_qtfile.cxx
 
 //Dependencies for the target
 blob_detection_LIB_DEPENDS:STATIC=general;image_transport;general;message_filters;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;class_loader;general;/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;roscpp;general;pthread;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;rosconsole;general;rosconsole_log4cxx;general;rosconsole_backend_interface;general;/usr/lib/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;cpp_common;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
@@ -931,6 +958,8 @@ usb_cam_LIB_DEPENDS:STATIC=general;image_transport;general;message_filters;gener
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/pedro/quadcopter/ros/cam/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/pedro/quadcopter/ros/cam/build/test_results
+//ADVANCED property for variable: CMAKE_AR
+CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/home/pedro/quadcopter/ros/cam/build
 //Major version of cmake used to create the current loaded cache
@@ -947,6 +976,8 @@ CMAKE_COMMAND:INTERNAL=/usr/bin/cmake
 CMAKE_CPACK_COMMAND:INTERNAL=/usr/bin/cpack
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=/usr/bin/ctest
+//ADVANCED property for variable: CMAKE_CXX_COMPILER
+CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
@@ -957,6 +988,8 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER
+CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
 CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
@@ -967,6 +1000,8 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//Executable file format
+CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
@@ -1000,6 +1035,8 @@ CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/pedro/quadcopter/ros/cam
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
+//ADVANCED property for variable: CMAKE_LINKER
+CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM
 CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
@@ -1012,8 +1049,16 @@ CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_NM
+CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
 CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=2
+//ADVANCED property for variable: CMAKE_OBJCOPY
+CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_OBJDUMP
+CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_RANLIB
+CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //Path to CMake installation.
 CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.2
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
@@ -1040,9 +1085,13 @@ CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_STRIP
+CMAKE_STRIP-ADVANCED:INTERNAL=1
 //Suppress Warnings that are meant for the author of the CMakeLists.txt
 // files.
 CMAKE_SUPPRESS_DEVELOPER_WARNINGS:INTERNAL=FALSE
+//uname command
+CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_USE_RELATIVE_PATHS
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
@@ -1494,7 +1543,7 @@ Q_WS_WIN:INTERNAL=
 //Have symbol Q_WS_X11
 Q_WS_X11:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1472498072.41
+_rosbuild_cached_flag_time:INTERNAL=1472596354.0
 _roslang_LANGS:INTERNAL=roslisp
 _rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/indigo/share/cpp_common/package.xml;/opt/ros/indigo/share/catkin/package.xml;/opt/ros/indigo/share/genmsg/package.xml;/opt/ros/indigo/share/gencpp/package.xml;/opt/ros/indigo/share/genlisp/package.xml;/opt/ros/indigo/share/genpy/package.xml;/opt/ros/indigo/share/message_generation/package.xml;/opt/ros/indigo/share/rostime/package.xml;/opt/ros/indigo/share/roscpp_traits/package.xml;/opt/ros/indigo/share/roscpp_serialization/package.xml;/opt/ros/indigo/share/message_runtime/package.xml;/opt/ros/indigo/share/rosbuild/package.xml;/opt/ros/indigo/share/rosconsole/package.xml;/opt/ros/indigo/share/std_msgs/package.xml;/opt/ros/indigo/share/rosgraph_msgs/package.xml;/opt/ros/indigo/share/xmlrpcpp/package.xml;/opt/ros/indigo/share/roscpp/package.xml;/opt/ros/indigo/share/message_filters/package.xml;/opt/ros/indigo/share/class_loader/package.xml;/opt/ros/indigo/share/rospack/package.xml;/opt/ros/indigo/share/roslib/package.xml;/opt/ros/indigo/share/pluginlib/package.xml;/opt/ros/indigo/share/geometry_msgs/package.xml;/opt/ros/indigo/share/sensor_msgs/package.xml;/opt/ros/indigo/share/image_transport/package.xml;/opt/ros/indigo/share/diagnostic_msgs/package.xml;/opt/ros/indigo/share/diagnostic_updater/package.xml;/opt/ros/indigo/share/self_test/package.xml;/home/pedro/quadcopter/ros/quad_msgs/manifest.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=/home/pedro/quadcopter/ros/quad_msgs/msg_gen/generated

@@ -19,7 +19,7 @@
 //user libraries
 #include "cam/detections.h"
 #include "cam/blob_detection.h"
-#include "cam/debug.h" //Comment or uncomment this for verbose
+//#include "cam/debug.h" //Comment or uncomment this for verbose
 #include "yaml-cpp/yaml.h"
 
 #include "qtfile.h"
@@ -29,6 +29,7 @@ using namespace YAML;
 
 #define GUI 1
 #define RATE 50
+#define INIT_SLEEP_TIME 2
 const int BLUE = 1;
 int fd;
 
@@ -140,7 +141,6 @@ void readBlobParams(std::string file){
 
 void read_file(){
     string line;
-
     ifstream myfile ("pipe.txt");
     if(line_num == 7)
       line_num = 0;
@@ -174,10 +174,12 @@ void read_file(){
         }
         line_num++;
       }
-      printf("sl:%d sh:%d vl:%d vh:%d hl:%d hh:%d toggle:%d \n", sl, sh, vl, vh, hl, hh, toggle);
+      #ifdef VERBOSE
+        printf("sl:%d sh:%d vl:%d vh:%d hl:%d hh:%d toggle:%d \n", sl, sh, vl, vh, hl, hh, toggle);
+      #endif
       myfile.close();  
     }
-    printf("and here2\n");
+    
 }
 
 void readImageParams(std::string file){
@@ -193,7 +195,9 @@ void readImageParams(std::string file){
 }
 
 void qt(int argc, char** argv){ //Apparently only works in windows and linux
-    printf("New thread!\n");
+    #ifdef VERBOSE
+      printf("New thread!\n");
+    #endif
     QApplication app(argc, argv); //<---------------------------------------------------------
     QFile qss("stylesheet.qss");
     qss.open(QFile::ReadOnly);
@@ -201,10 +205,7 @@ void qt(int argc, char** argv){ //Apparently only works in windows and linux
     qss.close();
     MainWindow mainWindow; //<---------------------------------------------------------
     mainWindow.show(); //<---------------------------------------------------------
-
     app.exec();
-
-
 }
 
 int main(int argc, char** argv){
@@ -221,45 +222,43 @@ int main(int argc, char** argv){
     
 	readImageParams(image_settings);
 	readBlobParams(blob_settings);
-  printf("here\n");
+
 	//Initialize the sensor
 	init_binary_img(width, height);
 	buf = (unsigned char*)malloc(width*height*3*sizeof(unsigned char));
   bufb = get_binary_image();
   blp = get_blobs();
 
-    //intialize ROS
-    ros::init(argc, argv,"blob_detection_debug");
-    ros::NodeHandle nh;
+  //intialize ROS
+  ros::init(argc, argv,"blob_detection_debug");
+  ros::NodeHandle nh;
 
-    //subscribers
-    ros::Subscriber image_sub=nh.subscribe("usb_cam/image_raw", 1, image_reception_callback); // only 1 in buffer size to drop other images if processing is not finished
+  //subscribers
+  ros::Subscriber image_sub=nh.subscribe("usb_cam/image_raw", 1, image_reception_callback); // only 1 in buffer size to drop other images if processing is not finished
 
-    //publishers
-    rgb_image_pub=nh.advertise<sensor_msgs::Image>("cam/rgb_image",1);
-    bin_image_pub=nh.advertise<sensor_msgs::Image>("cam/binary_image",1);
-    detections_pub=nh.advertise<cam::detections>("cam/detections",1);
-    valid_blobs_pub=nh.advertise<std_msgs::Int8>("/valid_blobs", 1);
+  //publishers
+  rgb_image_pub=nh.advertise<sensor_msgs::Image>("cam/rgb_image",1);
+  bin_image_pub=nh.advertise<sensor_msgs::Image>("cam/binary_image",1);
+  detections_pub=nh.advertise<cam::detections>("cam/detections",1);
+  valid_blobs_pub=nh.advertise<std_msgs::Int8>("/valid_blobs", 1);
+  ros::Rate loop_rate(RATE);
+   
 
-    ros::Rate loop_rate(RATE);
-    ros::Time t;
-    printf("and here\n");
-    sleep(2);
-    //main loop
-    while(ros::ok()){
-        t = ros::Time::now();
-        cout << t << endl;
-        if(toggle == 0)
-            read_file();
-    	valid_blobs_pub.publish(valid_msg);
-        loop_rate.sleep();
-        ros::spinOnce();
-    }
+  sleep(INIT_SLEEP_TIME);
+  //main loop
+  while(ros::ok()){
+      
+    if(toggle == 0)
+        read_file();
+	  valid_blobs_pub.publish(valid_msg);
+    loop_rate.sleep();
+    ros::spinOnce();
+  }
 
-    thr.join();
-    close(fd);
-    free(buf);
-    free(bufb);
-    free(blp);
-    return EXIT_SUCCESS;
+  thr.join();
+  close(fd);
+  free(buf);
+  free(bufb);
+  free(blp);
+  return EXIT_SUCCESS;
 }
