@@ -64,8 +64,8 @@ target_link_libraries(usb_cam avcodec swscale)
 rosbuild_add_executable(node src/node.cpp)
 target_link_libraries(node marker_detection blob_detection yaml-cpp)
 #----Non-QT
-#rosbuild_add_executable(blob_debug src/blob_detection_debug.cpp)
-#target_link_libraries(blob_debug blob_detection yaml-cpp)
+rosbuild_add_executable(blob_debug src/blob_detection_debug.cpp)
+target_link_libraries(blob_debug blob_detection yaml-cpp)
 #----QT
 rosbuild_add_executable(blob_debug_qt src/blob_detection_debug_qt.cpp ${uis_h} ${qt_srcs} ${qt_moc_srcs})
 target_link_libraries(blob_debug_qt blob_detection yaml-cpp ${QT_LIBRARIES})

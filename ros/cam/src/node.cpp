@@ -32,7 +32,6 @@ using namespace YAML;
 using namespace Eigen;
 
 #define MAX_DEVIATION 0.2
-const int RATE = 50;
 std_msgs::Float32MultiArray val_arr;
 vector<marker>* detected_quads; //Remember, marker struct = one quad
 MatrixXd* objects;
@@ -43,11 +42,10 @@ int nblobs,nobjects;
 int datapoints = 0;
 ofstream outputfile;
 
-
 double value = 0.0;
 double last_value = 0.0;
 
-ros::Time t;
+
 int width;
 int height;
 static ros::Publisher rgb_image_pub;
@@ -113,29 +111,14 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		    quad_pose.pose_updated = 1;
 		else
 		    quad_pose.pose_updated = 0;
-		
-		if(quad_pose.name == "frame0" || quad_pose.name == "unknown"){
-			printf("ROLL: %f PITCH: %f  YAW: %f\n", roll, pitch, yaw);
-			//Reject outliers and when the frame is lost
-			value = quad_pose.position.x;
-			if((std::abs(last_value-value) < MAX_DEVIATION || last_value == 0) && quad_pose.position.x !=NULL){
-				std::stringstream ss;
-				t = ros::Time::now();
-				ss << t << "," << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw  << "," << datapoints;
+		quad_poses_msg.poses.push_back(quad_pose);
+		if(quad_pose.name == "unknown" || quad_pose.name == "frame0"){
+		std::stringstream ss;
+				ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw  << "," << datapoints;
 				std::string s = ss.str();
 				outputfile << s << endl;
 				cout << s << endl;
-				datapoints++;
-				last_value = value;
-				if(value <= 17.5){
-					value = 17.5;
-				}
-				val_arr.data.clear();
-				val_arr.data.push_back(last_value);
-			}
-			
 		}
-		quad_poses_msg.poses.push_back(quad_pose);
 	}
 	markers_pub.publish(quad_poses_msg);
 	frame_pub.publish(val_arr);
@@ -179,7 +162,7 @@ int main(int argc, char** argv){
     markers_pub = nh.advertise<cam::QuadPoseList>("node/markers",1);
     frame_pub = nh.advertise<std_msgs::Float32MultiArray>("node/frame", 1);
 
-    ros::Rate loop_rate(RATE);
+    ros::Rate loop_rate(50);
    
     //main loop
     while(ros::ok()){

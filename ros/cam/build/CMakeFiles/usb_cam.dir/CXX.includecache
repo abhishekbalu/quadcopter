@@ -12,7 +12,7 @@ string
 sstream
 -
 
-/home/pedro/quadcopter/ros/cam/src/usb_cam.cpp
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/usb_cam.cpp
 stdio.h
 -
 stdlib.h
@@ -46,17 +46,17 @@ linux/videodev2.h
 libavcodec/avcodec.h
 -
 libavformat/avformat.h
-/home/pedro/quadcopter/ros/cam/src/libavformat/avformat.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/libavformat/avformat.h
 libswscale/swscale.h
 -
 libavutil/imgutils.h
-/home/pedro/quadcopter/ros/cam/src/libavutil/imgutils.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/libavutil/imgutils.h
 libavutil/opt.h
-/home/pedro/quadcopter/ros/cam/src/libavutil/opt.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/libavutil/opt.h
 libavutil/mathematics.h
-/home/pedro/quadcopter/ros/cam/src/libavutil/mathematics.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/libavutil/mathematics.h
 libavutil/samplefmt.h
-/home/pedro/quadcopter/ros/cam/src/libavutil/samplefmt.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/libavutil/samplefmt.h
 cam/usb_cam.h
 -
 

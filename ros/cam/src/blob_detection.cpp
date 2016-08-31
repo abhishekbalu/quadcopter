@@ -18,7 +18,7 @@
 using namespace std;
 #define MAX_FEATURES 500
 
-//#define BLOB_INFO 1 //Comment or uncomment this to see blob info
+#define BLOB_INFO 1 //Comment or uncomment this to see blob info
 //#define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
 
 #define HIT_NUMBERS 10

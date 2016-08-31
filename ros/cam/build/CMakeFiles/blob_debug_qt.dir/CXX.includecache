@@ -8,6 +8,8 @@
 
 ../include/cam/blob_detection.h
 
+../include/cam/debug.h
+
 ../msg_gen/cpp/include/cam/detections.h
 string
 -
@@ -32,11 +34,11 @@ ros/assert.h
 std_msgs/Header.h
 ../msg_gen/cpp/include/cam/std_msgs/Header.h
 
-/home/pedro/quadcopter/ros/cam/build/src/moc_qtfile.cxx
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/src/moc_qtfile.cxx
 ../../src/qtfile.h
-/home/pedro/quadcopter/ros/cam/src/qtfile.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/qtfile.h
 
-/home/pedro/quadcopter/ros/cam/src/blob_detection_debug_qt.cpp
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/blob_detection_debug_qt.cpp
 stdio.h
 -
 string
@@ -70,19 +72,21 @@ sensor_msgs/fill_image.h
 std_msgs/Int8.h
 -
 cam/detections.h
-/home/pedro/quadcopter/ros/cam/src/cam/detections.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/cam/detections.h
 cam/blob_detection.h
-/home/pedro/quadcopter/ros/cam/src/cam/blob_detection.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/cam/blob_detection.h
+cam/debug.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/cam/debug.h
 yaml-cpp/yaml.h
-/home/pedro/quadcopter/ros/cam/src/yaml-cpp/yaml.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/yaml-cpp/yaml.h
 qtfile.h
-/home/pedro/quadcopter/ros/cam/src/qtfile.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/qtfile.h
 
-/home/pedro/quadcopter/ros/cam/src/qtfile.cpp
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/qtfile.cpp
 qtfile.h
-/home/pedro/quadcopter/ros/cam/src/qtfile.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/qtfile.h
 
-/home/pedro/quadcopter/ros/cam/src/qtfile.h
+/home/ubuntu/PedroAbreu/quadcopter/ros/cam/src/qtfile.h
 QMainWindow
 -
 QApplication
@@ -264,8 +268,6 @@ set
 list
 -
 boost/shared_ptr.hpp
--
-boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

@@ -22,7 +22,7 @@
 #include "cam/p3p.hpp"
 //Verbose
 #include "cam/debug.h" //Comment or uncomment this for verbose
-//#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
+#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 
 using namespace Eigen;
 using namespace std;
@@ -44,10 +44,6 @@ double quad_freq[]={0,1,2,3};
 string quad_freq_name[]={"frame0","frame1","frame2","frame3"};
 const char* unknown = "unknown";
 
-
-
-//This toggle could be read from qt
-int toggle = 1;
 //................................DETECT MARKER VARIABLES.......................
 //Really should read this crap from a file
 
@@ -81,11 +77,7 @@ double thsz=1;
 double thd=400; //20*20
 int nx = 640;
 int ny = 480;
-double objQuad[]={0.22,0.0,0.0, 
-    0.0,0.22,0.0, 
-    0.04,0.08,0.08, 
-    -0.0141,-0.007,0.25, 
-    0.08,0.08,0.0};
+double objQuad[]={0.22,0.0,0.0, 0.0,0.22,0.0, 0.08,0.08,0.00, 0.0,0.0,0.25, 0.04,0.04,0.4};
 double dt_min = 0.1;
 
 double avg;
@@ -129,8 +121,8 @@ void readTrackingParams(std::string file){
     try{
         fx = root["fx"].as<int>();
         fy = root["fy"].as<int>();
-        cx = root["cx"].as<int>();
-        cy = root["cy"].as<int>();
+        cx = root["hl"].as<int>();
+        cy = root["hh"].as<int>();
         kx1 = root["kx1"].as<double>();
         kx2 = root["kx2"].as<double>();
         ky1 = root["ky1"].as<double>();
@@ -464,7 +456,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
 
 	int erase[MAX_MARKERS];
 	//int lochm=170,lochM=230,locsm=40,locsM=101,locvm=40,locvM=101;
-	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height, BLUE, toggle);
+	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height, BLUE, 1);
     #ifdef VERBOSE
         printf("Ran detec_blobs inside track_markers: %d\n", no);
 	#endif
@@ -553,7 +545,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
     //Search for red blobs
     for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
         localization=0;
-        detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height, RED, toggle);
+        detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height, RED,1);
         int old_state=it->state;
         it->state=0;
         for(int l=0;l<no;l++)

@@ -19,7 +19,7 @@
 //user libraries
 #include "cam/detections.h"
 #include "cam/blob_detection.h"
-//#include "cam/debug.h" //Comment or uncomment this for verbose
+#include "cam/debug.h" //Comment or uncomment this for verbose
 #include "yaml-cpp/yaml.h"
 
 #include "qtfile.h"
