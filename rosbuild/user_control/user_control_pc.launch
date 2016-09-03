@@ -1,0 +1,9 @@
+<launch>
+
+    <node name="user_control_pc" pkg="user_control" type="user_control_pc"  output="screen" args = "8000">
+    </node>
+
+	<node name = "user_terminal" pkg = "user_control" type = "user_terminal" output = "screen" >
+	</node>
+
+</launch>

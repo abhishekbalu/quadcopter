@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo " ### plotting control output pitch roll thrust yaw ###"
+rxplot $1/fcu/control/x:y:z -b 10

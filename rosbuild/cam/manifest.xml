@@ -1,0 +1,23 @@
+<package>
+  <description brief="cam">
+
+     cam
+
+  </description>
+  <author>_ros</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/cam</url>
+  <depend package="image_transport"/>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="self_test"/>
+  <depend package="quad_msgs"/>
+  <build_depend>libswscale-dev</build_depend>
+  <run_depend>libswscale-dev</run_depend>
+  
+</package>
+
+

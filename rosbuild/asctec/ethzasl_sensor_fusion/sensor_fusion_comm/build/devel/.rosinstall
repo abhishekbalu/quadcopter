@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/duartecdias/ros/quad_control/ethzasl_sensor_fusion/sensor_fusion_comm/build/devel/setup.sh

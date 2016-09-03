@@ -1,0 +1,2 @@
+Please be aware that this is a sample code that was written by a customer. The Labview-SDK2 is a sample program provided free of charge. 
+Is it not supported in any way, it is made available in the hope that it might be of some use to you. No warranty is made or implied, it is provided strictly on an "as is" basis.

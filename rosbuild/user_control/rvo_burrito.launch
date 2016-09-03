@@ -1,0 +1,162 @@
+<launch>
+
+<param name="/use_sim_time" value="true" />
+
+	<group ns="quad96">
+		
+
+    <node name="main_control" pkg="main_control" type="main_control_test" output="screen" >
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/quad96.yaml" />
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/main_control_params.yaml" />
+		<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />	
+    </node>
+
+		<node name="tracker" pkg="phd_blob_tracker" type="tracker" output="screen" >
+		</node>
+
+		<node name="avoidance" pkg="avoidance" type="rvo_avoidance" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad96.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/avoidance_params.yaml" />
+		</node>
+
+    <node name="flight_manager" pkg="flight_manager" type="flight_manager" output="screen" >	
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad96.yaml" />
+    </node>
+
+
+
+	</group>
+
+	<group ns="quad97">
+
+    <node name="main_control" pkg="main_control" type="main_control_test" output="screen" >
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/quad97.yaml" />
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/main_control_params.yaml" />
+		<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />	
+    </node>
+
+		<node name="tracker" pkg="phd_blob_tracker" type="tracker" output="screen" >
+		</node>
+
+		<node name="avoidance" pkg="avoidance" type="rvo_avoidance" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad97.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/avoidance_params.yaml" />
+		</node>
+
+    <node name="flight_manager" pkg="flight_manager" type="flight_manager" output="screen" >	
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad97.yaml" />
+    </node>
+
+
+	</group>
+
+	<group ns="quad95">
+
+    <node name="main_control" pkg="main_control" type="main_control_test" output="screen" >
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/quad95.yaml" />
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/main_control_params.yaml" />
+		<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />	
+    </node>
+
+		<node name="tracker" pkg="phd_blob_tracker" type="tracker" output="screen" >
+		</node>
+
+		<node name="avoidance" pkg="avoidance" type="rvo_avoidance" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad95.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/avoidance_params.yaml" />
+		</node>
+
+    <node name="flight_manager" pkg="flight_manager" type="flight_manager" output="screen" >	
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad95.yaml" />
+    </node>
+
+
+	</group>
+
+	<group ns="quad94">
+
+    <node name="main_control" pkg="main_control" type="main_control_test" output="screen" >
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/quad94.yaml" />
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/main_control_params.yaml" />
+		<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />	
+    </node>
+
+		<node name="tracker" pkg="phd_blob_tracker" type="tracker" output="screen" >
+		</node>
+
+		<node name="avoidance" pkg="avoidance" type="rvo_avoidance" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad94.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/avoidance_params.yaml" />
+		</node>
+
+    <node name="flight_manager" pkg="flight_manager" type="flight_manager" output="screen" >	
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad94.yaml" />
+    </node>
+
+
+	</group>
+
+	<group ns="quad93">
+
+    <node name="main_control" pkg="main_control" type="main_control_test" output="screen" >
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/quad93.yaml" />
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/main_control_params.yaml" />
+		<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />	
+    </node>
+
+		<node name="tracker" pkg="phd_blob_tracker" type="tracker" output="screen" >
+		</node>
+
+		<node name="avoidance" pkg="avoidance" type="rvo_avoidance" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad93.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/avoidance_params.yaml" />
+		</node>
+
+    <node name="flight_manager" pkg="flight_manager" type="flight_manager" output="screen" >	
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad93.yaml" />
+    </node>
+
+
+	</group>
+
+	<group ns="quad92">
+
+    <node name="main_control" pkg="main_control" type="main_control_test" output="screen" >
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/quad92.yaml" />
+		<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/steven/main_control_params.yaml" />
+		<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />	
+    </node>
+
+		<node name="tracker" pkg="phd_blob_tracker" type="tracker" output="screen" >
+		</node>
+
+		<node name="avoidance" pkg="avoidance" type="rvo_avoidance" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad92.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/avoidance_params.yaml" />
+		</node>
+
+    <node name="flight_manager" pkg="flight_manager" type="flight_manager" output="screen" >	
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad92.yaml" />
+    </node>
+
+
+	</group>
+
+
+
+		<node name="call_center" pkg="call_center" type="call_center" output="screen" >
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/steven/quad97.yaml" />
+		</node>
+
+
+
+  <node name="multi_command_line" pkg="user_control" type="multi_command_line"  output="screen" >
+	<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/quad96.yaml" />
+  </node>
+
+
+
+
+</launch>
+
+

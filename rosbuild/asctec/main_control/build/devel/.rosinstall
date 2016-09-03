@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/pedro/ros/asctec/main_control/build/devel/setup.sh

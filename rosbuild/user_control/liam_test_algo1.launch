@@ -1,0 +1,83 @@
+<!-- This launch file is used to test the group velocity control algorithm -->
+<!-- allowf must be 1 for everyone -->
+<!-- use triangle_formation_2.txt formation file -->
+
+<launch>
+
+	<group ns="quad96">
+		<param name="/use_sim_time" value="true" />
+
+		<node name="internal_ekf_multi" pkg="internal_ekf" type="internal_ekf_multi_55"  output="screen" >
+			<rosparam command="load" file="$(find internal_ekf)/params/estimation_params.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/liam/quad96.yaml" />
+		</node>
+
+		<node name="formation_control" pkg="formation_control" type="formation_control_teleop"  output="screen" >
+			<rosparam command="load" file="$(find formation_control)/params/control_params.yaml" />
+			<rosparam command="load" file="$(find formation_control)/../../webots_simulator/quad_config_files/liam/quad96.yaml" />
+		</node>
+
+		<node name="main_control" pkg="main_control" type="main_control_teleop" output="screen" >
+			<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/liam/quad96.yaml" />
+			<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/liam/main_control_params_quad96.yaml" />
+			<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />
+		</node>
+
+
+	</group>
+
+	<group ns="quad97">
+		<param name="/use_sim_time" value="true" />
+
+		<node name="internal_ekf_multi" pkg="internal_ekf" type="internal_ekf_multi_68"  output="screen" >
+			<rosparam command="load" file="$(find internal_ekf)/params/estimation_params_1.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/liam/quad97.yaml" />
+		</node>
+
+		<node name="formation_control" pkg="formation_control" type="formation_control_teleop"  output="screen" >
+			<rosparam command="load" file="$(find formation_control)/params/control_params.yaml" />
+			<rosparam command="load" file="$(find formation_control)/../../webots_simulator/quad_config_files/liam/quad97.yaml" />
+		</node>
+
+		<node name="main_control" pkg="main_control" type="main_control_teleop" output="screen" >
+			<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/liam/quad97.yaml" />
+			<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/liam/main_control_params_quad97.yaml" />
+			<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />
+		</node>
+	</group>
+
+
+	<group ns="quad98">
+		<param name="/use_sim_time" value="true" />
+
+		<node name="internal_ekf_multi" pkg="internal_ekf" type="internal_ekf_multi_68"  output="screen" >
+			<rosparam command="load" file="$(find internal_ekf)/params/estimation_params_1.yaml" />
+			<rosparam command="load" file="$(find user_control)/../../webots_simulator/quad_config_files/liam/quad98.yaml" />
+		</node>
+
+		<node name="formation_control" pkg="formation_control" type="formation_control_teleop"  output="screen" >
+			<rosparam command="load" file="$(find formation_control)/params/control_params.yaml" />
+			<rosparam command="load" file="$(find formation_control)/../../webots_simulator/quad_config_files/liam/quad98.yaml" />
+		</node>
+
+		<node name="main_control" pkg="main_control" type="main_control_teleop" output="screen" >
+			<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/liam/quad98.yaml" />
+			<rosparam command="load" file="$(find main_control)/../../webots_simulator/quad_config_files/liam/main_control_params_quad98.yaml" />
+			<rosparam command="load" file="$(find main_control)/params/partial_control_params.yaml" />
+		</node>
+	</group>
+
+<!--
+	<node name = "mission_control" pkg = "mission_control" type = "mission_control_teleop" output = "screen" >
+		<rosparam command="load" file="$(find mission_control)/params/trajectory_params.yaml" />
+	</node>
+-->
+	<node name="user_control_sim" pkg="user_control" type="user_control_sim"  output="screen" >
+	</node>
+
+	<node name = "user_terminal" pkg = "user_control" type = "user_terminal" output = "screen" >
+	</node>
+
+</launch>
+
+

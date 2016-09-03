@@ -1,0 +1,24 @@
+\subsubsection usage Usage
+\verbatim
+<node name="Config" pkg="ssf_core" type="Config">
+  <param name="init_filter" type="bool" value="False" />
+  <param name="scale_init" type="double" value="1.0" />
+  <param name="fixed_scale" type="bool" value="False" />
+  <param name="fixed_bias" type="bool" value="False" />
+  <param name="fixed_calib" type="bool" value="False" />
+  <param name="noise_acc" type="double" value="0.0083" />
+  <param name="noise_accbias" type="double" value="0.00083" />
+  <param name="noise_gyr" type="double" value="0.0013" />
+  <param name="noise_gyrbias" type="double" value="0.00013" />
+  <param name="noise_scale" type="double" value="0.0" />
+  <param name="noise_qwv" type="double" value="0.0" />
+  <param name="noise_qci" type="double" value="0.0" />
+  <param name="noise_pic" type="double" value="0.0" />
+  <param name="delay" type="double" value="0.03" />
+  <param name="set_height" type="bool" value="False" />
+  <param name="height" type="double" value="1.0" />
+  <param name="meas_noise1" type="double" value="0.01" />
+  <param name="meas_noise2" type="double" value="0.01" />
+</node>
+\endverbatim
+

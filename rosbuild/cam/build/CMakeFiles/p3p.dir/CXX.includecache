@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/cam/p3p.hpp
+eigen3/Eigen/Dense
+-
+math.h
+-
+stdlib.h
+-
+
+/home/pedro/quadcopter/rosbuild/cam/src/p3p.cpp
+cam/p3p.hpp
+/home/pedro/quadcopter/rosbuild/cam/src/cam/p3p.hpp
+

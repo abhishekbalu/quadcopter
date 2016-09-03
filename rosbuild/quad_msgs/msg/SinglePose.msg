@@ -1,0 +1,4 @@
+string name
+geometry_msgs/Point position
+geometry_msgs/Quaternion orientation
+int8 pose_updated

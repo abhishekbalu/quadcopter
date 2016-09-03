@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="pi" value="3.1415926535897931" />
+  <!-- Main quadrotor link -->
+
+  <xacro:macro name="quadrotor_base_macro">
+    <link name="base_link">
+      <!--
+      <inertial>
+        <mass value="1.600" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0233" ixy="0.0" ixz="0.0" iyy="0.0212" iyz="0.0" izz="0.0147" />
+      </inertial>
+      -->
+      <visual>
+        <origin xyz="0 0 0" rpy="-${pi/2.0} ${pi} 0" />
+        <geometry>
+	  <mesh filename="package://simulation/urdf/quad.stl"
+		scale="0.001 0.001 0.001"/>
+        </geometry>
+	<material name="hot pink">
+	  <color rgba="${255/255} ${105/255} ${180/255} 1.0"/>
+	</material>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="-${pi/2.0} ${pi} 0" />
+        <geometry>
+	  <mesh filename="package://simulation/urdf/quad.stl"
+		scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+
+      <gazebo reference="base_link">
+	<material>Gazebo/Orange</material>
+      </gazebo>
+    </link>
+  </xacro:macro>
+  
+  <link name="base_inertia">
+      <inertial>
+        <mass value="1.600" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0233" ixy="0.0" ixz="0.0" iyy="0.0212" iyz="0.0" izz="0.0147" />
+      </inertial>
+  </link>
+
+  <joint name="base_inertia_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="base_inertia" />
+  </joint>
+
+</robot>

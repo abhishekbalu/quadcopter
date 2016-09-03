@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo " ### plotting integrator ###"
+rxplot $1/ctrl/debug/integrator/x:y:z -b 10

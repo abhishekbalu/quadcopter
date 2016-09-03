@@ -1,0 +1,11 @@
+Keys configuration for keyboard teleop
+
+front=i
+back=k
+left=j
+right=l
+up=w
+down=s
+turnleft=a
+turnright=d
+stop=q

@@ -1,0 +1,21 @@
+<package>
+  <description brief="user_control">
+
+     user_control
+
+  </description>
+  <author>Duarte Dias</author>
+  <license>-</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://disalgit.epfl.ch/quadteam/quad_control/tree/master/user_control</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+  <depend package="sensor_msgs"/>
+  <depend package="quad_msgs"/>   
+  <depend package="asctec_hl_interface"/>
+  <depend package="main_control"/>
+
+
+</package>

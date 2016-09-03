@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/pedro/ros/px-ros-pkg/px_hardware_interface/px4flow_node/build/devel/setup.sh

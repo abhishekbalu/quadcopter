@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="user_control" pkg="user_control" type="user_terminal"  output="screen" >
+    </node>
+
+</launch>
