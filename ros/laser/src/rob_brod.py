@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import roslib; roslib.load_manifest('laser')
 import rospy, tf
 from math import pi
 from copy import deepcopy

@@ -45,15 +45,76 @@ CMAKE_BINARY_DIR = /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_lisp.dir/progress.make
 
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/imu_acc.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_imu_acc.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/QuadPose.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/state_command.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_state_command.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/full_state.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_full_state.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/imu.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_imu.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/detections.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_detections.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/QuadPoseList.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPoseList.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/string_stamped.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_string_stamped.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/estimate.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_estimate.lisp
+
+../msg_gen/lisp/imu_acc.lisp: ../msg/imu_acc.msg
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/lisp/imu_acc.lisp: ../manifest.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/lisp/imu_acc.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/imu_acc.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/imu_acc.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/imu_acc.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_imu_acc.lisp"
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/imu_acc.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/imu_acc.lisp
+
+../msg_gen/lisp/_package_imu_acc.lisp: ../msg_gen/lisp/imu_acc.lisp
 
 ../msg_gen/lisp/QuadPose.lisp: ../msg/QuadPose.msg
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
@@ -91,13 +152,144 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPoseList.lisp
 ../msg_gen/lisp/QuadPose.lisp: /opt/ros/indigo/share/self_test/package.xml
 ../msg_gen/lisp/QuadPose.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
 ../msg_gen/lisp/QuadPose.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/QuadPose.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_QuadPose.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/QuadPose.msg
 
 ../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/QuadPose.lisp
 
 ../msg_gen/lisp/_package_QuadPose.lisp: ../msg_gen/lisp/QuadPose.lisp
+
+../msg_gen/lisp/state_command.lisp: ../msg/state_command.msg
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/lisp/state_command.lisp: ../manifest.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/lisp/state_command.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/state_command.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/state_command.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/state_command.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_state_command.lisp"
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/state_command.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/state_command.lisp
+
+../msg_gen/lisp/_package_state_command.lisp: ../msg_gen/lisp/state_command.lisp
+
+../msg_gen/lisp/full_state.lisp: ../msg/full_state.msg
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/lisp/full_state.lisp: ../manifest.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/lisp/full_state.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/full_state.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/full_state.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/full_state.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_full_state.lisp"
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/full_state.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/full_state.lisp
+
+../msg_gen/lisp/_package_full_state.lisp: ../msg_gen/lisp/full_state.lisp
+
+../msg_gen/lisp/imu.lisp: ../msg/imu.msg
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/lisp/imu.lisp: ../manifest.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/lisp/imu.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/imu.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/imu.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/imu.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_imu.lisp"
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/imu.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/imu.lisp
+
+../msg_gen/lisp/_package_imu.lisp: ../msg_gen/lisp/imu.lisp
 
 ../msg_gen/lisp/detections.lisp: ../msg/detections.msg
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
@@ -134,7 +326,7 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPoseList.lisp
 ../msg_gen/lisp/detections.lisp: /opt/ros/indigo/share/self_test/package.xml
 ../msg_gen/lisp/detections.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
 ../msg_gen/lisp/detections.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/detections.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_detections.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/detections.msg
 
@@ -180,7 +372,7 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPoseList.lisp
 ../msg_gen/lisp/QuadPoseList.lisp: /opt/ros/indigo/share/self_test/package.xml
 ../msg_gen/lisp/QuadPoseList.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
 ../msg_gen/lisp/QuadPoseList.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/QuadPoseList.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_QuadPoseList.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/QuadPoseList.msg
 
@@ -188,16 +380,122 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPoseList.lisp
 
 ../msg_gen/lisp/_package_QuadPoseList.lisp: ../msg_gen/lisp/QuadPoseList.lisp
 
+../msg_gen/lisp/string_stamped.lisp: ../msg/string_stamped.msg
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/lisp/string_stamped.lisp: ../manifest.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/lisp/string_stamped.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/string_stamped.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/string_stamped.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/string_stamped.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_string_stamped.lisp"
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/string_stamped.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/string_stamped.lisp
+
+../msg_gen/lisp/_package_string_stamped.lisp: ../msg_gen/lisp/string_stamped.lisp
+
+../msg_gen/lisp/estimate.lisp: ../msg/estimate.msg
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/geometry_msgs/msg/Quaternion.msg
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/lisp/estimate.lisp: ../manifest.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/lisp/estimate.lisp: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/lisp/estimate.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/lisp/estimate.lisp: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/estimate.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_estimate.lisp"
+	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/estimate.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/estimate.lisp
+
+../msg_gen/lisp/_package_estimate.lisp: ../msg_gen/lisp/estimate.lisp
+
 ROSBUILD_genmsg_lisp: CMakeFiles/ROSBUILD_genmsg_lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/imu_acc.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_imu_acc.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/QuadPose.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPose.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/state_command.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_state_command.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/full_state.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_full_state.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/imu.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_imu.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/detections.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_detections.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/QuadPoseList.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_QuadPoseList.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/string_stamped.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_string_stamped.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/estimate.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_estimate.lisp
 ROSBUILD_genmsg_lisp: CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make
 .PHONY : ROSBUILD_genmsg_lisp
 

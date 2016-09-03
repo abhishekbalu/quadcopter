@@ -6,8 +6,8 @@
 	<arg name="tgt_component" default="1" />
 
 	<include file="$(find mavros)/launch/node.launch">
-		<arg name="pluginlists_yaml" value="$(find danielpa)/config/px4_pluginlists.yaml" />
-		<arg name="config_yaml" value="$(find danielpa)/config/px4_config.yaml" />
+		<arg name="pluginlists_yaml" value="$(find laser)/config/px4_pluginlists.yaml" />
+		<arg name="config_yaml" value="$(find laser)/config/px4_config.yaml" />
 
 		<arg name="fcu_url" value="$(arg fcu_url)" />
 		<arg name="gcs_url" value="$(arg gcs_url)" />

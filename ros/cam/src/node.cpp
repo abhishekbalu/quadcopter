@@ -7,6 +7,9 @@
 #include <fstream>
 #include <sstream>
 #include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/Eigen>
+#include <eigen3/Eigen/LU>
+
 //ROS libraries
 #include <ros/ros.h>
 #include <std_msgs/String.h>
@@ -14,6 +17,7 @@
 #include <sensor_msgs/fill_image.h>
 #include <image_transport/image_transport.h>
 #include <tf/transform_datatypes.h>
+#include "geometry_msgs/PoseStamped.h"
 //user libraries
 #include "cam/detections.h"
 #include "cam/blob_detection.h"
@@ -23,36 +27,43 @@
 
 #include "cam/QuadPose.h"
 #include "cam/QuadPoseList.h"
-#include "std_msgs/MultiArrayLayout.h"
-#include "std_msgs/MultiArrayDimension.h"
-#include "std_msgs/Float32MultiArray.h"
+
+
 
 using namespace std;
 using namespace YAML;
 using namespace Eigen;
 
 #define MAX_DEVIATION 0.2
-std_msgs::Float32MultiArray val_arr;
+#define RATE 50
+#define LASER_COMPARISON 1
+#define PI 3.14159265
+
 vector<marker>* detected_quads; //Remember, marker struct = one quad
 MatrixXd* objects;
 unsigned char* bufb,* buf;
 blob* blp;
 int nblobs,nobjects;
 
-int datapoints = 0;
-ofstream outputfile;
 
+ofstream cam_outputfile;
+ofstream laser_outputfile;
+int toggle_first_pose = 0;
+cam::QuadPose first_pose;
 double value = 0.0;
 double last_value = 0.0;
-
-
+VectorXd LaserVec(2);
+MatrixXd RLaser2Cam(2,2);
 int width;
 int height;
 static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
 static ros::Publisher detections_pub;
 static ros::Publisher markers_pub;
-static ros::Publisher frame_pub;
+
+static ros::Publisher cam_eval;
+static ros::Publisher laser_eval;
+geometry_msgs::PoseStamped msg;
 std::string image_settings = "params/image_settings.yaml";
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
@@ -113,15 +124,24 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		    quad_pose.pose_updated = 0;
 		quad_poses_msg.poses.push_back(quad_pose);
 		if(quad_pose.name == "unknown" || quad_pose.name == "frame0"){
-		std::stringstream ss;
-				ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw  << "," << datapoints;
-				std::string s = ss.str();
-				outputfile << s << endl;
-				cout << s << endl;
+		if(toggle_first_pose == 0){
+			first_pose = quad_pose;
+toggle_first_pose = 1;
+			}
+			quad_pose.position.x = first_pose.position.x - quad_pose.position.x;
+			quad_pose.position.y = first_pose.position.y - quad_pose.position.y;
+			//Write to a csv file
+			std::stringstream ss;
+			ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw;
+			std::string s = ss.str();
+			cam_outputfile << s << endl;
+			cout << s << endl;
+			//Write to a topic
+			cam_eval.publish(quad_pose);
 		}
 	}
 	markers_pub.publish(quad_poses_msg);
-	frame_pub.publish(val_arr);
+	
     return;
 }
 
@@ -137,7 +157,24 @@ void readImageParams(std::string file){
 	 	#endif
 	}catch(const BadConversion& e){}
 }
+void getLaser(geometry_msgs::PoseStamped data) {
+	LaserVec(0) = data.pose.position.x;
+	LaserVec(1) = data.pose.position.y;
+	LaserVec = RLaser2Cam * LaserVec;
+	#ifdef VERBOSE
+		ROS_INFO("LASER_X: [%f], LASER_Y: [%f]", data.pose.position.x, data.pose.position.y);
+	#endif
+	msg = data;
+	msg.pose.position.x = -LaserVec(0);
+	msg.pose.position.y = LaserVec(1);
+        std::stringstream ss;
+	ss << msg.pose.position.x << "," << msg.pose.position.y;
+	std::string s = ss.str();
+	cam_outputfile << s << endl;
+	cout << s << endl;
+	laser_eval.publish(msg);
 
+}
 int main(int argc, char** argv){
 	readImageParams(image_settings);
 
@@ -147,22 +184,25 @@ int main(int argc, char** argv){
     bufb = get_binary_image();
     blp = get_blobs();
     initialize_markers();
-    outputfile.open("frame_data.csv");
+    cam_outputfile.open("cam_data.csv");
+    laser_outputfile.open("laser_data.csv")
     //intialize ROS
     ros::init(argc, argv,"node");
     ros::NodeHandle nh;
-
+	RLaser2Cam << cos(135 * PI/180.0), -sin(135 * PI/180.0),
+           sin(135 * PI/180.0), cos(135 * PI/180.0);
     //subscribers
     ros::Subscriber image_sub=nh.subscribe("usb_cam/image_raw", 1, image_reception_callback); // only 1 in buffer size to drop other images if processing is not finished
-
+    ros::Subscriber laser = nh.subscribe("/slam_out_pose", 1, getLaser);
     //publishers
     rgb_image_pub=nh.advertise<sensor_msgs::Image>("node/rgb_image",1);
     bin_image_pub=nh.advertise<sensor_msgs::Image>("node/binary_image",1);
     detections_pub=nh.advertise<cam::detections>("node/detections",1);
     markers_pub = nh.advertise<cam::QuadPoseList>("node/markers",1);
-    frame_pub = nh.advertise<std_msgs::Float32MultiArray>("node/frame", 1);
-
-    ros::Rate loop_rate(50);
+ 
+    cam_eval = nh.advertise<cam::QuadPose>("cam_pose",1);
+    laser_eval = nh.advertise<geometry_msgs::PoseStamped>("laser_pose",1);
+    ros::Rate loop_rate(RATE);
    
     //main loop
     while(ros::ok()){

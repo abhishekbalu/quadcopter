@@ -45,9 +45,54 @@ CMAKE_BINARY_DIR = /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_cpp.dir/progress.make
 
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/imu_acc.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/state_command.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/full_state.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/imu.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/detections.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/string_stamped.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/estimate.h
+
+../msg_gen/cpp/include/cam/imu_acc.h: ../msg/imu_acc.msg
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/imu_acc.h: ../manifest.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/imu_acc.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/imu_acc.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/imu_acc.msg
 
 ../msg_gen/cpp/include/cam/QuadPose.h: ../msg/QuadPose.msg
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -85,9 +130,128 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
 ../msg_gen/cpp/include/cam/QuadPose.h: /opt/ros/indigo/share/self_test/package.xml
 ../msg_gen/cpp/include/cam/QuadPose.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
 ../msg_gen/cpp/include/cam/QuadPose.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPose.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/QuadPose.msg
+
+../msg_gen/cpp/include/cam/state_command.h: ../msg/state_command.msg
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/cpp/include/cam/state_command.h: ../manifest.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/state_command.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/state_command.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/state_command.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/state_command.msg
+
+../msg_gen/cpp/include/cam/full_state.h: ../msg/full_state.msg
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/cpp/include/cam/full_state.h: ../manifest.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/full_state.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/full_state.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/full_state.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/full_state.msg
+
+../msg_gen/cpp/include/cam/imu.h: ../msg/imu.msg
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/imu.h: ../manifest.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/imu.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/imu.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/imu.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/imu.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/imu.msg
 
 ../msg_gen/cpp/include/cam/detections.h: ../msg/detections.msg
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -124,7 +288,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
 ../msg_gen/cpp/include/cam/detections.h: /opt/ros/indigo/share/self_test/package.xml
 ../msg_gen/cpp/include/cam/detections.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
 ../msg_gen/cpp/include/cam/detections.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/detections.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/detections.msg
 
@@ -166,14 +330,100 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /opt/ros/indigo/share/self_test/package.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
 ../msg_gen/cpp/include/cam/QuadPoseList.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/QuadPoseList.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/QuadPoseList.msg
 
+../msg_gen/cpp/include/cam/string_stamped.h: ../msg/string_stamped.msg
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/string_stamped.h: ../manifest.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/string_stamped.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/string_stamped.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/string_stamped.msg
+
+../msg_gen/cpp/include/cam/estimate.h: ../msg/estimate.msg
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/geometry_msgs/msg/Quaternion.msg
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/cpp/include/cam/estimate.h: ../manifest.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/cam/estimate.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/manifest.xml
+../msg_gen/cpp/include/cam/estimate.h: /home/ubuntu/PedroAbreu/quadcopter/ros/quad_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/ros/cam/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/cam/estimate.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/ubuntu/PedroAbreu/quadcopter/ros/cam/msg/estimate.msg
+
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/imu_acc.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPose.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/state_command.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/full_state.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/imu.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/detections.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/QuadPoseList.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/string_stamped.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/cam/estimate.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make
 .PHONY : ROSBUILD_genmsg_cpp
 

@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="use_test" default="false"/>
+  <arg name="use_test" default="true"/>
   <arg name="use_laser" default="true"/>
   <arg name="use_mapping" default="true"/>
   <arg name="use_navigation" default="false"/>
 
   <!-- Include pixhawk.launch -->
-  <include file="$(find height_quad)/launch/pixhawk.launch"/>
+  <include file="$(find laser)/launch/pixhawk.launch"/>
+
+  <!-- Launch sonar filtering -->
+  <node pkg="laser" type="filter-sonar.py" name="sonar_filter"/>
 
   <!-- Launch robot publisher -->
-  <node pkg="height_quad" type="rob_brod.py" name="robot_publisher" output="screen"/>
+  <node pkg="laser" type="rob_brod.py" name="robot_publisher" output="screen"/>
 
   <!-- Launch Hokuyo Laser -->
   <group if="$(arg use_laser)">
@@ -31,4 +34,10 @@
   <group if="$(arg use_mapping)">
     <include file="$(find danielpa)/launch/mapping.launch"/>
   </group>
+
+  <node pkg="tf" type="static_transform_publisher" name="std_brod" args="0 0 0 0 0 0 map local_origin 20"/>
+    <!-- Test Launch File -->
+    <group if="$(arg use_test)">
+      <include file="$(find laser)/launch/laser_test.launch"/>
+    </group> 
 </launch>
