@@ -1,8 +1,0 @@
-4
-quad99 11.0.3.1 0 0
-quad98 11.0.3.2 0 0
-quad97 11.1.1.97 0 0
-quad96 11.1.1.96 0 0
-2
-leader 1 quad98
-followers 2 quad99 quad97

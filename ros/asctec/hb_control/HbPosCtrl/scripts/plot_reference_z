@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo " ### plotting reference trajectory ###"
-rxplot $1/ctrl/debug/posref/z, $1/ctrl/debug/velref/z, $1/ctrl/debug/accref/z -b 10

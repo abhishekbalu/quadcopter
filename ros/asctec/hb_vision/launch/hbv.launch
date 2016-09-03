@@ -1,4 +1,0 @@
-<launch>
-    <node name="HB_Vision" pkg="HB_Vision" type="HB_Vision" output="screen" clear_params="true">
-    </node>
-</launch>

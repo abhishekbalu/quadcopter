@@ -1,2 +1,0 @@
-- setup-file:
-    local-name: /home/ubuntu/ros/quad_control_rosbuild/quad_msgs/build/devel/setup.sh

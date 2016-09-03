@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "simulation")
-set(simulation_MAINTAINER "Daniel Afonso <daniel.afonso@tecnico.ulisboa.pt>")
-set(simulation_DEPRECATED "")
-set(simulation_VERSION "0.0.0")
-set(simulation_BUILD_DEPENDS "geometry_msgs" "tf2_msgs" "nav_msgs" "roscpp" "rospy" "std_msgs" "sensor_msgs" "mavros_msgs")
-set(simulation_RUN_DEPENDS "geometry_msgs" "tf2_msgs" "nav_msgs" "roscpp" "rospy" "std_msgs" "sensor_msgs" "mavros_msgs")
-set(simulation_BUILDTOOL_DEPENDS "catkin")

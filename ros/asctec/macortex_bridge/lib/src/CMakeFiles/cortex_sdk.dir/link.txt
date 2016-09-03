@@ -1,2 +1,0 @@
-/usr/bin/ar cr libcortex_sdk.a  CMakeFiles/cortex_sdk.dir/m3x3.cpp.o CMakeFiles/cortex_sdk.dir/cortex_socket.cpp.o CMakeFiles/cortex_sdk.dir/cortex_unpack.cpp.o CMakeFiles/cortex_sdk.dir/cortex.cpp.o
-/usr/bin/ranlib libcortex_sdk.a

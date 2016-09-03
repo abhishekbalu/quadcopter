@@ -1,4 +1,0 @@
-l quad96
-quad96 quad98 1 1 1 0
-quad96 quad97 1 1 -1 0
-quad97 quad98 1 0 2 0

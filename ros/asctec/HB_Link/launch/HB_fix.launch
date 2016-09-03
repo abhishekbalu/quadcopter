@@ -1,6 +1,0 @@
-<launch>
-    <node name="fix_interaction" pkg="HB_Link" type="fix_interaction" output="screen" args="192.168.1.50 6666 6667">
-    </node>
-    <node name="fix_receiver" pkg="HB_Link" type="fix_receiver" output="screen"  args="6668">
-    </node>
-</launch>

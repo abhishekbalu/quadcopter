@@ -1,6 +1,0 @@
-<launch>
-    <node name="mobile_interaction" pkg="HB_Link" type="mobile_interaction" args="192.168.1.101 6667 6666">
-    </node>
-    <node name="mobile_stream" pkg="HB_Link" type="mobile_interaction" args="192.168.1.101 6668">
-    </node>
-</launch>

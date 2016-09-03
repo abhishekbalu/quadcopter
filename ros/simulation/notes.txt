@@ -1,5 +1,0 @@
-https://pixhawk.ethz.ch/mavlink/
-
-rosrun mavros mavsys mode -b 209
-
-rosrun mavros mavsys mode -c OFFBOARD

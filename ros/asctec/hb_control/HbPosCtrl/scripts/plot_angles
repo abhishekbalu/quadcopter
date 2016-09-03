@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo " ### plotting output angles ###"
-rxplot $1/ctrl/debug/angles/x:y:z -b 10

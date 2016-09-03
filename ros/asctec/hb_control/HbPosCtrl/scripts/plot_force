@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo " ### plotting desired force ###"
-rxplot $1/ctrl/debug/fdes/x:y:z -b 10

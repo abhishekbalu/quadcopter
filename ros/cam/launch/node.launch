@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<include file="$(find cam)/launch/usb_cam.launch"/>
-
-<launch>
-	<rosparam command="load" file="$(find cam)/params/node.yaml" />
-	<node pkg="cam" type="node" name="node" output="screen"/>
-</launch>

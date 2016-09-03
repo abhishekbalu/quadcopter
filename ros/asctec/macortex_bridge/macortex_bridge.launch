@@ -1,5 +1,0 @@
-<launch>
-<node name="macortex_bridge" pkg="macortex_bridge" type="macortex_bridge" output="screen" >
-                <rosparam command="load" file="$(find macortex_bridge)/../common_params.yaml" />
-    </node>
-</launch>
