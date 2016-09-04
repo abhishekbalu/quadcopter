@@ -1,15 +1,15 @@
 #ifndef __EGOMOTION__
 #define __EGOMOTION__
 
-/* === System includes === */
+//C++ Includes
 #include <Eigen/Dense>
 #include <Eigen/LU>
 #include <Eigen/Geometry>
 
-/* === ROS includes === */
+//ROS libraries
 #include <ros/ros.h>
 #include <sensor_msgs/Imu.h>
-#include <asctec_hl_comm/mav_ctrl.h>
+
 #include <tf/transform_datatypes.h>
 #include <quad_msgs/Estimate.h>
 #include <quad_msgs/EstimateSingle.h>
@@ -17,7 +17,7 @@
 
 using namespace Eigen;
 
-//defines
+//Macros
 #define MAX_STAMPS 50
 
 //sructure containing information required to implement egomotion and lag compensation on the sensor measurements

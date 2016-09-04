@@ -15,23 +15,26 @@
 #include "cam/blob_detection.h"
 //#include "cam/debug.h" //Comment or uncomment this for verbose
 
+//Namespaces
 using namespace std;
-#define MAX_FEATURES 500
-
+//Macros
 #define BLOB_INFO 1 //Comment or uncomment this to see blob info
-//#define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
-
-#define HIT_NUMBERS 10
+#define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
+//Constants
+#define MAX_FEATURES 500
+const int HIT_NUMBERS 10
 
 const int SIZE_THRESHOLD = 100; //Value for 3m which is the max range
 const double BLOB_CONSTANT = 2.25;
 const int NOISE_ACTIVE = 0;
-const double WINDOW_SCALING = 1.7;
+const double WINDOW_SCALING = 1.7; //Window scaling for the light adaption algorithm
+const int BLUE = 1;
+const int RED = 0;
+
 int MIN_NUMBER_BLOBS = 3; //defaults to blue markers
 int NUMBER_OF_QUADS = 1;
 int MAX_NUMBER_BLOBS = 5; //defaults to blue markers
-const int BLUE = 1;
-const int RED = 0;
+
 int last_colour = 1;
 
 int no = 1;  //Blob number - assume there's an initial blob to start
@@ -90,8 +93,8 @@ int _sh = 0, _hh = 0, _vh = 0;
 
 bool initialization = true;
 
-/*------------------Auxiliary Functions-----------------*/
-ostream& operator<<(ostream& out, const blob& b){ //operator overloading
+/*------------------Auxiliary Functions(these can be used in other files)-----------------*/
+ostream& operator<<(ostream& out, const blob& b){ //operator overloading to print blobs
     out << "\t \t x: " << b.x << "\n";
     out << "\t \t y: " << b.y << "\n";
     out << "\t \t size: " << b.size << "\n"; 
@@ -112,8 +115,8 @@ int get_valid(){
 double get_min_blob_size(){
     return blob_min_size;
 }
-/*------------------Blob Functions-----------------*/
-void RGB_HSV(int l, int k){
+/*------------------Blob Functions(these are internal)-----------------*/
+inline void RGB_HSV(int l, int k){
     #ifdef VERBOSE
         printf("Processing RGB to HSV... Hue overbound: %i\n",rnd);
     #endif
@@ -149,7 +152,7 @@ void RGB_HSV(int l, int k){
         printf("Hue: %d, Sat: %d, Val: %d\n", hue, sat, val);
     #endif
 }
-int threshold(int vl, int vh, int hl, int hh, int sl, int sh){
+inline int threshold(int vl, int vh, int hl, int hh, int sl, int sh){
     int is_blob;
     if(rnd)
         is_blob=((hue>hl)||(hue<hh))&&(sat>sl)&&(sat<sh)&&(val>vl)&&(val<vh);
@@ -160,7 +163,7 @@ int threshold(int vl, int vh, int hl, int hh, int sl, int sh){
     #endif
     return is_blob;
 }
-void computeState(int l, int k){
+inline void computeState(int l, int k){
     state=0;
     if((l>0)&&(k>0))
         state|=(simage[(l-1)*nx + (k-1)]>0);
@@ -169,7 +172,7 @@ void computeState(int l, int k){
     if(k>0)
         state|=((simage[l*nx+(k-1)]>0)<<2);
 }
-void processState(int l, int k){
+inline void processState(int l, int k){
     if(state==0){//if new blob
         #ifdef VERBOSE
            printf("New blob\n");
@@ -207,7 +210,7 @@ void processState(int l, int k){
             simage[l*nx+k]=0;
     }
 }
-int init(int width, int height){
+inline int init(int width, int height){
     nx = width; //Set nx and ny
     ny = height;
     rnd = 0; //Set rnd to be 0 by default, assuming hh < 360
@@ -221,7 +224,7 @@ int init(int width, int height){
     memset(simage,0,width*height*sizeof(unsigned char));
     return 0;
 }
-void solve_links(){
+inline void solve_links(){
     no=0; 
     for(int k=MAX_FEATURES-1;k>0;k--){
         //if there is an object and it was not treated yet
@@ -247,14 +250,14 @@ void solve_links(){
     }
 }
 
-void apply_noise(int k){
+inline void apply_noise(int k){
     if((blobs[k].valid)&&(NOISE_ACTIVE)){
         blobs[k].x+=(-12+rand()%25)/100.0; //Put the blob center slightly off-center
         blobs[k].y+=(-12+rand()%25)/100.0; //Put the blob center slightly off-center
     }
 }
 
-void aggregate_blobs(){
+inline void aggregate_blobs(){
     for(int k=0;k<no;k++)
       blobs[k].valid=1;
     for(int k=0;k<no;k++)
@@ -271,7 +274,7 @@ void aggregate_blobs(){
                     }
                 }     
 }
-void blob_threshold(){
+inline void blob_threshold(){
     for(int k=0;k<no;k++){ //threshold on the blob sizes
         blobs[k].valid=(blobs[k].size<SIZE_THRESHOLD?0:blobs[k].valid);
         apply_noise(k);
@@ -280,9 +283,11 @@ void blob_threshold(){
 /*-------------------------------Detect Blobs Function--------------------------------------------*/
 int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, int hh,
 	int sl, int sh, int xi, int xf, int yi, int yf, int width, int height, int colour, int toggle){
+    
     #ifdef VERBOSE
         printf("Toggle: %d\n", toggle);
     #endif
+
 	int is_blob = init(width, height);
     if(colour != last_colour){
         initialization = true;

@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/pedro/ros/rab3D/build/devel/setup.sh
+    local-name: /home/pedro/quadcopter/rosbuild/rab3D/build/devel/setup.sh

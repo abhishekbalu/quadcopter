@@ -16,40 +16,29 @@
 #include "cam/blob_detection.h"
 #include "cam/debug.h" //Comment or uncomment this for verbose
 #include "yaml-cpp/yaml.h"
+//Namespaces
 using namespace std;
 using namespace YAML;
-
-
+//Constants
 const int BLUE = 1;
-const int RED = 1;
+const int RED = 0;
 const int RATE = 50;
+//Variables
 unsigned char* bufb,* buf;
 blob* blp;
 int nblobs,nobjects;
-int toggle = 0;
-int vl; //min val 
-int vh; //max val 
-
-int hl; //min hue 
-int hh; //max hue 
-
-int sl; //min sat 
-int sh; //max sat 
-int width;
-int height;
-int r,g,b;
-static ros::Publisher rgb_image_pub;
-static ros::Publisher bin_image_pub;
-static ros::Publisher detections_pub;
-static ros::Publisher valid_blobs_pub;
+int toggle = 1;
+int vl, vh, hl, hh, sl, sh, width, height; //min-max val, min-max hue, min-mah sat, width, height
+static ros::Publisher rgb_image_pub, bin_image_pub, detections_pub, valid_blobs_pub;
 std::string blob_settings = "yamls/blue_blob_settings.yaml";
 std::string image_settings = "yamls/image_settings.yaml";
 std_msgs::Int8 valid_msg;
+//Callback
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 	//get image
 	const sensor_msgs::Image img = *msg;
 
-	//Copy image to the buffer and convert
+	//Copy image to the buffer
 	unsigned long int cnt=0;
     for(unsigned int l=0;l<img.height;l++){
         for(unsigned int k=0;k<img.width;k++){
@@ -59,19 +48,19 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
             cnt+=3;
         }
     }
-    //The entire image has been converted to yuv
+    //The entire image has been converted from yuyv to rgb in the drivers. Get xf and yf
     int xi = 0;
     int xf = img.width;
     int yi = 0;
     int yf = img.height;
 
 	//blob detection and publish binary image
-    nblobs = detect_blobs(buf,3, vl, vh, hl, hh, sl, sh, xi, xf, yi, yf, img.width, img.height, BLUE, toggle);
+    nblobs = detect_blobs(buf, 3, vl, vh, hl, hh, sl, sh, xi, xf, yi, yf, img.width, img.height, BLUE, toggle);
     #ifdef VERBOSE
         printf("Number of valid blobs: %d\n", get_valid());
         valid_msg.data = get_valid();
     #endif
-
+    //Create binary image (if blob, make the pixel white)
     for(unsigned int l=0;l<img.height;l++)
         for(unsigned int k=0;k<img.width;k++)
         	if(bufb[l*img.width + k] > 0) 
@@ -86,7 +75,7 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
     sensor_msgs::Image bin_img = *msg;
     fillImage(bin_img,"mono8",img.height,img.width,img.step/3,bufb);
     bin_image_pub.publish(bin_img);
-
+    //Publish the blobs detected
     cam::detections det_msg;
     det_msg.header = img.header;
     for(int k=0;k<nblobs;k++){
@@ -100,7 +89,7 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
     detections_pub.publish(det_msg);
     return;
 }
-
+//Read blob params from file
 void readBlobParams(std::string file){
 	YAML::Node root = YAML::LoadFile(file);
 	try{
@@ -120,7 +109,7 @@ void readBlobParams(std::string file){
 	 	#endif
 	}catch(const BadConversion& e){}
 }
-
+//Read image params from file
 void readImageParams(std::string file){
 	YAML::Node root = YAML::LoadFile(file);
 	try{
@@ -132,8 +121,7 @@ void readImageParams(std::string file){
 	 	#endif
 	}catch(const BadConversion& e){}
 }
-
-
+//Main
 int main(int argc, char** argv){
 	if(argc==6){
 		vl = atoi(argv[1]);

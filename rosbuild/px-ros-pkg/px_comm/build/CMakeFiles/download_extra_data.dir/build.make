@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/quadcopter/ros/px-ros-pkg/px_comm
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/build
 
 # Utility rule file for download_extra_data.
 
@@ -57,6 +57,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/ros/px-ros-pkg/px_comm /home/pedro/quadcopter/ros/px-ros-pkg/px_comm /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build /home/pedro/quadcopter/ros/px-ros-pkg/px_comm/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/build /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/build /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

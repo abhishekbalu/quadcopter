@@ -197,8 +197,7 @@ void egomotion_predict_self()
 }
 
 //egomotion updates
-void egomotion_update_Z_self(double z)
-{
+void egomotion_update_Z_self(double z){
 	//filter sonar data
 	if((z < 0.20) || (z > 3.0))
 		return;
@@ -213,7 +212,8 @@ void egomotion_update_Z_self(double z)
 
 	//estimate with filtered sonar data
 	MatrixXd R1 = C_Z_self*P_self*C_Z_self.transpose() + R_Z_self;
-	MatrixXd z_v(1,1); z_v << z;
+	MatrixXd z_v(1,1); 
+	z_v << z;
 	K_Z_self = P_self*C_Z_self.transpose()*R1.inverse();
 	x_self = x_self + K_Z_self*(z_v - C_Z_self*x_self);
 	P_self = (eye7_self - K_Z_self*C_Z_self)*P_self;
@@ -222,11 +222,12 @@ void egomotion_update_Z_self(double z)
 	timer_z = ros::Time::now().toSec();
 
 }
-void egomotion_update_OF_self(double vx, double vy) //NOTE: we assume these velocities to be in the flying frame
-{
+void egomotion_update_OF_self(double vx, double vy){ //NOTE: we assume these velocities to be in the flying frame
+
 
 	MatrixXd R1 = C_OF_self*P_self*C_OF_self.transpose() + R_OF_self;
-	MatrixXd of_v(2,1); of_v << vx, vy;
+	MatrixXd of_v(2,1); 
+	of_v << vx, vy;
 	K_OF_self = P_self*C_OF_self.transpose()*R1.inverse();
 	x_self = x_self + K_OF_self*(of_v - C_OF_self*x_self);
 	P_self = (eye7_self - K_OF_self*C_OF_self)*P_self;
@@ -354,8 +355,7 @@ void angle_callback(const sensor_msgs::Imu::ConstPtr& imu)
 	stamp_imu++;
 }
 
-void control_callback_px4(const mavros_msgs::AttitudeTarget::ConstPtr& command)
-{
+void control_callback_px4(const mavros_msgs::AttitudeTarget::ConstPtr& command){
 	//new input to be followed from this instant
 	thrust_last_time=ros::Time::now().toSec();
 	

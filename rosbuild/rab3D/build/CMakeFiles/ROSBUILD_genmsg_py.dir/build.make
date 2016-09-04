@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/rab3D
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/rosbuild/rab3D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/rab3D/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/rosbuild/rab3D/build
 
 # Utility rule file for ROSBUILD_genmsg_py.
 
@@ -49,9 +49,9 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/rab3D/msg/__init__.py
 
 ../src/rab3D/msg/__init__.py: ../src/rab3D/msg/_Rab3DMsg.py
 ../src/rab3D/msg/__init__.py: ../src/rab3D/msg/_Rab3DObj.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/rab3D/msg/__init__.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/ros/rab3D/msg/Rab3DMsg.msg /home/pedro/ros/rab3D/msg/Rab3DObj.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/pedro/quadcopter/rosbuild/rab3D/msg/Rab3DMsg.msg /home/pedro/quadcopter/rosbuild/rab3D/msg/Rab3DObj.msg
 
 ../src/rab3D/msg/_Rab3DMsg.py: ../msg/Rab3DMsg.msg
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -78,18 +78,16 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/rab3D/msg/__init__.py
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/roscpp/package.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/sensor_msgs/package.xml
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/quad_msgs/manifest.xml
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/quadcopter/rosbuild/quad_msgs/manifest.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../src/rab3D/msg/_Rab3DMsg.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/quad_msgs/msg_gen/generated
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_2)
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/manifest.xml
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/generated
+../src/rab3D/msg/_Rab3DMsg.py: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/rab3D/msg/_Rab3DMsg.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/rab3D/msg/Rab3DMsg.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/quadcopter/rosbuild/rab3D/msg/Rab3DMsg.msg
 
 ../src/rab3D/msg/_Rab3DObj.py: ../msg/Rab3DObj.msg
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -114,18 +112,16 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/rab3D/msg/__init__.py
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/roscpp/package.xml
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/sensor_msgs/package.xml
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/quad_msgs/manifest.xml
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/quadcopter/rosbuild/quad_msgs/manifest.xml
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/actionlib_msgs/package.xml
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../src/rab3D/msg/_Rab3DObj.py: /opt/ros/indigo/share/mavros_msgs/package.xml
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/px-ros-pkg/px_comm/manifest.xml
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/quad_msgs/msg_gen/generated
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/msg_gen/generated
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/asctec/asctec_mav_framework/asctec_hl_comm/srv_gen/generated
-../src/rab3D/msg/_Rab3DObj.py: /home/pedro/ros/px-ros-pkg/px_comm/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_3)
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/manifest.xml
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/generated
+../src/rab3D/msg/_Rab3DObj.py: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/rab3D/msg/_Rab3DObj.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/ros/rab3D/msg/Rab3DObj.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/pedro/quadcopter/rosbuild/rab3D/msg/Rab3DObj.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/rab3D/msg/__init__.py
@@ -143,6 +139,6 @@ CMakeFiles/ROSBUILD_genmsg_py.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_py.dir/depend:
-	cd /home/pedro/ros/rab3D/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/rab3D /home/pedro/ros/rab3D /home/pedro/ros/rab3D/build /home/pedro/ros/rab3D/build /home/pedro/ros/rab3D/build/CMakeFiles/ROSBUILD_genmsg_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/rosbuild/rab3D/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/rosbuild/rab3D /home/pedro/quadcopter/rosbuild/rab3D /home/pedro/quadcopter/rosbuild/rab3D/build /home/pedro/quadcopter/rosbuild/rab3D/build /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/ROSBUILD_genmsg_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 

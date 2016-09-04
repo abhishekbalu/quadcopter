@@ -35,6 +35,6 @@ rosbuild_add_boost_directories()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(rab3D src/rab3D.cpp)
 #rosbuild_add_executable(rab3D_emit src/RaB3D.cpp src/estimator_emit.cpp src/rab3D_emit_sim.cpp)
-rosbuild_add_executable(rab3D_robot src/RaB3D.cpp src/estimator_robot.cpp src/egomotion_2.cpp src/rab3D_robot_sim.cpp)
-
+#rosbuild_add_executable(rab3D_robot src/RaB3D.cpp src/estimator_robot.cpp src/egomotion_2.cpp src/rab3D_robot_sim.cpp)
+rosbuild_add_executable(rab3D_robot src/egomotion_2.cpp src/rab3D_robot_sim.cpp)
 target_link_libraries(rab3D_robot librt.so)

@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/pedro/ros/rab3D/build/CMakeFiles/3.2.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/3.2.2/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,38 +23,38 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/pedro/ros/rab3D/build/CMakeFiles/3.2.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/3.2.2/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1771203011/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1771203011.dir/build.make CMakeFiles/cmTryCompileExec1771203011.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1771203011.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1771203011.dir/testCCompiler.c.o   -c /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec1771203011
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1771203011.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec1771203011.dir/testCCompiler.c.o  -o cmTryCompileExec1771203011 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2047137396/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2047137396.dir/build.make CMakeFiles/cmTryCompileExec2047137396.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2047137396.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2047137396.dir/testCCompiler.c.o   -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2047137396
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2047137396.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2047137396.dir/testCCompiler.c.o  -o cmTryCompileExec2047137396 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1682994487/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1682994487.dir/build.make CMakeFiles/cmTryCompileExec1682994487.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec1682994487
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1682994487.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1682994487 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2369180355/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2369180355.dir/build.make CMakeFiles/cmTryCompileExec2369180355.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec2369180355
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2369180355.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2369180355 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -64,26 +64,26 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1682994487' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1682994487 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2369180355' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec2369180355 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1682994487/fast"]
-  ignore line: [make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1682994487.dir/build.make CMakeFiles/cmTryCompileExec1682994487.dir/build]
-  ignore line: [make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec1682994487]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1682994487.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1682994487 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2369180355/fast"]
+  ignore line: [make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec2369180355.dir/build.make CMakeFiles/cmTryCompileExec2369180355.dir/build]
+  ignore line: [make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec2369180355]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2369180355.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2369180355 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -93,8 +93,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1682994487' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1682994487 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2369180355' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec2369180355 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -108,7 +108,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1682994487] ==> ignore
+    arg [cmTryCompileExec2369180355] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -120,7 +120,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec1682994487.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2369180355.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -152,20 +152,20 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec4126877338/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec4126877338.dir/build.make CMakeFiles/cmTryCompileExec4126877338.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec4126877338.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec4126877338.dir/feature_tests.c.o   -c /home/pedro/ros/rab3D/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec4126877338
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4126877338.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec4126877338.dir/feature_tests.c.o  -o cmTryCompileExec4126877338 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1673985895/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1673985895.dir/build.make CMakeFiles/cmTryCompileExec1673985895.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1673985895.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec1673985895.dir/feature_tests.c.o   -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec1673985895
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1673985895.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1673985895.dir/feature_tests.c.o  -o cmTryCompileExec1673985895 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -175,20 +175,20 @@ make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1624909901/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1624909901.dir/build.make CMakeFiles/cmTryCompileExec1624909901.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1624909901.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec1624909901.dir/feature_tests.c.o   -c /home/pedro/ros/rab3D/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec1624909901
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1624909901.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec1624909901.dir/feature_tests.c.o  -o cmTryCompileExec1624909901 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2083841421/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2083841421.dir/build.make CMakeFiles/cmTryCompileExec2083841421.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2083841421.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec2083841421.dir/feature_tests.c.o   -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec2083841421
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2083841421.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2083841421.dir/feature_tests.c.o  -o cmTryCompileExec2083841421 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -198,20 +198,20 @@ make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec16274573/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec16274573.dir/build.make CMakeFiles/cmTryCompileExec16274573.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec16274573.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec16274573.dir/feature_tests.c.o   -c /home/pedro/ros/rab3D/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec16274573
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec16274573.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec16274573.dir/feature_tests.c.o  -o cmTryCompileExec16274573 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1612257484/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1612257484.dir/build.make CMakeFiles/cmTryCompileExec1612257484.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1612257484.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec1612257484.dir/feature_tests.c.o   -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec1612257484
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1612257484.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1612257484.dir/feature_tests.c.o  -o cmTryCompileExec1612257484 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -219,35 +219,35 @@ make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec4042314355/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec4042314355.dir/build.make CMakeFiles/cmTryCompileExec4042314355.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec4042314355.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec4042314355.dir/testCXXCompiler.cxx.o -c /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec4042314355
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4042314355.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec4042314355.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec4042314355 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3852862361/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3852862361.dir/build.make CMakeFiles/cmTryCompileExec3852862361.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3852862361.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3852862361.dir/testCXXCompiler.cxx.o -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec3852862361
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3852862361.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec3852862361.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3852862361 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2147908503/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2147908503.dir/build.make CMakeFiles/cmTryCompileExec2147908503.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec2147908503
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2147908503.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2147908503 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2979482470/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2979482470.dir/build.make CMakeFiles/cmTryCompileExec2979482470.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec2979482470
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2979482470.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2979482470 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -257,26 +257,26 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2147908503' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec2147908503 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2979482470' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec2979482470 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2147908503/fast"]
-  ignore line: [make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec2147908503.dir/build.make CMakeFiles/cmTryCompileExec2147908503.dir/build]
-  ignore line: [make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec2147908503]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2147908503.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2147908503 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2979482470/fast"]
+  ignore line: [make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec2979482470.dir/build.make CMakeFiles/cmTryCompileExec2979482470.dir/build]
+  ignore line: [make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec2979482470]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2979482470.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2979482470 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -286,8 +286,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2147908503' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec2147908503 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2979482470' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec2979482470 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -301,7 +301,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec2147908503] ==> ignore
+    arg [cmTryCompileExec2979482470] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -313,7 +313,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec2147908503.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2979482470.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -343,20 +343,20 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++1y] compiler features compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec953635152/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec953635152.dir/build.make CMakeFiles/cmTryCompileExec953635152.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec953635152.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec953635152.dir/feature_tests.cxx.o -c /home/pedro/ros/rab3D/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec953635152
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec953635152.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec953635152.dir/feature_tests.cxx.o  -o cmTryCompileExec953635152 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1621668241/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1621668241.dir/build.make CMakeFiles/cmTryCompileExec1621668241.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1621668241.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec1621668241.dir/feature_tests.cxx.o -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec1621668241
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1621668241.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec1621668241.dir/feature_tests.cxx.o  -o cmTryCompileExec1621668241 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -419,20 +419,20 @@ make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec3809888122/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3809888122.dir/build.make CMakeFiles/cmTryCompileExec3809888122.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3809888122.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec3809888122.dir/feature_tests.cxx.o -c /home/pedro/ros/rab3D/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec3809888122
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3809888122.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec3809888122.dir/feature_tests.cxx.o  -o cmTryCompileExec3809888122 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec993482080/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec993482080.dir/build.make CMakeFiles/cmTryCompileExec993482080.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec993482080.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec993482080.dir/feature_tests.cxx.o -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec993482080
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec993482080.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec993482080.dir/feature_tests.cxx.o  -o cmTryCompileExec993482080 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -495,20 +495,20 @@ make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2045372491/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2045372491.dir/build.make CMakeFiles/cmTryCompileExec2045372491.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2045372491.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec2045372491.dir/feature_tests.cxx.o -c /home/pedro/ros/rab3D/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec2045372491
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2045372491.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec2045372491.dir/feature_tests.cxx.o  -o cmTryCompileExec2045372491 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1266296191/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1266296191.dir/build.make CMakeFiles/cmTryCompileExec1266296191.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1266296191.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec1266296191.dir/feature_tests.cxx.o -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec1266296191
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1266296191.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec1266296191.dir/feature_tests.cxx.o  -o cmTryCompileExec1266296191 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -569,36 +569,36 @@ make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Determining if files pthread.h exist passed with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2435177327/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2435177327.dir/build.make CMakeFiles/cmTryCompileExec2435177327.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec2435177327.dir/CheckIncludeFiles.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2435177327.dir/CheckIncludeFiles.c.o   -c /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
-Linking C executable cmTryCompileExec2435177327
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2435177327.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec2435177327.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2435177327 -rdynamic 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1220317729/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1220317729.dir/build.make CMakeFiles/cmTryCompileExec1220317729.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1220317729.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1220317729.dir/CheckIncludeFiles.c.o   -c /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1220317729
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1220317729.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1220317729.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1220317729 -rdynamic 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
-Change Dir: /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec860765424/fast"
-make[1]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec860765424.dir/build.make CMakeFiles/cmTryCompileExec860765424.dir/build
-make[2]: Entering directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec860765424.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec860765424.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec860765424
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec860765424.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec860765424.dir/CheckFunctionExists.c.o  -o cmTryCompileExec860765424 -rdynamic -lpthread 
-make[2]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/pedro/ros/rab3D/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1015618833/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1015618833.dir/build.make CMakeFiles/cmTryCompileExec1015618833.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1015618833.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1015618833.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1015618833
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1015618833.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec1015618833.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1015618833 -rdynamic -lpthread 
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/CMakeTmp'
 
 

@@ -28,8 +28,6 @@
 #include "cam/QuadPose.h"
 #include "cam/QuadPoseList.h"
 
-
-
 using namespace std;
 using namespace YAML;
 using namespace Eigen;

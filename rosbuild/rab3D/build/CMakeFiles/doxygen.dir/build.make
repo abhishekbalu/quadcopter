@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/rab3D
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/rosbuild/rab3D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/rab3D/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/rosbuild/rab3D/build
 
 # Utility rule file for doxygen.
 
@@ -57,6 +57,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/pedro/ros/rab3D/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/ros/rab3D /home/pedro/ros/rab3D /home/pedro/ros/rab3D/build /home/pedro/ros/rab3D/build /home/pedro/ros/rab3D/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/quadcopter/rosbuild/rab3D/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/quadcopter/rosbuild/rab3D /home/pedro/quadcopter/rosbuild/rab3D /home/pedro/quadcopter/rosbuild/rab3D/build /home/pedro/quadcopter/rosbuild/rab3D/build /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

@@ -7,6 +7,6 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/pedro/ros/rab3D/build/devel:$CMAKE_PREFIX_PATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/pedro/ros/rab3D/build/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/pedro/ros/rab3D:/opt/ros/indigo/share:/opt/ros/indigo/stacks"
+export CMAKE_PREFIX_PATH="/home/pedro/quadcopter/rosbuild/rab3D/build/devel:$CMAKE_PREFIX_PATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/pedro/quadcopter/rosbuild/rab3D/build/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/pedro/quadcopter/rosbuild/rab3D:/opt/ros/indigo/share:/opt/ros/indigo/stacks"

@@ -42,10 +42,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/ros/rab3D
+CMAKE_SOURCE_DIR = /home/pedro/quadcopter/rosbuild/rab3D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/ros/rab3D/build
+CMAKE_BINARY_DIR = /home/pedro/quadcopter/rosbuild/rab3D/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,9 +113,9 @@ install/local/fast: install/local
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/rab3D/build/CMakeFiles /home/pedro/ros/rab3D/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/ros/rab3D/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -467,30 +467,6 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-src/RaB3D.o: src/RaB3D.cpp.o
-.PHONY : src/RaB3D.o
-
-# target to build an object file
-src/RaB3D.cpp.o:
-	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.o
-.PHONY : src/RaB3D.cpp.o
-
-src/RaB3D.i: src/RaB3D.cpp.i
-.PHONY : src/RaB3D.i
-
-# target to preprocess a source file
-src/RaB3D.cpp.i:
-	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.i
-.PHONY : src/RaB3D.cpp.i
-
-src/RaB3D.s: src/RaB3D.cpp.s
-.PHONY : src/RaB3D.s
-
-# target to generate assembly for a file
-src/RaB3D.cpp.s:
-	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/RaB3D.cpp.s
-.PHONY : src/RaB3D.cpp.s
-
 src/egomotion_2.o: src/egomotion_2.cpp.o
 .PHONY : src/egomotion_2.o
 
@@ -514,30 +490,6 @@ src/egomotion_2.s: src/egomotion_2.cpp.s
 src/egomotion_2.cpp.s:
 	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/egomotion_2.cpp.s
 .PHONY : src/egomotion_2.cpp.s
-
-src/estimator_robot.o: src/estimator_robot.cpp.o
-.PHONY : src/estimator_robot.o
-
-# target to build an object file
-src/estimator_robot.cpp.o:
-	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.o
-.PHONY : src/estimator_robot.cpp.o
-
-src/estimator_robot.i: src/estimator_robot.cpp.i
-.PHONY : src/estimator_robot.i
-
-# target to preprocess a source file
-src/estimator_robot.cpp.i:
-	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.i
-.PHONY : src/estimator_robot.cpp.i
-
-src/estimator_robot.s: src/estimator_robot.cpp.s
-.PHONY : src/estimator_robot.s
-
-# target to generate assembly for a file
-src/estimator_robot.cpp.s:
-	$(MAKE) -f CMakeFiles/rab3D_robot.dir/build.make CMakeFiles/rab3D_robot.dir/src/estimator_robot.cpp.s
-.PHONY : src/estimator_robot.cpp.s
 
 src/rab3D_robot_sim.o: src/rab3D_robot_sim.cpp.o
 .PHONY : src/rab3D_robot_sim.o
@@ -600,15 +552,9 @@ help:
 	@echo "... install/local"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... src/RaB3D.o"
-	@echo "... src/RaB3D.i"
-	@echo "... src/RaB3D.s"
 	@echo "... src/egomotion_2.o"
 	@echo "... src/egomotion_2.i"
 	@echo "... src/egomotion_2.s"
-	@echo "... src/estimator_robot.o"
-	@echo "... src/estimator_robot.i"
-	@echo "... src/estimator_robot.s"
 	@echo "... src/rab3D_robot_sim.o"
 	@echo "... src/rab3D_robot_sim.i"
 	@echo "... src/rab3D_robot_sim.s"
