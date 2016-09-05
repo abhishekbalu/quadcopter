@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/pedro/quadcopter/rosbuild/cam/build/devel/setup.sh
+    local-name: /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/devel/setup.sh

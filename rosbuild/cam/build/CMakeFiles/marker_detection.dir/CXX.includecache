@@ -28,7 +28,7 @@ math.h
 stdlib.h
 -
 
-/home/pedro/quadcopter/rosbuild/cam/src/marker_detection.cpp
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/marker_detection.cpp
 iostream
 -
 fstream
@@ -56,17 +56,17 @@ eigen3/Eigen/LU
 eigen3/Eigen/Core
 -
 yaml-cpp/yaml.h
-/home/pedro/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
 ros/ros.h
 -
 cam/blob_detection.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/blob_detection.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/blob_detection.h
 cam/marker_detection.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/marker_detection.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/marker_detection.h
 cam/p3p.hpp
-/home/pedro/quadcopter/rosbuild/cam/src/cam/p3p.hpp
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/p3p.hpp
 cam/debug.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/debug.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/debug.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -210,8 +210,6 @@ set
 list
 -
 boost/shared_ptr.hpp
--
-boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

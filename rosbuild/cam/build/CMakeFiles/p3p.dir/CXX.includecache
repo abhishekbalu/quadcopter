@@ -14,7 +14,7 @@ math.h
 stdlib.h
 -
 
-/home/pedro/quadcopter/rosbuild/cam/src/p3p.cpp
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/p3p.cpp
 cam/p3p.hpp
-/home/pedro/quadcopter/rosbuild/cam/src/cam/p3p.hpp
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/p3p.hpp
 

@@ -96,7 +96,7 @@ ros/assert.h
 std_msgs/Header.h
 ../msg_gen/cpp/include/cam/std_msgs/Header.h
 
-/home/pedro/quadcopter/rosbuild/cam/src/node.cpp
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/node.cpp
 stdio.h
 -
 string
@@ -130,21 +130,21 @@ image_transport/image_transport.h
 tf/transform_datatypes.h
 -
 geometry_msgs/PoseStamped.h
-/home/pedro/quadcopter/rosbuild/cam/src/geometry_msgs/PoseStamped.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/geometry_msgs/PoseStamped.h
 cam/detections.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/detections.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/detections.h
 cam/blob_detection.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/blob_detection.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/blob_detection.h
 cam/marker_detection.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/marker_detection.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/marker_detection.h
 cam/debug.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/debug.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/debug.h
 yaml-cpp/yaml.h
-/home/pedro/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
 cam/QuadPose.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/QuadPose.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/QuadPose.h
 cam/QuadPoseList.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/QuadPoseList.h
+/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/QuadPoseList.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -548,8 +548,6 @@ set
 list
 -
 boost/shared_ptr.hpp
--
-boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

@@ -13,7 +13,6 @@
 #include <eigen3/Eigen/LU>
 #include <eigen3/Eigen/Core>
 #include "yaml-cpp/yaml.h"
-
 //ROS Libraries
 #include <ros/ros.h>
 //User Libraries
@@ -23,17 +22,19 @@
 //Verbose
 #include "cam/debug.h" //Comment or uncomment this for verbose
 #define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
-
+//Namespaces
 using namespace Eigen;
 using namespace std;
 using namespace P3P_test;
 using namespace YAML;
-
+//Macros
 #define MAX_FEATURES 500
 #define MAX_MARKERS 50
+//Constants
 const int BLUE = 1;
 const int RED = 0;
-const int MIN_NUM_FAILURES = 5; //minimal number of failures allowed for a tracked frame
+//Increased number of allowed failuers
+const int MIN_NUM_FAILURES = 7; //minimal number of failures allowed for a tracked frame
 const double RED_BLOB_THRESHOLD_SCALE_FACTOR = 0.4;
 const int MARKER_THRESHOLD = 4;
 
@@ -198,7 +199,8 @@ int detect_markers(int no){ //This function extracts markers from blobs
     for(int k=0;k<no;k++){
         if(blobs[k].valid == 2){
             #ifdef VERBOSE
-                printf("A valid blob!\n");
+		//This is printing correctly, 4 blobs at a time
+                //printf("A valid blob!\n");
             #endif
             dx1=(blobs[k].x-cx);
             dy1=(blobs[k].y-cy); 
@@ -265,6 +267,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
                     d2=a2*a2+b2*b2;
                     d3=a3*a3+b3*b3;
                     avg=(2*2)*avg/(M_PI*M_PI);
+		    printf("d1: %f, d2: %f, d3 %f, avg*thd: %f\n", d1,d2,d3,avg*thd);
                     if((d1<avg*thd) &&(d2<avg*thd) &&(d3<avg*thd)){
                     	//evaluate hypothesis
                             cost=100000;

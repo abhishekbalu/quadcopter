@@ -18,22 +18,22 @@
 //Namespaces
 using namespace std;
 //Macros
-#define BLOB_INFO 1 //Comment or uncomment this to see blob info
+//#define BLOB_INFO 1 //Comment or uncomment this to see blob info
 #define LIGHT_CALIBRATION 1 //Comment or uncomment this to use the light calibration
 //Constants
 #define MAX_FEATURES 500
-const int HIT_NUMBERS 10
+const int HIT_NUMBERS = 6;
 
 const int SIZE_THRESHOLD = 100; //Value for 3m which is the max range
 const double BLOB_CONSTANT = 2.25;
 const int NOISE_ACTIVE = 0;
-const double WINDOW_SCALING = 1.7; //Window scaling for the light adaption algorithm
+const double WINDOW_SCALING = 1.2; //Window scaling for the light adaption algorithm
 const int BLUE = 1;
 const int RED = 0;
 
-int MIN_NUMBER_BLOBS = 3; //defaults to blue markers
+int MIN_NUMBER_BLOBS = 4; //defaults to blue markers
 int NUMBER_OF_QUADS = 1;
-int MAX_NUMBER_BLOBS = 5; //defaults to blue markers
+int MAX_NUMBER_BLOBS = 4; //defaults to blue markers
 
 int last_colour = 1;
 
@@ -45,7 +45,7 @@ unsigned char col[3]; //Array to hold RGB data
 unsigned char* p; 
 int m,M,delta; //m is minimum RGB value, M is maximum RGB value, 
 int hue,sat,val; //HSV computed values
-
+int try_original=1;
 int sat_sum = 0;
 int val_sum = 0;
 int sat_sum_window = 0;
@@ -367,15 +367,21 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         }
     }
     #ifdef LIGHT_CALIBRATION
-        printf("Total image Average sat: %d, Total image Average val: %d\n", sat_sum/pixel_number, val_sum/pixel_number);
-        if(colour == BLUE){
+        #ifdef VERBOSE
+		printf("Total image Average sat: %d, Total image Average val: %d\n", sat_sum/pixel_number, val_sum/pixel_number);
+        #endif
+	if(colour == BLUE){
             if(initialization == false && window_pixel_number != 0){
-                printf("Windows Average sat: %d, Windows Average val: %d, Pixel number in windows: %d\n Max_hue: %d, Min_hue: %d Center_Max_hue: %d, Center_Min_hue:%d \n", sat_sum_window/window_pixel_number, val_sum_window/window_pixel_number, window_pixel_number, max_hue, min_hue, center_pixel_max_hue, center_pixel_min_hue);
-                if( ((last_val_total_avg!=0) && (abs(last_val_total_avg-val_sum/pixel_number)>13)) || (hits > HIT_NUMBERS ) ){
-                    printf("LIGHTS CHANGED!!! Correcting value (and saturation?)...!\n");
-                    _vl = val_sum_window/window_pixel_number;
+                #ifdef VERBOSE
+			printf("Windows Average sat: %d, Windows Average val: %d, Pixel number in windows: %d\n Max_hue: %d, Min_hue: %d Center_Max_hue: %d, Center_Min_hue:%d \n", sat_sum_window/window_pixel_number, val_sum_window/window_pixel_number, window_pixel_number, max_hue, min_hue, center_pixel_max_hue, center_pixel_min_hue);
+                #endif
+		if( ((last_val_total_avg!=0) && (abs(last_val_total_avg-val_sum/pixel_number)>13)) || (hits > HIT_NUMBERS ) ){
+                    #ifdef VERBOSE
+			printf("LIGHTS CHANGED!!! Correcting value (and saturation?)...!\n");
+                    #endif
+		    _vl = val_sum_window/window_pixel_number;
                     _sl = sat_sum_window/window_pixel_number;
-
+		   
                     hits = 0;
                 }
                 last_val_window_avg = val_sum_window/window_pixel_number;
@@ -429,27 +435,35 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         if(colour == BLUE){
             if(nvalid >= MIN_NUMBER_BLOBS && nvalid < MAX_NUMBER_BLOBS+1){
                 #ifdef LIGHT_CALIBRATION
-                    printf(">=4 blobs detected!\n");
-                    if(nvalid%MIN_NUMBER_BLOBS == 0){
-                       
-                        printf("Right number of blobs \n");
-                        sl_adjust = 0;
+		   #ifdef VERBOSE
+                    	printf("Between %d  blobs detected and %d blobs detected\n", MIN_NUMBER_BLOBS, MAX_NUMBER_BLOBS");
+                    #endif
+		    if(nvalid%MIN_NUMBER_BLOBS == 0){
+                       #ifdef VERBOSE
+                        	printf("Right number of blobs \n");
+                        #endif
+			sl_adjust = 0;
                         vl_adjust = 0;
-                    }
+                    }else{
+		    	
+		    }
                     sl_adjust = 0;
                 #endif
             }else{ //normally it derails to nvalid = 0
                 #ifdef LIGHT_CALIBRATION
-                printf("<4 blobs detected! Too Bright? %d !!!\n", _sl);
-
-                #endif
-                if(nvalid == 0){
-                    printf("RESETTING TO ORIGINAL PARAMS\n");
-
+                	#ifdef VERBOSE
+				printf("Less than %d blobs  detected or more than %d detected! %d\n", MIN_NUMBER_BLOBS, MAX_NUMBER_BLOBS);
+                	#endif
+		#endif
+                if(nvalid == 0 || try_original == 1){
+                   #ifdef VERBOSE 
+		   printf("RESETTING TO ORIGINAL PARAMS\n");
+		   #endif
                     _sl = sl;_hl = hl;_vl = vl;
                     _sh = sh;_hh = hh;_vh = vh;
-                    _vl = val_sum_window/window_pixel_number;
-                    _sl = sat_sum_window/window_pixel_number;
+                    //_vl = val_sum_window/window_pixel_number;
+                    //_sl = sat_sum_window/window_pixel_number;
+		    try_original=0;
                 }
                 hits++;
                 
@@ -461,8 +475,10 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
         }
     }
     #ifdef LIGHT_CALIBRATION
-        printf("_sl: %d _vl: %d Hits: %d\n", _sl, _vl, hits);
-    #endif
+	#ifdef VERBOSE
+        	printf("_sl: %d _vl: %d Hits: %d\n", _sl, _vl, hits);
+   	#endif 	
+   #endif
 
     #ifdef BLOB_INFO
         printf("----------------------------------------------\n");

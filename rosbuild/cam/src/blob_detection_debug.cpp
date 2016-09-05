@@ -30,8 +30,8 @@ int nblobs,nobjects;
 int toggle = 1;
 int vl, vh, hl, hh, sl, sh, width, height; //min-max val, min-max hue, min-mah sat, width, height
 static ros::Publisher rgb_image_pub, bin_image_pub, detections_pub, valid_blobs_pub;
-std::string blob_settings = "yamls/blue_blob_settings.yaml";
-std::string image_settings = "yamls/image_settings.yaml";
+std::string blob_settings = "params/blue_blob_settings.yaml";
+std::string image_settings = "params/image_settings.yaml";
 std_msgs::Int8 valid_msg;
 //Callback
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){

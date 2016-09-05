@@ -30,22 +30,23 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x08,
-      33,   27,   11,   11, 0x08,
-      56,   27,   11,   11, 0x08,
-      79,   27,   11,   11, 0x08,
-     102,   27,   11,   11, 0x08,
-     125,   27,   11,   11, 0x08,
-     148,   27,   11,   11, 0x08,
+      11,   26,   26,   26, 0x08,
+      27,   50,   26,   26, 0x08,
+      56,   50,   26,   26, 0x08,
+      79,   50,   26,   26, 0x08,
+     102,   50,   26,   26, 0x08,
+     125,   50,   26,   26, 0x08,
+     148,   50,   26,   26, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0handleButton()\0value\0"
-    "onValueChanged_vl(int)\0onValueChanged_vh(int)\0"
-    "onValueChanged_sl(int)\0onValueChanged_sh(int)\0"
-    "onValueChanged_hl(int)\0onValueChanged_hh(int)\0"
+    "MainWindow\0handleButton()\0\0"
+    "onValueChanged_vl(int)\0value\0"
+    "onValueChanged_vh(int)\0onValueChanged_sl(int)\0"
+    "onValueChanged_sh(int)\0onValueChanged_hl(int)\0"
+    "onValueChanged_hh(int)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
