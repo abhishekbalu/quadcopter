@@ -8,8 +8,6 @@
 
 ../include/cam/blob_detection.h
 
-../include/cam/debug.h
-
 ../include/cam/marker_detection.h
 eigen3/Eigen/Dense
 -
@@ -65,8 +63,6 @@ cam/marker_detection.h
 /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/marker_detection.h
 cam/p3p.hpp
 /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/p3p.hpp
-cam/debug.h
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/debug.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h

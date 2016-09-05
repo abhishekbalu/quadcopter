@@ -43,7 +43,7 @@ unsigned char* bufb,* buf;
 blob* blp;
 int nblobs,nobjects;
 
-
+ofstream cam_yaw_outputfile;
 ofstream cam_outputfile;
 ofstream laser_outputfile;
 int toggle_first_pose = 0;
@@ -122,12 +122,24 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		    quad_pose.pose_updated = 0;
 		quad_poses_msg.poses.push_back(quad_pose);
 		if(quad_pose.name == "unknown" || quad_pose.name == "frame0"){
+		//Always save the first pose for convenience sake
 		if(toggle_first_pose == 0){
 			first_pose = quad_pose;
 toggle_first_pose = 1;
 			}
+#ifdef VERBOSE
+//we kind of only  want yaw
+			printf("YAW: %f\n", yaw*(180.0/PI));
+#endif			
+			#ifdef LASER_COMPARE
 			quad_pose.position.x = first_pose.position.x - quad_pose.position.x;
 			quad_pose.position.y = first_pose.position.y - quad_pose.position.y;
+			#endif
+			//Write yaw to a csv file
+			std::stringstream yss;
+			yss <<  yaw*(180.0/PI);
+			std::string ys = yss.str();
+			cam_yaw_outputfile << ys << endl;			
 			//Write to a csv file
 			std::stringstream ss;
 			ss << quad_pose.position.x << "," << quad_pose.position.y << "," << quad_pose.position.z << "," << roll << "," << pitch << "," << yaw;
@@ -159,14 +171,15 @@ void getLaser(geometry_msgs::PoseStamped data) {
 	LaserVec(0) = data.pose.position.x;
 	LaserVec(1) = data.pose.position.y;
 	LaserVec = RLaser2Cam * LaserVec;
+	double laser_yaw=atan2(2*(data.pose.orientation.w*data.pose.orientation.z + data.pose.orientation.x*data.pose.orientation.y),(1 - 2*(data.pose.orientation.y*data.pose.orientation.y + data.pose.orientation.z*data.pose.orientation.z)));
 	#ifdef VERBOSE
-		ROS_INFO("LASER_X: [%f], LASER_Y: [%f]", data.pose.position.x, data.pose.position.y);
+		ROS_INFO("LASER_X: [%f], LASER_Y: [%f] LASER_YAW: %f", data.pose.position.x, data.pose.position.y, laser_yaw * (180.0/PI));
 	#endif
 	msg = data;
 	msg.pose.position.x = -LaserVec(0);
 	msg.pose.position.y = LaserVec(1);
         std::stringstream ss;
-	ss << msg.pose.position.x << "," << msg.pose.position.y;
+	ss << msg.pose.position.x << "," << msg.pose.position.y << "," << laser_yaw;
 	std::string s = ss.str();
 	cam_outputfile << s << endl;
 	cout << s << endl;
@@ -182,6 +195,7 @@ int main(int argc, char** argv){
     bufb = get_binary_image();
     blp = get_blobs();
     initialize_markers();
+    cam_yaw_outputfile.open("yaw_cam_data.csv");
     cam_outputfile.open("cam_data.csv");
     laser_outputfile.open("laser_data.csv");
     //intialize ROS

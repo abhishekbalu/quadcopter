@@ -1144,13 +1144,13 @@ void UsbCam::set_auto_focus(int value)
     }
     else
     {
-      ROS_INFO("V4L2_CID_FOCUS_AUTO is not supported");
+      //ROS_INFO("V4L2_CID_FOCUS_AUTO is not supported");
       return;
     }
   }
   else if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
   {
-    ROS_INFO("V4L2_CID_FOCUS_AUTO is not supported");
+    //ROS_INFO("V4L2_CID_FOCUS_AUTO is not supported");
     return;
   }
   else

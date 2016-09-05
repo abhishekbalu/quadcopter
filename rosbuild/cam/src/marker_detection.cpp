@@ -20,8 +20,8 @@
 #include "cam/marker_detection.h"
 #include "cam/p3p.hpp"
 //Verbose
-#include "cam/debug.h" //Comment or uncomment this for verbose
-#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
+//#include "cam/debug.h" //Comment or uncomment this for verbose
+//#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 //Namespaces
 using namespace Eigen;
 using namespace std;
@@ -75,7 +75,7 @@ double kx1=0.0000055,kx2=2e-10,ky1=0.0000020,ky2=0.0;
 double theta_calib = 0.00;
 double szx=0.4,szy=0.4, szLED=0.08;
 double thsz=1;
-double thd=400; //20*20
+double thd=400; //Originally 20*20, now 25*25
 int nx = 640;
 int ny = 480;
 double objQuad[]={0.22,0.0,0.0, 0.0,0.22,0.0, 0.08,0.08,0.00, 0.0,0.0,0.25, 0.04,0.04,0.04};
