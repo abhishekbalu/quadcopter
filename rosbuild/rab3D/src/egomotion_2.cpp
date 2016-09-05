@@ -1,14 +1,13 @@
-/* === System includes === */
+//C++ Includes
 #include <iostream>
 #include <string.h>
 #include <math.h>
 
 /* === Local includes === */
 #include "egomotion_2.h"
-
+//Namespaces
 using namespace std;
-
-//defines
+//Macros
 #define GRAVITY 9.81
 #define THRUST_SCALE 0.07170
 #define ABS(x) (((x)>0)?(x):-(x))
@@ -73,7 +72,8 @@ void egomotion_init(double dt, double dt_max, double w_th, double w_roll, double
 
 	//decide how many elements in the vector are necessary to make the computations neccessary for a lag specified in the lag variable
 	lag_count = (int)(lag/dt);
-	if(lag_count == 0) lag_on = 0;
+	if(lag_count == 0) 
+		lag_on = 0;
 
 	//static dynamic matrices (only include thrust predictions)
 	A1_self << 1 , 0 , 0 , dt ,
@@ -148,12 +148,11 @@ egomotion* egomotion_init_structure(){
 }
 int counter = 0;
 //egomotion predictions
-void egomotion_predict_self()
-{
+void egomotion_predict_self(){
 
 	//check IMU data - no IMU data will invalidate the entire predticion
-	if( (stamp_imu != stamp_imu_old) && (ros::Time::now().toSec() - imu_last_time <= g_dt_max) )
-	{
+	if( (stamp_imu != stamp_imu_old) && (ros::Time::now().toSec() - imu_last_time <= g_dt_max) ){
+		
 		MatrixXd u(3,1);
 
 		//get cosines and signs with compensations
@@ -236,8 +235,8 @@ void egomotion_update_OF_self(double vx, double vy){ //NOTE: we assume these vel
 }
 
 //convert to flying frame (some problems will occurr if the with bad roll and pitch)
-void egomotion_convert_to_flying_frame(VectorXd& x, MatrixXd& P)
-{
+void egomotion_convert_to_flying_frame(VectorXd& x, MatrixXd& P){
+	
 	//check IMU data - no IMU data will invalidate the entire operation (basically the object is assumed not to need a rotation)
 	if( (stamp_imu != stamp_imu_old) || (ros::Time::now().toSec() - imu_last_time <= g_dt_max) ){
 
