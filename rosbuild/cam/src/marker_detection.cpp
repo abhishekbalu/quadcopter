@@ -20,7 +20,7 @@
 #include "cam/marker_detection.h"
 #include "cam/p3p.hpp"
 //Verbose
-//#include "cam/debug.h" //Comment or uncomment this for verbose
+#include "cam/debug.h" //Comment or uncomment this for verbose
 //#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 //Namespaces
 using namespace Eigen;
@@ -72,7 +72,7 @@ int nmarkers=0;
 double fx=470,fy=490; //focal distance guess?
 double cx=320,cy=240; //center x, center y should be 320 and 240
 double kx1=0.0000055,kx2=2e-10,ky1=0.0000020,ky2=0.0;
-double theta_calib = 0.00;
+double theta_calib = 0.00; //is it radians? this is like the camera pitch
 double szx=0.4,szy=0.4, szLED=0.08;
 double thsz=1;
 double thd=400; //Originally 20*20, now 25*25
@@ -185,9 +185,7 @@ std::vector<marker>* get_markers(){
 }
 
 int detect_markers(int no){ //This function extracts markers from blobs
-	//GET THE BLOBS
-	//blobs = get_blobs(); //from blob_detection
-    std::copy(get_blobs(), get_blobs() + no, std::begin(blobs));
+    std::copy(get_blobs(), get_blobs() + no, std::begin(blobs)); //get the blobs
     #ifdef VERBOSE
         printf("Total number of blobs - valid or invalid %i\n", no);
     #endif
@@ -199,7 +197,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
     for(int k=0;k<no;k++){
         if(blobs[k].valid == 2){
             #ifdef VERBOSE
-		//This is printing correctly, 4 blobs at a time
+		        //This is printing correctly, 4 blobs at a time
                 //printf("A valid blob!\n");
             #endif
             dx1=(blobs[k].x-cx);
@@ -220,38 +218,26 @@ int detect_markers(int no){ //This function extracts markers from blobs
 	}
 	//algorithm
     for(int i1=0;i1<no;i1++){
-        if(blobs[i1].valid!=2) //Get first blob
-        	continue; //skip i1
-        /*#ifdef VERBOSE
-            printf("Passed first blob!\n");
-        #endif*/
+        if(blobs[i1].valid!=2) //Get first valid blob
+        	continue; //get the values and go to find the second blob
         x1=blobs[i1].x;
-        _y1=blobs[i1].y;
+        _y1=blobs[i1].y; //_y1 is necessary because y1 is a std function
         sz1=blobs[i1].size;
         for(int i2=i1+1;i2<no;i2++){
             if(blobs[i2].valid!=2) //Get second blob
-            	continue; //skip i2
-            /*#ifdef VERBOSE
-                printf("Passed second blob!\n");
-            #endif*/
+            	continue; 
             x2=blobs[i2].x;
             y2=blobs[i2].y;
             sz2=blobs[i2].size;
             for(int i3=i2+1;i3<no;i3++){
                 if(blobs[i3].valid!=2) //Get third blob
-                	continue; //skip i3
-                /*#ifdef VERBOSE
-                    printf("Passed third blob!\n");
-                #endif*/
+                	continue; 
                 x3=blobs[i3].x;
                 y3=blobs[i3].y;
                 sz3=blobs[i3].size;
                 for(int i4=i3+1;i4<no;i4++){
                     if(blobs[i4].valid!=2) //Get forth blob
                     	continue; //skip i4
-                    /*#ifdef VERBOSE
-                        printf("Passed fourth blob!\n");
-                    #endif*/
                     x4=blobs[i4].x;
                     y4=blobs[i4].y;
                     sz4=blobs[i4].size;
@@ -267,13 +253,14 @@ int detect_markers(int no){ //This function extracts markers from blobs
                     d2=a2*a2+b2*b2;
                     d3=a3*a3+b3*b3;
                     avg=(2*2)*avg/(M_PI*M_PI);
-		    printf("d1: %f, d2: %f, d3 %f, avg*thd: %f\n", d1,d2,d3,avg*thd);
+		            printf("d1: %f, d2: %f, d3 %f, avg*thd: %f\n", d1,d2,d3,avg*thd);
                     if((d1<avg*thd) &&(d2<avg*thd) &&(d3<avg*thd)){
                     	//evaluate hypothesis
                             cost=100000;
                             vx[0]=x1; vx[1]=x2; vx[2]=x3; vx[3]=x4;
                             vy[0]=_y1; vy[1]=y2; vy[2]=y3; vy[3]=y4;
-                         	for(int j1=0;j1<4;j1++){
+                         	printf("Evaluating hypothesis...\n");
+                            for(int j1=0;j1<4;j1++){
                                 for(int j2=0;j2<4;j2++){
                                     if(j2==j1) 
                                     	continue;
@@ -301,7 +288,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
 											feature_vectors.col(0) = feature_vectors.col(0)/feature_vectors.col(0).norm();
 											feature_vectors.col(1) = feature_vectors.col(1)/feature_vectors.col(1).norm();
 											feature_vectors.col(2) = feature_vectors.col(2)/feature_vectors.col(2).norm();
-
+                                            printf("computing p3p...\n");
 											//perform algorithm
 											status = P3P::computePoses(feature_vectors, world_points, solutions);
                                             #ifdef SHOW_MATRICES

@@ -2,15 +2,14 @@
 #include <iostream>
 #include <string.h>
 #include <math.h>
-
-/* === Local includes === */
+#include <stdlib.h>
+//Local includes
 #include "egomotion_2.h"
 //Namespaces
 using namespace std;
-//Macros
-#define GRAVITY 9.81
-#define THRUST_SCALE 0.07170
-#define ABS(x) (((x)>0)?(x):-(x))
+//Constant
+const double GRAVITY = 9.81;
+const double THRUST_SCALE = 0.07170;
 
 //egomotion states
 MatrixXd x_self(7,1);
@@ -203,9 +202,9 @@ void egomotion_update_Z_self(double z){
 	if(self_initialized){
 		if( (ros::Time::now().toSec() - timer_z) > 0.2)
 	                self_initialized = 0;
-		if(ABS(z - x_self(0)) > 0.35)
+		if(abs(z - x_self(0)) > 0.35)
 			return ;
-		if(ABS(z - z_old) > 0.10)
+		if(abs(z - z_old) > 0.10)
 			return;
 	}
 

@@ -12,7 +12,7 @@
     <param name="contrast" value="30"/>
     <param name="brightness" value="0"/>
     <param name="saturation" value="30"/>
-    <!--<param name="autofocus" value ="true"/>-->
+    <param name="autofocus" value="false"/>
 
     <rosparam param="D">[-0.6456499977259089, 0.3228713125057513, 0.019448187528495982, -0.01989959476561274, 0.0000]</rosparam>
     <rosparam param="K">[532.9944751028978, 0.000000, 318.90412979374145, 0.000000, 539.8797286579085, 235.08798673761146, 0.000000, 0.000000, 1.000000]</rosparam>
