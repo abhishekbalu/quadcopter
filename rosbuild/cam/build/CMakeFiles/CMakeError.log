@@ -1,26 +1,25 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec632001037/fast"
-make[1]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec632001037.dir/build.make CMakeFiles/cmTryCompileExec632001037.dir/build
-make[2]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec632001037.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec632001037.dir/CheckSymbolExists.c.o   -c /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTryCompileExec632001037
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec632001037.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec632001037.dir/CheckSymbolExists.c.o  -o cmTryCompileExec632001037 -rdynamic 
-CMakeFiles/cmTryCompileExec632001037.dir/CheckSymbolExists.c.o: In function `main':
-CheckSymbolExists.c:(.text+0xe): undefined reference to `pthread_create'
-CheckSymbolExists.c:(.text+0x12): undefined reference to `pthread_create'
-make[2]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec738582386/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec738582386.dir/build.make CMakeFiles/cmTryCompileExec738582386.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec738582386.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec738582386.dir/CheckSymbolExists.c.o   -c /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec738582386
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec738582386.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec738582386.dir/CheckSymbolExists.c.o  -o cmTryCompileExec738582386 -rdynamic 
+CMakeFiles/cmTryCompileExec738582386.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[2]: *** [cmTryCompileExec632001037] Error 1
-make[1]: *** [cmTryCompileExec632001037/fast] Error 2
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[2]: *** [cmTryCompileExec738582386] Error 1
+make[1]: *** [cmTryCompileExec738582386/fast] Error 2
 
-File /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -36,46 +35,46 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec842503669/fast"
-make[1]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec842503669.dir/build.make CMakeFiles/cmTryCompileExec842503669.dir/build
-make[2]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec842503669.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec842503669.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-2.8/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec842503669
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec842503669.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec842503669.dir/CheckFunctionExists.c.o  -o cmTryCompileExec842503669 -rdynamic -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4165134233/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec4165134233.dir/build.make CMakeFiles/cmTryCompileExec4165134233.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4165134233.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec4165134233.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec4165134233
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4165134233.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec4165134233.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4165134233 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
-make[2]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[1]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
 collect2: error: ld returned 1 exit status
-make[2]: *** [cmTryCompileExec842503669] Error 1
-make[1]: *** [cmTryCompileExec842503669/fast] Error 2
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[2]: *** [cmTryCompileExec4165134233] Error 1
+make[1]: *** [cmTryCompileExec4165134233/fast] Error 2
 
 
 Determining if the Q_WS_WIN exist failed with the following output:
-Change Dir: /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec2366960656/fast"
-make[1]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2366960656.dir/build.make CMakeFiles/cmTryCompileExec2366960656.dir/build
-make[2]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2366960656.dir/CheckSymbolExists.cxx.o
-/usr/bin/c++    -std=c++11  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec2366960656.dir/CheckSymbolExists.cxx.o -c /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function 'int main(int, char**)':
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: 'Q_WS_WIN' was not declared in this scope
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1699303132/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1699303132.dir/build.make CMakeFiles/cmTryCompileExec1699303132.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1699303132.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -std=c++11  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec1699303132.dir/CheckSymbolExists.cxx.o -c /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
    return ((int*)(&Q_WS_WIN))[argc];
                    ^
-make[2]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[2]: *** [CMakeFiles/cmTryCompileExec2366960656.dir/CheckSymbolExists.cxx.o] Error 1
-make[1]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[1]: *** [cmTryCompileExec2366960656/fast] Error 2
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[2]: *** [CMakeFiles/cmTryCompileExec1699303132.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec1699303132/fast] Error 2
 
-File /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+File /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
 /* */
 #include <QtCore/qglobal.h>
 
@@ -91,25 +90,25 @@ int main(int argc, char** argv)
 }
 
 Determining if the Q_WS_QWS exist failed with the following output:
-Change Dir: /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec2685438241/fast"
-make[1]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2685438241.dir/build.make CMakeFiles/cmTryCompileExec2685438241.dir/build
-make[2]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2685438241.dir/CheckSymbolExists.cxx.o
-/usr/bin/c++    -std=c++11  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec2685438241.dir/CheckSymbolExists.cxx.o -c /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function 'int main(int, char**)':
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: 'Q_WS_QWS' was not declared in this scope
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3169479629/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3169479629.dir/build.make CMakeFiles/cmTryCompileExec3169479629.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3169479629.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -std=c++11  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec3169479629.dir/CheckSymbolExists.cxx.o -c /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
    return ((int*)(&Q_WS_QWS))[argc];
                    ^
-make[2]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[2]: *** [CMakeFiles/cmTryCompileExec2685438241.dir/CheckSymbolExists.cxx.o] Error 1
-make[1]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[1]: *** [cmTryCompileExec2685438241/fast] Error 2
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[2]: *** [CMakeFiles/cmTryCompileExec3169479629.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec3169479629/fast] Error 2
 
-File /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+File /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
 /* */
 #include <QtCore/qglobal.h>
 
@@ -125,25 +124,25 @@ int main(int argc, char** argv)
 }
 
 Determining if the Q_WS_MAC exist failed with the following output:
-Change Dir: /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
+Change Dir: /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec3582270196/fast"
-make[1]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3582270196.dir/build.make CMakeFiles/cmTryCompileExec3582270196.dir/build
-make[2]: Entering directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3582270196.dir/CheckSymbolExists.cxx.o
-/usr/bin/c++    -std=c++11  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec3582270196.dir/CheckSymbolExists.cxx.o -c /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function 'int main(int, char**)':
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: 'Q_WS_MAC' was not declared in this scope
+Run Build Command:"/usr/bin/make" "cmTryCompileExec679912853/fast"
+make[1]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec679912853.dir/build.make CMakeFiles/cmTryCompileExec679912853.dir/build
+make[2]: Entering directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec679912853.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -std=c++11  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec679912853.dir/CheckSymbolExists.cxx.o -c /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
    return ((int*)(&Q_WS_MAC))[argc];
                    ^
-make[2]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[2]: *** [CMakeFiles/cmTryCompileExec3582270196.dir/CheckSymbolExists.cxx.o] Error 1
-make[1]: Leaving directory `/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
-make[1]: *** [cmTryCompileExec3582270196/fast] Error 2
+make[2]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[2]: *** [CMakeFiles/cmTryCompileExec679912853.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory `/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec679912853/fast] Error 2
 
-File /home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+File /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
 /* */
 #include <QtCore/qglobal.h>
 

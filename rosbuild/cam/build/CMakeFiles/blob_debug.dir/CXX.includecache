@@ -34,7 +34,7 @@ ros/assert.h
 std_msgs/Header.h
 ../msg_gen/cpp/include/cam/std_msgs/Header.h
 
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/blob_detection_debug.cpp
+/home/pedro/quadcopter/rosbuild/cam/src/blob_detection_debug.cpp
 stdio.h
 -
 string
@@ -58,13 +58,13 @@ sensor_msgs/fill_image.h
 std_msgs/Int8.h
 -
 cam/detections.h
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/detections.h
+/home/pedro/quadcopter/rosbuild/cam/src/cam/detections.h
 cam/blob_detection.h
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/blob_detection.h
+/home/pedro/quadcopter/rosbuild/cam/src/cam/blob_detection.h
 cam/debug.h
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/cam/debug.h
+/home/pedro/quadcopter/rosbuild/cam/src/cam/debug.h
 yaml-cpp/yaml.h
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
+/home/pedro/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -208,6 +208,8 @@ set
 list
 -
 boost/shared_ptr.hpp
+-
+boost/make_shared.hpp
 -
 boost/weak_ptr.hpp
 -

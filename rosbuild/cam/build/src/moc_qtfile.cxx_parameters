@@ -1,5 +1,5 @@
--I/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/include
--I/home/ubuntu/PedroAbreu/quadcopter/rosbuild/quad_msgs/msg_gen/cpp/include
+-I/home/pedro/quadcopter/rosbuild/cam/include
+-I/home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/cpp/include
 -I/opt/ros/indigo/include
 -I/usr/include
 -I/usr/include/qt4
@@ -8,10 +8,11 @@
 -I/usr/include/qt4/QtXml
 -I/usr/include/qt4/QtCore
 -DROS_PACKAGE_NAME="cam"
+-D$<$<NOT:$<CONFIG:Debug>>:QT_NO_DEBUG>
 -DQT_OPENGL_LIB
 -DQT_GUI_LIB
 -DQT_XML_LIB
 -DQT_CORE_LIB
 -o
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/src/moc_qtfile.cxx
-/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/qtfile.h
+/home/pedro/quadcopter/rosbuild/cam/build/src/moc_qtfile.cxx
+/home/pedro/quadcopter/rosbuild/cam/src/qtfile.h

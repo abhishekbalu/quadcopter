@@ -33,7 +33,6 @@ time stamp
 # 0: no frame
 # 1: global frame
 string frame_id
-
 """
   __slots__ = ['header','pos_x','pos_y','size','blob_count']
   _slot_types = ['std_msgs/Header','float32[]','float32[]','float32[]','int64']
@@ -108,8 +107,8 @@ string frame_id
       pattern = '<%sf'%length
       buff.write(struct.pack(pattern, *self.size))
       buff.write(_struct_q.pack(self.blob_count))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
   def deserialize(self, str):
     """
@@ -193,8 +192,8 @@ string frame_id
       pattern = '<%sf'%length
       buff.write(self.size.tostring())
       buff.write(_struct_q.pack(self.blob_count))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
   def deserialize_numpy(self, str, numpy):
     """

@@ -1,10 +1,10 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/lib/libgtest_main.pdb"
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/lib/libgtest_main.so"
+  "/home/pedro/quadcopter/rosbuild/cam/lib/libgtest_main.pdb"
+  "/home/pedro/quadcopter/rosbuild/cam/lib/libgtest_main.so"
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang CXX)
-  INCLUDE(CMakeFiles/gtest_main.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang CXX)
+  include(CMakeFiles/gtest_main.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

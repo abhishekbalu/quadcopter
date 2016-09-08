@@ -54,7 +54,6 @@ float64 x
 float64 y
 float64 z
 float64 w
-
 """
   __slots__ = ['header','poses']
   _slot_types = ['std_msgs/Header','cam/QuadPose[]']
@@ -126,8 +125,8 @@ float64 w
         _x = _v2
         buff.write(_struct_4d.pack(_x.x, _x.y, _x.z, _x.w))
         buff.write(_struct_b.pack(val1.pose_updated))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
   def deserialize(self, str):
     """
@@ -224,8 +223,8 @@ float64 w
         _x = _v6
         buff.write(_struct_4d.pack(_x.x, _x.y, _x.z, _x.w))
         buff.write(_struct_b.pack(val1.pose_updated))
-    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
-    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
   def deserialize_numpy(self, str, numpy):
     """

@@ -1,17 +1,17 @@
 # The set of languages for which implicit dependencies are needed:
-SET(CMAKE_DEPENDS_LANGUAGES
+set(CMAKE_DEPENDS_LANGUAGES
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
-SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/blob_detection_debug_qt.cpp" "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o"
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/src/moc_qtfile.cxx" "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o"
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/src/qtfile.cpp" "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o"
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pedro/quadcopter/rosbuild/cam/src/blob_detection_debug_qt.cpp" "/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.o"
+  "/home/pedro/quadcopter/rosbuild/cam/build/src/moc_qtfile.cxx" "/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir/src/moc_qtfile.cxx.o"
+  "/home/pedro/quadcopter/rosbuild/cam/src/qtfile.cpp" "/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir/src/qtfile.cpp.o"
   )
-SET(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
-SET(CMAKE_TARGET_DEFINITIONS
+set(CMAKE_TARGET_DEFINITIONS
   "QT_CORE_LIB"
   "QT_GUI_LIB"
   "QT_NO_DEBUG"
@@ -21,14 +21,14 @@ SET(CMAKE_TARGET_DEFINITIONS
   )
 
 # Targets to which this target links.
-SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/cam/build/CMakeFiles/blob_detection.dir/DependInfo.cmake"
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/blob_detection.dir/DependInfo.cmake"
   )
 
 # The include file search paths:
-SET(CMAKE_C_TARGET_INCLUDE_PATH
+set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
-  "/home/ubuntu/PedroAbreu/quadcopter/rosbuild/quad_msgs/msg_gen/cpp/include"
+  "/home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/cpp/include"
   "/opt/ros/indigo/include"
   "/usr/include/qt4"
   "/usr/include/qt4/QtOpenGL"
@@ -37,6 +37,6 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/qt4/QtCore"
   "../msg_gen/cpp/include"
   )
-SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+set(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+set(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
