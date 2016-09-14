@@ -175,7 +175,7 @@ void read_file(){
         line_num++;
       }
       #ifdef VERBOSE
-        printf("sl:%d sh:%d vl:%d vh:%d hl:%d hh:%d toggle:%d \n", sl, sh, vl, vh, hl, hh, toggle);
+        //printf("sl:%d sh:%d vl:%d vh:%d hl:%d hh:%d toggle:%d \n", sl, sh, vl, vh, hl, hh, toggle);
       #endif
       myfile.close();  
     }

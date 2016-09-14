@@ -63,7 +63,9 @@
 
 #include <eigen3/Eigen/Dense>
 #include <math.h>
+#include <complex>
 #include <stdlib.h>
+#include <stdio.h>
 
 namespace P3P_test
 {

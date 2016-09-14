@@ -1,11 +1,14 @@
 //C++ Libraries
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <vector>
 #include <list>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <complex>
+#include <cmath>
 #include <string>
 #include <algorithm>    // std::max
 #include <eigen3/Eigen/Dense>
@@ -21,12 +24,14 @@
 #include "cam/p3p.hpp"
 //Verbose
 #include "cam/debug.h" //Comment or uncomment this for verbose
-//#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
+#define SHOW_MATRICES 1 //Comment or uncomment this for verbose matrices
 //Namespaces
 using namespace Eigen;
 using namespace std;
 using namespace P3P_test;
 using namespace YAML;
+
+
 //Macros
 #define MAX_FEATURES 500
 #define MAX_MARKERS 50
@@ -49,29 +54,30 @@ const char* unknown = "unknown";
 //................................DETECT MARKER VARIABLES.......................
 //Really should read this crap from a file
 
-int red_blob_sl = 60;
-int red_blob_sh = 110;
-int red_blob_hl = 350;
-int red_blob_hh = 390;
-int red_blob_vl = 50;
-int red_blob_vh = 101;
+int red_blob_sl = 40;
+int red_blob_sh = 100;
+int red_blob_hl = 0;
+int red_blob_hh = 19;
+int red_blob_vl = 15;
+int red_blob_vh = 100;
 
 int blue_blob_sl = 50;
-int blue_blob_sh = 110;
-int blue_blob_hl = 180;
-int blue_blob_hh = 250;
-int blue_blob_vl = 80;
-int blue_blob_vh = 110;
+int blue_blob_sh = 100;
+int blue_blob_hl = 192;
+int blue_blob_hh = 238;
+int blue_blob_vl = 50;
+int blue_blob_vh = 100;
 
-std::string blue_blob_settings = "params/blue_blob_settings.yaml";
-std::string red_blob_settings = "params/red_blob_settings.yaml";
-std::string tracking_params = "params/tracking_params.yaml";
+std::string blue_blob_settings = "params/blue_blob_settings_home.yaml";
+std::string red_blob_settings = "params/red_blob_settings_home.yaml";
+std::string tracking_params = "params/tracking_params_home.yaml";
 
 int objcnt=0;
 int nmarkers=0;
 
+int line_num = 0;
 
-double fx=330,fy=350; //focal distance guess?
+double fx=350,fy=390; //focal distance guess?
 
 
 double cx=320,cy=240; //center x, center y should be 320 and 240
@@ -82,10 +88,10 @@ double thsz=1;
 double thd=400; //Originally 20*20, now 25*25
 int nx = 640;
 int ny = 480;
-double objQuad[]={0.22,0.0,0.0, 0.0,0.22,0.0, 0.08,0.08,0.00, 0.0,0.0,0.25, 0.04,0.04,0.04};
+double objQuad[]={0.22,0.00,0.00,0.00,0.22,0.00, 0.08,0.08,0.00, 0.00,0.00,0.25, 0.04,0.04,0.1};
 double dt_min = 0.1;
 
-double COST_CNST = 0.1;
+double COST_CNST = 0.10;
 
 double avg;
 double radius,dx1,dx2,dx3,dx4,dy1,dy2,dy3,dy4;
@@ -132,14 +138,56 @@ ostream& operator<<(ostream& out, const blob& b){ //operator overloading to prin
     return out;
 }
 
+void read_file(){
+    string line;
+    ifstream myfile ("marker_calib.txt");
+    if(line_num == 7)
+      line_num = 0;
+    if (myfile.is_open()){
+      while(myfile.good()){
+        getline(myfile, line);
+        switch(line_num){
+          case 0:
+            fx = atof(line.c_str());
+            break;
+          case 1:
+            fy = atof(line.c_str());
+            break;
+          case 2:
+            kx1 = atof(line.c_str());
+            break;
+          case 3:
+            ky1 = atof(line.c_str());
+            break;
+          case 4:
+            kx2 = atof(line.c_str());
+            break;
+          case 5:
+            ky2 = atof(line.c_str());
+            break;
+          case 6:
+            thd = atof(line.c_str());
+            break;
+          default:
+            break;
+        }
+        line_num++;
+      }
+      #ifdef VERBOSE
+        printf("fx:%f fy:%f kx1:%f ky1:%f kx2:%f ky2:%f thd:%f \n",
+         fx, fy, kx1, kx2, kx2, ky2, thd);
+      #endif
+      myfile.close();  
+    }
+}
 
 void readTrackingParams(std::string file){
 	YAML::Node root = YAML::LoadFile(file);
 	try{
-		fx = root["fx"].as<int>();
-		fy = root["fy"].as<int>();
-		cx = root["hl"].as<int>();
-		cy = root["hh"].as<int>();
+		fx = root["fx"].as<double>();
+		fy = root["fy"].as<double>();
+		cx = root["hl"].as<double>();
+		cy = root["hh"].as<double>();
 		kx1 = root["kx1"].as<double>();
 		kx2 = root["kx2"].as<double>();
 		ky1 = root["ky1"].as<double>();
@@ -265,6 +313,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
 					if((4*avg-sz1-sz2-sz3-sz4)/avg<thsz)
 					//if((abs(sz1/avg - avg)<thsz)&&(abs(sz2/avg - avg)<thsz)&&(abs(sz3/avg - avg)<thsz)&&(abs(sz3/avg - avg)<thsz))
 					{
+						printf("A\n");
 						//distance threshold
 						a1=x1-x2; b1=y1_-y2;
 						a2=x1-x3; b2=y1_-y3;
@@ -273,8 +322,10 @@ int detect_markers(int no){ //This function extracts markers from blobs
 						d2=a2*a2+b2*b2;
 						d3=a3*a3+b3*b3;
 						avg=(2*2)*avg/(PI*PI);
+						printf("d1: %f, d2: %f, d3: %f, avg*thd: %f\n", d1, d2, d3, avg*thd);
 						if((d1<avg*thd)&&(d2<avg*thd)&&(d3<avg*thd))
 						{
+							printf("B\n");
 							//evaluate hypothesis
 							cost=100000;
 							vx[0]=x1; vx[1]=x2; vx[2]=x3; vx[3]=x4;
@@ -303,13 +354,25 @@ int detect_markers(int no){ //This function extracts markers from blobs
 										   feature_vectors.col(0) = feature_vectors.col(0)/feature_vectors.col(0).norm();
 										   feature_vectors.col(1) = feature_vectors.col(1)/feature_vectors.col(1).norm();
 										   feature_vectors.col(2) = feature_vectors.col(2)/feature_vectors.col(2).norm();
+										   #ifdef SHOW_MATRICES
+										   		   printf("--------SOLUTIONS-------\n");
+											   	   cout << solutions(0) << endl;
+											   	   cout << solutions(1) << endl;
+											   	   cout << solutions(2) << endl;
+											   	   cout << solutions(3) << endl;
+												   printf("--------FEATURE VECTORS-------\n");
+												   cout << feature_vectors << endl;
+												   printf("--------ORIGINAL--------\n");
+												   cout << world_points << endl;
+												   printf("----------------\n");
+										   #endif
 										   /*feature_vectors.col(0)<<(vx[j1]-cx)/fx,(vy[j1]-cy)/fy,1;
 										   feature_vectors.col(1)<<(vx[j2]-cx)/fx,(vy[j2]-cy)/fy,1;
 										   feature_vectors.col(2)<<(vx[j3]-cx)/fx,(vy[j3]-cy)/fy,1;
 										   feature_vectors.col(0) = feature_vectors.col(0)/feature_vectors.col(0).norm();
 										   feature_vectors.col(1) = feature_vectors.col(1)/feature_vectors.col(1).norm();
 										   feature_vectors.col(2) = feature_vectors.col(2)/feature_vectors.col(2).norm();*/
-										   
+									
 										   //perform algorithm
 										   status=P3P::computePoses(feature_vectors,world_points,solutions);
 
@@ -329,11 +392,17 @@ int detect_markers(int no){ //This function extracts markers from blobs
 											   markerh2DPredicted<<fx*(markerh3DProjected(0)/markerh3DProjected(2))+cx,fy*(markerh3DProjected(1)/markerh3DProjected(2))+cy,1;
 											   lcost=(markerh2DPredicted-markerh2D).norm();
 											   #ifdef SHOW_MATRICES
-												   printf("--------PREDICTED-------\n")
+											   	   printf("--------SOLUTIONS-------\n");
+											   	   cout << Tl << endl;
+											   	   cout << solutions(0) << endl;
+											   	   cout << solutions(1) << endl;
+											   	   cout << solutions(2) << endl;
+											   	   cout << solutions(3) << endl;
+												   printf("--------PREDICTED-------\n");
 												   cout << markerh2DPredicted << endl;
-												   printf("--------ORIGINAL--------\n")
+												   printf("--------ORIGINAL--------\n");
 												   cout << markerh2D << endl;
-												   printf("----------------\n")
+												   printf("----------------\n");
 											   #endif
 											   //is this the smallest cost so far?
 											   if(lcost<cost){
@@ -435,9 +504,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
 								if(objcnt<=51){
 									for(int k=0;k<no;k++){
 										if(blobs[k].valid==2){
-											#ifdef VERBOSE
-												printf("Blob, X: %f Y: %f Size: %f", blobs[k].x, blobs[k].y, blobs[k].size);
-											#endif
+											cout << blobs[k] << endl;
 										}
 									}
 								}
@@ -454,7 +521,7 @@ int detect_markers(int no){ //This function extracts markers from blobs
 }
 
 int track_markers(unsigned char* buf,unsigned int step, int width, int height){
-
+	//read_file();
 	nx = width;
 	ny = height;
 
@@ -464,7 +531,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
 
 	int erase[MAX_MARKERS];
 	//int lochm=170,lochM=230,locsm=40,locsM=101,locvm=40,locvM=101;
-	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height, BLUE, 1);
+	int no = detect_blobs(buf, step, blue_blob_vl, blue_blob_vh, blue_blob_hl, blue_blob_hh, blue_blob_sl, blue_blob_sh, 0,nx,0,ny, width, height, BLUE, 0);
 	#ifdef VERBOSE
 		printf("Ran detec_blobs inside track_markers: %d\n", no);
 	#endif
@@ -553,7 +620,7 @@ int track_markers(unsigned char* buf,unsigned int step, int width, int height){
 	//Search for red blobs
 	for(vector<marker>::iterator it = marker_list.begin() ; it != marker_list.end(); ++it){
 		localization=0;
-		detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height, RED,1);
+		detect_blobs(buf,step,red_blob_sl,red_blob_sh,red_blob_hl,red_blob_hh,red_blob_vl,red_blob_vh,it->imx0_LED,it->imxf_LED,it->imy0_LED,it->imyf_LED, width, height, RED,0);
 		
 		int old_state=it->state;
 		double rp, pmin;

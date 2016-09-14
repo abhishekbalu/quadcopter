@@ -20,6 +20,9 @@
 #include <quad_msgs/EstimateSingle.h>
 #include <quad_msgs/EstimateMulti.h>
 
+#include <cam/QuadPose.h>
+
+
 #include "egomotion_2.h"
 //Namespaces
 using namespace std;
@@ -111,6 +114,13 @@ void OpticalFlow_callback_px4_full(const px_comm::OpticalFlow::ConstPtr& optical
 	egomotion_update_OF_self(vx1, vy1);
 }
 
+void Cam_callback_full(const const cam::QuadPose::ConstPtr& data){
+	cam::QuadPose pose_transformed = cam_frame_transformations(data);
+	double yaw_world_frame=atan2(2*(pose_transformed.orientation.w*pose_transformed.orientation.z + pose_transformed.orientation.x*pose_transformed.orientation.y),(1 - 2*(pose_transformed.orientation.y*pose_transformed.orientation.y + pose_transformed.orientation.z*pose_transformed.orientation.z)));
+	egomotion_update_cam_self(pose_transformed.position.x, pose_transformed.position.y, pose_transformed.position.z, yaw_world_frame);
+
+}
+
 int main(int argc, char* argv[]){
 	ros::init(argc, argv, "RaB3D");
 	ros::NodeHandle nh;
@@ -128,6 +138,7 @@ int main(int argc, char* argv[]){
 	ros::Subscriber control_input = nh.subscribe("mavros/setpoint_raw/attitude",1,control_callback_px4);
 	ros::Subscriber OpticalFlow_sub = nh.subscribe("/px4flow/opt_flow", 1, OpticalFlow_callback_px4_full);
 	
+	ros::Subscriber cam_sub = nh.subscribe("/cam_pose", 1, Cam_callback_full);
 	
 
 	//initialize loop rate
