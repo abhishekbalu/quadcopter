@@ -444,15 +444,17 @@ cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data){
 	double marker_z_cam_frame = data.position.z;
 	//Create a vector
 	Eigen::Vector3d marker_cam_frame(marker_x_cam_frame,marker_y_cam_frame,marker_z_cam_frame);
+	const double cam_roll_flying_frame = 0.0;
+	const double cam_pitch_flying_frame = 0.0;
+	const double cam_yaw_flying_frame = 135.0;
 
-
-	geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(roll,pitch,135*PI/180.0); //Fixed yaw transform to go from cam frame to flying frame
+	geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(0,0,cam_yaw_flying_frame*PI/180.0); //Fixed yaw transform to go from cam frame to flying frame
 	Matrix3d cam_flying_frame_rot=Eigen::Quaternion<double>(q.w,q.x,q.y,q.z).matrix();
 
 
 	//Create the translation vector
-	const double cam_x_flying_frame = 0.08;
-	const double cam_y_flying_frame = 0.08;
+	const double cam_x_flying_frame = 0.095;
+	const double cam_y_flying_frame = 0.09;
 	const double cam_z_flying_frame = 0.0;
 	Eigen::Vector3d cam_flying_frame_translation(cam_x_flying_frame,cam_y_flying_frame,cam_z_flying_frame);
 
