@@ -74,11 +74,22 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rab3D/Rab3DObj.h
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/quad_msgs/manifest.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/cam/manifest.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /opt/ros/indigo/share/mavros_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/generated
+../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/cam/msg_gen/generated
 ../msg_gen/cpp/include/rab3D/Rab3DMsg.h: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rab3D/Rab3DMsg.h"
@@ -108,11 +119,22 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rab3D/Rab3DObj.h
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/geometry_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/sensor_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/quad_msgs/manifest.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/image_transport/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/diagnostic_msgs/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/diagnostic_updater/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/self_test/package.xml
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/cam/manifest.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/actionlib_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /opt/ros/indigo/share/mavros_msgs/package.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/manifest.xml
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/generated
+../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/cam/msg_gen/generated
 ../msg_gen/cpp/include/rab3D/Rab3DObj.h: /home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/rab3D/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rab3D/Rab3DObj.h"

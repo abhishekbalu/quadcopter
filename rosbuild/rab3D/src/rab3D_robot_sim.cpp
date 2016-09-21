@@ -83,8 +83,9 @@ void initialize_estimator(std::string param_name){
 	w_yaw *= w_yaw; 
 	v_Z *= v_Z; 
 	v_OF *= v_OF; //change to variances
+	double v_cam = 0.1;
 	//egomotion_init(1.0/node_rate, 10.0/node_rate, w_th, w_yaw, v_Z, v_OF, lag, mass);
-	egomotion_init(1.0/node_rate, 10.0/node_rate, w_th, w_roll, w_pitch, w_change, w_yaw, v_Z, v_OF, lag, mass, calib_slope, calib_bias);
+	egomotion_init(1.0/node_rate, 10.0/node_rate, w_th, w_roll, w_pitch, w_change, w_yaw, v_Z, v_cam, v_OF, lag, mass, calib_slope, calib_bias);
 
 	node_rate += 5; //assume that the rate is high enough, just add a bit more so the loop wont get behind schedule
 
@@ -114,11 +115,10 @@ void OpticalFlow_callback_px4_full(const px_comm::OpticalFlow::ConstPtr& optical
 	egomotion_update_OF_self(vx1, vy1);
 }
 
-void Cam_callback_full(const const cam::QuadPose::ConstPtr& data){
+void Cam_callback_full(const cam::QuadPose::ConstPtr& data){
 	cam::QuadPose pose_transformed = cam_frame_transformations(data);
 	double yaw_world_frame=atan2(2*(pose_transformed.orientation.w*pose_transformed.orientation.z + pose_transformed.orientation.x*pose_transformed.orientation.y),(1 - 2*(pose_transformed.orientation.y*pose_transformed.orientation.y + pose_transformed.orientation.z*pose_transformed.orientation.z)));
 	egomotion_update_cam_self(pose_transformed.position.x, pose_transformed.position.y, pose_transformed.position.z, yaw_world_frame);
-
 }
 
 int main(int argc, char* argv[]){

@@ -10,6 +10,7 @@
   <url>http://ros.org/wiki/rab3D</url>
   <depend package="roscpp"/>
   <depend package="quad_msgs"/>
+  <depend package="cam"/>
   <depend package="asctec_hl_comm"/>
   <depend package="mavros_msgs"/>
   <depend package="geometry_msgs"/>

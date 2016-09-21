@@ -479,8 +479,8 @@ clean: CMakeFiles/marker_detection.dir/clean
 
 # All Build rule for target.
 CMakeFiles/node.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-CMakeFiles/node.dir/all: CMakeFiles/p3p.dir/all
 CMakeFiles/node.dir/all: CMakeFiles/blob_detection.dir/all
+CMakeFiles/node.dir/all: CMakeFiles/p3p.dir/all
 CMakeFiles/node.dir/all: CMakeFiles/marker_detection.dir/all
 	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/depend
 	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/build

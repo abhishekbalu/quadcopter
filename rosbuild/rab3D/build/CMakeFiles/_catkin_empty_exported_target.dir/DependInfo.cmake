@@ -17,6 +17,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
   "/home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/cpp/include"
+  "/home/pedro/quadcopter/rosbuild/cam/msg_gen/cpp/include"
   "/home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/include"
   "/home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/msg/cpp"
   "/home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/srv/cpp"

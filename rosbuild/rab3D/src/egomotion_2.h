@@ -2,9 +2,9 @@
 #define __EGOMOTION__
 
 //C++ Includes
-#include <Eigen/Dense>
-#include <Eigen/LU>
-#include <Eigen/Geometry>
+#include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/LU>
+#include <eigen3/Eigen/Geometry>
 
 //ROS libraries
 #include <ros/ros.h>
@@ -32,7 +32,7 @@ typedef struct t_egomotion {
 } egomotion;
 
 //initialize egomotion estimation variables
-void egomotion_init(double dt, double dt_max, double w_th, double w_roll, double w_pitch, double w_change, double w_yaw, double v_Z, double v_OF, double lag, double mass, double calib_slope, double calib_bias);
+void egomotion_init(double dt, double dt_max, double w_th, double w_roll, double w_pitch, double w_change, double w_yaw, double v_Z, double v_cam, double v_OF, double lag, double mass, double calib_slope, double calib_bias);
 
 //initialize an egomotion structure
 egomotion* egomotion_init_structure();
@@ -47,9 +47,6 @@ void egomotion_update_OF_self(double vx, double vy); //NOTE: we assume these vel
 //convert to flying frame (some problems will occurr if the with bad roll and pitch)
 void egomotion_convert_to_flying_frame(VectorXd& x, MatrixXd& P);
 
-//adds the egomotion prediction (should be the last predict to be made)
-void egomotion_predict(egomotion* ego, VectorXd& x1, MatrixXd& P1);
-
 //callbacks
 void angle_callback(const sensor_msgs::Imu::ConstPtr& imu);
 
@@ -62,6 +59,9 @@ quad_msgs::EstimateSingle* egomotion_get_ros_message();
 double get_slef_roll();
 double get_self_pitch();
 double get_self_yaw();
+
+void egomotion_update_cam_self(double x, double y, double z, double yaw);
+cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data);
 
 #endif
 //__EGOMOTION__
