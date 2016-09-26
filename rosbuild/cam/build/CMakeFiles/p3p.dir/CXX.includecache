@@ -11,11 +11,7 @@ eigen3/Eigen/Dense
 -
 math.h
 -
-complex
--
 stdlib.h
--
-stdio.h
 -
 
 /home/pedro/quadcopter/rosbuild/cam/src/p3p.cpp

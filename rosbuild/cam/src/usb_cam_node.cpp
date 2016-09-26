@@ -157,55 +157,6 @@ public:
     node_.param("autofocus", autofocus_, false); // enable/disable autofocus
 
 
-
-    {
-      XmlRpc::XmlRpcValue double_list;
-      info_.height = height; //image_height_;
-      info_.width = width; //image_width_;
-
-      node_.param("camera_frame_id", img_.header.frame_id, std::string("head_camera"));
-      info_.header.frame_id = img_.header.frame_id;
-
-      node_.getParam("K", double_list);
-      if ((double_list.getType() == XmlRpc::XmlRpcValue::TypeArray) &&
-          (double_list.size() == 9)) {
-        for (int i=0; i<9; i++) {
-          ROS_ASSERT(double_list[0].getType() == XmlRpc::XmlRpcValue::TypeDouble);
-          info_.K[i] = double_list[i];
-        }
-      }
-
-      node_.getParam("D", double_list);
-
-      if ((double_list.getType() == XmlRpc::XmlRpcValue::TypeArray)) {
-        info_.D.resize(double_list.size());
-        for (int i=0; i<double_list.size(); i++) {
-          ROS_ASSERT(double_list[0].getType() == XmlRpc::XmlRpcValue::TypeDouble);
-          info_.D[i] = double_list[i];
-        }
-      }
-
-      node_.getParam("R", double_list);
-
-      if ((double_list.getType() == XmlRpc::XmlRpcValue::TypeArray) &&
-          (double_list.size() == 9)) {
-        for (int i=0; i<9; i++) {
-          ROS_ASSERT(double_list[0].getType() == XmlRpc::XmlRpcValue::TypeDouble);
-          info_.R[i] = double_list[i];
-        }
-      }
-
-      node_.getParam("P", double_list);
-
-      if ((double_list.getType() == XmlRpc::XmlRpcValue::TypeArray) &&
-          (double_list.size() == 12)) {
-        for (int i=0; i<12; i++) {
-          ROS_ASSERT(double_list[0].getType() == XmlRpc::XmlRpcValue::TypeDouble);
-          info_.P[i] = double_list[i];
-        }
-      }
-    }
-
     printf("usb_cam video_device set to [%s]\n", video_device_name_.c_str());
     printf("usb_cam io_method set to [%s]\n", io_method_name_.c_str());
     printf("usb_cam image_width set to [%d]\n", image_width_);

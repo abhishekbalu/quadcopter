@@ -4,10 +4,8 @@ using namespace std;
 
 int _vl = 49;
 int _vh = 100;
-
 int _hl = 192;
 int _hh = 238;
-
 int _sl = 50;
 int _sh = 100;
 

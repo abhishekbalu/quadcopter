@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <cam/QuadPose.h>
 #include <geometry_msgs/Quaternion.h>
 //Local includes
@@ -12,6 +13,7 @@ using namespace std;
 using namespace Eigen;
 
 #define PI 3.14159
+#define DUMMY 1
 //Constant
 const double GRAVITY = 9.81;
 const double THRUST_SCALE = 0.07170;
@@ -28,12 +30,12 @@ MatrixXd dP_self(7,7);
 MatrixXd Pold_self(7,7);
 
 //egomotion ekf matrices and variables
-//MatrixXd A1_self(4,4);
-MatrixXd A2_self(4,3);
+MatrixXd A1_self(7,7);
+MatrixXd A2_self(7,4);
 MatrixXd At_self(7,7);
 
-MatrixXd Wt_self(7,7);
-MatrixXd Q_self(6,6);
+MatrixXd Wt_self(4,2); //We have thrust and yaw error
+MatrixXd Q_self(2,2);
 
 MatrixXd C_OF_self(2,7);
 MatrixXd R_OF_self(2,2);
@@ -65,8 +67,8 @@ double z_old;
 
 //egomotion actuation variables
 double aux_x, aux_y, aux_z, aux_w;
-double roll, pitch, yaw, g_omega, yaw_angular_vel;
-double F;
+double roll=0.0, pitch=0.0, yaw, g_omega=0.0;
+double F=0.0;
 double robot_mass, robot_calib_slope, robot_calib_bias;
 
 //ROS message for which egomotion will be transmitted
@@ -102,6 +104,7 @@ void egomotion_init(double dt, double dt_max, double w_th, double w_roll, double
 	At_self.block(0,0,4,4) << A1_self; //initialize most of what we can now
 	At_self.block(4,4,3,3) << MatrixXd::Identity(3,3);
 	At_self.block(4,0,3,4) << MatrixXd::Zero(3,4);*/
+	P_self << MatrixXd::Identity(7,7);
 	A2_self << 0.5*dt*dt, 0        , 0        , 0,
 			   0	    , 0.5*dt*dt, 0        , 0,
 			   0        , 0        , 0.5*dt*dt, 0,
@@ -116,15 +119,10 @@ void egomotion_init(double dt, double dt_max, double w_th, double w_roll, double
 			   0,0,0,0 ,1 ,0 ,0,
 			   0,0,0,0 ,0 ,1 ,0,
 			   0,0,0,0 ,0 ,0 ,1; 
-	Wt_self.block(4,3,3,3) << MatrixXd::Identity(3,3);
 
-
-	Q_self = MatrixXd::Zero(7,7);
-	Q_self(0,0) = w_roll*w_roll; 
-	Q_self(1,1) = w_pitch*w_pitch; 
-	Q_self(2,2) = w_th*w_th;
-	Q_self(3,3) = Q_self(4,4) = Q_self(5,5) = w_change*w_change;
-	Q_self(6,6) = w_yaw;
+	Q_self = MatrixXd::Zero(2,2);
+	Q_self(0,0) = w_th*w_th;
+	Q_self(1,1) = w_yaw;
 	//matrices related to angular velocities will be created during the prediction step
 
 	//matrix that applies the self state to the relative estimates (relative states are 7 dimentional)
@@ -152,9 +150,9 @@ void egomotion_init(double dt, double dt_max, double w_th, double w_roll, double
 	              0  , v_OF;
 	C_Z_self  << 0, 0, 1, 0, 0, 0, 0;
 	R_Z_self  << v_Z;
-
-	C_Cam_self << -1, -1, 0, 0, 0, 0, -1,
-				   1,  1, 0, 0, 0, 0, -1,
+	//This is a bad initialization both of the cam and the state itself
+	C_Cam_self <<  -1, 0, 0, 0, 0, 0, -1,
+				   0,  -1, 0, 0, 0, 0, 1,
 				   0,  0, -1, 0, 0, 0, 0,
 				   0,  0, 0, 0, 0, 0, 1;
 	R_Cam_self << v_cam, 0, 0, 0,
@@ -193,21 +191,30 @@ int counter = 0;
 void egomotion_predict_self(){
 
 	//check IMU data - no IMU data will invalidate the entire predticion
-	if( (stamp_imu != stamp_imu_old) && (ros::Time::now().toSec() - imu_last_time <= g_dt_max) ){
-		
+	//if( (stamp_imu != stamp_imu_old) && (ros::Time::now().toSec() - imu_last_time <= g_dt_max) ){
+		printf("Predict_self...\n");
 		MatrixXd u(4,1);
 
 		//get cosines and signs with compensations
-		double cp = cos(roll);
-		double sp = sin(roll);
-		double ct = cos(pitch);
-		double st = sin(pitch);
-
+		double croll = cos(roll);
+		double sroll = sin(roll);
+		double cpitch = cos(pitch);
+		double spitch = sin(pitch);
+		double cyaw = cos(x_self(6)); //yaw is part of the state
+		double syaw = sin(x_self(6));
 		//compensate thrust
 		double F1 = F;
 
 		//as long there are measurements and as long as those measurements are close to each other)
 		//create actuation vector
+
+		//For testing
+		u(0)=0; 
+		u(1)=0; 
+		u(2)=0;
+		u(3)=0;
+		F1 = 0;
+		
 		if((stamp_thrust == stamp_thrust_old) && (ros::Time::now().toSec() - thrust_last_time > g_dt_max)){
 			u(0)=0; 
 			u(1)=0; 
@@ -215,7 +222,7 @@ void egomotion_predict_self(){
 			u(3)=0;
 			F1 = 0;
 		}else{
-			u << st*cp*F1, -sp*F1, ct*cp*F1, yaw_angular_vel; 
+			u << (croll*cyaw*spitch+sroll*syaw)*F1, (-cyaw*sroll+croll*spitch*syaw)*F1, (croll*cpitch)*F1, g_omega; 
 			u(2) = u(2) - GRAVITY;
 
 		} //egomotion vector
@@ -229,6 +236,11 @@ void egomotion_predict_self(){
 			F1 = 0; 
 			return;
 		}
+		u(0)=0; 
+		u(1)=0; 
+		u(2)=0;
+		u(3)=0;
+		F1 = 0;
 
 		//create new dynamics matrices
 		//MatrixXd B(3,3); 
@@ -251,21 +263,29 @@ void egomotion_predict_self(){
 		MatrixXd v1 = A1_self*x_self + A2_self*u;
 		x_self.block(0,0,4,1) = v1;
 		*/
-		MatrixXd adjust(7,7);
-		adjust << 0, 0, 0, 0, 0, 0, 0.5*g_dt*g_dt*F1*(sin(roll)*cos(x_self(6)) - cos(roll)*sin(pitch)*sin(x_self(6))),
-				  0, 0, 0, 0, 0, 0, 0.5*g_dt*g_dt*F1*(sin(roll)*sin(x_self(6)) + cos(roll)*sin(pitch)*cos(x_self(6))),
+		MatrixXd dB(7,7); //This matrix adjust is A2_self * d(R_yaw*R_pitch*R_roll * (0,0,F,0))/dx
+		dB << 0, 0, 0, 0, 0, 0, 0.5*g_dt*g_dt*F1*(sroll*cyaw - croll*spitch*syaw),
+				  0, 0, 0, 0, 0, 0, 0.5*g_dt*g_dt*F1*(sroll*syaw + croll*spitch*cyaw),
 				  0, 0, 0, 0, 0, 0, 0,
-				  0, 0, 0, 0, 0, 0, g_dt*F1*(sin(roll)*cos(x_self(6)) - cos(roll)*sin(pitch)*sin(x_self(6))),
-				  0, 0, 0, 0, 0, 0, g_dt*F1*(sin(roll)*sin(x_self(6)) + cos(roll)*sin(pitch)*cos(x_self(6))),
+				  0, 0, 0, 0, 0, 0, g_dt*F1*(sroll*cyaw - croll*spitch*syaw),
+				  0, 0, 0, 0, 0, 0, g_dt*F1*(sroll*syaw + croll*spitch*cyaw),
 				  0, 0, 0, 0, 0, 0, 0,
-				  0, 0, 0, 0, 0, 0, 0;
+				  0, 0, 0, 0, 0, 0, 0;                                                                                                             
 
-		//Update A matrix
-		At_self = At_self + adjust;
+		//Actualize the W error matrix
+		Wt_self << cyaw*croll*spitch + sroll*syaw, 0,
+				   -cyaw*sroll+croll*spitch*syaw, 0,
+				   croll*cpitch, 0,
+				   0, 1;
 
 		//Kalman equations
 		x_self = At_self * x_self + A2_self * u;
-		P_self = At_self*P_self*At_self.transpose() + Wt_self*Q_self*Wt_self.transpose();
+
+		//Update A matrix to use for second kalman equation
+		A1_self = At_self + dB;
+
+		//P_self = A1_self*P_self*A1_self.transpose() + Wt_self*Q_self*Wt_self.transpose();
+		P_self = A1_self*P_self*A1_self.transpose();
 		//differences
 		dP_self = P_self + Pold_self; 
 		dx_self = x_self - xold_self;
@@ -274,7 +294,7 @@ void egomotion_predict_self(){
 		stamp_thrust_old = stamp_thrust; //measurement was consumed
 		//since the imu measurement was not consumed in a predict, it does not get updated
 
-	}
+	//}
 
 }
 
@@ -368,7 +388,7 @@ void angle_callback(const sensor_msgs::Imu::ConstPtr& imu){
 	aux_z=imu->orientation.z;
 	aux_w=imu->orientation.w;
 	g_omega=imu->angular_velocity.z;
-	yaw_angular_vel=imu->angular_velocity.x;
+	//yaw_angular_vel=imu->angular_velocity.x;
 
 	//compute quadrotor roll and pitch
 	roll=atan2(2*(aux_w*aux_x+aux_z*aux_y),(1-2*(aux_x*aux_x+aux_y*aux_y)));
@@ -409,7 +429,7 @@ quad_msgs::EstimateSingle* egomotion_get_ros_message(){
 	//s_self.perturbation.x=x_self(4); s_self.perturbation.y=x_self(5); s_self.perturbation.z=x_self(6);
 	
 	geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(roll,pitch,x_self(6));
-
+	printf("Quad yaw in the world frame: %f\n", x_self(6)*180.0/PI);
 	s_self.orientation.x=q.x; s_self.orientation.y=q.y; //WRNING: we assume orientation from imu is always related to the world frame (which is not the case)
 	s_self.orientation.z=q.z; s_self.orientation.w=q.w;
 
@@ -431,41 +451,50 @@ double get_self_yaw() {return yaw;}
 
 
 
-
-
-
-
-/*CAMERA*/
-cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data){
-//X, Y, Z
-	//Get the Values
+//Transforms from camera frame to world/flying frame
+cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data, int initialize){
+//--------------------GET DATA----------------------------
+	//Get the Values from the data
 	double marker_x_cam_frame = data->position.x;
 	double marker_y_cam_frame = data->position.y;
 	double marker_z_cam_frame = data->position.z;
-	//Create a vector
+	//Create a vector from the above
 	Eigen::Vector3d marker_cam_frame(marker_x_cam_frame,marker_y_cam_frame,marker_z_cam_frame);
-	const double cam_roll_flying_frame = 0.0;
-	const double cam_pitch_flying_frame = 0.0;
-	const double cam_yaw_flying_frame = 135.0;
-
-	geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(0,0,cam_yaw_flying_frame*PI/180.0); //Fixed yaw transform to go from cam frame to flying frame
+//----------------------CAM_FRAME->FLYING_FRAME--------------------------
+	//Constant rotations from cam frame to flying frame
+	const double CAM_ROLL_FLYING_FRAME = 0.0;
+	const double CAM_PITCH_FLYING_FRAME = 0.0;
+	const double CAM_YAW_FLYING_FRAME = 0.0;
+	//Fixed yaw transform to go from cam frame to flying frame
+	geometry_msgs::Quaternion q = tf::createQuaternionMsgFromRollPitchYaw(CAM_ROLL_FLYING_FRAME*PI/180.0,
+																		  CAM_PITCH_FLYING_FRAME*PI/180.0,
+																		  CAM_YAW_FLYING_FRAME*PI/180.0); 
+	//Create the camera rotation matrix from the quaternion 
 	Matrix3d cam_flying_frame_rot=Eigen::Quaternion<double>(q.w,q.x,q.y,q.z).matrix();
-
+	
 
 	//Create the translation vector
-	const double cam_x_flying_frame = 0.095;
-	const double cam_y_flying_frame = 0.09;
-	const double cam_z_flying_frame = 0.0;
-	Eigen::Vector3d cam_flying_frame_translation(cam_x_flying_frame,cam_y_flying_frame,cam_z_flying_frame);
+	const double CAM_X_FLYING_FRAME = 0.0; //Real life 0.095
+	const double CAM_Y_FLYING_FRAME = 0.0; //real life 0.09
+	const double CAM_Z_FLYING_FRAME = 0.0;
+	Eigen::Vector3d cam_flying_frame_translation(CAM_X_FLYING_FRAME,CAM_Y_FLYING_FRAME,CAM_Z_FLYING_FRAME);
+//------------------------MARKER IN THE FLYING FRAME------------------------
 
 	Eigen::Vector3d marker_flying_frame = cam_flying_frame_rot*marker_cam_frame + cam_flying_frame_translation;
 
 	double marker_x_flying_frame = marker_flying_frame(0);
 	double marker_y_flying_frame = marker_flying_frame(1);
 	double marker_z_flying_frame = marker_flying_frame(2);
+	cout <<"Marker position in the flying frame: " << marker_flying_frame << endl;
+	
 //ROLL, PITCH, YAW
 	//Use data quaternion
-	Matrix3d marker_rot_cam_frame=Eigen::Quaternion<double>(data->orientation.w,data->orientation.x,data->orientation.y,data->orientation.z).matrix();
+//-----------------------GET DATA------------------
+	Matrix3d marker_rot_cam_frame=Eigen::Quaternion<double>(data->orientation.w,
+															data->orientation.x,
+															data->orientation.y,
+															data->orientation.z).matrix();
+	
 
 	Matrix3d marker_rot_flying_frame = cam_flying_frame_rot * marker_rot_cam_frame;
 	Eigen::Quaternion<double> conv(marker_rot_flying_frame);
@@ -473,57 +502,105 @@ cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data){
 	double quat_y = conv.y();
 	double quat_z = conv.z();
 	double quat_w = conv.w();
+	printf("Marker rotation in the flying frame: x: %f, y: %f, z: %f, w: %f\n", quat_x, quat_y, quat_z, quat_w);
+
+
 	double marker_roll_flying_frame=atan2(2*(quat_w * quat_x + quat_z * quat_y) , (1-2*(quat_x * quat_x + quat_y * quat_y)) );
 	double marker_pitch_flying_frame=asin(2*(quat_w * quat_y - quat_x * quat_z));
 	double marker_yaw_flying_frame=atan2(2*(quat_w * quat_z + quat_x * quat_y) , (1 - 2*(quat_y * quat_y + quat_z * quat_z)));
-	/*
-	//Convert to world frame?
-	//Get yaw
-	const ROLL_MARKER_WORLD_FRAME = 0 * (180)/PI;
-	const PITCH_MARKER_WORLD_FRAME = 0 * (180)/PI;
-	const YAW_MARKER_WORLD_FRAME = 0 * (180)/PI;
-	geometry_msgs::Quaternion q_new = tf::createQuaternionMsgFromRollPitchYaw(ROLL_MARKER_WORLD_FRAME,PITCH_MARKER_WORLD_FRAME,YAW_MARKER_WORLD_FRAME); //Fixed yaw transform to go from cam frame to flying frame
-	Matrix3d marker_world_frame_rot=Eigen::Quaternion<double>(q_new.w,q_new.x,q_new.y,q_new.z).matrix();
-	Matrix3d Y = marker_rot_flying_frame * marker_world_frame_rot.inverse();
-	double yaw_world_frame = acos(Y(0,0));
-	Matrix3d rotation_yaw_world_frame << cos(yaw_world_frame), -sin(yaw_world_frame), 0,
-										 sin(yaw_world_frame), cos(yaw_world_frame), 0,
-										 0,					   0,					1;
-	//Get x,y,z
-	const double X_MARKER_WORLD_FRAME = 0.0;
-	const double Y_MARKER_WORLD_FRAME = 0.0;
-	const double Z_MARKER_WORLD_FRAME = 0.0;
-	Eigen::Vector3d marker_world_frame_translation(X_MARKER_WORLD_FRAME,Y_MARKER_WORLD_FRAME,Z_MARKER_WORLD_FRAME);
-	Vector3d marker_world_frame = -rotation_yaw_world_frame * marker_flying_frame + marker_world_frame_translation;
-	double marker_x_world_frame = marker_world_frame(0);
-	double marker_y_world_frame = marker_world_frame(1);
-	double marker_z_world_frame = marker_world_frame(2);
-	*/
-	cam::QuadPose return_pose;
-	return_pose.position.x = marker_x_flying_frame;
-	return_pose.position.y = marker_y_flying_frame;
-	return_pose.position.z = marker_z_flying_frame;
-	geometry_msgs::Quaternion return_quaternion = tf::createQuaternionMsgFromRollPitchYaw(0,0,marker_yaw_flying_frame);
-	return_pose.orientation = return_quaternion;
-	return return_pose;
+	//printf("Marker yaw to the flying frame: %f\n", marker_yaw_flying_frame*180.0/PI);
+	if(initialize == 1){
+		//Convert to world frame?
+		//Get yaw
+		const double ROLL_MARKER_WORLD_FRAME = 0.0 * (180.0)/PI;
+		const double PITCH_MARKER_WORLD_FRAME = 0.0 * (180.0)/PI;
+		const double YAW_MARKER_WORLD_FRAME = 0.0 * (180.0)/PI;
+		geometry_msgs::Quaternion q_new = tf::createQuaternionMsgFromRollPitchYaw(ROLL_MARKER_WORLD_FRAME,PITCH_MARKER_WORLD_FRAME,YAW_MARKER_WORLD_FRAME); //Fixed yaw transform to go from cam frame to flying frame
+		Matrix3d marker_world_frame_rot=Eigen::Quaternion<double>(q_new.w,q_new.x,q_new.y,q_new.z).matrix();
+		Matrix3d Y = marker_rot_flying_frame * marker_world_frame_rot.inverse();
+
+		//Get x,y,z
+		double yaw_world_frame = acos(Y(0,0));
+
+		cout << yaw_world_frame << endl;
+		//yaw_world_frame=PI;
+		Matrix3d rotation_yaw_world_frame;
+		rotation_yaw_world_frame << cos(yaw_world_frame), -sin(yaw_world_frame), 0,
+											 sin(yaw_world_frame), cos(yaw_world_frame), 0,
+											 0,					   0,					1;
+				cout << Y << endl;
+				cout << rotation_yaw_world_frame << endl;
+		const double X_MARKER_WORLD_FRAME = 1.0;
+		const double Y_MARKER_WORLD_FRAME = 1.0;
+		const double Z_MARKER_WORLD_FRAME = 0.0;
+		Eigen::Vector3d marker_world_frame_translation(X_MARKER_WORLD_FRAME,Y_MARKER_WORLD_FRAME,Z_MARKER_WORLD_FRAME);
+		Vector3d marker_world_frame = marker_world_frame_translation-rotation_yaw_world_frame * marker_flying_frame;
+		double marker_x_world_frame = marker_world_frame(0);
+		double marker_y_world_frame = marker_world_frame(1);
+		double marker_z_world_frame = marker_world_frame(2);
+		cam::QuadPose return_pose;
+		return_pose.position.x = marker_x_world_frame;
+		return_pose.position.y = marker_y_world_frame;
+		return_pose.position.z = marker_z_world_frame;
+		geometry_msgs::Quaternion return_quaternion = tf::createQuaternionMsgFromRollPitchYaw(0,0,yaw_world_frame);
+		return_pose.orientation.x = quat_x;
+		return_pose.orientation.y = quat_y;
+		return_pose.orientation.z = quat_z;
+		return_pose.orientation.w = quat_w;
+		return_pose.name = data->name;
+		x_self << return_pose.position.x,return_pose.position.y,return_pose.position.z,0,0,0,yaw_world_frame;
+		C_Cam_self << -cos(x_self(6)), -sin(x_self(6)), 0, 0, 0, 0, -sin(x_self(6))*(X_MARKER_WORLD_FRAME - x_self(0)) + cos(x_self(6)) *(Y_MARKER_WORLD_FRAME - x_self(1)),
+				  sin(x_self(6)) , -cos(x_self(6)), 0, 0, 0, 0,  -cos(x_self(6))*(X_MARKER_WORLD_FRAME - x_self(0)) - sin(x_self(6))*(Y_MARKER_WORLD_FRAME - x_self(1)),
+				  0        , 0        ,-1, 0, 0, 0,  0                                                                         ,
+				  0        , 0        , 0, 0, 0 ,0,  1                                                                         ;
+
+		cout << return_pose << endl;
+
+		return return_pose;
+
+	}else{
+		cam::QuadPose return_pose;
+		return_pose.position.x = marker_x_flying_frame;
+		return_pose.position.y = marker_y_flying_frame;
+		return_pose.position.z = marker_z_flying_frame;
+		geometry_msgs::Quaternion return_quaternion = tf::createQuaternionMsgFromRollPitchYaw(0,0,marker_yaw_flying_frame);
+		return_pose.orientation.x = quat_x;
+		return_pose.orientation.y = quat_y;
+		return_pose.orientation.z = quat_z;
+		return_pose.orientation.w = quat_w;
+		return_pose.name = data->name;
+		return return_pose;
+
+	}
+
 }
 
 
 void egomotion_update_cam_self(double x, double y, double z, double _yaw){ //NOTE: we assume these values to be in the flying frame (they should be after the callback)
 	//Get these from the MCS
-	const double X_MARKER_WORLD_FRAME = 0.0;
-	const double Y_MARKER_WORLD_FRAME = 0.0;
+	const double X_MARKER_WORLD_FRAME = 1.0;
+	const double Y_MARKER_WORLD_FRAME = 1.0;
 	const double Z_MARKER_WORLD_FRAME = 0.0;
-
-	C_Cam_self << -cos(_yaw), -sin(_yaw), 0, 0, 0, 0, -sin(_yaw)*(X_MARKER_WORLD_FRAME - x) + cos(_yaw) *(Y_MARKER_WORLD_FRAME - y),
-				  sin(_yaw) , -cos(_yaw), 0, 0, 0, 0,  -cos(_yaw)*(X_MARKER_WORLD_FRAME - x) - sin(_yaw)*(Y_MARKER_WORLD_FRAME - y),
+	//use x_self or measurements
+	C_Cam_self << -cos(x_self(6)), -sin(x_self(6)), 0, 0, 0, 0, -sin(x_self(6))*(X_MARKER_WORLD_FRAME - x_self(0)) + cos(x_self(6)) *(Y_MARKER_WORLD_FRAME - x_self(1)),
+				  sin(x_self(6)) , -cos(x_self(6)), 0, 0, 0, 0,  -cos(x_self(6))*(X_MARKER_WORLD_FRAME - x_self(0)) - sin(x_self(6))*(Y_MARKER_WORLD_FRAME - x_self(1)),
 				  0        , 0        ,-1, 0, 0, 0,  0                                                                         ,
 				  0        , 0        , 0, 0, 0 ,0,  1                                                                         ;
+
 	MatrixXd R1 = C_Cam_self*P_self*C_Cam_self.transpose() + R_Cam_self;
 	MatrixXd cam_v(4,1); 
-	cam_v << x,y,z,_yaw;
+	cam_v << x,y,z,_yaw; //These are the measurements in the flying frame
+	
+
+	cout << "........C_CAM........." << endl;
+		cout << cam_v << endl;
 	K_Cam_self = P_self*C_Cam_self.transpose()*R1.inverse();
+	cout << "................." << endl;
+	cout << K_Cam_self*(cam_v - C_Cam_self*x_self) << endl;
 	x_self = x_self + K_Cam_self*(cam_v - C_Cam_self*x_self);
+	cout << "........X_SELF........." << endl;
+	cout << x_self << endl;
+	cout << "................." << endl;
 	P_self = (eye7_self - K_Cam_self*C_Cam_self)*P_self;
 	timer_cam = ros::Time::now().toSec();
 }

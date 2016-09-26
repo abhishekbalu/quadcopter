@@ -219,6 +219,8 @@ math.h
 -
 stdlib.h
 -
+stdio.h
+-
 cam/QuadPose.h
 -
 geometry_msgs/Quaternion.h

@@ -3,7 +3,6 @@
 
 CMakeFiles/node.dir/src/node.cpp.o
  ../include/cam/blob_detection.h
- ../include/cam/debug.h
  ../include/cam/marker_detection.h
  ../msg_gen/cpp/include/cam/QuadPose.h
  ../msg_gen/cpp/include/cam/QuadPoseList.h

@@ -61,7 +61,7 @@ double get_self_pitch();
 double get_self_yaw();
 
 void egomotion_update_cam_self(double x, double y, double z, double yaw);
-cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data);
+cam::QuadPose cam_frame_transformations(const cam::QuadPose::ConstPtr& data, int initialize);
 
 #endif
 //__EGOMOTION__

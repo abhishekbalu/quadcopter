@@ -8,8 +8,6 @@
 
 ../include/cam/blob_detection.h
 
-../include/cam/debug.h
-
 ../include/cam/marker_detection.h
 eigen3/Eigen/Dense
 -
@@ -137,8 +135,6 @@ cam/blob_detection.h
 /home/pedro/quadcopter/rosbuild/cam/src/cam/blob_detection.h
 cam/marker_detection.h
 /home/pedro/quadcopter/rosbuild/cam/src/cam/marker_detection.h
-cam/debug.h
-/home/pedro/quadcopter/rosbuild/cam/src/cam/debug.h
 yaml-cpp/yaml.h
 /home/pedro/quadcopter/rosbuild/cam/src/yaml-cpp/yaml.h
 cam/QuadPose.h

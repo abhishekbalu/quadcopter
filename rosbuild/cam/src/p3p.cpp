@@ -187,8 +187,8 @@ int P3P::computePoses(const Eigen::Matrix3d & feature_vectors, const Eigen::Matr
   // Computation of roots
   Eigen::Matrix<double, 4, 1> realRoots;
 
-  int quartic_rv = P3P::solveQuartic(factors, realRoots);
-  printf("Quartic equations solved sucessfully: %d\n", quartic_rv);
+  P3P::solveQuartic(factors, realRoots);
+
   // Backsubstitution of each solution
   for (int i = 0; i < 4; ++i)
   {
@@ -228,7 +228,7 @@ int P3P::computePoses(const Eigen::Matrix3d & feature_vectors, const Eigen::Matr
     Eigen::Matrix<double, 3, 4> solution;
     solution.block<3, 3>(0, 0) = R;
     solution.col(3) = C;
-    
+
     solutions(i) = solution;
   }
 

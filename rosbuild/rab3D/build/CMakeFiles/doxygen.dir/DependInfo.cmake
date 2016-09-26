@@ -26,7 +26,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/msg_gen/cpp/include"
   "/opt/ros/indigo/include"
   "../msg_gen/cpp/include"
-  "/usr/include/eigen3"
+  "/usr/local/include/eigen3"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 set(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

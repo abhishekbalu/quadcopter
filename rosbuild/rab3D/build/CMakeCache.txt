@@ -194,7 +194,7 @@ DOXYGEN_EXECUTABLE:FILEPATH=/usr/bin/doxygen
 DOXYGEN_FOUND:BOOL=TRUE
 
 //Path to a file.
-EIGEN_INCLUDE_DIR:PATH=/usr/include/eigen3
+EIGEN_INCLUDE_DIR:PATH=/usr/local/include/eigen3
 
 //Path to a program.
 EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
@@ -487,7 +487,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: EIGEN_INCLUDE_DIR
 EIGEN_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //Details about finding Eigen
-FIND_PACKAGE_MESSAGE_DETAILS_Eigen:INTERNAL=[/usr/include/eigen3][v()]
+FIND_PACKAGE_MESSAGE_DETAILS_Eigen:INTERNAL=[/usr/local/include/eigen3][v()]
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.26()]
 //Details about finding PythonInterp
@@ -509,12 +509,12 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-PC_EIGEN_CFLAGS:INTERNAL=-I/usr/include/eigen3
+PC_EIGEN_CFLAGS:INTERNAL=-I/usr/local/include/eigen3
 PC_EIGEN_CFLAGS_I:INTERNAL=
 PC_EIGEN_CFLAGS_OTHER:INTERNAL=
 PC_EIGEN_FOUND:INTERNAL=1
 PC_EIGEN_INCLUDEDIR:INTERNAL=
-PC_EIGEN_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+PC_EIGEN_INCLUDE_DIRS:INTERNAL=/usr/local/include/eigen3
 PC_EIGEN_LDFLAGS:INTERNAL=
 PC_EIGEN_LDFLAGS_OTHER:INTERNAL=
 PC_EIGEN_LIBDIR:INTERNAL=
@@ -524,11 +524,11 @@ PC_EIGEN_LIBS:INTERNAL=
 PC_EIGEN_LIBS_L:INTERNAL=
 PC_EIGEN_LIBS_OTHER:INTERNAL=
 PC_EIGEN_LIBS_PATHS:INTERNAL=
-PC_EIGEN_PREFIX:INTERNAL=
-PC_EIGEN_STATIC_CFLAGS:INTERNAL=-I/usr/include/eigen3
+PC_EIGEN_PREFIX:INTERNAL=/usr/local
+PC_EIGEN_STATIC_CFLAGS:INTERNAL=-I/usr/local/include/eigen3
 PC_EIGEN_STATIC_CFLAGS_I:INTERNAL=
 PC_EIGEN_STATIC_CFLAGS_OTHER:INTERNAL=
-PC_EIGEN_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+PC_EIGEN_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include/eigen3
 PC_EIGEN_STATIC_LDFLAGS:INTERNAL=
 PC_EIGEN_STATIC_LDFLAGS_OTHER:INTERNAL=
 PC_EIGEN_STATIC_LIBDIR:INTERNAL=
@@ -538,7 +538,7 @@ PC_EIGEN_STATIC_LIBS:INTERNAL=
 PC_EIGEN_STATIC_LIBS_L:INTERNAL=
 PC_EIGEN_STATIC_LIBS_OTHER:INTERNAL=
 PC_EIGEN_STATIC_LIBS_PATHS:INTERNAL=
-PC_EIGEN_VERSION:INTERNAL=3.2.0
+PC_EIGEN_VERSION:INTERNAL=3.2.93
 PC_EIGEN_eigen3_INCLUDEDIR:INTERNAL=
 PC_EIGEN_eigen3_LIBDIR:INTERNAL=
 PC_EIGEN_eigen3_PREFIX:INTERNAL=
@@ -553,7 +553,7 @@ PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
 __pkg_config_checked_PC_EIGEN:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1474326614.14
+_rosbuild_cached_flag_time:INTERNAL=1474580462.4
 _roslang_LANGS:INTERNAL=roslisp
 _rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/indigo/share/cpp_common/package.xml;/opt/ros/indigo/share/rostime/package.xml;/opt/ros/indigo/share/roscpp_traits/package.xml;/opt/ros/indigo/share/roscpp_serialization/package.xml;/opt/ros/indigo/share/catkin/package.xml;/opt/ros/indigo/share/genmsg/package.xml;/opt/ros/indigo/share/genpy/package.xml;/opt/ros/indigo/share/message_runtime/package.xml;/opt/ros/indigo/share/gencpp/package.xml;/opt/ros/indigo/share/genlisp/package.xml;/opt/ros/indigo/share/message_generation/package.xml;/opt/ros/indigo/share/rosbuild/package.xml;/opt/ros/indigo/share/rosconsole/package.xml;/opt/ros/indigo/share/std_msgs/package.xml;/opt/ros/indigo/share/rosgraph_msgs/package.xml;/opt/ros/indigo/share/xmlrpcpp/package.xml;/opt/ros/indigo/share/roscpp/package.xml;/opt/ros/indigo/share/geometry_msgs/package.xml;/opt/ros/indigo/share/sensor_msgs/package.xml;/home/pedro/quadcopter/rosbuild/quad_msgs/manifest.xml;/opt/ros/indigo/share/message_filters/package.xml;/opt/ros/indigo/share/class_loader/package.xml;/opt/ros/indigo/share/rospack/package.xml;/opt/ros/indigo/share/roslib/package.xml;/opt/ros/indigo/share/pluginlib/package.xml;/opt/ros/indigo/share/image_transport/package.xml;/opt/ros/indigo/share/diagnostic_msgs/package.xml;/opt/ros/indigo/share/diagnostic_updater/package.xml;/opt/ros/indigo/share/self_test/package.xml;/home/pedro/quadcopter/rosbuild/cam/manifest.xml;/opt/ros/indigo/share/actionlib_msgs/package.xml;/home/pedro/quadcopter/rosbuild/asctec/asctec_mav_framework/asctec_hl_comm/manifest.xml;/opt/ros/indigo/share/mavros_msgs/package.xml;/home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/manifest.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=/home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/generated;/home/pedro/quadcopter/rosbuild/cam/msg_gen/generated;/home/pedro/quadcopter/rosbuild/px-ros-pkg/px_comm/msg_gen/generated

@@ -22,7 +22,7 @@
 #include "cam/detections.h"
 #include "cam/blob_detection.h"
 #include "cam/marker_detection.h"
-#include "cam/debug.h" //Comment or uncomment this for verbose
+//#include "cam/debug.h" //Comment or uncomment this for verbose
 #include "yaml-cpp/yaml.h"
 
 #include "cam/QuadPose.h"
@@ -177,7 +177,7 @@ void getLaser(geometry_msgs::PoseStamped data) {
 	#endif
 	msg = data;
 	msg.pose.position.x = -LaserVec(0);
-	msg.pose.position.y = -LaserVec(1);
+	msg.pose.position.y = LaserVec(1);
         std::stringstream ss;
 	ss << msg.pose.position.x << "," << msg.pose.position.y << "," << laser_yaw;
 	std::string s = ss.str();

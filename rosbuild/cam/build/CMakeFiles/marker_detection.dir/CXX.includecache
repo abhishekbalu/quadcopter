@@ -25,17 +25,11 @@ eigen3/Eigen/Dense
 -
 math.h
 -
-complex
--
 stdlib.h
--
-stdio.h
 -
 
 /home/pedro/quadcopter/rosbuild/cam/src/marker_detection.cpp
 iostream
--
-iomanip
 -
 fstream
 -
@@ -48,10 +42,6 @@ math.h
 stdio.h
 -
 stdlib.h
--
-complex
--
-cmath
 -
 string
 -

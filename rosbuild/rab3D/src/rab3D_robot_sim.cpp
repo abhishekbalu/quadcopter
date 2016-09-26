@@ -29,13 +29,16 @@ using namespace std;
 using namespace boost::interprocess;
 //Macros
 #define PI 3.14159
+//#define TEST_INIT 1
 
 const int MAX_INIT_TIME = 4;
+
+bool state_initialized = 1;
 
 bool info_initialized = 0; //variable indicating if the previous receiver structure is initialized
 vector<int> codes_self; //variable that contains the codes of the emitters that belong to this robot
 int self_robot_index; //variable that indicates the entry of the robot estimation list that corresponds to the robot running this node
-double node_rate; //variable that defines the sensor output rate
+double node_rate=100.0; //variable that defines the sensor output rate
 string robot_self_name; //the name of this robot
 void* values_msg_shared; //memory shared address for the values message
 
@@ -83,7 +86,8 @@ void initialize_estimator(std::string param_name){
 	w_yaw *= w_yaw; 
 	v_Z *= v_Z; 
 	v_OF *= v_OF; //change to variances
-	double v_cam = 0.1;
+	double v_cam = 0.04;
+
 	//egomotion_init(1.0/node_rate, 10.0/node_rate, w_th, w_yaw, v_Z, v_OF, lag, mass);
 	egomotion_init(1.0/node_rate, 10.0/node_rate, w_th, w_roll, w_pitch, w_change, w_yaw, v_Z, v_cam, v_OF, lag, mass, calib_slope, calib_bias);
 
@@ -100,7 +104,7 @@ void OpticalFlow_callback_px4_full(const px_comm::OpticalFlow::ConstPtr& optical
 	//only consider good optical flow measures
 
 	double vx1 = 0;
-        double vy1 = 0;
+    double vy1 = 0;
 	if( optical_flow_msg->quality > 100 ){
 		//compensate from opticalflow frame to quadrotor frame
 		double yaw = -PI/4;
@@ -116,9 +120,25 @@ void OpticalFlow_callback_px4_full(const px_comm::OpticalFlow::ConstPtr& optical
 }
 
 void Cam_callback_full(const cam::QuadPose::ConstPtr& data){
-	cam::QuadPose pose_transformed = cam_frame_transformations(data);
-	double yaw_world_frame=atan2(2*(pose_transformed.orientation.w*pose_transformed.orientation.z + pose_transformed.orientation.x*pose_transformed.orientation.y),(1 - 2*(pose_transformed.orientation.y*pose_transformed.orientation.y + pose_transformed.orientation.z*pose_transformed.orientation.z)));
-	egomotion_update_cam_self(pose_transformed.position.x, pose_transformed.position.y, pose_transformed.position.z, yaw_world_frame);
+	
+	//Is this the first time you receive the data? If so, transform to world frame and initialize the state
+	if(state_initialized){
+		cam::QuadPose pose_transformed = cam_frame_transformations(data,1);
+		state_initialized=0;
+		#ifdef TEST_INIT
+			exit(0);
+		#endif
+	}else{
+		//If it isn't do the following:
+		cam::QuadPose pose_transformed = cam_frame_transformations(data,1);
+		double yaw_flying_frame=atan2(2*(pose_transformed.orientation.w*pose_transformed.orientation.z + pose_transformed.orientation.x*pose_transformed.orientation.y),(1 - 2*(pose_transformed.orientation.y*pose_transformed.orientation.y + pose_transformed.orientation.z*pose_transformed.orientation.z)));
+		printf("Quad yaw in flying frame is: %f\n", yaw_flying_frame*180.0/PI);
+	
+		egomotion_update_cam_self(pose_transformed.position.x, pose_transformed.position.y, pose_transformed.position.z, yaw_flying_frame);
+	}
+
+	
+
 }
 
 int main(int argc, char* argv[]){
@@ -152,11 +172,12 @@ int main(int argc, char* argv[]){
 		
 
 		//predict first the egomotion of the current robot
-		egomotion_predict_self();
+		if(state_initialized == 0){
+			egomotion_predict_self();
 
-		//publish egomotion state
-		est_self_pub.publish(*egomotion_get_ros_message());
-
+			//publish egomotion state
+			est_self_pub.publish(*egomotion_get_ros_message());
+		}
 
 		//do a single ros loop (for the updates) - the update is done after the current predict
 		ros::spinOnce();
