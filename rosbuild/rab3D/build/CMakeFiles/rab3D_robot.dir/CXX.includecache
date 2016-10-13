@@ -225,6 +225,8 @@ cam/QuadPose.h
 -
 geometry_msgs/Quaternion.h
 -
+geometry_msgs/PoseStamped.h
+-
 egomotion_2.h
 /home/pedro/quadcopter/rosbuild/rab3D/src/egomotion_2.h
 
@@ -266,6 +268,8 @@ ros/ros.h
 sensor_msgs/Range.h
 -
 geometry_msgs/TwistWithCovarianceStamped.h
+-
+geometry_msgs/PoseStamped.h
 -
 px_comm/OpticalFlow.h
 -

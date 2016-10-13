@@ -4,6 +4,7 @@
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/download_extra_data.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/rospack_gensrv.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/rospack_genmsg_libexe.dir
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/dummy.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/rospack_genmsg.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/blob_debug_qt.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/test-results-run.dir
@@ -18,6 +19,7 @@
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/test-future.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/doxygen.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir
+/home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/laser_corrections.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/node.dir
 /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles/blob_detection.dir

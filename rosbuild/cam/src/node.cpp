@@ -19,7 +19,7 @@
 #include <tf/transform_datatypes.h>
 #include "geometry_msgs/PoseStamped.h"
 //user libraries
-#include "cam/detections.h"
+//#include "cam/detections.h"
 #include "cam/blob_detection.h"
 #include "cam/marker_detection.h"
 //#include "cam/debug.h" //Comment or uncomment this for verbose
@@ -54,15 +54,16 @@ VectorXd LaserVec(2);
 MatrixXd RLaser2Cam(2,2);
 int width;
 int height;
-static ros::Publisher rgb_image_pub;
+//static ros::Publisher rgb_image_pub;
 static ros::Publisher bin_image_pub;
-static ros::Publisher detections_pub;
+//static ros::Publisher detections_pub;
 static ros::Publisher markers_pub;
 
 static ros::Publisher cam_eval;
 static ros::Publisher laser_eval;
 geometry_msgs::PoseStamped msg;
 std::string image_settings = "params/image_settings.yaml";
+
 void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 
 	//get image
@@ -79,12 +80,12 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
             
         }
     }
-
+    /*
     //publishing usefull information
     sensor_msgs::Image rgb_img = *msg;
     fillImage(rgb_img,"rgb8",img.height,img.width,img.step,buf);
     rgb_image_pub.publish(rgb_img);
-
+	*/
     for(unsigned int l=0;l<img.height;l++)
         for(unsigned int k=0;k<img.width;k++)
         	if(bufb[l*img.width + k] > 0) 
@@ -123,17 +124,17 @@ void image_reception_callback(const sensor_msgs::ImageConstPtr& msg){
 		quad_poses_msg.poses.push_back(quad_pose);
 		if(quad_pose.name == "unknown" || quad_pose.name == "frame0"){
 		//Always save the first pose for convenience sake
-		if(toggle_first_pose == 0){
-			first_pose = quad_pose;
-toggle_first_pose = 1;
+			if(toggle_first_pose == 0){
+				first_pose = quad_pose;
+				toggle_first_pose = 1;
 			}
-#ifdef VERBOSE
-//we kind of only  want yaw
-			printf("YAW: %f\n", yaw*(180.0/PI));
-#endif			
+			#ifdef VERBOSE
+				//we kind of only  want yaw
+				printf("YAW: %f\n", yaw*(180.0/PI));
+			#endif			
 			#ifdef LASER_COMPARE
-			quad_pose.position.x = first_pose.position.x - quad_pose.position.x;
-			quad_pose.position.y = first_pose.position.y - quad_pose.position.y;
+				quad_pose.position.x = first_pose.position.x - quad_pose.position.x;
+				quad_pose.position.y = first_pose.position.y - quad_pose.position.y;
 			#endif
 			//Write yaw to a csv file
 			std::stringstream yss;
@@ -207,9 +208,9 @@ int main(int argc, char** argv){
     ros::Subscriber image_sub=nh.subscribe("usb_cam/image_raw", 1, image_reception_callback); // only 1 in buffer size to drop other images if processing is not finished
     ros::Subscriber laser = nh.subscribe("/slam_out_pose", 1, getLaser);
     //publishers
-    rgb_image_pub=nh.advertise<sensor_msgs::Image>("node/rgb_image",1);
+    //rgb_image_pub=nh.advertise<sensor_msgs::Image>("node/rgb_image",1);
     bin_image_pub=nh.advertise<sensor_msgs::Image>("node/binary_image",1);
-    detections_pub=nh.advertise<cam::detections>("node/detections",1);
+    //detections_pub=nh.advertise<cam::detections>("node/detections",1);
     markers_pub = nh.advertise<cam::QuadPoseList>("node/markers",1);
  
     cam_eval = nh.advertise<cam::QuadPose>("cam_pose",1);

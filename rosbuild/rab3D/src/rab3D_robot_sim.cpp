@@ -10,6 +10,7 @@
 #include <ros/ros.h>
 #include <sensor_msgs/Range.h>
 #include <geometry_msgs/TwistWithCovarianceStamped.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <px_comm/OpticalFlow.h>
 
 //Local Includes
@@ -137,9 +138,9 @@ void Cam_callback_full(const cam::QuadPose::ConstPtr& data){
 		egomotion_update_cam_self(pose_transformed.position.x, pose_transformed.position.y, pose_transformed.position.z, yaw_flying_frame);
 	}
 
-	
-
 }
+
+
 
 int main(int argc, char* argv[]){
 	ros::init(argc, argv, "RaB3D");

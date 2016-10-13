@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <cam/QuadPose.h>
 #include <geometry_msgs/Quaternion.h>
+#include <geometry_msgs/PoseStamped.h>
 //Local includes
 #include "egomotion_2.h"
 //Namespaces
@@ -34,7 +35,7 @@ MatrixXd A1_self(7,7);
 MatrixXd A2_self(7,4);
 MatrixXd At_self(7,7);
 
-MatrixXd Wt_self(4,2); //We have thrust and yaw error
+MatrixXd Wt_self(7,2); //We have thrust and yaw error
 MatrixXd Q_self(2,2);
 
 MatrixXd C_OF_self(2,7);
@@ -191,7 +192,7 @@ int counter = 0;
 void egomotion_predict_self(){
 
 	//check IMU data - no IMU data will invalidate the entire predticion
-	//if( (stamp_imu != stamp_imu_old) && (ros::Time::now().toSec() - imu_last_time <= g_dt_max) ){
+	if( (stamp_imu != stamp_imu_old) && (ros::Time::now().toSec() - imu_last_time <= g_dt_max) ){
 		printf("Predict_self...\n");
 		MatrixXd u(4,1);
 
@@ -273,10 +274,13 @@ void egomotion_predict_self(){
 				  0, 0, 0, 0, 0, 0, 0;                                                                                                             
 
 		//Actualize the W error matrix
-		Wt_self << cyaw*croll*spitch + sroll*syaw, 0,
-				   -cyaw*sroll+croll*spitch*syaw, 0,
-				   croll*cpitch, 0,
-				   0, 1;
+		Wt_self << cyaw*croll*spitch + sroll*syaw, 0.0,
+				   -cyaw*sroll+croll*spitch*syaw, 0.0,
+				   croll*cpitch, 0.0,
+				   0.0, 0.0,
+				   0.0, 0.0,
+				   0.0, 0.0,
+				   0.0, 1.0;
 
 		//Kalman equations
 		x_self = At_self * x_self + A2_self * u;
@@ -284,9 +288,12 @@ void egomotion_predict_self(){
 		//Update A matrix to use for second kalman equation
 		A1_self = At_self + dB;
 
-		//P_self = A1_self*P_self*A1_self.transpose() + Wt_self*Q_self*Wt_self.transpose();
-		P_self = A1_self*P_self*A1_self.transpose();
-		//differences
+		P_self = A1_self*P_self*A1_self.transpose() + Wt_self*Q_self*Wt_self.transpose();
+		//P_self = A1_self*P_self*A1_self.transpose();
+		//P_self = A1_self*P_self*A1_self.transpose();
+
+		//cout << Wt_self*Q_self*Wt_self.transpose();
+
 		dP_self = P_self + Pold_self; 
 		dx_self = x_self - xold_self;
 
@@ -294,7 +301,7 @@ void egomotion_predict_self(){
 		stamp_thrust_old = stamp_thrust; //measurement was consumed
 		//since the imu measurement was not consumed in a predict, it does not get updated
 
-	//}
+	}
 
 }
 
@@ -593,7 +600,7 @@ void egomotion_update_cam_self(double x, double y, double z, double _yaw){ //NOT
 	
 
 	cout << "........C_CAM........." << endl;
-		cout << cam_v << endl;
+	cout << cam_v << endl;
 	K_Cam_self = P_self*C_Cam_self.transpose()*R1.inverse();
 	cout << "................." << endl;
 	cout << K_Cam_self*(cam_v - C_Cam_self*x_self) << endl;
@@ -604,6 +611,8 @@ void egomotion_update_cam_self(double x, double y, double z, double _yaw){ //NOT
 	P_self = (eye7_self - K_Cam_self*C_Cam_self)*P_self;
 	timer_cam = ros::Time::now().toSec();
 }
+
+
 
 /*
 //adds the egomotion prediction (should be the last predict to be made)

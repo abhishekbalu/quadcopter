@@ -1543,7 +1543,7 @@ Q_WS_WIN:INTERNAL=
 //Have symbol Q_WS_X11
 Q_WS_X11:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1474848672.71
+_rosbuild_cached_flag_time:INTERNAL=1474922557.27
 _roslang_LANGS:INTERNAL=roslisp
 _rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/indigo/share/cpp_common/package.xml;/opt/ros/indigo/share/catkin/package.xml;/opt/ros/indigo/share/genmsg/package.xml;/opt/ros/indigo/share/gencpp/package.xml;/opt/ros/indigo/share/genlisp/package.xml;/opt/ros/indigo/share/genpy/package.xml;/opt/ros/indigo/share/message_generation/package.xml;/opt/ros/indigo/share/rostime/package.xml;/opt/ros/indigo/share/roscpp_traits/package.xml;/opt/ros/indigo/share/roscpp_serialization/package.xml;/opt/ros/indigo/share/message_runtime/package.xml;/opt/ros/indigo/share/rosbuild/package.xml;/opt/ros/indigo/share/rosconsole/package.xml;/opt/ros/indigo/share/std_msgs/package.xml;/opt/ros/indigo/share/rosgraph_msgs/package.xml;/opt/ros/indigo/share/xmlrpcpp/package.xml;/opt/ros/indigo/share/roscpp/package.xml;/opt/ros/indigo/share/message_filters/package.xml;/opt/ros/indigo/share/class_loader/package.xml;/opt/ros/indigo/share/rospack/package.xml;/opt/ros/indigo/share/roslib/package.xml;/opt/ros/indigo/share/pluginlib/package.xml;/opt/ros/indigo/share/geometry_msgs/package.xml;/opt/ros/indigo/share/sensor_msgs/package.xml;/opt/ros/indigo/share/image_transport/package.xml;/opt/ros/indigo/share/diagnostic_msgs/package.xml;/opt/ros/indigo/share/diagnostic_updater/package.xml;/opt/ros/indigo/share/self_test/package.xml;/home/pedro/quadcopter/rosbuild/quad_msgs/manifest.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=/home/pedro/quadcopter/rosbuild/quad_msgs/msg_gen/generated

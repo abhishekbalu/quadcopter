@@ -436,7 +436,7 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
             if(nvalid >= MIN_NUMBER_BLOBS && nvalid < MAX_NUMBER_BLOBS+1){
                 #ifdef LIGHT_CALIBRATION
 		   #ifdef VERBOSE
-                    	printf("Between %d  blobs detected and %d blobs detected\n", MIN_NUMBER_BLOBS, MAX_NUMBER_BLOBS");
+                    	printf("Between %d  blobs detected and %d blobs detected\n", MIN_NUMBER_BLOBS, MAX_NUMBER_BLOBS);
                     #endif
 		    if(nvalid%MIN_NUMBER_BLOBS == 0){
                        #ifdef VERBOSE
@@ -459,8 +459,9 @@ int detect_blobs(unsigned char* buf, unsigned int step, int vl, int vh, int hl, 
                    #ifdef VERBOSE 
 		   printf("RESETTING TO ORIGINAL PARAMS\n");
 		   #endif
-                    _sl = sl;_hl = hl;_vl = vl;
-                    _sh = sh;_hh = hh;_vh = vh;
+                    int random_hue = -1 + (rand() % (int)(1 - (-1) + 1));
+                    _sl = sl;_hl = hl+random_hue;_vl = vl;
+                    _sh = sh;_hh = hh+random_hue;_vh = vh;
                     //_vl = val_sum_window/window_pixel_number;
                     //_sl = sat_sum_window/window_pixel_number;
 		    try_original=0;

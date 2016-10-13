@@ -5,7 +5,6 @@ CMakeFiles/node.dir/src/node.cpp.o: ../include/cam/blob_detection.h
 CMakeFiles/node.dir/src/node.cpp.o: ../include/cam/marker_detection.h
 CMakeFiles/node.dir/src/node.cpp.o: ../msg_gen/cpp/include/cam/QuadPose.h
 CMakeFiles/node.dir/src/node.cpp.o: ../msg_gen/cpp/include/cam/QuadPoseList.h
-CMakeFiles/node.dir/src/node.cpp.o: ../msg_gen/cpp/include/cam/detections.h
 CMakeFiles/node.dir/src/node.cpp.o: ../src/node.cpp
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 CMakeFiles/node.dir/src/node.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h

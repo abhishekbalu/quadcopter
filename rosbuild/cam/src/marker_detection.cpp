@@ -74,7 +74,23 @@ int nmarkers=0;
 
 double fx=380,fy=390; //focal distance guess?
 double cx=320,cy=240; //center x, center y should be 320 and 240
+
 double kx1=0.0000055,kx2=2e-10,ky1=0.0000020,ky2=0.0;
+
+/*
+
+SHOULD TRY:
+
+-0.317357 -> kx1
+0.080738 -> kx2
+0.002187 ->ky1 
+0.001125 ->ky2
+0.000000
+
+
+*/
+
+
 double theta_calib = 0.00; //is it radians? this is like the camera pitch
 double szx=0.4,szy=0.4, szLED=0.08;
 double thsz=1;

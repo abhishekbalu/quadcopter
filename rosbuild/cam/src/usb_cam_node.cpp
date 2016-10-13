@@ -156,7 +156,6 @@ public:
     node_.param("pixel_format", pixel_format_name_, std::string("yuyv")); // possible values: yuyv, uyvy, mjpeg
     node_.param("autofocus", autofocus_, false); // enable/disable autofocus
 
-
     printf("usb_cam video_device set to [%s]\n", video_device_name_.c_str());
     printf("usb_cam io_method set to [%s]\n", io_method_name_.c_str());
     printf("usb_cam image_width set to [%d]\n", image_width_);

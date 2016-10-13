@@ -6,7 +6,6 @@ CMakeFiles/node.dir/src/node.cpp.o
  ../include/cam/marker_detection.h
  ../msg_gen/cpp/include/cam/QuadPose.h
  ../msg_gen/cpp/include/cam/QuadPoseList.h
- ../msg_gen/cpp/include/cam/detections.h
  /home/pedro/quadcopter/rosbuild/cam/src/node.cpp
  /opt/ros/indigo/include/XmlRpcDecl.h
  /opt/ros/indigo/include/XmlRpcValue.h

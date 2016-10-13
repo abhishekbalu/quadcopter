@@ -299,6 +299,32 @@ doxygen/fast:
 .PHONY : doxygen/fast
 
 #=============================================================================
+# Target rules for targets named dummy
+
+# Build rule for target.
+dummy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dummy
+.PHONY : dummy
+
+# fast build rule for target.
+dummy/fast:
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/build
+.PHONY : dummy/fast
+
+#=============================================================================
+# Target rules for targets named laser_corrections
+
+# Build rule for target.
+laser_corrections: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 laser_corrections
+.PHONY : laser_corrections
+
+# fast build rule for target.
+laser_corrections/fast:
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/build
+.PHONY : laser_corrections/fast
+
+#=============================================================================
 # Target rules for targets named marker_detection
 
 # Build rule for target.
@@ -617,6 +643,54 @@ src/blob_detection_debug_qt.cpp.s:
 	$(MAKE) -f CMakeFiles/blob_debug_qt.dir/build.make CMakeFiles/blob_debug_qt.dir/src/blob_detection_debug_qt.cpp.s
 .PHONY : src/blob_detection_debug_qt.cpp.s
 
+src/dummy.o: src/dummy.cpp.o
+.PHONY : src/dummy.o
+
+# target to build an object file
+src/dummy.cpp.o:
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/src/dummy.cpp.o
+.PHONY : src/dummy.cpp.o
+
+src/dummy.i: src/dummy.cpp.i
+.PHONY : src/dummy.i
+
+# target to preprocess a source file
+src/dummy.cpp.i:
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/src/dummy.cpp.i
+.PHONY : src/dummy.cpp.i
+
+src/dummy.s: src/dummy.cpp.s
+.PHONY : src/dummy.s
+
+# target to generate assembly for a file
+src/dummy.cpp.s:
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/src/dummy.cpp.s
+.PHONY : src/dummy.cpp.s
+
+src/laser_corrections.o: src/laser_corrections.cpp.o
+.PHONY : src/laser_corrections.o
+
+# target to build an object file
+src/laser_corrections.cpp.o:
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/src/laser_corrections.cpp.o
+.PHONY : src/laser_corrections.cpp.o
+
+src/laser_corrections.i: src/laser_corrections.cpp.i
+.PHONY : src/laser_corrections.i
+
+# target to preprocess a source file
+src/laser_corrections.cpp.i:
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/src/laser_corrections.cpp.i
+.PHONY : src/laser_corrections.cpp.i
+
+src/laser_corrections.s: src/laser_corrections.cpp.s
+.PHONY : src/laser_corrections.s
+
+# target to generate assembly for a file
+src/laser_corrections.cpp.s:
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/src/laser_corrections.cpp.s
+.PHONY : src/laser_corrections.cpp.s
+
 src/marker_detection.o: src/marker_detection.cpp.o
 .PHONY : src/marker_detection.o
 
@@ -776,6 +850,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rospack_genmsg_libexe"
+	@echo "... dummy"
 	@echo "... install"
 	@echo "... rospack_genmsg"
 	@echo "... blob_debug_qt"
@@ -791,6 +866,7 @@ help:
 	@echo "... test-future"
 	@echo "... doxygen"
 	@echo "... ROSBUILD_genmsg_lisp"
+	@echo "... laser_corrections"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... node"
 	@echo "... blob_detection"
@@ -813,6 +889,12 @@ help:
 	@echo "... src/blob_detection_debug_qt.o"
 	@echo "... src/blob_detection_debug_qt.i"
 	@echo "... src/blob_detection_debug_qt.s"
+	@echo "... src/dummy.o"
+	@echo "... src/dummy.i"
+	@echo "... src/dummy.s"
+	@echo "... src/laser_corrections.o"
+	@echo "... src/laser_corrections.i"
+	@echo "... src/laser_corrections.s"
 	@echo "... src/marker_detection.o"
 	@echo "... src/marker_detection.i"
 	@echo "... src/marker_detection.s"

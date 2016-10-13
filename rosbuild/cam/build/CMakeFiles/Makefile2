@@ -439,6 +439,76 @@ clean: CMakeFiles/doxygen.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/dummy.dir
+
+# All Build rule for target.
+CMakeFiles/dummy.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/depend
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  17
+	@echo "Built target dummy"
+.PHONY : CMakeFiles/dummy.dir/all
+
+# Include target in all.
+all: CMakeFiles/dummy.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dummy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dummy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles 0
+.PHONY : CMakeFiles/dummy.dir/rule
+
+# Convenience name for target.
+dummy: CMakeFiles/dummy.dir/rule
+.PHONY : dummy
+
+# clean rule for target.
+CMakeFiles/dummy.dir/clean:
+	$(MAKE) -f CMakeFiles/dummy.dir/build.make CMakeFiles/dummy.dir/clean
+.PHONY : CMakeFiles/dummy.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/dummy.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/laser_corrections.dir
+
+# All Build rule for target.
+CMakeFiles/laser_corrections.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/depend
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  20
+	@echo "Built target laser_corrections"
+.PHONY : CMakeFiles/laser_corrections.dir/all
+
+# Include target in all.
+all: CMakeFiles/laser_corrections.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/laser_corrections.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/laser_corrections.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles 0
+.PHONY : CMakeFiles/laser_corrections.dir/rule
+
+# Convenience name for target.
+laser_corrections: CMakeFiles/laser_corrections.dir/rule
+.PHONY : laser_corrections
+
+# clean rule for target.
+CMakeFiles/laser_corrections.dir/clean:
+	$(MAKE) -f CMakeFiles/laser_corrections.dir/build.make CMakeFiles/laser_corrections.dir/clean
+.PHONY : CMakeFiles/laser_corrections.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/laser_corrections.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/marker_detection.dir
 
 # All Build rule for target.
@@ -446,7 +516,7 @@ CMakeFiles/marker_detection.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 CMakeFiles/marker_detection.dir/all: CMakeFiles/p3p.dir/all
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/depend
 	$(MAKE) -f CMakeFiles/marker_detection.dir/build.make CMakeFiles/marker_detection.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  19
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  21
 	@echo "Built target marker_detection"
 .PHONY : CMakeFiles/marker_detection.dir/all
 
@@ -479,12 +549,12 @@ clean: CMakeFiles/marker_detection.dir/clean
 
 # All Build rule for target.
 CMakeFiles/node.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-CMakeFiles/node.dir/all: CMakeFiles/blob_detection.dir/all
 CMakeFiles/node.dir/all: CMakeFiles/p3p.dir/all
+CMakeFiles/node.dir/all: CMakeFiles/blob_detection.dir/all
 CMakeFiles/node.dir/all: CMakeFiles/marker_detection.dir/all
 	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/depend
 	$(MAKE) -f CMakeFiles/node.dir/build.make CMakeFiles/node.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  20
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  22
 	@echo "Built target node"
 .PHONY : CMakeFiles/node.dir/all
 
@@ -519,7 +589,7 @@ clean: CMakeFiles/node.dir/clean
 CMakeFiles/p3p.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/p3p.dir/build.make CMakeFiles/p3p.dir/depend
 	$(MAKE) -f CMakeFiles/p3p.dir/build.make CMakeFiles/p3p.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  21
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  23
 	@echo "Built target p3p"
 .PHONY : CMakeFiles/p3p.dir/all
 
@@ -965,7 +1035,7 @@ clean: CMakeFiles/tests.dir/clean
 CMakeFiles/usb_cam.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/usb_cam.dir/build.make CMakeFiles/usb_cam.dir/depend
 	$(MAKE) -f CMakeFiles/usb_cam.dir/build.make CMakeFiles/usb_cam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  22
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  24
 	@echo "Built target usb_cam"
 .PHONY : CMakeFiles/usb_cam.dir/all
 
@@ -1016,7 +1086,7 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  18
 	@echo "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
@@ -1047,7 +1117,7 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  18
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedro/quadcopter/rosbuild/cam/build/CMakeFiles  19
 	@echo "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
